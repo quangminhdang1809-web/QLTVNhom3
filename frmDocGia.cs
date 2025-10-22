@@ -16,5 +16,14 @@ namespace QLTVNhom3
         {
             InitializeComponent();
         }
+
+        private void btnThongtincanhan_Click(object sender, EventArgs e)
+        {
+            pnlMain.Controls.Clear();
+            Thongtincanhan ttcndg = new Thongtincanhan();
+            ttcndg.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(ttcndg);
+
+        }
     }
 }
