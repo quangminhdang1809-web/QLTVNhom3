@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSachthuthu));
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
@@ -212,8 +213,6 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            groupBox1.AutoSize = true;
-            groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             groupBox1.Controls.Add(txtMadausach);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(btnTrolai);
@@ -235,7 +234,7 @@
             groupBox1.ForeColor = SystemColors.Desktop;
             groupBox1.Location = new Point(120, 131);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(570, 810);
+            groupBox1.Size = new Size(570, 800);
             groupBox1.TabIndex = 82;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
@@ -315,6 +314,14 @@
             // 
             dgvtacgia.AllowUserToAddRows = false;
             dgvtacgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvtacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvtacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvtacgia.Columns.AddRange(new DataGridViewColumn[] { tentacgia, namsinh });
             dgvtacgia.Location = new Point(161, 615);
@@ -427,8 +434,6 @@
             // 
             // btnThemsach
             // 
-            btnThemsach.AutoSize = true;
-            btnThemsach.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnThemsach.FlatAppearance.BorderSize = 0;
             btnThemsach.FlatStyle = FlatStyle.Flat;
             btnThemsach.Image = (Image)resources.GetObject("btnThemsach.Image");
@@ -452,7 +457,6 @@
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)grdSach).EndInit();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvtacgia).EndInit();
