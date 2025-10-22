@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            label1 = new Label();
             groupBox2 = new GroupBox();
             txtsdt = new TextBox();
             label6 = new Label();
@@ -37,7 +36,6 @@
             label15 = new Label();
             txttendocgia = new TextBox();
             txtmadocgia = new TextBox();
-            txtMaphieumuon = new TextBox();
             groupBox3 = new GroupBox();
             grdThongtinsachmuon = new DataGridView();
             groupBox4 = new GroupBox();
@@ -54,9 +52,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(groupBox2);
-            groupBox1.Controls.Add(txtMaphieumuon);
             groupBox1.Controls.Add(groupBox3);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.Location = new Point(115, 31);
@@ -67,16 +63,6 @@
             groupBox1.Text = "Thông tin mượn sách";
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(50, 67);
-            label1.Name = "label1";
-            label1.Size = new Size(158, 28);
-            label1.TabIndex = 176;
-            label1.Text = "Mã phiếu mượn";
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(txtsdt);
@@ -86,7 +72,7 @@
             groupBox2.Controls.Add(txttendocgia);
             groupBox2.Controls.Add(txtmadocgia);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            groupBox2.Location = new Point(33, 139);
+            groupBox2.Location = new Point(33, 62);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(623, 273);
             groupBox2.TabIndex = 0;
@@ -150,20 +136,11 @@
             txtmadocgia.Size = new Size(351, 34);
             txtmadocgia.TabIndex = 163;
             // 
-            // txtMaphieumuon
-            // 
-            txtMaphieumuon.BorderStyle = BorderStyle.FixedSingle;
-            txtMaphieumuon.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMaphieumuon.Location = new Point(214, 65);
-            txtMaphieumuon.Name = "txtMaphieumuon";
-            txtMaphieumuon.Size = new Size(351, 34);
-            txtMaphieumuon.TabIndex = 175;
-            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(grdThongtinsachmuon);
             groupBox3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            groupBox3.Location = new Point(33, 461);
+            groupBox3.Location = new Point(33, 406);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(623, 414);
             groupBox3.TabIndex = 1;
@@ -240,7 +217,6 @@
             Name = "ucTrasach";
             Size = new Size(1650, 1000);
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -265,8 +241,6 @@
         private GroupBox groupBox4;
         private Button btnHuy;
         private Button btnluu;
-        private Label label1;
-        private TextBox txtMaphieumuon;
         private DataGridView grdThongtintrasach;
     }
 }

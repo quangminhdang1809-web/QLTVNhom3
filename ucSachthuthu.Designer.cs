@@ -88,24 +88,29 @@
             // 
             // btnTimkiem
             // 
+            btnTimkiem.AutoSize = true;
+            btnTimkiem.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
             btnTimkiem.Location = new Point(864, 48);
             btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.Size = new Size(72, 49);
+            btnTimkiem.Size = new Size(58, 58);
             btnTimkiem.TabIndex = 2;
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click;
             // 
             // btnThemsach
             // 
+            btnThemsach.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnThemsach.AutoSize = true;
+            btnThemsach.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnThemsach.FlatAppearance.BorderSize = 0;
             btnThemsach.FlatStyle = FlatStyle.Flat;
             btnThemsach.Image = (Image)resources.GetObject("btnThemsach.Image");
-            btnThemsach.Location = new Point(1528, 42);
+            btnThemsach.Location = new Point(1566, 42);
             btnThemsach.Name = "btnThemsach";
-            btnThemsach.Size = new Size(94, 60);
+            btnThemsach.Size = new Size(56, 56);
             btnThemsach.TabIndex = 3;
             btnThemsach.UseVisualStyleBackColor = true;
             btnThemsach.Click += button1_Click;
@@ -121,6 +126,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            groupBox1.AutoSize = true;
+            groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             groupBox1.Controls.Add(txtMadausach);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(btnTrolai);
@@ -140,9 +148,9 @@
             groupBox1.Controls.Add(pbAnhbia);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(1025, 134);
+            groupBox1.Location = new Point(1025, 124);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(570, 800);
+            groupBox1.Size = new Size(570, 810);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
@@ -351,13 +359,16 @@
             // 
             // groupBox3
             // 
+            groupBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            groupBox3.AutoSize = true;
+            groupBox3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             groupBox3.Controls.Add(btnPrevious);
             groupBox3.Controls.Add(btnNext);
             groupBox3.Controls.Add(btnEnd);
             groupBox3.Controls.Add(btnFirst);
-            groupBox3.Location = new Point(568, 905);
+            groupBox3.Location = new Point(580, 892);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(292, 85);
+            groupBox3.Size = new Size(280, 98);
             groupBox3.TabIndex = 74;
             groupBox3.TabStop = false;
             // 
