@@ -77,7 +77,7 @@
             btnThoat.FlatStyle = FlatStyle.Flat;
             btnThoat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnThoat.ForeColor = Color.White;
-            btnThoat.Location = new Point(865, 0);
+            btnThoat.Location = new Point(1010, 0);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(40, 60);
             btnThoat.TabIndex = 1;
@@ -495,7 +495,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(250, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(905, 60);
+            panel1.Size = new Size(1050, 60);
             panel1.TabIndex = 3;
             // 
             // pnlMaincontent
@@ -503,7 +503,7 @@
             pnlMaincontent.Dock = DockStyle.Fill;
             pnlMaincontent.Location = new Point(250, 60);
             pnlMaincontent.Name = "pnlMaincontent";
-            pnlMaincontent.Size = new Size(905, 1042);
+            pnlMaincontent.Size = new Size(1050, 1042);
             pnlMaincontent.TabIndex = 4;
             pnlMaincontent.Paint += panel2_Paint_1;
             // 
@@ -511,11 +511,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1155, 1102);
+            ClientSize = new Size(1300, 1102);
             Controls.Add(pnlMaincontent);
             Controls.Add(panel1);
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
+            MinimumSize = new Size(1300, 910);
             Name = "frmmainthuthu";
             Text = "frmmainthuthu";
             WindowState = FormWindowState.Maximized;

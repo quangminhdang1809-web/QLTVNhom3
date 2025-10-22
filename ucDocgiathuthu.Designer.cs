@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDocgiathuthu));
             btnThemdocgia = new Button();
             groupBox1 = new GroupBox();
+            button4 = new Button();
             groupBox2 = new GroupBox();
             dgvLichsumuontra = new DataGridView();
             label5 = new Label();
@@ -70,7 +71,6 @@
             btnNext = new Button();
             btnLast = new Button();
             btnFirst = new Button();
-            button4 = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLichsumuontra).BeginInit();
@@ -123,12 +123,23 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(929, 123);
+            groupBox1.Location = new Point(910, 134);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(685, 720);
+            groupBox1.Size = new Size(685, 725);
             groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin độc giả";
+            // 
+            // button4
+            // 
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Image = (Image)resources.GetObject("button4.Image");
+            button4.Location = new Point(619, 665);
+            button4.Name = "button4";
+            button4.Size = new Size(45, 40);
+            button4.TabIndex = 165;
+            button4.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -516,21 +527,12 @@
             btnFirst.UseVisualStyleBackColor = true;
             btnFirst.Click += button5_Click;
             // 
-            // button4
-            // 
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(619, 665);
-            button4.Name = "button4";
-            button4.Size = new Size(45, 40);
-            button4.TabIndex = 165;
-            button4.UseVisualStyleBackColor = true;
-            // 
             // ucDocgiathuthu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.White;
             Controls.Add(groupBox3);
             Controls.Add(groupBox1);
@@ -540,7 +542,7 @@
             Controls.Add(grdDocgia);
             Controls.Add(btnThemdocgia);
             Name = "ucDocgiathuthu";
-            Size = new Size(1650, 1000);
+            Size = new Size(1617, 1003);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
