@@ -66,5 +66,10 @@ namespace QLTVNhom3
             int i = grdSach.RowCount - 1;
             grdSach.CurrentCell = grdSach[0, i];//Dòng  cuối cùng
         }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -29,13 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSachthuthu));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            grdSach = new DataGridView();
-            txtTimkiem = new TextBox();
-            btnTimkiem = new Button();
-            btnThemsach = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel1 = new Panel();
+            btnPrevious = new Button();
+            btnNext = new Button();
+            btnFirst = new Button();
+            groupBox3 = new GroupBox();
+            btnEnd = new Button();
             cbxTheloai1 = new ComboBox();
+            btnTimkiem = new Button();
+            txtTimkiem = new TextBox();
+            grdSach = new DataGridView();
+            panel2 = new Panel();
             groupBox1 = new GroupBox();
             txtMadausach = new TextBox();
             label5 = new Label();
@@ -56,35 +61,112 @@
             txttensach = new TextBox();
             label1 = new Label();
             pbAnhbia = new PictureBox();
-            groupBox3 = new GroupBox();
-            btnPrevious = new Button();
-            btnNext = new Button();
-            btnEnd = new Button();
-            btnFirst = new Button();
+            btnThemsach = new Button();
+            tableLayoutPanel1.SuspendLayout();
+            panel1.SuspendLayout();
+            groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdSach).BeginInit();
+            panel2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvtacgia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbAnhbia).BeginInit();
-            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
-            // grdSach
+            // tableLayoutPanel1
             // 
-            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdSach.Location = new Point(130, 134);
-            grdSach.Name = "grdSach";
-            grdSach.RowHeadersWidth = 51;
-            grdSach.Size = new Size(730, 755);
-            grdSach.TabIndex = 0;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 52.3030319F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 47.6969681F));
+            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel2, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1650, 1000);
+            tableLayoutPanel1.TabIndex = 0;
             // 
-            // txtTimkiem
+            // panel1
             // 
-            txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
-            txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(130, 59);
-            txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(520, 34);
-            txtTimkiem.TabIndex = 1;
+            panel1.Controls.Add(groupBox3);
+            panel1.Controls.Add(cbxTheloai1);
+            panel1.Controls.Add(btnTimkiem);
+            panel1.Controls.Add(txtTimkiem);
+            panel1.Controls.Add(grdSach);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(857, 994);
+            panel1.TabIndex = 0;
+            // 
+            // btnPrevious
+            // 
+            btnPrevious.FlatAppearance.BorderSize = 0;
+            btnPrevious.FlatStyle = FlatStyle.Flat;
+            btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
+            btnPrevious.Location = new Point(79, 26);
+            btnPrevious.Name = "btnPrevious";
+            btnPrevious.Size = new Size(57, 40);
+            btnPrevious.TabIndex = 78;
+            btnPrevious.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            btnNext.FlatAppearance.BorderSize = 0;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Image = (Image)resources.GetObject("btnNext.Image");
+            btnNext.Location = new Point(146, 26);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(45, 40);
+            btnNext.TabIndex = 77;
+            btnNext.UseVisualStyleBackColor = true;
+            // 
+            // btnFirst
+            // 
+            btnFirst.FlatAppearance.BorderSize = 0;
+            btnFirst.FlatStyle = FlatStyle.Flat;
+            btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
+            btnFirst.Location = new Point(24, 26);
+            btnFirst.Name = "btnFirst";
+            btnFirst.Size = new Size(45, 40);
+            btnFirst.TabIndex = 75;
+            btnFirst.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            groupBox3.AutoSize = true;
+            groupBox3.Controls.Add(btnPrevious);
+            groupBox3.Controls.Add(btnNext);
+            groupBox3.Controls.Add(btnEnd);
+            groupBox3.Controls.Add(btnFirst);
+            groupBox3.Location = new Point(511, 892);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(270, 99);
+            groupBox3.TabIndex = 81;
+            groupBox3.TabStop = false;
+            groupBox3.Enter += groupBox3_Enter;
+            // 
+            // btnEnd
+            // 
+            btnEnd.FlatAppearance.BorderSize = 0;
+            btnEnd.FlatStyle = FlatStyle.Flat;
+            btnEnd.Image = (Image)resources.GetObject("btnEnd.Image");
+            btnEnd.Location = new Point(201, 23);
+            btnEnd.Name = "btnEnd";
+            btnEnd.Size = new Size(53, 46);
+            btnEnd.TabIndex = 76;
+            btnEnd.UseVisualStyleBackColor = true;
+            // 
+            // cbxTheloai1
+            // 
+            cbxTheloai1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cbxTheloai1.FormattingEnabled = true;
+            cbxTheloai1.Location = new Point(602, 55);
+            cbxTheloai1.Name = "cbxTheloai1";
+            cbxTheloai1.Size = new Size(151, 36);
+            cbxTheloai1.TabIndex = 79;
             // 
             // btnTimkiem
             // 
@@ -93,35 +175,39 @@
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
-            btnTimkiem.Location = new Point(864, 48);
+            btnTimkiem.Location = new Point(785, 45);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(58, 58);
-            btnTimkiem.TabIndex = 2;
+            btnTimkiem.TabIndex = 77;
             btnTimkiem.UseVisualStyleBackColor = true;
-            btnTimkiem.Click += btnTimkiem_Click;
             // 
-            // btnThemsach
+            // txtTimkiem
             // 
-            btnThemsach.AutoSize = true;
-            btnThemsach.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnThemsach.FlatAppearance.BorderSize = 0;
-            btnThemsach.FlatStyle = FlatStyle.Flat;
-            btnThemsach.Image = (Image)resources.GetObject("btnThemsach.Image");
-            btnThemsach.Location = new Point(1566, 42);
-            btnThemsach.Name = "btnThemsach";
-            btnThemsach.Size = new Size(56, 56);
-            btnThemsach.TabIndex = 3;
-            btnThemsach.UseVisualStyleBackColor = true;
-            btnThemsach.Click += button1_Click;
+            txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
+            txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtTimkiem.Location = new Point(51, 56);
+            txtTimkiem.Name = "txtTimkiem";
+            txtTimkiem.Size = new Size(520, 34);
+            txtTimkiem.TabIndex = 76;
             // 
-            // cbxTheloai1
+            // grdSach
             // 
-            cbxTheloai1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            cbxTheloai1.FormattingEnabled = true;
-            cbxTheloai1.Location = new Point(681, 58);
-            cbxTheloai1.Name = "cbxTheloai1";
-            cbxTheloai1.Size = new Size(151, 36);
-            cbxTheloai1.TabIndex = 4;
+            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdSach.Location = new Point(51, 131);
+            grdSach.Name = "grdSach";
+            grdSach.RowHeadersWidth = 51;
+            grdSach.Size = new Size(730, 755);
+            grdSach.TabIndex = 75;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(groupBox1);
+            panel2.Controls.Add(btnThemsach);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(866, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(781, 994);
+            panel2.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -147,13 +233,12 @@
             groupBox1.Controls.Add(pbAnhbia);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(1025, 124);
+            groupBox1.Location = new Point(120, 131);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(570, 810);
-            groupBox1.TabIndex = 5;
+            groupBox1.TabIndex = 82;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // txtMadausach
             // 
@@ -220,37 +305,21 @@
             // txtsoluong
             // 
             txtsoluong.BorderStyle = BorderStyle.FixedSingle;
-            txtsoluong.Font = new Font("Segoe UI", 10.8F);
+            txtsoluong.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtsoluong.Location = new Point(161, 563);
             txtsoluong.Name = "txtsoluong";
-            txtsoluong.Size = new Size(326, 31);
+            txtsoluong.Size = new Size(326, 34);
             txtsoluong.TabIndex = 69;
             // 
             // dgvtacgia
             // 
             dgvtacgia.AllowUserToAddRows = false;
             dgvtacgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvtacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvtacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvtacgia.Columns.AddRange(new DataGridViewColumn[] { tentacgia, namsinh });
             dgvtacgia.Location = new Point(161, 615);
             dgvtacgia.Name = "dgvtacgia";
             dgvtacgia.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvtacgia.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvtacgia.RowHeadersWidth = 51;
             dgvtacgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvtacgia.Size = new Size(326, 90);
@@ -356,100 +425,66 @@
             pbAnhbia.TabIndex = 1;
             pbAnhbia.TabStop = false;
             // 
-            // groupBox3
+            // btnThemsach
             // 
-            groupBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            groupBox3.AutoSize = true;
-            groupBox3.Controls.Add(btnPrevious);
-            groupBox3.Controls.Add(btnNext);
-            groupBox3.Controls.Add(btnEnd);
-            groupBox3.Controls.Add(btnFirst);
-            groupBox3.Location = new Point(580, 892);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(280, 98);
-            groupBox3.TabIndex = 74;
-            groupBox3.TabStop = false;
-            // 
-            // btnPrevious
-            // 
-            btnPrevious.FlatAppearance.BorderSize = 0;
-            btnPrevious.FlatStyle = FlatStyle.Flat;
-            btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(83, 26);
-            btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(57, 40);
-            btnPrevious.TabIndex = 78;
-            btnPrevious.UseVisualStyleBackColor = true;
-            btnPrevious.Click += btnPrevious_Click;
-            // 
-            // btnNext
-            // 
-            btnNext.FlatAppearance.BorderSize = 0;
-            btnNext.FlatStyle = FlatStyle.Flat;
-            btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(154, 26);
-            btnNext.Name = "btnNext";
-            btnNext.Size = new Size(45, 40);
-            btnNext.TabIndex = 77;
-            btnNext.UseVisualStyleBackColor = true;
-            btnNext.Click += btnNext_Click;
-            // 
-            // btnEnd
-            // 
-            btnEnd.FlatAppearance.BorderSize = 0;
-            btnEnd.FlatStyle = FlatStyle.Flat;
-            btnEnd.Image = (Image)resources.GetObject("btnEnd.Image");
-            btnEnd.Location = new Point(221, 26);
-            btnEnd.Name = "btnEnd";
-            btnEnd.Size = new Size(53, 46);
-            btnEnd.TabIndex = 76;
-            btnEnd.UseVisualStyleBackColor = true;
-            // 
-            // btnFirst
-            // 
-            btnFirst.FlatAppearance.BorderSize = 0;
-            btnFirst.FlatStyle = FlatStyle.Flat;
-            btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(24, 26);
-            btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(45, 40);
-            btnFirst.TabIndex = 75;
-            btnFirst.UseVisualStyleBackColor = true;
-            btnFirst.Click += btnFirst_Click;
+            btnThemsach.AutoSize = true;
+            btnThemsach.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnThemsach.FlatAppearance.BorderSize = 0;
+            btnThemsach.FlatStyle = FlatStyle.Flat;
+            btnThemsach.Image = (Image)resources.GetObject("btnThemsach.Image");
+            btnThemsach.Location = new Point(676, 35);
+            btnThemsach.Name = "btnThemsach";
+            btnThemsach.Size = new Size(56, 56);
+            btnThemsach.TabIndex = 81;
+            btnThemsach.UseVisualStyleBackColor = true;
             // 
             // ucSachthuthu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(groupBox3);
-            Controls.Add(groupBox1);
-            Controls.Add(cbxTheloai1);
-            Controls.Add(btnThemsach);
-            Controls.Add(btnTimkiem);
-            Controls.Add(txtTimkiem);
-            Controls.Add(grdSach);
+            Controls.Add(tableLayoutPanel1);
             Name = "ucSachthuthu";
             Size = new Size(1650, 1000);
+            tableLayoutPanel1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)grdSach).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvtacgia).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbAnhbia).EndInit();
-            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private DataGridView grdSach;
-        private TextBox txtTimkiem;
-        private Button btnTimkiem;
-        private Button btnThemsach;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel1;
+        private GroupBox groupBox3;
+        private Button btnPrevious;
+        private Button btnNext;
+        private Button btnEnd;
+        private Button btnFirst;
         private ComboBox cbxTheloai1;
+        private Button btnTimkiem;
+        private TextBox txtTimkiem;
+        private DataGridView grdSach;
+        private Panel panel2;
         private GroupBox groupBox1;
-        private PictureBox pbAnhbia;
+        private TextBox txtMadausach;
+        private Label label5;
+        private Button btnTrolai;
+        private Button btnSua;
+        private Button btnXoa;
+        private Label label6;
+        private TextBox txtsoluong;
+        private DataGridView dgvtacgia;
+        private DataGridViewTextBoxColumn tentacgia;
+        private DataGridViewTextBoxColumn namsinh;
         private ComboBox cbxtheloai;
         private DateTimePicker dtpnamxb;
         private Label label4;
@@ -458,20 +493,7 @@
         private TextBox txtnxb;
         private TextBox txttensach;
         private Label label1;
-        private DataGridView dgvtacgia;
-        private DataGridViewTextBoxColumn tentacgia;
-        private DataGridViewTextBoxColumn namsinh;
-        private Button btnXoa;
-        private Label label6;
-        private TextBox txtsoluong;
-        private Button btnTrolai;
-        private Button btnSua;
-        private GroupBox groupBox3;
-        private Button btnPrevious;
-        private Button btnNext;
-        private Button btnEnd;
-        private Button btnFirst;
-        private TextBox txtMadausach;
-        private Label label5;
+        private PictureBox pbAnhbia;
+        private Button btnThemsach;
     }
 }
