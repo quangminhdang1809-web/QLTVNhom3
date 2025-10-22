@@ -104,7 +104,6 @@
             // 
             btnThemsach.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnThemsach.AutoSize = true;
-            btnThemsach.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnThemsach.FlatAppearance.BorderSize = 0;
             btnThemsach.FlatStyle = FlatStyle.Flat;
             btnThemsach.Image = (Image)resources.GetObject("btnThemsach.Image");
@@ -126,9 +125,8 @@
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             groupBox1.AutoSize = true;
-            groupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             groupBox1.Controls.Add(txtMadausach);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(btnTrolai);
@@ -361,7 +359,6 @@
             // 
             groupBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             groupBox3.AutoSize = true;
-            groupBox3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             groupBox3.Controls.Add(btnPrevious);
             groupBox3.Controls.Add(btnNext);
             groupBox3.Controls.Add(btnEnd);
