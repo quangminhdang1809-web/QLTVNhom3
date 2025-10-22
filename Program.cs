@@ -13,7 +13,7 @@ namespace QLTVNhom3
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new frmDocGia());
+            Application.Run(new frmDangnhap());
         }
     }
 }
