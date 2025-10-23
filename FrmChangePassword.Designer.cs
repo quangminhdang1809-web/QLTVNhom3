@@ -91,7 +91,7 @@
             // 
             btnSave.Location = new Point(370, 299);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(112, 34);
+            btnSave.Size = new Size(112, 43);
             btnSave.TabIndex = 6;
             btnSave.Text = "Lưu";
             btnSave.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             btnCancel.BackColor = SystemColors.ActiveBorder;
             btnCancel.Location = new Point(525, 299);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(112, 34);
+            btnCancel.Size = new Size(112, 43);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = false;
@@ -122,7 +122,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(683, 366);
+            ClientSize = new Size(696, 378);
             Controls.Add(llbLuuy);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -132,7 +132,7 @@
             Controls.Add(lblXacnhanlaimatkhaumoi);
             Controls.Add(lblMatkhaumoi);
             Controls.Add(lblMatkhauhientai);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrmChangePassword";
             Text = "Đổi mật khẩu";
             ResumeLayout(false);
