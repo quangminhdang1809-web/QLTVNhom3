@@ -15,6 +15,7 @@ namespace QLTVNhom3
         public frmDocGia()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
         }
 
         private void btnThongtincanhan_Click(object sender, EventArgs e)
@@ -24,6 +25,27 @@ namespace QLTVNhom3
             ttcndg.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(ttcndg);
 
+        }
+
+        private void lblExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnTimkiemsach_Click(object sender, EventArgs e)
+        {
+            pnlMain.Controls.Clear();
+            Timkiemsach tks = new Timkiemsach();
+            tks.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(tks);
+        }
+
+        private void btnLichsumuonsach_Click(object sender, EventArgs e)
+        {
+            pnlMain.Controls.Clear();   
+            Lichsumuonsach lsm = new Lichsumuonsach();
+            lsm.Dock = DockStyle.Fill;  
+            pnlMain.Controls.Add(lsm);
         }
     }
 }
