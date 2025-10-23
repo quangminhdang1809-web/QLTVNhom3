@@ -14,6 +14,7 @@ namespace QLTVNhom3
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new frmDocGia());
+            Application.Run(new frmmainthuthu());
         }
     }
 }
