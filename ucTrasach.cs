@@ -31,5 +31,11 @@ namespace QLTVNhom3
         {
 
         }
+
+        private void txtXacnhan_Click(object sender, EventArgs e)
+        {
+            frmXacnhantrasach frmXacnhantrasach = new frmXacnhantrasach();
+            frmXacnhantrasach.ShowDialog();
+        }
     }
 }

@@ -49,5 +49,10 @@ namespace QLTVNhom3
             int i = grdTheloai.RowCount - 1;
             grdTheloai.CurrentCell = grdTheloai[0, i];//Dòng  cuối cùng
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
