@@ -10,26 +10,17 @@ using System.Windows.Forms;
 
 namespace QLTVNhom3
 {
-    public partial class ucTrasach : UserControl
+    public partial class ucKhosach : UserControl
     {
-        public ucTrasach()
+        public ucKhosach()
         {
             InitializeComponent();
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
+        private void btnThemkesach_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
+            frmThemkesach frmThemkhosach= new frmThemkesach();
+            frmThemkhosach.ShowDialog();
         }
     }
 }

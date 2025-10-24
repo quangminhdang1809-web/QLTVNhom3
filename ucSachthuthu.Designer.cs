@@ -30,6 +30,10 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSachthuthu));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             groupBox3 = new GroupBox();
@@ -37,7 +41,7 @@
             btnNext = new Button();
             btnEnd = new Button();
             btnFirst = new Button();
-            cbxTheloai1 = new ComboBox();
+            cbxTheloaisach = new ComboBox();
             btnTimkiem = new Button();
             txtTimkiem = new TextBox();
             grdSach = new DataGridView();
@@ -45,21 +49,21 @@
             groupBox1 = new GroupBox();
             txtMadausach = new TextBox();
             label5 = new Label();
-            btnTrolai = new Button();
+            grdUndo = new Button();
             btnSua = new Button();
             btnXoa = new Button();
             label6 = new Label();
-            txtsoluong = new TextBox();
-            dgvtacgia = new DataGridView();
+            txtSoluong = new TextBox();
+            grdTacgia = new DataGridView();
             tentacgia = new DataGridViewTextBoxColumn();
             namsinh = new DataGridViewTextBoxColumn();
-            cbxtheloai = new ComboBox();
-            dtpnamxb = new DateTimePicker();
+            cbxTheloaisach1 = new ComboBox();
+            dtpNamxb = new DateTimePicker();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            txtnxb = new TextBox();
-            txttensach = new TextBox();
+            txtNxb = new TextBox();
+            txtTensach = new TextBox();
             label1 = new Label();
             pbAnhbia = new PictureBox();
             btnThemsach = new Button();
@@ -69,7 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)grdSach).BeginInit();
             panel2.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvtacgia).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grdTacgia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbAnhbia).BeginInit();
             SuspendLayout();
             // 
@@ -92,7 +96,7 @@
             // panel1
             // 
             panel1.Controls.Add(groupBox3);
-            panel1.Controls.Add(cbxTheloai1);
+            panel1.Controls.Add(cbxTheloaisach);
             panel1.Controls.Add(btnTimkiem);
             panel1.Controls.Add(txtTimkiem);
             panel1.Controls.Add(grdSach);
@@ -105,13 +109,12 @@
             // 
             // groupBox3
             // 
-            groupBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            groupBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             groupBox3.Controls.Add(btnPrevious);
             groupBox3.Controls.Add(btnNext);
             groupBox3.Controls.Add(btnEnd);
             groupBox3.Controls.Add(btnFirst);
-            groupBox3.Location = new Point(717, 1430);
-            groupBox3.Margin = new Padding(5);
+            groupBox3.Location = new Point(482, 894);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(5);
             groupBox3.Size = new Size(436, 160);
@@ -133,6 +136,7 @@
             // 
             // btnNext
             // 
+            btnNext.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
@@ -145,6 +149,7 @@
             // 
             // btnEnd
             // 
+            btnEnd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEnd.FlatAppearance.BorderSize = 0;
             btnEnd.FlatStyle = FlatStyle.Flat;
             btnEnd.Image = (Image)resources.GetObject("btnEnd.Image");
@@ -166,21 +171,21 @@
             btnFirst.Size = new Size(73, 64);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += btnFirst_Click_1;
             // 
-            // cbxTheloai1
+            // cbxTheloaisach
             // 
-            cbxTheloai1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cbxTheloai1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            cbxTheloai1.FormattingEnabled = true;
-            cbxTheloai1.Location = new Point(780, 88);
-            cbxTheloai1.Margin = new Padding(5);
-            cbxTheloai1.Name = "cbxTheloai1";
-            cbxTheloai1.Size = new Size(242, 53);
-            cbxTheloai1.TabIndex = 79;
+            cbxTheloaisach.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbxTheloaisach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cbxTheloaisach.FormattingEnabled = true;
+            cbxTheloaisach.Location = new Point(480, 55);
+            cbxTheloaisach.Name = "cbxTheloaisach";
+            cbxTheloaisach.Size = new Size(151, 36);
+            cbxTheloaisach.TabIndex = 79;
             // 
             // btnTimkiem
             // 
-            btnTimkiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnTimkiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnTimkiem.AutoSize = true;
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
@@ -194,7 +199,7 @@
             // 
             // txtTimkiem
             // 
-            txtTimkiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtTimkiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTimkiem.Location = new Point(83, 90);
@@ -205,13 +210,33 @@
             // 
             // grdSach
             // 
-            grdSach.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdSach.Location = new Point(83, 210);
-            grdSach.Margin = new Padding(5);
+            grdSach.AllowUserToAddRows = false;
+            grdSach.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            grdSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            grdSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            grdSach.ColumnHeadersHeight = 40;
+            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdSach.Location = new Point(51, 131);
             grdSach.Name = "grdSach";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            grdSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grdSach.RowHeadersWidth = 51;
-            grdSach.Size = new Size(1070, 1190);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            grdSach.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            grdSach.Size = new Size(700, 744);
             grdSach.TabIndex = 75;
             // 
             // panel2
@@ -227,22 +252,22 @@
             // 
             // groupBox1
             // 
-            groupBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             groupBox1.Controls.Add(txtMadausach);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(btnTrolai);
+            groupBox1.Controls.Add(grdUndo);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(txtsoluong);
-            groupBox1.Controls.Add(dgvtacgia);
-            groupBox1.Controls.Add(cbxtheloai);
-            groupBox1.Controls.Add(dtpnamxb);
+            groupBox1.Controls.Add(txtSoluong);
+            groupBox1.Controls.Add(grdTacgia);
+            groupBox1.Controls.Add(cbxTheloaisach1);
+            groupBox1.Controls.Add(dtpNamxb);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txtnxb);
-            groupBox1.Controls.Add(txttensach);
+            groupBox1.Controls.Add(txtNxb);
+            groupBox1.Controls.Add(txtTensach);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(pbAnhbia);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
@@ -279,18 +304,17 @@
             label5.TabIndex = 74;
             label5.Text = "Mã sách";
             // 
-            // btnTrolai
+            // grdUndo
             // 
-            btnTrolai.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnTrolai.FlatAppearance.BorderSize = 0;
-            btnTrolai.FlatStyle = FlatStyle.Flat;
-            btnTrolai.Image = (Image)resources.GetObject("btnTrolai.Image");
-            btnTrolai.Location = new Point(635, 1173);
-            btnTrolai.Margin = new Padding(5);
-            btnTrolai.Name = "btnTrolai";
-            btnTrolai.Size = new Size(73, 64);
-            btnTrolai.TabIndex = 73;
-            btnTrolai.UseVisualStyleBackColor = true;
+            grdUndo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            grdUndo.FlatAppearance.BorderSize = 0;
+            grdUndo.FlatStyle = FlatStyle.Flat;
+            grdUndo.Image = (Image)resources.GetObject("grdUndo.Image");
+            grdUndo.Location = new Point(391, 733);
+            grdUndo.Name = "grdUndo";
+            grdUndo.Size = new Size(45, 40);
+            grdUndo.TabIndex = 73;
+            grdUndo.UseVisualStyleBackColor = true;
             // 
             // btnSua
             // 
@@ -330,40 +354,38 @@
             label6.TabIndex = 70;
             label6.Text = "Số lượng";
             // 
-            // txtsoluong
+            // txtSoluong
             // 
-            txtsoluong.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtsoluong.BorderStyle = BorderStyle.FixedSingle;
-            txtsoluong.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtsoluong.Location = new Point(262, 901);
-            txtsoluong.Margin = new Padding(5);
-            txtsoluong.Name = "txtsoluong";
-            txtsoluong.Size = new Size(528, 50);
-            txtsoluong.TabIndex = 69;
+            txtSoluong.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtSoluong.BorderStyle = BorderStyle.FixedSingle;
+            txtSoluong.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtSoluong.Location = new Point(161, 563);
+            txtSoluong.Name = "txtSoluong";
+            txtSoluong.Size = new Size(326, 34);
+            txtSoluong.TabIndex = 69;
             // 
-            // dgvtacgia
+            // grdTacgia
             // 
-            dgvtacgia.AllowUserToAddRows = false;
-            dgvtacgia.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dgvtacgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvtacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvtacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvtacgia.Columns.AddRange(new DataGridViewColumn[] { tentacgia, namsinh });
-            dgvtacgia.Location = new Point(262, 984);
-            dgvtacgia.Margin = new Padding(5);
-            dgvtacgia.Name = "dgvtacgia";
-            dgvtacgia.ReadOnly = true;
-            dgvtacgia.RowHeadersWidth = 51;
-            dgvtacgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvtacgia.Size = new Size(530, 144);
-            dgvtacgia.TabIndex = 68;
+            grdTacgia.AllowUserToAddRows = false;
+            grdTacgia.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            grdTacgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            grdTacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            grdTacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdTacgia.Columns.AddRange(new DataGridViewColumn[] { tentacgia, namsinh });
+            grdTacgia.Location = new Point(161, 615);
+            grdTacgia.Name = "grdTacgia";
+            grdTacgia.ReadOnly = true;
+            grdTacgia.RowHeadersWidth = 51;
+            grdTacgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdTacgia.Size = new Size(326, 90);
+            grdTacgia.TabIndex = 68;
             // 
             // tentacgia
             // 
@@ -379,29 +401,27 @@
             namsinh.Name = "namsinh";
             namsinh.ReadOnly = true;
             // 
-            // cbxtheloai
+            // cbxTheloaisach1
             // 
-            cbxtheloai.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cbxtheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            cbxtheloai.FormattingEnabled = true;
-            cbxtheloai.Location = new Point(262, 667);
-            cbxtheloai.Margin = new Padding(5);
-            cbxtheloai.Name = "cbxtheloai";
-            cbxtheloai.Size = new Size(527, 53);
-            cbxtheloai.TabIndex = 67;
+            cbxTheloaisach1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            cbxTheloaisach1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cbxTheloaisach1.FormattingEnabled = true;
+            cbxTheloaisach1.Location = new Point(161, 417);
+            cbxTheloaisach1.Name = "cbxTheloaisach1";
+            cbxTheloaisach1.Size = new Size(326, 36);
+            cbxTheloaisach1.TabIndex = 67;
             // 
-            // dtpnamxb
+            // dtpNamxb
             // 
-            dtpnamxb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dtpnamxb.CustomFormat = "yyyy";
-            dtpnamxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dtpnamxb.Format = DateTimePickerFormat.Custom;
-            dtpnamxb.Location = new Point(262, 816);
-            dtpnamxb.Margin = new Padding(5);
-            dtpnamxb.Name = "dtpnamxb";
-            dtpnamxb.ShowUpDown = true;
-            dtpnamxb.Size = new Size(189, 50);
-            dtpnamxb.TabIndex = 66;
+            dtpNamxb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            dtpNamxb.CustomFormat = "yyyy";
+            dtpNamxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpNamxb.Format = DateTimePickerFormat.Custom;
+            dtpNamxb.Location = new Point(161, 510);
+            dtpNamxb.Name = "dtpNamxb";
+            dtpNamxb.ShowUpDown = true;
+            dtpNamxb.Size = new Size(118, 34);
+            dtpNamxb.TabIndex = 66;
             // 
             // label4
             // 
@@ -439,27 +459,25 @@
             label2.TabIndex = 63;
             label2.Text = "Thể loại";
             // 
-            // txtnxb
+            // txtNxb
             // 
-            txtnxb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtnxb.BorderStyle = BorderStyle.FixedSingle;
-            txtnxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtnxb.Location = new Point(262, 742);
-            txtnxb.Margin = new Padding(5);
-            txtnxb.Name = "txtnxb";
-            txtnxb.Size = new Size(528, 50);
-            txtnxb.TabIndex = 62;
+            txtNxb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtNxb.BorderStyle = BorderStyle.FixedSingle;
+            txtNxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtNxb.Location = new Point(161, 464);
+            txtNxb.Name = "txtNxb";
+            txtNxb.Size = new Size(326, 34);
+            txtNxb.TabIndex = 62;
             // 
-            // txttensach
+            // txtTensach
             // 
-            txttensach.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txttensach.BorderStyle = BorderStyle.FixedSingle;
-            txttensach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txttensach.Location = new Point(262, 589);
-            txttensach.Margin = new Padding(5);
-            txttensach.Name = "txttensach";
-            txttensach.Size = new Size(528, 50);
-            txttensach.TabIndex = 61;
+            txtTensach.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtTensach.BorderStyle = BorderStyle.FixedSingle;
+            txtTensach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtTensach.Location = new Point(161, 368);
+            txtTensach.Name = "txtTensach";
+            txtTensach.Size = new Size(326, 34);
+            txtTensach.TabIndex = 61;
             // 
             // label1
             // 
@@ -485,7 +503,7 @@
             // 
             // btnThemsach
             // 
-            btnThemsach.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnThemsach.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnThemsach.FlatAppearance.BorderSize = 0;
             btnThemsach.FlatStyle = FlatStyle.Flat;
             btnThemsach.Image = (Image)resources.GetObject("btnThemsach.Image");
@@ -514,7 +532,7 @@
             panel2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvtacgia).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdTacgia).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbAnhbia).EndInit();
             ResumeLayout(false);
         }
@@ -528,7 +546,7 @@
         private Button btnNext;
         private Button btnEnd;
         private Button btnFirst;
-        private ComboBox cbxTheloai1;
+        private ComboBox cbxTheloaisach;
         private Button btnTimkiem;
         private TextBox txtTimkiem;
         private DataGridView grdSach;
@@ -536,21 +554,21 @@
         private GroupBox groupBox1;
         private TextBox txtMadausach;
         private Label label5;
-        private Button btnTrolai;
+        private Button grdUndo;
         private Button btnSua;
         private Button btnXoa;
         private Label label6;
-        private TextBox txtsoluong;
-        private DataGridView dgvtacgia;
+        private TextBox txtSoluong;
+        private DataGridView grdTacgia;
         private DataGridViewTextBoxColumn tentacgia;
         private DataGridViewTextBoxColumn namsinh;
-        private ComboBox cbxtheloai;
-        private DateTimePicker dtpnamxb;
+        private ComboBox cbxTheloaisach1;
+        private DateTimePicker dtpNamxb;
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox txtnxb;
-        private TextBox txttensach;
+        private TextBox txtNxb;
+        private TextBox txtTensach;
         private Label label1;
         private PictureBox pbAnhbia;
         private Button btnThemsach;
