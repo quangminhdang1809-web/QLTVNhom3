@@ -71,5 +71,10 @@ namespace QLTVNhom3
         {
 
         }
+
+        private void btnFirst_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

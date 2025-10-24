@@ -121,9 +121,32 @@ namespace QLTVNhom3
 
         private void btnTrasach_Click(object sender, EventArgs e)
         {
-            ucTrasach uc=new ucTrasach();
+            ucTrasach uc = new ucTrasach();
             AddUserControl(uc);
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (pnlQuanlysach.Visible == true)
+            {
+                pnlQuanlysach.Visible = false;
+            }
+            else
+            {
+                pnlQuanlysach.Visible = true;
+            }
+        }
+
+        private void btnKhosach_Click(object sender, EventArgs e)
+        {
+            ucKhosach uc = new ucKhosach();
+            AddUserControl(uc);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ucMacabiet uc = new ucMacabiet();
+            AddUserControl(uc);
+        }
     }
 }

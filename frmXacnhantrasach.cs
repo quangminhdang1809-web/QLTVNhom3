@@ -10,24 +10,24 @@ using System.Windows.Forms;
 
 namespace QLTVNhom3
 {
-    public partial class ucTrasach : UserControl
+    public partial class frmXacnhantrasach : Form
     {
-        public ucTrasach()
+        public frmXacnhantrasach()
         {
             InitializeComponent();
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

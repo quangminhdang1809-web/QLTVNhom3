@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QLTVNhom3
 {
-    public partial class frmThemdocgia : Form
+    public partial class ucMacabiet : UserControl
     {
-        public frmThemdocgia()
+        public ucMacabiet()
         {
             InitializeComponent();
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDangnhap));
             panel1 = new Panel();
             chkHienmatkhau = new CheckBox();
-            button1 = new Button();
+            btnDangnhap = new Button();
             label1 = new Label();
             groupBox2 = new GroupBox();
             txtMatkhau = new TextBox();
@@ -59,7 +59,7 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             panel1.BackColor = Color.White;
             panel1.Controls.Add(chkHienmatkhau);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnDangnhap);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(groupBox2);
             panel1.Controls.Add(groupBox1);
@@ -81,19 +81,19 @@
             chkHienmatkhau.UseVisualStyleBackColor = true;
             chkHienmatkhau.CheckedChanged += chkHienmatkhau_CheckedChanged;
             // 
-            // button1
+            // btnDangnhap
             // 
-            button1.BackColor = SystemColors.HotTrack;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(74, 407);
-            button1.Name = "button1";
-            button1.Size = new Size(396, 54);
-            button1.TabIndex = 9;
-            button1.Text = "Đăng nhập";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            btnDangnhap.BackColor = SystemColors.HotTrack;
+            btnDangnhap.FlatStyle = FlatStyle.Flat;
+            btnDangnhap.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnDangnhap.ForeColor = Color.White;
+            btnDangnhap.Location = new Point(74, 407);
+            btnDangnhap.Name = "btnDangnhap";
+            btnDangnhap.Size = new Size(396, 54);
+            btnDangnhap.TabIndex = 9;
+            btnDangnhap.Text = "Đăng nhập";
+            btnDangnhap.UseVisualStyleBackColor = false;
+            btnDangnhap.Click += button1_Click;
             // 
             // label1
             // 
@@ -278,7 +278,7 @@
         private GroupBox groupBox1;
         private Label label1;
         private GroupBox groupBox2;
-        private Button button1;
+        private Button btnDangnhap;
         private CheckBox chkHienmatkhau;
         private Label label2;
         private Panel panel2;
