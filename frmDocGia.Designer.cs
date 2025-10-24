@@ -58,9 +58,10 @@
             lblExit.Dock = DockStyle.Right;
             lblExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
             lblExit.ForeColor = SystemColors.Control;
-            lblExit.Location = new Point(1002, 0);
+            lblExit.Location = new Point(1301, 0);
+            lblExit.Margin = new Padding(4, 0, 4, 0);
             lblExit.Name = "lblExit";
-            lblExit.Size = new Size(45, 54);
+            lblExit.Size = new Size(60, 72);
             lblExit.TabIndex = 1;
             lblExit.Text = "x";
             lblExit.Click += lblExit_Click;
@@ -76,8 +77,9 @@
             panelMenu.Controls.Add(pictureBox1);
             panelMenu.Dock = DockStyle.Left;
             panelMenu.Location = new Point(0, 0);
+            panelMenu.Margin = new Padding(4);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(328, 918);
+            panelMenu.Size = new Size(427, 1175);
             panelMenu.TabIndex = 0;
             // 
             // panel2
@@ -85,9 +87,10 @@
             panel2.Controls.Add(lblDangxuat);
             panel2.Controls.Add(btnDangxuat);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 784);
+            panel2.Location = new Point(0, 1003);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(328, 134);
+            panel2.Size = new Size(427, 172);
             panel2.TabIndex = 6;
             // 
             // lblDangxuat
@@ -96,9 +99,10 @@
             lblDangxuat.FlatStyle = FlatStyle.Flat;
             lblDangxuat.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblDangxuat.ForeColor = SystemColors.Control;
-            lblDangxuat.Location = new Point(104, 66);
+            lblDangxuat.Location = new Point(135, 84);
+            lblDangxuat.Margin = new Padding(4, 0, 4, 0);
             lblDangxuat.Name = "lblDangxuat";
-            lblDangxuat.Size = new Size(132, 32);
+            lblDangxuat.Size = new Size(175, 45);
             lblDangxuat.TabIndex = 1;
             lblDangxuat.Text = "Đăng xuất";
             // 
@@ -108,9 +112,10 @@
             btnDangxuat.FlatAppearance.BorderColor = Color.White;
             btnDangxuat.FlatStyle = FlatStyle.Flat;
             btnDangxuat.Image = (Image)resources.GetObject("btnDangxuat.Image");
-            btnDangxuat.Location = new Point(38, 58);
+            btnDangxuat.Location = new Point(50, 75);
+            btnDangxuat.Margin = new Padding(4);
             btnDangxuat.Name = "btnDangxuat";
-            btnDangxuat.Size = new Size(60, 67);
+            btnDangxuat.Size = new Size(78, 85);
             btnDangxuat.TabIndex = 0;
             btnDangxuat.UseVisualStyleBackColor = true;
             // 
@@ -118,9 +123,10 @@
             // 
             panel1.Controls.Add(lblMSV);
             panel1.Controls.Add(lblTen);
-            panel1.Location = new Point(25, 191);
+            panel1.Location = new Point(32, 244);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(251, 121);
+            panel1.Size = new Size(326, 155);
             panel1.TabIndex = 5;
             // 
             // lblMSV
@@ -128,9 +134,10 @@
             lblMSV.AutoSize = true;
             lblMSV.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblMSV.ForeColor = SystemColors.Control;
-            lblMSV.Location = new Point(42, 18);
+            lblMSV.Location = new Point(54, 23);
+            lblMSV.Margin = new Padding(4, 0, 4, 0);
             lblMSV.Name = "lblMSV";
-            lblMSV.Size = new Size(164, 32);
+            lblMSV.Size = new Size(217, 45);
             lblMSV.TabIndex = 5;
             lblMSV.Text = "Mã Sinh Viên";
             // 
@@ -139,9 +146,10 @@
             lblTen.AutoSize = true;
             lblTen.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblTen.ForeColor = SystemColors.Control;
-            lblTen.Location = new Point(63, 70);
+            lblTen.Location = new Point(82, 90);
+            lblTen.Margin = new Padding(4, 0, 4, 0);
             lblTen.Name = "lblTen";
-            lblTen.Size = new Size(101, 32);
+            lblTen.Size = new Size(135, 45);
             lblTen.TabIndex = 6;
             lblTen.Text = "Họ & Tên";
             // 
@@ -151,9 +159,10 @@
             btnTimkiemsach.FlatStyle = FlatStyle.Flat;
             btnTimkiemsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnTimkiemsach.ForeColor = SystemColors.Control;
-            btnTimkiemsach.Location = new Point(41, 585);
+            btnTimkiemsach.Location = new Point(53, 749);
+            btnTimkiemsach.Margin = new Padding(4);
             btnTimkiemsach.Name = "btnTimkiemsach";
-            btnTimkiemsach.Size = new Size(243, 48);
+            btnTimkiemsach.Size = new Size(316, 62);
             btnTimkiemsach.TabIndex = 3;
             btnTimkiemsach.Text = "Tìm kiếm sách";
             btnTimkiemsach.TextAlign = ContentAlignment.MiddleLeft;
@@ -166,9 +175,10 @@
             btnLichsumuonsach.FlatStyle = FlatStyle.Flat;
             btnLichsumuonsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnLichsumuonsach.ForeColor = SystemColors.Control;
-            btnLichsumuonsach.Location = new Point(41, 473);
+            btnLichsumuonsach.Location = new Point(53, 606);
+            btnLichsumuonsach.Margin = new Padding(4);
             btnLichsumuonsach.Name = "btnLichsumuonsach";
-            btnLichsumuonsach.Size = new Size(243, 54);
+            btnLichsumuonsach.Size = new Size(316, 69);
             btnLichsumuonsach.TabIndex = 2;
             btnLichsumuonsach.Text = "Lịch sử mượn sách";
             btnLichsumuonsach.TextAlign = ContentAlignment.MiddleLeft;
@@ -182,9 +192,10 @@
             btnThongtincanhan.FlatStyle = FlatStyle.Flat;
             btnThongtincanhan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnThongtincanhan.ForeColor = SystemColors.Control;
-            btnThongtincanhan.Location = new Point(41, 369);
+            btnThongtincanhan.Location = new Point(53, 473);
+            btnThongtincanhan.Margin = new Padding(4);
             btnThongtincanhan.Name = "btnThongtincanhan";
-            btnThongtincanhan.Size = new Size(243, 49);
+            btnThongtincanhan.Size = new Size(316, 63);
             btnThongtincanhan.TabIndex = 1;
             btnThongtincanhan.Text = "Thông tin cá nhân";
             btnThongtincanhan.TextAlign = ContentAlignment.MiddleLeft;
@@ -196,9 +207,10 @@
             pictureBox1.BackColor = SystemColors.HotTrack;
             pictureBox1.BackgroundImageLayout = ImageLayout.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(75, 29);
+            pictureBox1.Location = new Point(98, 37);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(156, 156);
+            pictureBox1.Size = new Size(203, 199);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -209,9 +221,10 @@
             panelLogo.Controls.Add(lblExit);
             panelLogo.Controls.Add(label1);
             panelLogo.Dock = DockStyle.Top;
-            panelLogo.Location = new Point(328, 0);
+            panelLogo.Location = new Point(427, 0);
+            panelLogo.Margin = new Padding(4);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(1047, 75);
+            panelLogo.Size = new Size(1361, 96);
             panelLogo.TabIndex = 1;
             // 
             // label1
@@ -220,29 +233,32 @@
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label1.ForeColor = SystemColors.Control;
             label1.ImageAlign = ContentAlignment.TopLeft;
-            label1.Location = new Point(26, 9);
+            label1.Location = new Point(34, 12);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(430, 38);
+            label1.Size = new Size(567, 50);
             label1.TabIndex = 0;
             label1.Text = "HỆ THỐNG QUẢN LÝ THƯ VIỆN";
             // 
             // pnlMain
             // 
             pnlMain.Dock = DockStyle.Fill;
-            pnlMain.Location = new Point(328, 75);
+            pnlMain.Location = new Point(427, 96);
+            pnlMain.Margin = new Padding(4);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1047, 843);
+            pnlMain.Size = new Size(1361, 1079);
             pnlMain.TabIndex = 2;
             // 
             // frmDocGia
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1375, 918);
+            ClientSize = new Size(1788, 1175);
             Controls.Add(pnlMain);
             Controls.Add(panelLogo);
             Controls.Add(panelMenu);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4);
             Name = "frmDocGia";
             Text = "Độc giả";
             panelMenu.ResumeLayout(false);
