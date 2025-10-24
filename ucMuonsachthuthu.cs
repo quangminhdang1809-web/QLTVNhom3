@@ -32,5 +32,16 @@ namespace QLTVNhom3
             frmXacnhanmuonsach f = new frmXacnhanmuonsach();
             f.ShowDialog();
         }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXemphieumuon_Click(object sender, EventArgs e)
+        {
+            frmXacnhanmuonsach f= new frmXacnhanmuonsach();
+            f.ShowDialog();
+        }
     }
 }

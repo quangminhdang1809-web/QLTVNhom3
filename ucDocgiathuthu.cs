@@ -55,5 +55,10 @@ namespace QLTVNhom3
         {
 
         }
+
+        private void grdDocgia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
