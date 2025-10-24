@@ -1,9 +1,6 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
-namespace QLTVNhom3
+﻿namespace QLTVNhom3
 {
-    public partial class FrmChangePassword : Form
+    partial class FrmChangePassword
     {
         /// <summary>
         /// Required designer variable.
@@ -45,94 +42,87 @@ namespace QLTVNhom3
             // lblMatkhauhientai
             // 
             lblMatkhauhientai.AutoSize = true;
-            lblMatkhauhientai.Location = new Point(46, 37);
-            lblMatkhauhientai.Margin = new Padding(2, 0, 2, 0);
+            lblMatkhauhientai.Location = new Point(58, 46);
             lblMatkhauhientai.Name = "lblMatkhauhientai";
-            lblMatkhauhientai.Size = new Size(123, 20);
+            lblMatkhauhientai.Size = new Size(148, 25);
             lblMatkhauhientai.TabIndex = 0;
             lblMatkhauhientai.Text = "Mật khẩu hiện tại";
             // 
             // lblMatkhaumoi
             // 
             lblMatkhaumoi.AutoSize = true;
-            lblMatkhaumoi.Location = new Point(46, 90);
-            lblMatkhaumoi.Margin = new Padding(2, 0, 2, 0);
+            lblMatkhaumoi.Location = new Point(58, 113);
             lblMatkhaumoi.Name = "lblMatkhaumoi";
-            lblMatkhaumoi.Size = new Size(100, 20);
+            lblMatkhaumoi.Size = new Size(122, 25);
             lblMatkhaumoi.TabIndex = 1;
             lblMatkhaumoi.Text = "Mật khẩu mới";
             // 
             // lblXacnhanlaimatkhaumoi
             // 
             lblXacnhanlaimatkhaumoi.AutoSize = true;
-            lblXacnhanlaimatkhaumoi.Location = new Point(46, 150);
-            lblXacnhanlaimatkhaumoi.Margin = new Padding(2, 0, 2, 0);
+            lblXacnhanlaimatkhaumoi.Location = new Point(58, 188);
             lblXacnhanlaimatkhaumoi.Name = "lblXacnhanlaimatkhaumoi";
-            lblXacnhanlaimatkhaumoi.Size = new Size(184, 20);
+            lblXacnhanlaimatkhaumoi.Size = new Size(221, 25);
             lblXacnhanlaimatkhaumoi.TabIndex = 2;
             lblXacnhanlaimatkhaumoi.Text = "Xác nhận lại mật khẩu mới";
             // 
             // txtOldPassword
             // 
-            txtOldPassword.Location = new Point(242, 32);
-            txtOldPassword.Margin = new Padding(2, 2, 2, 2);
+            txtOldPassword.Location = new Point(302, 40);
             txtOldPassword.Name = "txtOldPassword";
-            txtOldPassword.Size = new Size(194, 27);
+            txtOldPassword.Size = new Size(242, 31);
             txtOldPassword.TabIndex = 3;
             // 
             // txtNewPassword
             // 
-            txtNewPassword.Location = new Point(242, 88);
-            txtNewPassword.Margin = new Padding(2, 2, 2, 2);
+            txtNewPassword.Location = new Point(302, 110);
             txtNewPassword.Name = "txtNewPassword";
-            txtNewPassword.Size = new Size(194, 27);
+            txtNewPassword.Size = new Size(242, 31);
             txtNewPassword.TabIndex = 4;
             // 
             // txtConfirmPassword
             // 
-            txtConfirmPassword.Location = new Point(242, 148);
-            txtConfirmPassword.Margin = new Padding(2, 2, 2, 2);
+            txtConfirmPassword.Location = new Point(302, 185);
             txtConfirmPassword.Name = "txtConfirmPassword";
-            txtConfirmPassword.Size = new Size(194, 27);
+            txtConfirmPassword.Size = new Size(242, 31);
             txtConfirmPassword.TabIndex = 5;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(296, 239);
-            btnSave.Margin = new Padding(2, 2, 2, 2);
+            btnSave.Location = new Point(370, 299);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(90, 27);
+            btnSave.Size = new Size(112, 43);
             btnSave.TabIndex = 6;
             btnSave.Text = "Lưu";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
             btnCancel.BackColor = SystemColors.ActiveBorder;
-            btnCancel.Location = new Point(420, 239);
-            btnCancel.Margin = new Padding(2, 2, 2, 2);
+            btnCancel.Location = new Point(525, 299);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(90, 27);
+            btnCancel.Size = new Size(112, 43);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Hủy";
             btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
             // llbLuuy
             // 
             llbLuuy.AutoSize = true;
             llbLuuy.ForeColor = Color.Red;
-            llbLuuy.Location = new Point(17, 201);
-            llbLuuy.Margin = new Padding(2, 0, 2, 0);
+            llbLuuy.Location = new Point(21, 251);
             llbLuuy.Name = "llbLuuy";
-            llbLuuy.Size = new Size(523, 20);
+            llbLuuy.Size = new Size(635, 25);
             llbLuuy.TabIndex = 8;
             llbLuuy.Text = "Lưu ý: Mật khẩu có độ dài dưới 20 kí tự, bao gồm chữ, chữ số và kí tự đặc biệt";
             // 
             // FrmChangePassword
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 311);
+            ClientSize = new Size(696, 378);
             Controls.Add(llbLuuy);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -142,8 +132,7 @@ namespace QLTVNhom3
             Controls.Add(lblXacnhanlaimatkhaumoi);
             Controls.Add(lblMatkhaumoi);
             Controls.Add(lblMatkhauhientai);
-            FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FrmChangePassword";
             Text = "Đổi mật khẩu";
             ResumeLayout(false);
