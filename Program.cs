@@ -2,16 +2,19 @@ namespace QLTVNhom3
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            // Force the app to render at 100% (DPI unaware).
+            // Warning: UI may appear smaller or blurry on high-DPI monitors.
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+
+            // Standard initialization
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            Application.Run(new frmDocGia());
+            Application.Run(new frmmainthuthu());
         }
     }
 }
