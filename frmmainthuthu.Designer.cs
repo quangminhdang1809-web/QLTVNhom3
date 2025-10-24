@@ -33,18 +33,11 @@
             label1 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel4 = new Panel();
-            pnlBaocao = new Panel();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            btnBaocao = new Button();
-            btnTrasach = new Button();
-            btnMuonsach = new Button();
             pnlDanhmuc = new Panel();
+            btnKhosach = new Button();
             btnTheloai = new Button();
             btnTacgia = new Button();
             btnDocgia = new Button();
-            btnSach = new Button();
             btnDanhmuc = new Button();
             btnDashboard = new Button();
             panel3 = new Panel();
@@ -52,17 +45,29 @@
             label2 = new Label();
             pictureBox1 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            btnQuanlysach = new Button();
+            pnlQuanlysach = new Panel();
+            btnMacabiet = new Button();
+            btnSach = new Button();
+            btnMuonsach = new Button();
+            btnTrasach = new Button();
+            btnBaocao = new Button();
+            pnlBaocao = new Panel();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel5 = new Panel();
             label4 = new Label();
-            button1 = new Button();
+            btnDangxuat = new Button();
             panel1 = new Panel();
             pnlMaincontent = new Panel();
-            pnlBaocao.SuspendLayout();
             pnlDanhmuc.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
+            pnlQuanlysach.SuspendLayout();
+            pnlBaocao.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -99,148 +104,43 @@
             // panel4
             // 
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(3, 972);
+            panel4.Location = new Point(3, 562);
             panel4.Name = "panel4";
             panel4.Size = new Size(247, 0);
             panel4.TabIndex = 14;
             // 
-            // pnlBaocao
-            // 
-            pnlBaocao.BackColor = SystemColors.Highlight;
-            pnlBaocao.Controls.Add(button2);
-            pnlBaocao.Controls.Add(button3);
-            pnlBaocao.Controls.Add(button4);
-            pnlBaocao.Location = new Point(25, 787);
-            pnlBaocao.Margin = new Padding(25, 3, 3, 3);
-            pnlBaocao.Name = "pnlBaocao";
-            pnlBaocao.Size = new Size(200, 179);
-            pnlBaocao.TabIndex = 13;
-            pnlBaocao.Visible = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.Highlight;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(0, 121);
-            button2.Margin = new Padding(25, 3, 3, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(200, 53);
-            button2.TabIndex = 8;
-            button2.Text = "Tình trạng phạt";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.Highlight;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(0, 62);
-            button3.Margin = new Padding(25, 3, 3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(200, 53);
-            button3.TabIndex = 7;
-            button3.Text = "Sách trả trễ";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.Highlight;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(0, 3);
-            button4.Margin = new Padding(25, 3, 3, 3);
-            button4.Name = "button4";
-            button4.Size = new Size(200, 53);
-            button4.TabIndex = 6;
-            button4.Text = "Sách đang mượn";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.UseVisualStyleBackColor = false;
-            // 
-            // btnBaocao
-            // 
-            btnBaocao.BackColor = SystemColors.HotTrack;
-            btnBaocao.FlatAppearance.BorderSize = 0;
-            btnBaocao.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            btnBaocao.FlatStyle = FlatStyle.Flat;
-            btnBaocao.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnBaocao.ForeColor = Color.White;
-            btnBaocao.Image = (Image)resources.GetObject("btnBaocao.Image");
-            btnBaocao.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBaocao.Location = new Point(25, 728);
-            btnBaocao.Margin = new Padding(25, 3, 3, 3);
-            btnBaocao.Name = "btnBaocao";
-            btnBaocao.Size = new Size(200, 53);
-            btnBaocao.TabIndex = 12;
-            btnBaocao.Text = "        Báo cáo";
-            btnBaocao.TextAlign = ContentAlignment.MiddleLeft;
-            btnBaocao.UseVisualStyleBackColor = false;
-            btnBaocao.Click += btnBaocao_Click;
-            // 
-            // btnTrasach
-            // 
-            btnTrasach.BackColor = SystemColors.HotTrack;
-            btnTrasach.FlatAppearance.BorderSize = 0;
-            btnTrasach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            btnTrasach.FlatStyle = FlatStyle.Flat;
-            btnTrasach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnTrasach.ForeColor = Color.White;
-            btnTrasach.Image = (Image)resources.GetObject("btnTrasach.Image");
-            btnTrasach.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTrasach.Location = new Point(25, 669);
-            btnTrasach.Margin = new Padding(25, 3, 3, 3);
-            btnTrasach.Name = "btnTrasach";
-            btnTrasach.Size = new Size(200, 53);
-            btnTrasach.TabIndex = 11;
-            btnTrasach.Text = "        Trả sách";
-            btnTrasach.TextAlign = ContentAlignment.MiddleLeft;
-            btnTrasach.UseVisualStyleBackColor = false;
-            btnTrasach.Click += btnTrasach_Click;
-            // 
-            // btnMuonsach
-            // 
-            btnMuonsach.BackColor = SystemColors.HotTrack;
-            btnMuonsach.FlatAppearance.BorderSize = 0;
-            btnMuonsach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            btnMuonsach.FlatStyle = FlatStyle.Flat;
-            btnMuonsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnMuonsach.ForeColor = Color.White;
-            btnMuonsach.Image = (Image)resources.GetObject("btnMuonsach.Image");
-            btnMuonsach.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMuonsach.Location = new Point(25, 610);
-            btnMuonsach.Margin = new Padding(25, 3, 3, 3);
-            btnMuonsach.Name = "btnMuonsach";
-            btnMuonsach.Size = new Size(200, 53);
-            btnMuonsach.TabIndex = 10;
-            btnMuonsach.Text = "        Mượn sách";
-            btnMuonsach.TextAlign = ContentAlignment.MiddleLeft;
-            btnMuonsach.UseVisualStyleBackColor = false;
-            btnMuonsach.Click += btnMuonsach_Click;
-            // 
             // pnlDanhmuc
             // 
             pnlDanhmuc.BackColor = SystemColors.Highlight;
+            pnlDanhmuc.Controls.Add(btnKhosach);
             pnlDanhmuc.Controls.Add(btnTheloai);
             pnlDanhmuc.Controls.Add(btnTacgia);
-            pnlDanhmuc.Controls.Add(btnDocgia);
-            pnlDanhmuc.Controls.Add(btnSach);
             pnlDanhmuc.Location = new Point(25, 368);
             pnlDanhmuc.Margin = new Padding(25, 3, 3, 3);
             pnlDanhmuc.Name = "pnlDanhmuc";
-            pnlDanhmuc.Size = new Size(200, 236);
+            pnlDanhmuc.Size = new Size(200, 188);
             pnlDanhmuc.TabIndex = 4;
             pnlDanhmuc.Visible = false;
+            // 
+            // btnKhosach
+            // 
+            btnKhosach.BackColor = SystemColors.Highlight;
+            btnKhosach.FlatAppearance.BorderSize = 0;
+            btnKhosach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnKhosach.FlatStyle = FlatStyle.Flat;
+            btnKhosach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnKhosach.ForeColor = Color.White;
+            btnKhosach.Image = (Image)resources.GetObject("btnKhosach.Image");
+            btnKhosach.ImageAlign = ContentAlignment.MiddleLeft;
+            btnKhosach.Location = new Point(-3, 129);
+            btnKhosach.Margin = new Padding(25, 3, 3, 3);
+            btnKhosach.Name = "btnKhosach";
+            btnKhosach.Size = new Size(200, 53);
+            btnKhosach.TabIndex = 10;
+            btnKhosach.Text = "        Kho sách";
+            btnKhosach.TextAlign = ContentAlignment.MiddleLeft;
+            btnKhosach.UseVisualStyleBackColor = false;
+            btnKhosach.Click += btnKhosach_Click;
             // 
             // btnTheloai
             // 
@@ -252,7 +152,7 @@
             btnTheloai.ForeColor = Color.White;
             btnTheloai.Image = (Image)resources.GetObject("btnTheloai.Image");
             btnTheloai.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTheloai.Location = new Point(0, 177);
+            btnTheloai.Location = new Point(0, 66);
             btnTheloai.Margin = new Padding(25, 3, 3, 3);
             btnTheloai.Name = "btnTheloai";
             btnTheloai.Size = new Size(200, 53);
@@ -272,7 +172,7 @@
             btnTacgia.ForeColor = Color.White;
             btnTacgia.Image = (Image)resources.GetObject("btnTacgia.Image");
             btnTacgia.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTacgia.Location = new Point(0, 118);
+            btnTacgia.Location = new Point(0, 3);
             btnTacgia.Margin = new Padding(25, 3, 3, 3);
             btnTacgia.Name = "btnTacgia";
             btnTacgia.Size = new Size(200, 53);
@@ -284,7 +184,7 @@
             // 
             // btnDocgia
             // 
-            btnDocgia.BackColor = SystemColors.Highlight;
+            btnDocgia.BackColor = SystemColors.HotTrack;
             btnDocgia.FlatAppearance.BorderSize = 0;
             btnDocgia.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             btnDocgia.FlatStyle = FlatStyle.Flat;
@@ -292,7 +192,7 @@
             btnDocgia.ForeColor = Color.White;
             btnDocgia.Image = (Image)resources.GetObject("btnDocgia.Image");
             btnDocgia.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDocgia.Location = new Point(0, 59);
+            btnDocgia.Location = new Point(25, 568);
             btnDocgia.Margin = new Padding(25, 3, 3, 3);
             btnDocgia.Name = "btnDocgia";
             btnDocgia.Size = new Size(200, 53);
@@ -301,27 +201,6 @@
             btnDocgia.TextAlign = ContentAlignment.MiddleLeft;
             btnDocgia.UseVisualStyleBackColor = false;
             btnDocgia.Click += btnDocgia_Click;
-            // 
-            // btnSach
-            // 
-            btnSach.BackColor = SystemColors.Highlight;
-            btnSach.FlatAppearance.BorderColor = SystemColors.ActiveCaption;
-            btnSach.FlatAppearance.BorderSize = 0;
-            btnSach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            btnSach.FlatStyle = FlatStyle.Flat;
-            btnSach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnSach.ForeColor = Color.White;
-            btnSach.Image = (Image)resources.GetObject("btnSach.Image");
-            btnSach.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSach.Location = new Point(0, 0);
-            btnSach.Margin = new Padding(25, 3, 3, 3);
-            btnSach.Name = "btnSach";
-            btnSach.Size = new Size(200, 53);
-            btnSach.TabIndex = 6;
-            btnSach.Text = "        Sách";
-            btnSach.TextAlign = ContentAlignment.MiddleLeft;
-            btnSach.UseVisualStyleBackColor = false;
-            btnSach.Click += btnSach_Click;
             // 
             // btnDanhmuc
             // 
@@ -418,17 +297,217 @@
             flowLayoutPanel1.Controls.Add(btnDashboard);
             flowLayoutPanel1.Controls.Add(btnDanhmuc);
             flowLayoutPanel1.Controls.Add(pnlDanhmuc);
+            flowLayoutPanel1.Controls.Add(panel4);
+            flowLayoutPanel1.Controls.Add(btnDocgia);
+            flowLayoutPanel1.Controls.Add(btnQuanlysach);
+            flowLayoutPanel1.Controls.Add(pnlQuanlysach);
             flowLayoutPanel1.Controls.Add(btnMuonsach);
             flowLayoutPanel1.Controls.Add(btnTrasach);
             flowLayoutPanel1.Controls.Add(btnBaocao);
             flowLayoutPanel1.Controls.Add(pnlBaocao);
-            flowLayoutPanel1.Controls.Add(panel4);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(244, 1011);
             flowLayoutPanel1.TabIndex = 0;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
+            // 
+            // btnQuanlysach
+            // 
+            btnQuanlysach.BackColor = SystemColors.HotTrack;
+            btnQuanlysach.FlatAppearance.BorderSize = 0;
+            btnQuanlysach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnQuanlysach.FlatStyle = FlatStyle.Flat;
+            btnQuanlysach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnQuanlysach.ForeColor = Color.White;
+            btnQuanlysach.Image = (Image)resources.GetObject("btnQuanlysach.Image");
+            btnQuanlysach.ImageAlign = ContentAlignment.MiddleLeft;
+            btnQuanlysach.Location = new Point(25, 627);
+            btnQuanlysach.Margin = new Padding(25, 3, 3, 3);
+            btnQuanlysach.Name = "btnQuanlysach";
+            btnQuanlysach.Size = new Size(200, 53);
+            btnQuanlysach.TabIndex = 9;
+            btnQuanlysach.Text = "        Quản lý sách";
+            btnQuanlysach.TextAlign = ContentAlignment.MiddleLeft;
+            btnQuanlysach.UseVisualStyleBackColor = false;
+            btnQuanlysach.Click += button6_Click;
+            // 
+            // pnlQuanlysach
+            // 
+            pnlQuanlysach.BackColor = SystemColors.Highlight;
+            pnlQuanlysach.Controls.Add(btnMacabiet);
+            pnlQuanlysach.Controls.Add(btnSach);
+            pnlQuanlysach.Location = new Point(25, 686);
+            pnlQuanlysach.Margin = new Padding(25, 3, 3, 3);
+            pnlQuanlysach.Name = "pnlQuanlysach";
+            pnlQuanlysach.Size = new Size(200, 124);
+            pnlQuanlysach.TabIndex = 23;
+            pnlQuanlysach.Visible = false;
+            // 
+            // btnMacabiet
+            // 
+            btnMacabiet.BackColor = SystemColors.Highlight;
+            btnMacabiet.FlatAppearance.BorderSize = 0;
+            btnMacabiet.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnMacabiet.FlatStyle = FlatStyle.Flat;
+            btnMacabiet.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnMacabiet.ForeColor = Color.White;
+            btnMacabiet.Image = (Image)resources.GetObject("btnMacabiet.Image");
+            btnMacabiet.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMacabiet.Location = new Point(-3, 62);
+            btnMacabiet.Margin = new Padding(25, 3, 3, 3);
+            btnMacabiet.Name = "btnMacabiet";
+            btnMacabiet.Size = new Size(200, 53);
+            btnMacabiet.TabIndex = 10;
+            btnMacabiet.Text = "        Mã cá biệt";
+            btnMacabiet.TextAlign = ContentAlignment.MiddleLeft;
+            btnMacabiet.UseVisualStyleBackColor = false;
+            btnMacabiet.Click += button5_Click;
+            // 
+            // btnSach
+            // 
+            btnSach.BackColor = SystemColors.Highlight;
+            btnSach.FlatAppearance.BorderColor = SystemColors.ActiveCaption;
+            btnSach.FlatAppearance.BorderSize = 0;
+            btnSach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnSach.FlatStyle = FlatStyle.Flat;
+            btnSach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnSach.ForeColor = Color.White;
+            btnSach.Image = (Image)resources.GetObject("btnSach.Image");
+            btnSach.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSach.Location = new Point(-3, 3);
+            btnSach.Margin = new Padding(25, 3, 3, 3);
+            btnSach.Name = "btnSach";
+            btnSach.Size = new Size(200, 53);
+            btnSach.TabIndex = 6;
+            btnSach.Text = "        Sách";
+            btnSach.TextAlign = ContentAlignment.MiddleLeft;
+            btnSach.UseVisualStyleBackColor = false;
+            btnSach.Click += btnSach_Click;
+            // 
+            // btnMuonsach
+            // 
+            btnMuonsach.BackColor = SystemColors.HotTrack;
+            btnMuonsach.FlatAppearance.BorderSize = 0;
+            btnMuonsach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnMuonsach.FlatStyle = FlatStyle.Flat;
+            btnMuonsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnMuonsach.ForeColor = Color.White;
+            btnMuonsach.Image = (Image)resources.GetObject("btnMuonsach.Image");
+            btnMuonsach.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMuonsach.Location = new Point(25, 816);
+            btnMuonsach.Margin = new Padding(25, 3, 3, 3);
+            btnMuonsach.Name = "btnMuonsach";
+            btnMuonsach.Size = new Size(200, 53);
+            btnMuonsach.TabIndex = 24;
+            btnMuonsach.Text = "        Mượn sách";
+            btnMuonsach.TextAlign = ContentAlignment.MiddleLeft;
+            btnMuonsach.UseVisualStyleBackColor = false;
+            btnMuonsach.Click += btnMuonsach_Click;
+            // 
+            // btnTrasach
+            // 
+            btnTrasach.BackColor = SystemColors.HotTrack;
+            btnTrasach.FlatAppearance.BorderSize = 0;
+            btnTrasach.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnTrasach.FlatStyle = FlatStyle.Flat;
+            btnTrasach.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnTrasach.ForeColor = Color.White;
+            btnTrasach.Image = (Image)resources.GetObject("btnTrasach.Image");
+            btnTrasach.ImageAlign = ContentAlignment.MiddleLeft;
+            btnTrasach.Location = new Point(25, 875);
+            btnTrasach.Margin = new Padding(25, 3, 3, 3);
+            btnTrasach.Name = "btnTrasach";
+            btnTrasach.Size = new Size(200, 53);
+            btnTrasach.TabIndex = 25;
+            btnTrasach.Text = "        Trả sách";
+            btnTrasach.TextAlign = ContentAlignment.MiddleLeft;
+            btnTrasach.UseVisualStyleBackColor = false;
+            btnTrasach.Click += btnTrasach_Click;
+            // 
+            // btnBaocao
+            // 
+            btnBaocao.BackColor = SystemColors.HotTrack;
+            btnBaocao.FlatAppearance.BorderSize = 0;
+            btnBaocao.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnBaocao.FlatStyle = FlatStyle.Flat;
+            btnBaocao.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnBaocao.ForeColor = Color.White;
+            btnBaocao.Image = (Image)resources.GetObject("btnBaocao.Image");
+            btnBaocao.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBaocao.Location = new Point(25, 934);
+            btnBaocao.Margin = new Padding(25, 3, 3, 3);
+            btnBaocao.Name = "btnBaocao";
+            btnBaocao.Size = new Size(200, 53);
+            btnBaocao.TabIndex = 26;
+            btnBaocao.Text = "        Báo cáo";
+            btnBaocao.TextAlign = ContentAlignment.MiddleLeft;
+            btnBaocao.UseVisualStyleBackColor = false;
+            btnBaocao.Click += btnBaocao_Click;
+            // 
+            // pnlBaocao
+            // 
+            pnlBaocao.BackColor = SystemColors.Highlight;
+            pnlBaocao.Controls.Add(button2);
+            pnlBaocao.Controls.Add(button3);
+            pnlBaocao.Controls.Add(button4);
+            pnlBaocao.Location = new Point(25, 993);
+            pnlBaocao.Margin = new Padding(25, 3, 3, 3);
+            pnlBaocao.Name = "pnlBaocao";
+            pnlBaocao.Size = new Size(200, 179);
+            pnlBaocao.TabIndex = 27;
+            pnlBaocao.Visible = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.Highlight;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(0, 121);
+            button2.Margin = new Padding(25, 3, 3, 3);
+            button2.Name = "button2";
+            button2.Size = new Size(200, 53);
+            button2.TabIndex = 8;
+            button2.Text = "Tình trạng phạt";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.Highlight;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(0, 62);
+            button3.Margin = new Padding(25, 3, 3, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(200, 53);
+            button3.TabIndex = 7;
+            button3.Text = "Sách trả trễ";
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.Highlight;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(0, 3);
+            button4.Margin = new Padding(25, 3, 3, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(200, 53);
+            button4.TabIndex = 6;
+            button4.Text = "Sách đang mượn";
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel1
             // 
@@ -451,7 +530,7 @@
             // 
             panel5.BackColor = SystemColors.HotTrack;
             panel5.Controls.Add(label4);
-            panel5.Controls.Add(button1);
+            panel5.Controls.Add(btnDangxuat);
             panel5.Dock = DockStyle.Bottom;
             panel5.Location = new Point(3, 1020);
             panel5.Name = "panel5";
@@ -470,22 +549,22 @@
             label4.Text = "Đăng xuất";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btnDangxuat
             // 
-            button1.BackColor = SystemColors.HotTrack;
-            button1.FlatAppearance.BorderColor = Color.White;
-            button1.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button1.ForeColor = Color.White;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(12, 15);
-            button1.Margin = new Padding(25, 3, 3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(53, 55);
-            button1.TabIndex = 12;
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = false;
+            btnDangxuat.BackColor = SystemColors.HotTrack;
+            btnDangxuat.FlatAppearance.BorderColor = Color.White;
+            btnDangxuat.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnDangxuat.FlatStyle = FlatStyle.Flat;
+            btnDangxuat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnDangxuat.ForeColor = Color.White;
+            btnDangxuat.Image = (Image)resources.GetObject("btnDangxuat.Image");
+            btnDangxuat.Location = new Point(12, 15);
+            btnDangxuat.Margin = new Padding(25, 3, 3, 3);
+            btnDangxuat.Name = "btnDangxuat";
+            btnDangxuat.Size = new Size(53, 55);
+            btnDangxuat.TabIndex = 12;
+            btnDangxuat.TextAlign = ContentAlignment.MiddleLeft;
+            btnDangxuat.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -520,12 +599,13 @@
             Name = "frmmainthuthu";
             Text = "frmmainthuthu";
             WindowState = FormWindowState.Maximized;
-            pnlBaocao.ResumeLayout(false);
             pnlDanhmuc.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
+            pnlQuanlysach.ResumeLayout(false);
+            pnlBaocao.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -539,18 +619,10 @@
         private Button btnThoat;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel panel4;
-        private Panel pnlBaocao;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button btnBaocao;
-        private Button btnTrasach;
-        private Button btnMuonsach;
         private Panel pnlDanhmuc;
         private Button btnTheloai;
         private Button btnTacgia;
         private Button btnDocgia;
-        private Button btnSach;
         private Button btnDanhmuc;
         private Button btnDashboard;
         private Panel panel3;
@@ -559,10 +631,22 @@
         private PictureBox pictureBox1;
         private FlowLayoutPanel flowLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel1;
-        private Button button1;
+        private Button btnDangxuat;
         private Panel panel5;
         private Label label4;
         private Panel panel1;
         private Panel pnlMaincontent;
+        private Button btnKhosach;
+        private Button btnQuanlysach;
+        private Panel pnlQuanlysach;
+        private Button btnMacabiet;
+        private Button btnSach;
+        private Button btnMuonsach;
+        private Button btnTrasach;
+        private Button btnBaocao;
+        private Panel pnlBaocao;
+        private Button button2;
+        private Button button3;
+        private Button button4;
     }
 }
