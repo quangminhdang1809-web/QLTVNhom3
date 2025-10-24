@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTacgia));
+            groupBox3 = new GroupBox();
+            btnPrevious = new Button();
+            btnNext = new Button();
+            btnEnd = new Button();
+            btnFirst = new Button();
             groupBox1 = new GroupBox();
             txtHovaten = new TextBox();
             groupBox2 = new GroupBox();
@@ -44,17 +49,70 @@
             btnTimkiem = new Button();
             txtTimkiem = new TextBox();
             grdTacgia = new DataGridView();
-            groupBox3 = new GroupBox();
-            btnPrevious = new Button();
-            btnNext = new Button();
-            btnEnd = new Button();
-            btnFirst = new Button();
+            groupBox3.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdSach).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdTacgia).BeginInit();
-            groupBox3.SuspendLayout();
             SuspendLayout();
+            // 
+            // groupBox3
+            // 
+            groupBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            groupBox3.Controls.Add(btnPrevious);
+            groupBox3.Controls.Add(btnNext);
+            groupBox3.Controls.Add(btnEnd);
+            groupBox3.Controls.Add(btnFirst);
+            groupBox3.Location = new Point(531, 887);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(269, 100);
+            groupBox3.TabIndex = 82;
+            groupBox3.TabStop = false;
+            // 
+            // btnPrevious
+            // 
+            btnPrevious.FlatAppearance.BorderSize = 0;
+            btnPrevious.FlatStyle = FlatStyle.Flat;
+            btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
+            btnPrevious.Location = new Point(75, 26);
+            btnPrevious.Name = "btnPrevious";
+            btnPrevious.Size = new Size(57, 40);
+            btnPrevious.TabIndex = 78;
+            btnPrevious.UseVisualStyleBackColor = true;
+            // 
+            // btnNext
+            // 
+            btnNext.FlatAppearance.BorderSize = 0;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Image = (Image)resources.GetObject("btnNext.Image");
+            btnNext.Location = new Point(146, 26);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(45, 40);
+            btnNext.TabIndex = 77;
+            btnNext.UseVisualStyleBackColor = true;
+            // 
+            // btnEnd
+            // 
+            btnEnd.FlatAppearance.BorderSize = 0;
+            btnEnd.FlatStyle = FlatStyle.Flat;
+            btnEnd.Image = (Image)resources.GetObject("btnEnd.Image");
+            btnEnd.Location = new Point(201, 23);
+            btnEnd.Name = "btnEnd";
+            btnEnd.Size = new Size(53, 46);
+            btnEnd.TabIndex = 76;
+            btnEnd.UseVisualStyleBackColor = true;
+            // 
+            // btnFirst
+            // 
+            btnFirst.FlatAppearance.BorderSize = 0;
+            btnFirst.FlatStyle = FlatStyle.Flat;
+            btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
+            btnFirst.Location = new Point(24, 26);
+            btnFirst.Name = "btnFirst";
+            btnFirst.Size = new Size(45, 40);
+            btnFirst.TabIndex = 75;
+            btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += btnFirst_Click;
             // 
             // groupBox1
             // 
@@ -70,10 +128,10 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(1022, 122);
+            groupBox1.Location = new Point(962, 124);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(575, 756);
-            groupBox1.TabIndex = 10;
+            groupBox1.TabIndex = 86;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin tác giả";
             // 
@@ -198,129 +256,54 @@
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
-            btnTimkiem.Location = new Point(788, 59);
+            btnTimkiem.Location = new Point(728, 61);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(72, 49);
-            btnTimkiem.TabIndex = 8;
+            btnTimkiem.TabIndex = 85;
             btnTimkiem.UseVisualStyleBackColor = true;
             // 
             // txtTimkiem
             // 
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(224, 59);
+            txtTimkiem.Location = new Point(164, 61);
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.Size = new Size(520, 34);
-            txtTimkiem.TabIndex = 7;
+            txtTimkiem.TabIndex = 84;
             // 
             // grdTacgia
             // 
             grdTacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdTacgia.Location = new Point(130, 134);
+            grdTacgia.Location = new Point(70, 136);
             grdTacgia.Name = "grdTacgia";
             grdTacgia.RowHeadersWidth = 51;
             grdTacgia.Size = new Size(730, 724);
-            grdTacgia.TabIndex = 6;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            groupBox3.Controls.Add(btnPrevious);
-            groupBox3.Controls.Add(btnNext);
-            groupBox3.Controls.Add(btnEnd);
-            groupBox3.Controls.Add(btnFirst);
-            groupBox3.Location = new Point(591, 883);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(269, 100);
-            groupBox3.TabIndex = 82;
-            groupBox3.TabStop = false;
-            // 
-            // btnPrevious
-            // 
-            btnPrevious.FlatAppearance.BorderSize = 0;
-            btnPrevious.FlatStyle = FlatStyle.Flat;
-            btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(75, 26);
-            btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(57, 40);
-            btnPrevious.TabIndex = 78;
-            btnPrevious.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            btnNext.FlatAppearance.BorderSize = 0;
-            btnNext.FlatStyle = FlatStyle.Flat;
-            btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(146, 26);
-            btnNext.Name = "btnNext";
-            btnNext.Size = new Size(45, 40);
-            btnNext.TabIndex = 77;
-            btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnEnd
-            // 
-            btnEnd.FlatAppearance.BorderSize = 0;
-            btnEnd.FlatStyle = FlatStyle.Flat;
-            btnEnd.Image = (Image)resources.GetObject("btnEnd.Image");
-            btnEnd.Location = new Point(201, 23);
-            btnEnd.Name = "btnEnd";
-            btnEnd.Size = new Size(53, 46);
-            btnEnd.TabIndex = 76;
-            btnEnd.UseVisualStyleBackColor = true;
-            // 
-            // btnFirst
-            // 
-            btnFirst.FlatAppearance.BorderSize = 0;
-            btnFirst.FlatStyle = FlatStyle.Flat;
-            btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(24, 26);
-            btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(45, 40);
-            btnFirst.TabIndex = 75;
-            btnFirst.UseVisualStyleBackColor = true;
-            btnFirst.Click += btnFirst_Click;
+            grdTacgia.TabIndex = 83;
             // 
             // ucTacgia
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
-            Controls.Add(groupBox3);
             Controls.Add(groupBox1);
             Controls.Add(btnTimkiem);
             Controls.Add(txtTimkiem);
             Controls.Add(grdTacgia);
+            Controls.Add(groupBox3);
             Name = "ucTacgia";
             Size = new Size(1650, 1000);
+            groupBox3.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)grdSach).EndInit();
             ((System.ComponentModel.ISupportInitialize)grdTacgia).EndInit();
-            groupBox3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private GroupBox groupBox1;
-        private Button btnUndo;
-        private Button btnLuu;
-        private Button btnXoa;
-        private DateTimePicker dtpNamsinhtacgia;
-        private Label label4;
-        private Label label2;
-        private Label label1;
-        private Button btnTimkiem;
-        private TextBox txtTimkiem;
-        private DataGridView grdTacgia;
-        private TextBox txtHovaten;
-        private GroupBox groupBox2;
-        private DataGridView grdSach;
         private DataGridViewTextBoxColumn tentacgia;
         private DataGridViewTextBoxColumn namsinh;
-        private TextBox txtMatacgia;
         private Button button7;
         private Button button6;
         private Button button4;
@@ -329,5 +312,20 @@
         private Button btnNext;
         private Button btnEnd;
         private Button btnFirst;
+        private GroupBox groupBox1;
+        private TextBox txtHovaten;
+        private GroupBox groupBox2;
+        private DataGridView grdSach;
+        private Button btnUndo;
+        private Button btnLuu;
+        private Button btnXoa;
+        private DateTimePicker dtpNamsinhtacgia;
+        private Label label4;
+        private Label label2;
+        private TextBox txtMatacgia;
+        private Label label1;
+        private Button btnTimkiem;
+        private TextBox txtTimkiem;
+        private DataGridView grdTacgia;
     }
 }
