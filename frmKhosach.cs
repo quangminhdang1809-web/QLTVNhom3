@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QLTVNhom3
 {
-    public partial class frmThemdocgia : Form
+    public partial class frmThemkesach : Form
     {
-        public frmThemdocgia()
+        public frmThemkesach()
         {
             InitializeComponent();
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

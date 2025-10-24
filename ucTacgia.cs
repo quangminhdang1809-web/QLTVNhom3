@@ -16,5 +16,33 @@ namespace QLTVNhom3
         {
             InitializeComponent();
         }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            grdTacgia.ClearSelection();
+            grdTacgia.CurrentCell = grdSach[0, 0];
+        }
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            int i = grdTacgia.CurrentRow.Index;
+            if (i > 0)// Nếu chưa phải dòng đầu thì nhảy đến dòng trước đó
+            {
+                grdTacgia.CurrentCell = grdSach[0, i - 1];
+            }
+        }
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            int i = grdTacgia.CurrentRow.Index;
+            if (i < grdTacgia.RowCount - 1)// Nếu chưa phải dòng cuối thì nhảy đến dòng tiếp the
+            {
+                grdTacgia.CurrentCell = grdSach[0, i + 1];
+            }
+        }
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            int i = grdTacgia.RowCount - 1;
+            grdTacgia.CurrentCell = grdSach[0, i];//Dòng  cuối cùng
+        }
+
     }
 }

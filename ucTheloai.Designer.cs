@@ -29,47 +29,47 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTheloai));
-            textBox1 = new TextBox();
-            txttensach = new TextBox();
+            txtTentheloai = new TextBox();
+            txtMatheloai = new TextBox();
             label1 = new Label();
             groupBox1 = new GroupBox();
-            textBox2 = new TextBox();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            txtMota = new TextBox();
+            btnUndo = new Button();
+            btnSua = new Button();
+            btnXoa = new Button();
             label4 = new Label();
             label2 = new Label();
             btnTimkiem = new Button();
             txtTimkiem = new TextBox();
-            dataGridView1 = new DataGridView();
+            grdTheloai = new DataGridView();
             groupBox2 = new GroupBox();
-            button7 = new Button();
-            button6 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            btnPrevious = new Button();
+            btnNext = new Button();
+            btnLast = new Button();
+            btnFirst = new Button();
             btnThemtheloai = new Button();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grdTheloai).BeginInit();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // textBox1
+            // txtTentheloai
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox1.Location = new Point(146, 185);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(326, 34);
-            textBox1.TabIndex = 75;
+            txtTentheloai.BorderStyle = BorderStyle.FixedSingle;
+            txtTentheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtTentheloai.Location = new Point(146, 185);
+            txtTentheloai.Name = "txtTentheloai";
+            txtTentheloai.Size = new Size(326, 34);
+            txtTentheloai.TabIndex = 75;
             // 
-            // txttensach
+            // txtMatheloai
             // 
-            txttensach.BorderStyle = BorderStyle.FixedSingle;
-            txttensach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txttensach.Location = new Point(146, 108);
-            txttensach.Name = "txttensach";
-            txttensach.Size = new Size(326, 34);
-            txttensach.TabIndex = 61;
+            txtMatheloai.BorderStyle = BorderStyle.FixedSingle;
+            txtMatheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtMatheloai.Location = new Point(146, 108);
+            txtMatheloai.Name = "txtMatheloai";
+            txtMatheloai.Size = new Size(326, 34);
+            txtMatheloai.TabIndex = 61;
             // 
             // label1
             // 
@@ -83,14 +83,14 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(txtMota);
+            groupBox1.Controls.Add(txtTentheloai);
+            groupBox1.Controls.Add(btnUndo);
+            groupBox1.Controls.Add(btnSua);
+            groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txttensach);
+            groupBox1.Controls.Add(txtMatheloai);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
@@ -101,47 +101,47 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin thể loại";
             // 
-            // textBox2
+            // txtMota
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox2.Location = new Point(146, 262);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(326, 34);
-            textBox2.TabIndex = 76;
+            txtMota.BorderStyle = BorderStyle.FixedSingle;
+            txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtMota.Location = new Point(146, 262);
+            txtMota.Name = "txtMota";
+            txtMota.Size = new Size(326, 34);
+            txtMota.TabIndex = 76;
             // 
-            // button3
+            // btnUndo
             // 
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(369, 430);
-            button3.Name = "button3";
-            button3.Size = new Size(45, 40);
-            button3.TabIndex = 73;
-            button3.UseVisualStyleBackColor = true;
+            btnUndo.FlatAppearance.BorderSize = 0;
+            btnUndo.FlatStyle = FlatStyle.Flat;
+            btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
+            btnUndo.Location = new Point(369, 430);
+            btnUndo.Name = "btnUndo";
+            btnUndo.Size = new Size(45, 40);
+            btnUndo.TabIndex = 73;
+            btnUndo.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnSua
             // 
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(433, 430);
-            button2.Name = "button2";
-            button2.Size = new Size(45, 40);
-            button2.TabIndex = 72;
-            button2.UseVisualStyleBackColor = true;
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.Location = new Point(433, 430);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(45, 40);
+            btnSua.TabIndex = 72;
+            btnSua.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnXoa
             // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(484, 430);
-            button1.Name = "button1";
-            button1.Size = new Size(45, 40);
-            button1.TabIndex = 71;
-            button1.UseVisualStyleBackColor = true;
+            btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
+            btnXoa.Location = new Point(484, 430);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(45, 40);
+            btnXoa.TabIndex = 71;
+            btnXoa.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -183,70 +183,71 @@
             txtTimkiem.Size = new Size(520, 34);
             txtTimkiem.TabIndex = 12;
             // 
-            // dataGridView1
+            // grdTheloai
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(130, 134);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(730, 724);
-            dataGridView1.TabIndex = 11;
+            grdTheloai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdTheloai.Location = new Point(130, 134);
+            grdTheloai.Name = "grdTheloai";
+            grdTheloai.RowHeadersWidth = 51;
+            grdTheloai.Size = new Size(730, 724);
+            grdTheloai.TabIndex = 11;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(button7);
-            groupBox2.Controls.Add(button6);
-            groupBox2.Controls.Add(button4);
-            groupBox2.Controls.Add(button5);
+            groupBox2.Controls.Add(btnPrevious);
+            groupBox2.Controls.Add(btnNext);
+            groupBox2.Controls.Add(btnLast);
+            groupBox2.Controls.Add(btnFirst);
             groupBox2.Location = new Point(580, 896);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(280, 85);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
             // 
-            // button7
+            // btnPrevious
             // 
-            button7.FlatAppearance.BorderSize = 0;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.Location = new Point(83, 26);
-            button7.Name = "button7";
-            button7.Size = new Size(57, 40);
-            button7.TabIndex = 78;
-            button7.UseVisualStyleBackColor = true;
+            btnPrevious.FlatAppearance.BorderSize = 0;
+            btnPrevious.FlatStyle = FlatStyle.Flat;
+            btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
+            btnPrevious.Location = new Point(83, 26);
+            btnPrevious.Name = "btnPrevious";
+            btnPrevious.Size = new Size(57, 40);
+            btnPrevious.TabIndex = 78;
+            btnPrevious.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnNext
             // 
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Image = (Image)resources.GetObject("button6.Image");
-            button6.Location = new Point(154, 26);
-            button6.Name = "button6";
-            button6.Size = new Size(45, 40);
-            button6.TabIndex = 77;
-            button6.UseVisualStyleBackColor = true;
+            btnNext.FlatAppearance.BorderSize = 0;
+            btnNext.FlatStyle = FlatStyle.Flat;
+            btnNext.Image = (Image)resources.GetObject("btnNext.Image");
+            btnNext.Location = new Point(154, 26);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(45, 40);
+            btnNext.TabIndex = 77;
+            btnNext.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnLast
             // 
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Image = (Image)resources.GetObject("button4.Image");
-            button4.Location = new Point(213, 26);
-            button4.Name = "button4";
-            button4.Size = new Size(53, 46);
-            button4.TabIndex = 76;
-            button4.UseVisualStyleBackColor = true;
+            btnLast.FlatAppearance.BorderSize = 0;
+            btnLast.FlatStyle = FlatStyle.Flat;
+            btnLast.Image = (Image)resources.GetObject("btnLast.Image");
+            btnLast.Location = new Point(213, 26);
+            btnLast.Name = "btnLast";
+            btnLast.Size = new Size(53, 46);
+            btnLast.TabIndex = 76;
+            btnLast.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnFirst
             // 
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Image = (Image)resources.GetObject("button5.Image");
-            button5.Location = new Point(24, 26);
-            button5.Name = "button5";
-            button5.Size = new Size(45, 40);
-            button5.TabIndex = 75;
-            button5.UseVisualStyleBackColor = true;
+            btnFirst.FlatAppearance.BorderSize = 0;
+            btnFirst.FlatStyle = FlatStyle.Flat;
+            btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
+            btnFirst.Location = new Point(24, 26);
+            btnFirst.Name = "btnFirst";
+            btnFirst.Size = new Size(45, 40);
+            btnFirst.TabIndex = 75;
+            btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += btnFirst_Click;
             // 
             // btnThemtheloai
             // 
@@ -262,20 +263,19 @@
             // 
             // ucTheloai
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = Color.White;
             Controls.Add(btnThemtheloai);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(btnTimkiem);
             Controls.Add(txtTimkiem);
-            Controls.Add(dataGridView1);
+            Controls.Add(grdTheloai);
             Name = "ucTheloai";
             Size = new Size(1650, 1000);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdTheloai).EndInit();
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -283,24 +283,24 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox txttensach;
+        private TextBox txtTentheloai;
+        private TextBox txtMatheloai;
         private Label label1;
         private GroupBox groupBox1;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button btnUndo;
+        private Button btnSua;
+        private Button btnXoa;
         private Label label4;
         private Label label2;
         private Button btnTimkiem;
         private TextBox txtTimkiem;
-        private DataGridView dataGridView1;
-        private TextBox textBox2;
+        private DataGridView grdTheloai;
+        private TextBox txtMota;
         private GroupBox groupBox2;
-        private Button button7;
-        private Button button6;
-        private Button button4;
-        private Button button5;
+        private Button btnPrevious;
+        private Button btnNext;
+        private Button btnLast;
+        private Button btnFirst;
         private Button btnThemtheloai;
     }
 }

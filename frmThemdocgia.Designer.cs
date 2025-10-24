@@ -22,13 +22,13 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            cbxloaidocgia = new ComboBox();
-            dtpngaysinh = new DateTimePicker();
-            dtpngayhethan = new DateTimePicker();
-            dtpngaylapthe = new DateTimePicker();
-            txtsdt = new TextBox();
+            dtpLoaidocgia = new ComboBox();
+            dtpNgaysinh = new DateTimePicker();
+            dtpNgayhethan = new DateTimePicker();
+            dtpNgaylapthe = new DateTimePicker();
+            txtSdt = new TextBox();
             txtIDAccount = new TextBox();
-            txtemail = new TextBox();
+            txtEmail = new TextBox();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
@@ -38,25 +38,25 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            txttendocgia = new TextBox();
-            txtdiachi = new TextBox();
-            txtmadocgia = new TextBox();
+            txtTendocgia = new TextBox();
+            txtDiachi = new TextBox();
+            txtMadocgia = new TextBox();
             label1 = new Label();
             btnHuy = new Button();
-            btnluu = new Button();
+            btnLuu = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.White;
-            groupBox1.Controls.Add(cbxloaidocgia);
-            groupBox1.Controls.Add(dtpngaysinh);
-            groupBox1.Controls.Add(dtpngayhethan);
-            groupBox1.Controls.Add(dtpngaylapthe);
-            groupBox1.Controls.Add(txtsdt);
+            groupBox1.Controls.Add(dtpLoaidocgia);
+            groupBox1.Controls.Add(dtpNgaysinh);
+            groupBox1.Controls.Add(dtpNgayhethan);
+            groupBox1.Controls.Add(dtpNgaylapthe);
+            groupBox1.Controls.Add(txtSdt);
             groupBox1.Controls.Add(txtIDAccount);
-            groupBox1.Controls.Add(txtemail);
+            groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(label11);
             groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(label9);
@@ -66,9 +66,9 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txttendocgia);
-            groupBox1.Controls.Add(txtdiachi);
-            groupBox1.Controls.Add(txtmadocgia);
+            groupBox1.Controls.Add(txtTendocgia);
+            groupBox1.Controls.Add(txtDiachi);
+            groupBox1.Controls.Add(txtMadocgia);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.ActiveCaptionText;
@@ -79,53 +79,53 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin độc giả";
             // 
-            // cbxloaidocgia
+            // dtpLoaidocgia
             // 
-            cbxloaidocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            cbxloaidocgia.FormattingEnabled = true;
-            cbxloaidocgia.Location = new Point(564, 203);
-            cbxloaidocgia.Name = "cbxloaidocgia";
-            cbxloaidocgia.Size = new Size(185, 36);
-            cbxloaidocgia.TabIndex = 137;
+            dtpLoaidocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpLoaidocgia.FormattingEnabled = true;
+            dtpLoaidocgia.Location = new Point(564, 203);
+            dtpLoaidocgia.Name = "dtpLoaidocgia";
+            dtpLoaidocgia.Size = new Size(185, 36);
+            dtpLoaidocgia.TabIndex = 137;
             // 
-            // dtpngaysinh
+            // dtpNgaysinh
             // 
-            dtpngaysinh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dtpngaysinh.Format = DateTimePickerFormat.Short;
-            dtpngaysinh.Location = new Point(160, 205);
-            dtpngaysinh.Name = "dtpngaysinh";
-            dtpngaysinh.Size = new Size(210, 34);
-            dtpngaysinh.TabIndex = 135;
+            dtpNgaysinh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpNgaysinh.Format = DateTimePickerFormat.Short;
+            dtpNgaysinh.Location = new Point(160, 205);
+            dtpNgaysinh.Name = "dtpNgaysinh";
+            dtpNgaysinh.Size = new Size(210, 34);
+            dtpNgaysinh.TabIndex = 135;
             // 
-            // dtpngayhethan
+            // dtpNgayhethan
             // 
-            dtpngayhethan.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dtpngayhethan.Font = new Font("Segoe UI", 10.8F);
-            dtpngayhethan.Format = DateTimePickerFormat.Short;
-            dtpngayhethan.Location = new Point(564, 133);
-            dtpngayhethan.Name = "dtpngayhethan";
-            dtpngayhethan.Size = new Size(185, 31);
-            dtpngayhethan.TabIndex = 134;
+            dtpNgayhethan.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpNgayhethan.Font = new Font("Segoe UI", 10.8F);
+            dtpNgayhethan.Format = DateTimePickerFormat.Short;
+            dtpNgayhethan.Location = new Point(564, 133);
+            dtpNgayhethan.Name = "dtpNgayhethan";
+            dtpNgayhethan.Size = new Size(185, 31);
+            dtpNgayhethan.TabIndex = 134;
             // 
-            // dtpngaylapthe
+            // dtpNgaylapthe
             // 
-            dtpngaylapthe.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dtpngaylapthe.CustomFormat = "";
-            dtpngaylapthe.Font = new Font("Segoe UI", 10.8F);
-            dtpngaylapthe.Format = DateTimePickerFormat.Short;
-            dtpngaylapthe.Location = new Point(564, 63);
-            dtpngaylapthe.Name = "dtpngaylapthe";
-            dtpngaylapthe.Size = new Size(185, 31);
-            dtpngaylapthe.TabIndex = 133;
+            dtpNgaylapthe.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpNgaylapthe.CustomFormat = "";
+            dtpNgaylapthe.Font = new Font("Segoe UI", 10.8F);
+            dtpNgaylapthe.Format = DateTimePickerFormat.Short;
+            dtpNgaylapthe.Location = new Point(564, 63);
+            dtpNgaylapthe.Name = "dtpNgaylapthe";
+            dtpNgaylapthe.Size = new Size(185, 31);
+            dtpNgaylapthe.TabIndex = 133;
             // 
-            // txtsdt
+            // txtSdt
             // 
-            txtsdt.BorderStyle = BorderStyle.FixedSingle;
-            txtsdt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtsdt.Location = new Point(564, 345);
-            txtsdt.Name = "txtsdt";
-            txtsdt.Size = new Size(185, 34);
-            txtsdt.TabIndex = 132;
+            txtSdt.BorderStyle = BorderStyle.FixedSingle;
+            txtSdt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtSdt.Location = new Point(564, 345);
+            txtSdt.Name = "txtSdt";
+            txtSdt.Size = new Size(185, 34);
+            txtSdt.TabIndex = 132;
             // 
             // txtIDAccount
             // 
@@ -136,14 +136,14 @@
             txtIDAccount.Size = new Size(185, 34);
             txtIDAccount.TabIndex = 131;
             // 
-            // txtemail
+            // txtEmail
             // 
-            txtemail.BorderStyle = BorderStyle.FixedSingle;
-            txtemail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtemail.Location = new Point(160, 347);
-            txtemail.Name = "txtemail";
-            txtemail.Size = new Size(210, 34);
-            txtemail.TabIndex = 130;
+            txtEmail.BorderStyle = BorderStyle.FixedSingle;
+            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtEmail.Location = new Point(160, 347);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(210, 34);
+            txtEmail.TabIndex = 130;
             // 
             // label11
             // 
@@ -235,32 +235,32 @@
             label2.TabIndex = 121;
             label2.Text = "Ngày sinh";
             // 
-            // txttendocgia
+            // txtTendocgia
             // 
-            txttendocgia.BorderStyle = BorderStyle.FixedSingle;
-            txttendocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txttendocgia.Location = new Point(160, 134);
-            txttendocgia.Name = "txttendocgia";
-            txttendocgia.Size = new Size(210, 34);
-            txttendocgia.TabIndex = 120;
+            txtTendocgia.BorderStyle = BorderStyle.FixedSingle;
+            txtTendocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtTendocgia.Location = new Point(160, 134);
+            txtTendocgia.Name = "txtTendocgia";
+            txtTendocgia.Size = new Size(210, 34);
+            txtTendocgia.TabIndex = 120;
             // 
-            // txtdiachi
+            // txtDiachi
             // 
-            txtdiachi.BorderStyle = BorderStyle.FixedSingle;
-            txtdiachi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtdiachi.Location = new Point(160, 276);
-            txtdiachi.Name = "txtdiachi";
-            txtdiachi.Size = new Size(210, 34);
-            txtdiachi.TabIndex = 119;
+            txtDiachi.BorderStyle = BorderStyle.FixedSingle;
+            txtDiachi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtDiachi.Location = new Point(160, 276);
+            txtDiachi.Name = "txtDiachi";
+            txtDiachi.Size = new Size(210, 34);
+            txtDiachi.TabIndex = 119;
             // 
-            // txtmadocgia
+            // txtMadocgia
             // 
-            txtmadocgia.BorderStyle = BorderStyle.FixedSingle;
-            txtmadocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtmadocgia.Location = new Point(160, 63);
-            txtmadocgia.Name = "txtmadocgia";
-            txtmadocgia.Size = new Size(210, 34);
-            txtmadocgia.TabIndex = 118;
+            txtMadocgia.BorderStyle = BorderStyle.FixedSingle;
+            txtMadocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtMadocgia.Location = new Point(160, 63);
+            txtMadocgia.Name = "txtMadocgia";
+            txtMadocgia.Size = new Size(210, 34);
+            txtMadocgia.TabIndex = 118;
             // 
             // label1
             // 
@@ -286,19 +286,20 @@
             btnHuy.Text = "Hủy";
             btnHuy.UseVisualStyleBackColor = false;
             // 
-            // btnluu
+            // btnLuu
             // 
-            btnluu.BackColor = SystemColors.Highlight;
-            btnluu.FlatAppearance.BorderSize = 0;
-            btnluu.FlatStyle = FlatStyle.Flat;
-            btnluu.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnluu.ForeColor = Color.White;
-            btnluu.Location = new Point(705, 505);
-            btnluu.Name = "btnluu";
-            btnluu.Size = new Size(96, 38);
-            btnluu.TabIndex = 139;
-            btnluu.Text = "Lưu";
-            btnluu.UseVisualStyleBackColor = false;
+            btnLuu.BackColor = SystemColors.Highlight;
+            btnLuu.FlatAppearance.BorderSize = 0;
+            btnLuu.FlatStyle = FlatStyle.Flat;
+            btnLuu.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnLuu.ForeColor = Color.White;
+            btnLuu.Location = new Point(705, 505);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(96, 38);
+            btnLuu.TabIndex = 139;
+            btnLuu.Text = "Lưu";
+            btnLuu.UseVisualStyleBackColor = false;
+            btnLuu.Click += btnLuu_Click;
             // 
             // frmThemdocgia
             // 
@@ -307,22 +308,23 @@
             BackColor = Color.White;
             ClientSize = new Size(822, 564);
             Controls.Add(btnHuy);
-            Controls.Add(btnluu);
+            Controls.Add(btnLuu);
             Controls.Add(groupBox1);
             Name = "frmThemdocgia";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmThemdocgia";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
         }
         private GroupBox groupBox1;
-        private ComboBox cbxloaidocgia;
-        private DateTimePicker dtpngaysinh;
-        private DateTimePicker dtpngayhethan;
-        private DateTimePicker dtpngaylapthe;
-        private TextBox txtsdt;
+        private ComboBox dtpLoaidocgia;
+        private DateTimePicker dtpNgaysinh;
+        private DateTimePicker dtpNgayhethan;
+        private DateTimePicker dtpNgaylapthe;
+        private TextBox txtSdt;
         private TextBox txtIDAccount;
-        private TextBox txtemail;
+        private TextBox txtEmail;
         private Label label11;
         private Label label10;
         private Label label9;
@@ -332,11 +334,11 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private TextBox txttendocgia;
-        private TextBox txtdiachi;
-        private TextBox txtmadocgia;
+        private TextBox txtTendocgia;
+        private TextBox txtDiachi;
+        private TextBox txtMadocgia;
         private Label label1;
         private Button btnHuy;
-        private Button btnluu;
+        private Button btnLuu;
     }
 }

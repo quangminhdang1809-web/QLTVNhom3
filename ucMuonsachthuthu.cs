@@ -16,5 +16,21 @@ namespace QLTVNhom3
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXacnhan_Click(object sender, EventArgs e)
+        {
+            frmXacnhanmuonsach f = new frmXacnhanmuonsach();
+            f.ShowDialog();
+        }
     }
 }
