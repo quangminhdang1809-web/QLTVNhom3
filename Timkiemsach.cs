@@ -31,5 +31,12 @@ namespace QLTVNhom3
         {
 
         }
+
+        private void txtTensach_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

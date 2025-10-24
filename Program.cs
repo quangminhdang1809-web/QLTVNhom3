@@ -7,7 +7,7 @@ namespace QLTVNhom3
         {
             // Force the app to render at 100% (DPI unaware).
             // Warning: UI may appear smaller or blurry on high-DPI monitors.
-            Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
 
             // Standard initialization
             Application.EnableVisualStyles();
