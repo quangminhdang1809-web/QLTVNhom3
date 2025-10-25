@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKhosach));
             tableLayoutPanel1 = new TableLayoutPanel();
             grdVitrisach = new DataGridView();
+            Mavitri = new DataGridViewTextBoxColumn();
+            Tenvitri = new DataGridViewTextBoxColumn();
+            Mota = new DataGridViewTextBoxColumn();
             btnThemkesach = new Button();
             btnTimkiem = new Button();
             txtTimkiem = new TextBox();
@@ -50,9 +53,6 @@
             btnNext = new Button();
             btnLast = new Button();
             btnFirst = new Button();
-            Mavitri = new DataGridViewTextBoxColumn();
-            Tenvitri = new DataGridViewTextBoxColumn();
-            Mota = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdVitrisach).BeginInit();
             groupBox1.SuspendLayout();
@@ -101,6 +101,27 @@
             grdVitrisach.Size = new Size(701, 671);
             grdVitrisach.TabIndex = 31;
             // 
+            // Mavitri
+            // 
+            Mavitri.FillWeight = 20F;
+            Mavitri.HeaderText = "Mã vị trí";
+            Mavitri.MinimumWidth = 6;
+            Mavitri.Name = "Mavitri";
+            // 
+            // Tenvitri
+            // 
+            Tenvitri.FillWeight = 50F;
+            Tenvitri.HeaderText = "Tên vị trí";
+            Tenvitri.MinimumWidth = 6;
+            Tenvitri.Name = "Tenvitri";
+            // 
+            // Mota
+            // 
+            Mota.FillWeight = 55.7122459F;
+            Mota.HeaderText = "Mô tả";
+            Mota.MinimumWidth = 6;
+            Mota.Name = "Mota";
+            // 
             // btnThemkesach
             // 
             btnThemkesach.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -130,9 +151,9 @@
             txtTimkiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(3, 30);
+            txtTimkiem.Location = new Point(3, 22);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(701, 34);
+            txtTimkiem.Size = new Size(701, 50);
             txtTimkiem.TabIndex = 26;
             // 
             // groupBox1
@@ -162,7 +183,7 @@
             txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMota.Location = new Point(146, 262);
             txtMota.Name = "txtMota";
-            txtMota.Size = new Size(326, 34);
+            txtMota.Size = new Size(326, 50);
             txtMota.TabIndex = 76;
             // 
             // txtTenke
@@ -171,7 +192,7 @@
             txtTenke.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTenke.Location = new Point(146, 185);
             txtTenke.Name = "txtTenke";
-            txtTenke.Size = new Size(326, 34);
+            txtTenke.Size = new Size(326, 50);
             txtTenke.TabIndex = 75;
             // 
             // btnUndo
@@ -216,7 +237,7 @@
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.Location = new Point(22, 268);
             label4.Name = "label4";
-            label4.Size = new Size(65, 28);
+            label4.Size = new Size(107, 45);
             label4.TabIndex = 65;
             label4.Text = "Mô tả";
             // 
@@ -226,7 +247,7 @@
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label2.Location = new Point(22, 188);
             label2.Name = "label2";
-            label2.Size = new Size(72, 28);
+            label2.Size = new Size(114, 45);
             label2.TabIndex = 63;
             label2.Text = "Tên kệ";
             // 
@@ -236,7 +257,7 @@
             txtMake.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMake.Location = new Point(146, 108);
             txtMake.Name = "txtMake";
-            txtMake.Size = new Size(326, 34);
+            txtMake.Size = new Size(326, 50);
             txtMake.TabIndex = 61;
             // 
             // label1
@@ -245,7 +266,7 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.Location = new Point(22, 108);
             label1.Name = "label1";
-            label1.Size = new Size(68, 28);
+            label1.Size = new Size(110, 45);
             label1.TabIndex = 60;
             label1.Text = "Mã kệ";
             // 
@@ -256,9 +277,9 @@
             groupBox2.Controls.Add(btnNext);
             groupBox2.Controls.Add(btnLast);
             groupBox2.Controls.Add(btnFirst);
-            groupBox2.Location = new Point(424, 801);
+            groupBox2.Location = new Point(384, 786);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(280, 85);
+            groupBox2.Size = new Size(320, 100);
             groupBox2.TabIndex = 33;
             groupBox2.TabStop = false;
             // 
@@ -267,9 +288,9 @@
             btnPrevious.FlatAppearance.BorderSize = 0;
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(83, 26);
+            btnPrevious.Location = new Point(87, 26);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(57, 40);
+            btnPrevious.Size = new Size(50, 50);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
             // 
@@ -278,9 +299,9 @@
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(154, 26);
+            btnNext.Location = new Point(150, 26);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(45, 40);
+            btnNext.Size = new Size(50, 50);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
             // 
@@ -291,7 +312,7 @@
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
             btnLast.Location = new Point(213, 26);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(53, 46);
+            btnLast.Size = new Size(50, 50);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
             // 
@@ -302,30 +323,9 @@
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
             btnFirst.Location = new Point(24, 26);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(45, 40);
+            btnFirst.Size = new Size(50, 50);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
-            // 
-            // Mavitri
-            // 
-            Mavitri.FillWeight = 20F;
-            Mavitri.HeaderText = "Mã vị trí";
-            Mavitri.MinimumWidth = 6;
-            Mavitri.Name = "Mavitri";
-            // 
-            // Tenvitri
-            // 
-            Tenvitri.FillWeight = 50F;
-            Tenvitri.HeaderText = "Tên vị trí";
-            Tenvitri.MinimumWidth = 6;
-            Tenvitri.Name = "Tenvitri";
-            // 
-            // Mota
-            // 
-            Mota.FillWeight = 55.7122459F;
-            Mota.HeaderText = "Mô tả";
-            Mota.MinimumWidth = 6;
-            Mota.Name = "Mota";
             // 
             // ucKhosach
             // 
