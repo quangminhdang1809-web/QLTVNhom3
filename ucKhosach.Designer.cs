@@ -142,9 +142,9 @@
             txtTimkiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(3, 30);
+            txtTimkiem.Location = new Point(3, 22);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(701, 34);
+            txtTimkiem.Size = new Size(701, 50);
             txtTimkiem.TabIndex = 26;
             // 
             // groupBox1
@@ -178,7 +178,7 @@
             txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMota.Location = new Point(201, 326);
             txtMota.Name = "txtMota";
-            txtMota.Size = new Size(326, 34);
+            txtMota.Size = new Size(326, 50);
             txtMota.TabIndex = 76;
             // 
             // txtTenvitri
@@ -232,7 +232,7 @@
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.Location = new Point(77, 330);
             label4.Name = "label4";
-            label4.Size = new Size(65, 28);
+            label4.Size = new Size(107, 45);
             label4.TabIndex = 65;
             label4.Text = "Mô tả";
             // 
@@ -272,9 +272,9 @@
             groupBox2.Controls.Add(btnNext);
             groupBox2.Controls.Add(btnLast);
             groupBox2.Controls.Add(btnFirst);
-            groupBox2.Location = new Point(424, 801);
+            groupBox2.Location = new Point(384, 786);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(280, 85);
+            groupBox2.Size = new Size(320, 100);
             groupBox2.TabIndex = 33;
             groupBox2.TabStop = false;
             // 
@@ -283,9 +283,9 @@
             btnPrevious.FlatAppearance.BorderSize = 0;
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(83, 26);
+            btnPrevious.Location = new Point(87, 26);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(57, 40);
+            btnPrevious.Size = new Size(50, 50);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
             btnPrevious.Click += btnNext_Click;
@@ -295,9 +295,9 @@
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(154, 26);
+            btnNext.Location = new Point(150, 26);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(45, 40);
+            btnNext.Size = new Size(50, 50);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += btnNext_Click;
@@ -309,7 +309,7 @@
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
             btnLast.Location = new Point(213, 26);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(53, 46);
+            btnLast.Size = new Size(50, 50);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
             btnLast.Click += btnLast_Click;
@@ -321,7 +321,7 @@
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
             btnFirst.Location = new Point(24, 26);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(45, 40);
+            btnFirst.Size = new Size(50, 50);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
             btnFirst.Click += btnFirst_Click;
