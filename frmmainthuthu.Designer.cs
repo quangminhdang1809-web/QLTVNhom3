@@ -137,7 +137,7 @@
             btnKhosach.Name = "btnKhosach";
             btnKhosach.Size = new Size(200, 53);
             btnKhosach.TabIndex = 10;
-            btnKhosach.Text = "        Kho sách";
+            btnKhosach.Text = "        Vị trí sách";
             btnKhosach.TextAlign = ContentAlignment.MiddleLeft;
             btnKhosach.UseVisualStyleBackColor = false;
             btnKhosach.Click += btnKhosach_Click;
@@ -359,7 +359,7 @@
             btnMacabiet.Name = "btnMacabiet";
             btnMacabiet.Size = new Size(200, 53);
             btnMacabiet.TabIndex = 10;
-            btnMacabiet.Text = "        Mã cá biệt";
+            btnMacabiet.Text = "        Tài liệu";
             btnMacabiet.TextAlign = ContentAlignment.MiddleLeft;
             btnMacabiet.UseVisualStyleBackColor = false;
             btnMacabiet.Click += button5_Click;
@@ -380,7 +380,7 @@
             btnSach.Name = "btnSach";
             btnSach.Size = new Size(200, 53);
             btnSach.TabIndex = 6;
-            btnSach.Text = "        Sách";
+            btnSach.Text = "        Đầu sách";
             btnSach.TextAlign = ContentAlignment.MiddleLeft;
             btnSach.UseVisualStyleBackColor = false;
             btnSach.Click += btnSach_Click;

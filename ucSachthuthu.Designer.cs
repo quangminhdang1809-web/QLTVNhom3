@@ -32,6 +32,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             btnThemsach = new Button();
             btnTimkiem = new Button();
@@ -39,7 +40,10 @@
             txtTimkiem = new TextBox();
             grdSach = new DataGridView();
             groupBox1 = new GroupBox();
-            dataGridView1 = new DataGridView();
+            dtpNamxb = new DateTimePicker();
+            drgTacgia = new DataGridView();
+            colMatacgia = new DataGridViewTextBoxColumn();
+            colHotentacgia = new DataGridViewTextBoxColumn();
             label1 = new Label();
             textBox1 = new TextBox();
             label5 = new Label();
@@ -61,11 +65,16 @@
             btnNext = new Button();
             btnLast = new Button();
             btnFirst = new Button();
-            dtpNamxb = new DateTimePicker();
+            colMadausach = new DataGridViewTextBoxColumn();
+            colAnhbia = new DataGridViewTextBoxColumn();
+            colTendausach = new DataGridViewTextBoxColumn();
+            colNamXB = new DataGridViewTextBoxColumn();
+            colSoluong = new DataGridViewTextBoxColumn();
+            colVaitro = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdSach).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)drgTacgia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -77,8 +86,8 @@
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 74.89301F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.10699F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 93F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 673F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 75F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 639F));
             tableLayoutPanel1.Controls.Add(btnThemsach, 3, 0);
             tableLayoutPanel1.Controls.Add(btnTimkiem, 2, 0);
             tableLayoutPanel1.Controls.Add(cbxTheloaisach, 1, 0);
@@ -107,6 +116,7 @@
             btnThemsach.Size = new Size(94, 85);
             btnThemsach.TabIndex = 103;
             btnThemsach.UseVisualStyleBackColor = true;
+            btnThemsach.Click += button1_Click;
             // 
             // btnTimkiem
             // 
@@ -115,7 +125,7 @@
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
-            btnTimkiem.Location = new Point(669, 10);
+            btnTimkiem.Location = new Point(712, 10);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(58, 70);
             btnTimkiem.TabIndex = 85;
@@ -126,10 +136,10 @@
             cbxTheloaisach.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbxTheloaisach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cbxTheloaisach.FormattingEnabled = true;
-            cbxTheloaisach.Location = new Point(491, 27);
+            cbxTheloaisach.Location = new Point(529, 27);
             cbxTheloaisach.Margin = new Padding(2);
             cbxTheloaisach.Name = "cbxTheloaisach";
-            cbxTheloaisach.Size = new Size(159, 36);
+            cbxTheloaisach.Size = new Size(173, 36);
             cbxTheloaisach.TabIndex = 84;
             // 
             // txtTimkiem
@@ -145,19 +155,22 @@
             // grdSach
             // 
             grdSach.AllowUserToAddRows = false;
-            grdSach.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             grdSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            grdSach.BackgroundColor = Color.Gainsboro;
+            grdSach.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grdSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            grdSach.ColumnHeadersHeight = 40;
-            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdSach.Columns.AddRange(new DataGridViewColumn[] { colMadausach, colAnhbia, colTendausach, colNamXB, colSoluong });
             tableLayoutPanel1.SetColumnSpan(grdSach, 2);
+            grdSach.Dock = DockStyle.Fill;
+            grdSach.EnableHeadersVisualStyles = false;
             grdSach.Location = new Point(2, 93);
             grdSach.Margin = new Padding(2);
             grdSach.Name = "grdSach";
@@ -172,13 +185,14 @@
             grdSach.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             grdSach.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            grdSach.Size = new Size(648, 738);
+            grdSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdSach.Size = new Size(700, 738);
             grdSach.TabIndex = 81;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(dtpNamxb);
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(drgTacgia);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(textBox1);
             groupBox1.Controls.Add(label5);
@@ -193,28 +207,62 @@
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            groupBox1.Location = new Point(748, 94);
+            groupBox1.Location = new Point(782, 94);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(668, 736);
+            groupBox1.Size = new Size(634, 736);
             groupBox1.TabIndex = 104;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
             groupBox1.Enter += groupBox1_Enter_1;
             // 
-            // dataGridView1
+            // dtpNamxb
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(231, 574);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(386, 111);
-            dataGridView1.TabIndex = 175;
+            dtpNamxb.CustomFormat = "yyyy";
+            dtpNamxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpNamxb.Format = DateTimePickerFormat.Custom;
+            dtpNamxb.Location = new Point(203, 368);
+            dtpNamxb.Name = "dtpNamxb";
+            dtpNamxb.ShowUpDown = true;
+            dtpNamxb.Size = new Size(386, 34);
+            dtpNamxb.TabIndex = 176;
+            // 
+            // drgTacgia
+            // 
+            drgTacgia.AllowUserToAddRows = false;
+            drgTacgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            drgTacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            drgTacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            drgTacgia.Columns.AddRange(new DataGridViewColumn[] { colMatacgia, colHotentacgia, colVaitro });
+            drgTacgia.Location = new Point(203, 572);
+            drgTacgia.Name = "drgTacgia";
+            drgTacgia.RowHeadersWidth = 51;
+            drgTacgia.Size = new Size(386, 142);
+            drgTacgia.TabIndex = 175;
+            // 
+            // colMatacgia
+            // 
+            colMatacgia.HeaderText = "Mã tác giả";
+            colMatacgia.MinimumWidth = 6;
+            colMatacgia.Name = "colMatacgia";
+            // 
+            // colHotentacgia
+            // 
+            colHotentacgia.HeaderText = "Họ và tên";
+            colHotentacgia.MinimumWidth = 6;
+            colHotentacgia.Name = "colHotentacgia";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(72, 529);
+            label1.Location = new Point(44, 527);
             label1.Name = "label1";
             label1.Size = new Size(94, 28);
             label1.TabIndex = 174;
@@ -224,7 +272,7 @@
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox1.Location = new Point(231, 529);
+            textBox1.Location = new Point(203, 527);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(386, 34);
             textBox1.TabIndex = 173;
@@ -233,7 +281,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label5.Location = new Point(72, 264);
+            label5.Location = new Point(44, 262);
             label5.Name = "label5";
             label5.Size = new Size(126, 28);
             label5.TabIndex = 172;
@@ -243,7 +291,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label12.Location = new Point(72, 476);
+            label12.Location = new Point(44, 474);
             label12.Name = "label12";
             label12.Size = new Size(55, 28);
             label12.TabIndex = 171;
@@ -253,7 +301,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label13.Location = new Point(72, 423);
+            label13.Location = new Point(44, 421);
             label13.Name = "label13";
             label13.Size = new Size(51, 28);
             label13.TabIndex = 170;
@@ -263,7 +311,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label14.Location = new Point(72, 370);
+            label14.Location = new Point(44, 368);
             label14.Name = "label14";
             label14.Size = new Size(85, 28);
             label14.TabIndex = 169;
@@ -273,17 +321,17 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label15.Location = new Point(72, 317);
+            label15.Location = new Point(44, 315);
             label15.Name = "label15";
-            label15.Size = new Size(90, 28);
+            label15.Size = new Size(130, 28);
             label15.TabIndex = 168;
-            label15.Text = "Tên sách";
+            label15.Text = "Tên đầu sách";
             // 
             // txtTendocgia
             // 
             txtTendocgia.BorderStyle = BorderStyle.FixedSingle;
             txtTendocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTendocgia.Location = new Point(231, 317);
+            txtTendocgia.Location = new Point(203, 315);
             txtTendocgia.Name = "txtTendocgia";
             txtTendocgia.Size = new Size(386, 34);
             txtTendocgia.TabIndex = 165;
@@ -292,7 +340,7 @@
             // 
             txTemail.BorderStyle = BorderStyle.FixedSingle;
             txTemail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txTemail.Location = new Point(231, 476);
+            txTemail.Location = new Point(203, 474);
             txTemail.Name = "txTemail";
             txTemail.Size = new Size(386, 34);
             txTemail.TabIndex = 166;
@@ -301,7 +349,7 @@
             // 
             txtMadocgia.BorderStyle = BorderStyle.FixedSingle;
             txtMadocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMadocgia.Location = new Point(231, 264);
+            txtMadocgia.Location = new Point(203, 262);
             txtMadocgia.Name = "txtMadocgia";
             txtMadocgia.Size = new Size(386, 34);
             txtMadocgia.TabIndex = 163;
@@ -310,14 +358,14 @@
             // 
             txtDiachi.BorderStyle = BorderStyle.FixedSingle;
             txtDiachi.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtDiachi.Location = new Point(231, 423);
+            txtDiachi.Location = new Point(203, 421);
             txtDiachi.Name = "txtDiachi";
             txtDiachi.Size = new Size(386, 34);
             txtDiachi.TabIndex = 164;
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(231, 39);
+            pictureBox1.Location = new Point(203, 37);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(198, 210);
             pictureBox1.TabIndex = 0;
@@ -377,7 +425,7 @@
             groupBox3.Controls.Add(btnLast);
             groupBox3.Controls.Add(btnFirst);
             groupBox3.Dock = DockStyle.Right;
-            groupBox3.Location = new Point(345, 836);
+            groupBox3.Location = new Point(397, 836);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(304, 74);
             groupBox3.TabIndex = 106;
@@ -427,16 +475,42 @@
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
             // 
-            // dtpNamxb
+            // colMadausach
             // 
-            dtpNamxb.CustomFormat = "yyyy";
-            dtpNamxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dtpNamxb.Format = DateTimePickerFormat.Custom;
-            dtpNamxb.Location = new Point(231, 370);
-            dtpNamxb.Name = "dtpNamxb";
-            dtpNamxb.ShowUpDown = true;
-            dtpNamxb.Size = new Size(386, 34);
-            dtpNamxb.TabIndex = 176;
+            colMadausach.HeaderText = "Mã đầu sách";
+            colMadausach.MinimumWidth = 6;
+            colMadausach.Name = "colMadausach";
+            // 
+            // colAnhbia
+            // 
+            colAnhbia.HeaderText = "Ảnh bìa";
+            colAnhbia.MinimumWidth = 6;
+            colAnhbia.Name = "colAnhbia";
+            // 
+            // colTendausach
+            // 
+            colTendausach.FillWeight = 160F;
+            colTendausach.HeaderText = "Tên đầu sách";
+            colTendausach.MinimumWidth = 6;
+            colTendausach.Name = "colTendausach";
+            // 
+            // colNamXB
+            // 
+            colNamXB.HeaderText = "Năm XB";
+            colNamXB.MinimumWidth = 6;
+            colNamXB.Name = "colNamXB";
+            // 
+            // colSoluong
+            // 
+            colSoluong.HeaderText = "SL";
+            colSoluong.MinimumWidth = 6;
+            colSoluong.Name = "colSoluong";
+            // 
+            // colVaitro
+            // 
+            colVaitro.HeaderText = "Vai trò";
+            colVaitro.MinimumWidth = 6;
+            colVaitro.Name = "colVaitro";
             // 
             // ucSachthuthu
             // 
@@ -452,7 +526,7 @@
             ((System.ComponentModel.ISupportInitialize)grdSach).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)drgTacgia).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
@@ -480,7 +554,7 @@
         private TextBox textBox1;
         private Label label12;
         private TextBox txTemail;
-        private DataGridView dataGridView1;
+        private DataGridView drgTacgia;
         private GroupBox groupBox2;
         private Button btnLuu;
         private Button btnUndo;
@@ -491,5 +565,13 @@
         private Button btnLast;
         private Button btnFirst;
         private DateTimePicker dtpNamxb;
+        private DataGridViewTextBoxColumn colMatacgia;
+        private DataGridViewTextBoxColumn colHotentacgia;
+        private DataGridViewTextBoxColumn colMadausach;
+        private DataGridViewTextBoxColumn colAnhbia;
+        private DataGridViewTextBoxColumn colTendausach;
+        private DataGridViewTextBoxColumn colNamXB;
+        private DataGridViewTextBoxColumn colSoluong;
+        private DataGridViewTextBoxColumn colVaitro;
     }
 }

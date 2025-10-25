@@ -28,91 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            txtMota = new TextBox();
-            txtTenke = new TextBox();
-            label4 = new Label();
-            label2 = new Label();
-            txtMake = new TextBox();
-            label1 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThemkesach));
             btnHuy = new Button();
             btnLuu = new Button();
+            groupBox1 = new GroupBox();
+            txtKe = new TextBox();
+            btnUndo = new Button();
+            label5 = new Label();
+            btnSua = new Button();
+            txtTang = new TextBox();
+            label3 = new Label();
+            btnXoa = new Button();
+            txtMota = new TextBox();
+            label1 = new Label();
+            txtTenvitri = new TextBox();
+            txtMavitri = new TextBox();
+            label4 = new Label();
+            label2 = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(txtMota);
-            groupBox1.Controls.Add(txtTenke);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txtMake);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(56, 41);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(527, 382);
-            groupBox1.TabIndex = 22;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Thông tin kệ sách";
-            // 
-            // txtMota
-            // 
-            txtMota.BorderStyle = BorderStyle.FixedSingle;
-            txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMota.Location = new Point(146, 262);
-            txtMota.Name = "txtMota";
-            txtMota.Size = new Size(326, 34);
-            txtMota.TabIndex = 76;
-            // 
-            // txtTenke
-            // 
-            txtTenke.BorderStyle = BorderStyle.FixedSingle;
-            txtTenke.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTenke.Location = new Point(146, 185);
-            txtTenke.Name = "txtTenke";
-            txtTenke.Size = new Size(326, 34);
-            txtTenke.TabIndex = 75;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(22, 268);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 28);
-            label4.TabIndex = 65;
-            label4.Text = "Mô tả";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(22, 188);
-            label2.Name = "label2";
-            label2.Size = new Size(72, 28);
-            label2.TabIndex = 63;
-            label2.Text = "Tên kệ";
-            // 
-            // txtMake
-            // 
-            txtMake.BorderStyle = BorderStyle.FixedSingle;
-            txtMake.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMake.Location = new Point(146, 108);
-            txtMake.Name = "txtMake";
-            txtMake.Size = new Size(326, 34);
-            txtMake.TabIndex = 61;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(22, 108);
-            label1.Name = "label1";
-            label1.Size = new Size(68, 28);
-            label1.TabIndex = 60;
-            label1.Text = "Mã kệ";
             // 
             // btnHuy
             // 
@@ -121,12 +55,13 @@
             btnHuy.FlatStyle = FlatStyle.Flat;
             btnHuy.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnHuy.ForeColor = Color.White;
-            btnHuy.Location = new Point(397, 484);
+            btnHuy.Location = new Point(397, 548);
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(96, 38);
             btnHuy.TabIndex = 143;
             btnHuy.Text = "Hủy";
             btnHuy.UseVisualStyleBackColor = false;
+            btnHuy.Click += btnHuy_Click;
             // 
             // btnLuu
             // 
@@ -135,22 +70,177 @@
             btnLuu.FlatStyle = FlatStyle.Flat;
             btnLuu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnLuu.ForeColor = Color.White;
-            btnLuu.Location = new Point(516, 484);
+            btnLuu.Location = new Point(516, 548);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(96, 38);
             btnLuu.TabIndex = 142;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = false;
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(txtKe);
+            groupBox1.Controls.Add(btnUndo);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(btnSua);
+            groupBox1.Controls.Add(txtTang);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(btnXoa);
+            groupBox1.Controls.Add(txtMota);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(txtTenvitri);
+            groupBox1.Controls.Add(txtMavitri);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            groupBox1.ForeColor = SystemColors.Desktop;
+            groupBox1.Location = new Point(50, 53);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(562, 447);
+            groupBox1.TabIndex = 144;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Thông tin vị trí sách";
+            // 
+            // txtKe
+            // 
+            txtKe.BorderStyle = BorderStyle.FixedSingle;
+            txtKe.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtKe.Location = new Point(170, 261);
+            txtKe.Name = "txtKe";
+            txtKe.Size = new Size(326, 34);
+            txtKe.TabIndex = 154;
+            // 
+            // btnUndo
+            // 
+            btnUndo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnUndo.FlatAppearance.BorderSize = 0;
+            btnUndo.FlatStyle = FlatStyle.Flat;
+            btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
+            btnUndo.Location = new Point(761, 719);
+            btnUndo.Name = "btnUndo";
+            btnUndo.Size = new Size(45, 40);
+            btnUndo.TabIndex = 73;
+            btnUndo.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label5.Location = new Point(46, 264);
+            label5.Name = "label5";
+            label5.Size = new Size(35, 28);
+            label5.TabIndex = 153;
+            label5.Text = "Kệ";
+            // 
+            // btnSua
+            // 
+            btnSua.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.Location = new Point(818, 719);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(45, 40);
+            btnSua.TabIndex = 72;
+            btnSua.UseVisualStyleBackColor = true;
+            // 
+            // txtTang
+            // 
+            txtTang.BorderStyle = BorderStyle.FixedSingle;
+            txtTang.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtTang.Location = new Point(170, 200);
+            txtTang.Name = "txtTang";
+            txtTang.Size = new Size(326, 34);
+            txtTang.TabIndex = 152;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label3.Location = new Point(46, 202);
+            label3.Name = "label3";
+            label3.Size = new Size(57, 28);
+            label3.TabIndex = 151;
+            label3.Text = "Tầng";
+            // 
+            // btnXoa
+            // 
+            btnXoa.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnXoa.FlatAppearance.BorderSize = 0;
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
+            btnXoa.Location = new Point(875, 719);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(45, 40);
+            btnXoa.TabIndex = 71;
+            btnXoa.UseVisualStyleBackColor = true;
+            // 
+            // txtMota
+            // 
+            txtMota.BorderStyle = BorderStyle.FixedSingle;
+            txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtMota.Location = new Point(170, 322);
+            txtMota.Name = "txtMota";
+            txtMota.Size = new Size(326, 34);
+            txtMota.TabIndex = 150;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label1.Location = new Point(46, 78);
+            label1.Name = "label1";
+            label1.Size = new Size(86, 28);
+            label1.TabIndex = 145;
+            label1.Text = "Mã vị trí";
+            // 
+            // txtTenvitri
+            // 
+            txtTenvitri.BorderStyle = BorderStyle.FixedSingle;
+            txtTenvitri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtTenvitri.Location = new Point(170, 139);
+            txtTenvitri.Name = "txtTenvitri";
+            txtTenvitri.Size = new Size(326, 34);
+            txtTenvitri.TabIndex = 149;
+            // 
+            // txtMavitri
+            // 
+            txtMavitri.BorderStyle = BorderStyle.FixedSingle;
+            txtMavitri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtMavitri.Location = new Point(170, 78);
+            txtMavitri.Name = "txtMavitri";
+            txtMavitri.Size = new Size(326, 34);
+            txtMavitri.TabIndex = 146;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label4.Location = new Point(46, 326);
+            label4.Name = "label4";
+            label4.Size = new Size(65, 28);
+            label4.TabIndex = 148;
+            label4.Text = "Mô tả";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label2.Location = new Point(46, 140);
+            label2.Name = "label2";
+            label2.Size = new Size(90, 28);
+            label2.TabIndex = 147;
+            label2.Text = "Tên vị trí";
+            // 
             // frmThemkesach
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(651, 571);
+            ClientSize = new Size(659, 632);
+            Controls.Add(groupBox1);
             Controls.Add(btnHuy);
             Controls.Add(btnLuu);
-            Controls.Add(groupBox1);
             Name = "frmThemkesach";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmThemkesach";
@@ -160,15 +250,21 @@
         }
 
         #endregion
-
-        private GroupBox groupBox1;
-        private TextBox txtMota;
-        private TextBox txtTenke;
-        private Label label4;
-        private Label label2;
-        private TextBox txtMake;
-        private Label label1;
         private Button btnHuy;
         private Button btnLuu;
+        private GroupBox groupBox1;
+        private Button btnUndo;
+        private Button btnSua;
+        private Button btnXoa;
+        private TextBox txtKe;
+        private Label label5;
+        private TextBox txtTang;
+        private Label label3;
+        private TextBox txtMota;
+        private Label label1;
+        private TextBox txtTenvitri;
+        private TextBox txtMavitri;
+        private Label label4;
+        private Label label2;
     }
 }

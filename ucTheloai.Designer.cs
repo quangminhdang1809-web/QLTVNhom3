@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTheloai));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             btnTimkiem = new Button();
             txtTimkiem = new TextBox();
             groupBox1 = new GroupBox();
-            txtMota = new TextBox();
             txtTentheloai = new TextBox();
             btnUndo = new Button();
             btnSua = new Button();
             btnXoa = new Button();
-            label4 = new Label();
             label2 = new Label();
             txtMatheloai = new TextBox();
             label1 = new Label();
@@ -49,6 +48,8 @@
             btnNext = new Button();
             btnLast = new Button();
             btnFirst = new Button();
+            colMatheloai = new DataGridViewTextBoxColumn();
+            colTentheloai = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdTheloai).BeginInit();
@@ -106,12 +107,10 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(txtMota);
             groupBox1.Controls.Add(txtTentheloai);
             groupBox1.Controls.Add(btnUndo);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnXoa);
-            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtMatheloai);
             groupBox1.Controls.Add(label1);
@@ -126,20 +125,11 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin thể loại";
             // 
-            // txtMota
-            // 
-            txtMota.BorderStyle = BorderStyle.FixedSingle;
-            txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMota.Location = new Point(146, 262);
-            txtMota.Name = "txtMota";
-            txtMota.Size = new Size(326, 34);
-            txtMota.TabIndex = 76;
-            // 
             // txtTentheloai
             // 
             txtTentheloai.BorderStyle = BorderStyle.FixedSingle;
             txtTentheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTentheloai.Location = new Point(146, 185);
+            txtTentheloai.Location = new Point(165, 236);
             txtTentheloai.Name = "txtTentheloai";
             txtTentheloai.Size = new Size(326, 34);
             txtTentheloai.TabIndex = 75;
@@ -177,21 +167,11 @@
             btnXoa.TabIndex = 71;
             btnXoa.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(22, 268);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 28);
-            label4.TabIndex = 65;
-            label4.Text = "Mô tả";
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(22, 188);
+            label2.Location = new Point(41, 239);
             label2.Name = "label2";
             label2.Size = new Size(118, 28);
             label2.TabIndex = 63;
@@ -201,7 +181,7 @@
             // 
             txtMatheloai.BorderStyle = BorderStyle.FixedSingle;
             txtMatheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMatheloai.Location = new Point(146, 108);
+            txtMatheloai.Location = new Point(165, 159);
             txtMatheloai.Name = "txtMatheloai";
             txtMatheloai.Size = new Size(326, 34);
             txtMatheloai.TabIndex = 61;
@@ -210,7 +190,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(22, 108);
+            label1.Location = new Point(41, 159);
             label1.Name = "label1";
             label1.Size = new Size(114, 28);
             label1.TabIndex = 60;
@@ -227,15 +207,32 @@
             btnThemtheloai.Size = new Size(110, 80);
             btnThemtheloai.TabIndex = 29;
             btnThemtheloai.UseVisualStyleBackColor = true;
+            btnThemtheloai.Click += btnThemtheloai_Click;
             // 
             // grdTheloai
             // 
-            grdTheloai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdTheloai.AllowUserToAddRows = false;
+            grdTheloai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grdTheloai.BackgroundColor = Color.Gainsboro;
+            grdTheloai.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            grdTheloai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            grdTheloai.ColumnHeadersHeight = 50;
+            grdTheloai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdTheloai.Columns.AddRange(new DataGridViewColumn[] { colMatheloai, colTentheloai });
             grdTheloai.Dock = DockStyle.Fill;
+            grdTheloai.EnableHeadersVisualStyles = false;
             grdTheloai.Location = new Point(3, 140);
             grdTheloai.Name = "grdTheloai";
-            grdTheloai.RowHeadersWidth = 51;
+            grdTheloai.RowHeadersWidth = 50;
             tableLayoutPanel1.SetRowSpan(grdTheloai, 5);
+            grdTheloai.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdTheloai.Size = new Size(687, 616);
             grdTheloai.TabIndex = 33;
             // 
@@ -296,6 +293,19 @@
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
             // 
+            // colMatheloai
+            // 
+            colMatheloai.FillWeight = 80F;
+            colMatheloai.HeaderText = "Mã thể loại";
+            colMatheloai.MinimumWidth = 6;
+            colMatheloai.Name = "colMatheloai";
+            // 
+            // colTentheloai
+            // 
+            colTentheloai.HeaderText = "Tên thể loại";
+            colTentheloai.MinimumWidth = 6;
+            colTentheloai.Name = "colTentheloai";
+            // 
             // ucTheloai
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -317,12 +327,10 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private GroupBox groupBox1;
-        private TextBox txtMota;
         private TextBox txtTentheloai;
         private Button btnUndo;
         private Button btnSua;
         private Button btnXoa;
-        private Label label4;
         private Label label2;
         private TextBox txtMatheloai;
         private Label label1;
@@ -335,5 +343,7 @@
         private Button btnNext;
         private Button btnLast;
         private Button btnFirst;
+        private DataGridViewTextBoxColumn colMatheloai;
+        private DataGridViewTextBoxColumn colTentheloai;
     }
 }

@@ -51,11 +51,6 @@ namespace QLTVNhom3
             grdDocgia.CurrentCell = grdDocgia[0, i];//Dòng  cuối cùng
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void grdDocgia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

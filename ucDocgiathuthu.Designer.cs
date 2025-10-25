@@ -29,23 +29,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDocgiathuthu));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             txtTimkiem = new TextBox();
             cbxLoaidocgia1 = new ComboBox();
             btnTimkiem = new Button();
             btnThemdocgia = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             grdDocgia = new DataGridView();
-            Madocgia = new DataGridViewTextBoxColumn();
-            TenDocGia = new DataGridViewTextBoxColumn();
-            Ngaysinh = new DataGridViewTextBoxColumn();
-            Ngaylapthe = new DataGridViewTextBoxColumn();
-            Ngayhethan = new DataGridViewTextBoxColumn();
+            colMadocgia = new DataGridViewTextBoxColumn();
+            colTenDocGia = new DataGridViewTextBoxColumn();
+            colNgaylapthe = new DataGridViewTextBoxColumn();
+            colNgayhethan = new DataGridViewTextBoxColumn();
+            colLoaidocgia = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             btnLuu = new Button();
             groupBox2 = new GroupBox();
             dgvLichsumuontra = new DataGridView();
+            colMaphieumuon = new DataGridViewTextBoxColumn();
+            colMasach = new DataGridViewTextBoxColumn();
+            colTensach = new DataGridViewTextBoxColumn();
+            colNgaymuon = new DataGridViewTextBoxColumn();
+            colTrangthai = new DataGridViewTextBoxColumn();
             label5 = new Label();
             label12 = new Label();
             label13 = new Label();
@@ -93,7 +99,7 @@
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTimkiem.Location = new Point(3, 37);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(476, 34);
+            txtTimkiem.Size = new Size(512, 34);
             txtTimkiem.TabIndex = 15;
             // 
             // cbxLoaidocgia1
@@ -101,9 +107,9 @@
             cbxLoaidocgia1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbxLoaidocgia1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cbxLoaidocgia1.FormattingEnabled = true;
-            cbxLoaidocgia1.Location = new Point(485, 36);
+            cbxLoaidocgia1.Location = new Point(521, 36);
             cbxLoaidocgia1.Name = "cbxLoaidocgia1";
-            cbxLoaidocgia1.Size = new Size(205, 36);
+            cbxLoaidocgia1.Size = new Size(218, 36);
             cbxLoaidocgia1.TabIndex = 17;
             // 
             // btnTimkiem
@@ -112,9 +118,9 @@
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
-            btnTimkiem.Location = new Point(696, 15);
+            btnTimkiem.Location = new Point(745, 15);
             btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.Size = new Size(88, 78);
+            btnTimkiem.Size = new Size(58, 78);
             btnTimkiem.TabIndex = 18;
             btnTimkiem.UseVisualStyleBackColor = true;
             // 
@@ -129,15 +135,16 @@
             btnThemdocgia.Size = new Size(94, 90);
             btnThemdocgia.TabIndex = 19;
             btnThemdocgia.UseVisualStyleBackColor = true;
+            btnThemdocgia.Click += btnThemdocgia_Click;
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.0537338F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.6078157F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.08465624F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 49.338623F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3118973F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.4051447F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.11575556F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.167202F));
             tableLayoutPanel1.Controls.Add(grdDocgia, 0, 1);
             tableLayoutPanel1.Controls.Add(btnThemdocgia, 3, 0);
             tableLayoutPanel1.Controls.Add(btnTimkiem, 2, 0);
@@ -158,64 +165,77 @@
             // 
             // grdDocgia
             // 
+            grdDocgia.AllowUserToAddRows = false;
             grdDocgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            grdDocgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            grdDocgia.BackgroundColor = Color.Gainsboro;
+            grdDocgia.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            grdDocgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             grdDocgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdDocgia.Columns.AddRange(new DataGridViewColumn[] { Madocgia, TenDocGia, Ngaysinh, Ngaylapthe, Ngayhethan });
+            grdDocgia.Columns.AddRange(new DataGridViewColumn[] { colMadocgia, colTenDocGia, colNgaylapthe, colNgayhethan, colLoaidocgia });
             tableLayoutPanel1.SetColumnSpan(grdDocgia, 2);
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            grdDocgia.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            grdDocgia.DefaultCellStyle = dataGridViewCellStyle8;
             grdDocgia.Dock = DockStyle.Fill;
+            grdDocgia.EnableHeadersVisualStyles = false;
             grdDocgia.Location = new Point(3, 111);
             grdDocgia.Name = "grdDocgia";
             grdDocgia.RowHeadersWidth = 51;
             tableLayoutPanel1.SetRowSpan(grdDocgia, 3);
-            grdDocgia.Size = new Size(687, 659);
+            grdDocgia.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            grdDocgia.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
+            grdDocgia.RowTemplate.Height = 50;
+            grdDocgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdDocgia.Size = new Size(736, 659);
             grdDocgia.TabIndex = 20;
             grdDocgia.CellContentClick += grdDocgia_CellContentClick;
             // 
-            // Madocgia
+            // colMadocgia
             // 
-            Madocgia.HeaderText = "Mã Độc Giả";
-            Madocgia.MinimumWidth = 6;
-            Madocgia.Name = "Madocgia";
+            colMadocgia.FillWeight = 8F;
+            colMadocgia.HeaderText = "Mã Độc Giả";
+            colMadocgia.MinimumWidth = 6;
+            colMadocgia.Name = "colMadocgia";
             // 
-            // TenDocGia
+            // colTenDocGia
             // 
-            TenDocGia.HeaderText = "Họ và tên";
-            TenDocGia.MinimumWidth = 6;
-            TenDocGia.Name = "TenDocGia";
+            colTenDocGia.FillWeight = 10.6906252F;
+            colTenDocGia.HeaderText = "Họ và tên";
+            colTenDocGia.MinimumWidth = 6;
+            colTenDocGia.Name = "colTenDocGia";
             // 
-            // Ngaysinh
+            // colNgaylapthe
             // 
-            Ngaysinh.HeaderText = "Ngày sinh";
-            Ngaysinh.MinimumWidth = 6;
-            Ngaysinh.Name = "Ngaysinh";
+            colNgaylapthe.FillWeight = 8F;
+            colNgaylapthe.HeaderText = "Ngày lập thẻ";
+            colNgaylapthe.MinimumWidth = 6;
+            colNgaylapthe.Name = "colNgaylapthe";
             // 
-            // Ngaylapthe
+            // colNgayhethan
             // 
-            Ngaylapthe.HeaderText = "Ngày Lập Thẻ";
-            Ngaylapthe.MinimumWidth = 6;
-            Ngaylapthe.Name = "Ngaylapthe";
+            colNgayhethan.FillWeight = 8F;
+            colNgayhethan.HeaderText = "Ngày hết hạn";
+            colNgayhethan.MinimumWidth = 6;
+            colNgayhethan.Name = "colNgayhethan";
             // 
-            // Ngayhethan
+            // colLoaidocgia
             // 
-            Ngayhethan.HeaderText = "Ngày hết hạn";
-            Ngayhethan.MinimumWidth = 6;
-            Ngayhethan.Name = "Ngayhethan";
+            colLoaidocgia.FillWeight = 8F;
+            colLoaidocgia.HeaderText = "Loại độc giả";
+            colLoaidocgia.MinimumWidth = 6;
+            colLoaidocgia.Name = "colLoaidocgia";
             // 
             // groupBox1
             // 
@@ -251,10 +271,10 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(790, 111);
+            groupBox1.Location = new Point(809, 111);
             groupBox1.Name = "groupBox1";
             tableLayoutPanel1.SetRowSpan(groupBox1, 4);
-            groupBox1.Size = new Size(762, 787);
+            groupBox1.Size = new Size(743, 787);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin độc giả";
@@ -264,7 +284,7 @@
             btnLuu.FlatAppearance.BorderSize = 0;
             btnLuu.FlatStyle = FlatStyle.Flat;
             btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
-            btnLuu.Location = new Point(619, 665);
+            btnLuu.Location = new Point(619, 731);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(45, 40);
             btnLuu.TabIndex = 165;
@@ -276,7 +296,7 @@
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox2.Location = new Point(39, 409);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(625, 250);
+            groupBox2.Size = new Size(625, 316);
             groupBox2.TabIndex = 163;
             groupBox2.TabStop = false;
             groupBox2.Text = "Lịch sử mượn trả";
@@ -285,14 +305,58 @@
             // 
             dgvLichsumuontra.AllowUserToAddRows = false;
             dgvLichsumuontra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvLichsumuontra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvLichsumuontra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLichsumuontra.Location = new Point(22, 43);
+            dgvLichsumuontra.Columns.AddRange(new DataGridViewColumn[] { colMaphieumuon, colMasach, colTensach, colNgaymuon, colTrangthai });
+            dgvLichsumuontra.Location = new Point(20, 43);
             dgvLichsumuontra.Name = "dgvLichsumuontra";
             dgvLichsumuontra.ReadOnly = true;
             dgvLichsumuontra.RowHeadersWidth = 51;
             dgvLichsumuontra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLichsumuontra.Size = new Size(585, 182);
+            dgvLichsumuontra.Size = new Size(585, 253);
             dgvLichsumuontra.TabIndex = 68;
+            // 
+            // colMaphieumuon
+            // 
+            colMaphieumuon.HeaderText = "Mã Phiếu mượn";
+            colMaphieumuon.MinimumWidth = 6;
+            colMaphieumuon.Name = "colMaphieumuon";
+            colMaphieumuon.ReadOnly = true;
+            // 
+            // colMasach
+            // 
+            colMasach.HeaderText = "Mã sách";
+            colMasach.MinimumWidth = 6;
+            colMasach.Name = "colMasach";
+            colMasach.ReadOnly = true;
+            // 
+            // colTensach
+            // 
+            colTensach.HeaderText = "Tên sách";
+            colTensach.MinimumWidth = 6;
+            colTensach.Name = "colTensach";
+            colTensach.ReadOnly = true;
+            // 
+            // colNgaymuon
+            // 
+            colNgaymuon.HeaderText = "Ngày mượn";
+            colNgaymuon.MinimumWidth = 6;
+            colNgaymuon.Name = "colNgaymuon";
+            colNgaymuon.ReadOnly = true;
+            // 
+            // colTrangthai
+            // 
+            colTrangthai.HeaderText = "Trạng thái";
+            colTrangthai.MinimumWidth = 6;
+            colTrangthai.Name = "colTrangthai";
+            colTrangthai.ReadOnly = true;
             // 
             // label5
             // 
@@ -358,7 +422,7 @@
             btnUndo.FlatAppearance.BorderSize = 0;
             btnUndo.FlatStyle = FlatStyle.Flat;
             btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(483, 665);
+            btnUndo.Location = new Point(483, 731);
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new Size(45, 40);
             btnUndo.TabIndex = 73;
@@ -388,7 +452,7 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
-            btnXoa.Location = new Point(554, 665);
+            btnXoa.Location = new Point(554, 731);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(45, 40);
             btnXoa.TabIndex = 71;
@@ -567,7 +631,7 @@
             groupBox3.Controls.Add(btnLast);
             groupBox3.Controls.Add(btnFirst);
             groupBox3.Dock = DockStyle.Right;
-            groupBox3.Location = new Point(421, 776);
+            groupBox3.Location = new Point(470, 776);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(269, 122);
             groupBox3.TabIndex = 22;
@@ -583,6 +647,7 @@
             btnPrevious.Size = new Size(57, 40);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
+            btnPrevious.Click += btnPrevious_Click;
             // 
             // btnNext
             // 
@@ -594,6 +659,7 @@
             btnNext.Size = new Size(45, 40);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
             // 
             // btnLast
             // 
@@ -605,6 +671,7 @@
             btnLast.Size = new Size(53, 46);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
+            btnLast.Click += btnLast_Click;
             // 
             // btnFirst
             // 
@@ -616,6 +683,7 @@
             btnFirst.Size = new Size(45, 40);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += button5_Click;
             // 
             // ucDocgiathuthu
             // 
@@ -681,10 +749,15 @@
         private Button btnNext;
         private Button btnLast;
         private Button btnFirst;
-        private DataGridViewTextBoxColumn Madocgia;
-        private DataGridViewTextBoxColumn TenDocGia;
-        private DataGridViewTextBoxColumn Ngaysinh;
-        private DataGridViewTextBoxColumn Ngaylapthe;
-        private DataGridViewTextBoxColumn Ngayhethan;
+        private DataGridViewTextBoxColumn colMadocgia;
+        private DataGridViewTextBoxColumn colTenDocGia;
+        private DataGridViewTextBoxColumn colNgaylapthe;
+        private DataGridViewTextBoxColumn colNgayhethan;
+        private DataGridViewTextBoxColumn colLoaidocgia;
+        private DataGridViewTextBoxColumn colMaphieumuon;
+        private DataGridViewTextBoxColumn colMasach;
+        private DataGridViewTextBoxColumn colTensach;
+        private DataGridViewTextBoxColumn colNgaymuon;
+        private DataGridViewTextBoxColumn colTrangthai;
     }
 }

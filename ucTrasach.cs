@@ -32,10 +32,21 @@ namespace QLTVNhom3
 
         }
 
-        private void txtXacnhan_Click(object sender, EventArgs e)
+        private void btnXacnhan_Click(object sender, EventArgs e)
         {
             frmXacnhantrasach frmXacnhantrasach = new frmXacnhantrasach();
             frmXacnhantrasach.ShowDialog();
+        }
+
+        private void grdThongtintrasach_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grdThongtinsachmuon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmNhapchitiettrasach f = new frmNhapchitiettrasach();
+            f.ShowDialog();
         }
     }
 }

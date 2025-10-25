@@ -31,7 +31,11 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucMacabiet));
             tableLayoutPanel1 = new TableLayoutPanel();
-            grdTheloai = new DataGridView();
+            grdSach = new DataGridView();
+            Madausach = new DataGridViewTextBoxColumn();
+            Masach = new DataGridViewTextBoxColumn();
+            Tendausach = new DataGridViewTextBoxColumn();
+            Trangthai = new DataGridViewTextBoxColumn();
             btnTimkiem = new Button();
             txtTimkiem = new TextBox();
             groupBox2 = new GroupBox();
@@ -40,6 +44,8 @@
             btnLast = new Button();
             btnFirst = new Button();
             groupBox1 = new GroupBox();
+            textBox1 = new TextBox();
+            label3 = new Label();
             txtMota = new TextBox();
             txtTentheloai = new TextBox();
             btnUndo = new Button();
@@ -49,14 +55,8 @@
             label2 = new Label();
             txtMatheloai = new TextBox();
             label1 = new Label();
-            Madausach = new DataGridViewTextBoxColumn();
-            Masach = new DataGridViewTextBoxColumn();
-            Tendausach = new DataGridViewTextBoxColumn();
-            Trangthai = new DataGridViewTextBoxColumn();
-            textBox1 = new TextBox();
-            label3 = new Label();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)grdTheloai).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grdSach).BeginInit();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -68,7 +68,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 47.48216F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.173422F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 43.34442F));
-            tableLayoutPanel1.Controls.Add(grdTheloai, 0, 1);
+            tableLayoutPanel1.Controls.Add(grdSach, 0, 1);
             tableLayoutPanel1.Controls.Add(btnTimkiem, 1, 0);
             tableLayoutPanel1.Controls.Add(txtTimkiem, 0, 0);
             tableLayoutPanel1.Controls.Add(groupBox2, 0, 2);
@@ -82,24 +82,55 @@
             tableLayoutPanel1.Size = new Size(1491, 889);
             tableLayoutPanel1.TabIndex = 1;
             // 
-            // grdTheloai
+            // grdSach
             // 
-            grdTheloai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            grdSach.AllowUserToAddRows = false;
+            grdSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grdSach.BackgroundColor = Color.Gainsboro;
+            grdSach.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            grdTheloai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            grdTheloai.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdTheloai.Columns.AddRange(new DataGridViewColumn[] { Madausach, Masach, Tendausach, Trangthai });
-            grdTheloai.Location = new Point(3, 98);
-            grdTheloai.Name = "grdTheloai";
-            grdTheloai.RowHeadersWidth = 51;
-            grdTheloai.Size = new Size(701, 671);
-            grdTheloai.TabIndex = 89;
+            grdSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            grdSach.ColumnHeadersHeight = 50;
+            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdSach.Columns.AddRange(new DataGridViewColumn[] { Madausach, Masach, Tendausach, Trangthai });
+            grdSach.EnableHeadersVisualStyles = false;
+            grdSach.Location = new Point(3, 98);
+            grdSach.Name = "grdSach";
+            grdSach.RowHeadersWidth = 51;
+            grdSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grdSach.Size = new Size(701, 671);
+            grdSach.TabIndex = 89;
+            grdSach.CellContentClick += grdTheloai_CellContentClick;
+            // 
+            // Madausach
+            // 
+            Madausach.HeaderText = "Mã đầu sách";
+            Madausach.MinimumWidth = 6;
+            Madausach.Name = "Madausach";
+            // 
+            // Masach
+            // 
+            Masach.HeaderText = "Mã sách";
+            Masach.MinimumWidth = 6;
+            Masach.Name = "Masach";
+            // 
+            // Tendausach
+            // 
+            Tendausach.HeaderText = "Tên sách";
+            Tendausach.MinimumWidth = 6;
+            Tendausach.Name = "Tendausach";
+            // 
+            // Trangthai
+            // 
+            Trangthai.HeaderText = "Trạng thái";
+            Trangthai.MinimumWidth = 6;
+            Trangthai.Name = "Trangthai";
             // 
             // btnTimkiem
             // 
@@ -146,6 +177,7 @@
             btnPrevious.Size = new Size(57, 40);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
+            btnPrevious.Click += btnPrevious_Click;
             // 
             // btnNext
             // 
@@ -157,6 +189,7 @@
             btnNext.Size = new Size(45, 40);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
             // 
             // btnLast
             // 
@@ -168,6 +201,7 @@
             btnLast.Size = new Size(53, 46);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
+            btnLast.Click += btnLast_Click;
             // 
             // btnFirst
             // 
@@ -179,6 +213,7 @@
             btnFirst.Size = new Size(45, 40);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += btnFirst_Click;
             // 
             // groupBox1
             // 
@@ -202,6 +237,27 @@
             groupBox1.TabIndex = 92;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            textBox1.Location = new Point(169, 172);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(429, 34);
+            textBox1.TabIndex = 78;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label3.Location = new Point(22, 171);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 28);
+            label3.TabIndex = 77;
+            label3.Text = "Tên sách";
             // 
             // txtMota
             // 
@@ -302,51 +358,6 @@
             label1.TabIndex = 60;
             label1.Text = "Mã sách";
             // 
-            // Madausach
-            // 
-            Madausach.HeaderText = "Mã đầu sách";
-            Madausach.MinimumWidth = 6;
-            Madausach.Name = "Madausach";
-            // 
-            // Masach
-            // 
-            Masach.HeaderText = "Mã sách";
-            Masach.MinimumWidth = 6;
-            Masach.Name = "Masach";
-            // 
-            // Tendausach
-            // 
-            Tendausach.HeaderText = "Tên sách";
-            Tendausach.MinimumWidth = 6;
-            Tendausach.Name = "Tendausach";
-            // 
-            // Trangthai
-            // 
-            Trangthai.HeaderText = "Trạng thái";
-            Trangthai.MinimumWidth = 6;
-            Trangthai.Name = "Trangthai";
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox1.Location = new Point(169, 172);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(429, 34);
-            textBox1.TabIndex = 78;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label3.Location = new Point(22, 171);
-            label3.Name = "label3";
-            label3.Size = new Size(90, 28);
-            label3.TabIndex = 77;
-            label3.Text = "Tên sách";
-            // 
             // ucMacabiet
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -356,7 +367,7 @@
             Size = new Size(1650, 1000);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)grdTheloai).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdSach).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -373,7 +384,7 @@
         private Button btnNext;
         private Button btnLast;
         private Button btnFirst;
-        private DataGridView grdTheloai;
+        private DataGridView grdSach;
         private GroupBox groupBox1;
         private TextBox txtMota;
         private TextBox txtTentheloai;
