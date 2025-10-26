@@ -43,13 +43,13 @@
             label1 = new Label();
             btnThemtheloai = new Button();
             grdTheloai = new DataGridView();
+            colMatheloai = new DataGridViewTextBoxColumn();
+            colTentheloai = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
             btnPrevious = new Button();
             btnNext = new Button();
             btnLast = new Button();
             btnFirst = new Button();
-            colMatheloai = new DataGridViewTextBoxColumn();
-            colTentheloai = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdTheloai).BeginInit();
@@ -217,7 +217,7 @@
             grdTheloai.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -235,6 +235,19 @@
             grdTheloai.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdTheloai.Size = new Size(687, 616);
             grdTheloai.TabIndex = 33;
+            // 
+            // colMatheloai
+            // 
+            colMatheloai.FillWeight = 80F;
+            colMatheloai.HeaderText = "Mã thể loại";
+            colMatheloai.MinimumWidth = 6;
+            colMatheloai.Name = "colMatheloai";
+            // 
+            // colTentheloai
+            // 
+            colTentheloai.HeaderText = "Tên thể loại";
+            colTentheloai.MinimumWidth = 6;
+            colTentheloai.Name = "colTentheloai";
             // 
             // groupBox2
             // 
@@ -292,19 +305,6 @@
             btnFirst.Size = new Size(45, 40);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
-            // 
-            // colMatheloai
-            // 
-            colMatheloai.FillWeight = 80F;
-            colMatheloai.HeaderText = "Mã thể loại";
-            colMatheloai.MinimumWidth = 6;
-            colMatheloai.Name = "colMatheloai";
-            // 
-            // colTentheloai
-            // 
-            colTentheloai.HeaderText = "Tên thể loại";
-            colTentheloai.MinimumWidth = 6;
-            colTentheloai.Name = "colTentheloai";
             // 
             // ucTheloai
             // 

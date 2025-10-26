@@ -99,6 +99,7 @@
             grdSach.ColumnHeadersHeight = 50;
             grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             grdSach.Columns.AddRange(new DataGridViewColumn[] { Madausach, Masach, Tendausach, Trangthai });
+            grdSach.Dock = DockStyle.Fill;
             grdSach.EnableHeadersVisualStyles = false;
             grdSach.Location = new Point(3, 98);
             grdSach.Name = "grdSach";
@@ -240,7 +241,7 @@
             // 
             // textBox1
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Anchor = AnchorStyles.Right;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             textBox1.Location = new Point(169, 172);
@@ -250,7 +251,7 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label3.Location = new Point(22, 171);
@@ -261,7 +262,7 @@
             // 
             // txtMota
             // 
-            txtMota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtMota.Anchor = AnchorStyles.Right;
             txtMota.BorderStyle = BorderStyle.FixedSingle;
             txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMota.Location = new Point(169, 315);
@@ -271,7 +272,7 @@
             // 
             // txtTentheloai
             // 
-            txtTentheloai.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtTentheloai.Anchor = AnchorStyles.Right;
             txtTentheloai.BorderStyle = BorderStyle.FixedSingle;
             txtTentheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTentheloai.Location = new Point(169, 238);
@@ -317,7 +318,7 @@
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.Location = new Point(22, 320);
@@ -328,7 +329,7 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label2.Location = new Point(22, 240);
@@ -339,7 +340,7 @@
             // 
             // txtMatheloai
             // 
-            txtMatheloai.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtMatheloai.Anchor = AnchorStyles.Right;
             txtMatheloai.BorderStyle = BorderStyle.FixedSingle;
             txtMatheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMatheloai.Location = new Point(169, 109);
@@ -349,7 +350,7 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.Location = new Point(22, 108);
