@@ -28,17 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThemkesach));
             btnHuy = new Button();
             btnLuu = new Button();
             groupBox1 = new GroupBox();
             txtKe = new TextBox();
-            btnUndo = new Button();
             label5 = new Label();
-            btnSua = new Button();
             txtTang = new TextBox();
             label3 = new Label();
-            btnXoa = new Button();
             txtMota = new TextBox();
             label1 = new Label();
             txtTenvitri = new TextBox();
@@ -80,12 +76,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(txtKe);
-            groupBox1.Controls.Add(btnUndo);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(txtTang);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(txtMota);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(txtTenvitri);
@@ -94,9 +87,9 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(50, 53);
+            groupBox1.Location = new Point(43, 40);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(562, 447);
+            groupBox1.Size = new Size(569, 460);
             groupBox1.TabIndex = 144;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin vị trí sách";
@@ -110,18 +103,6 @@
             txtKe.Size = new Size(326, 34);
             txtKe.TabIndex = 154;
             // 
-            // btnUndo
-            // 
-            btnUndo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnUndo.FlatAppearance.BorderSize = 0;
-            btnUndo.FlatStyle = FlatStyle.Flat;
-            btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(761, 719);
-            btnUndo.Name = "btnUndo";
-            btnUndo.Size = new Size(45, 40);
-            btnUndo.TabIndex = 73;
-            btnUndo.UseVisualStyleBackColor = true;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -131,18 +112,6 @@
             label5.Size = new Size(35, 28);
             label5.TabIndex = 153;
             label5.Text = "Kệ";
-            // 
-            // btnSua
-            // 
-            btnSua.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSua.FlatAppearance.BorderSize = 0;
-            btnSua.FlatStyle = FlatStyle.Flat;
-            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
-            btnSua.Location = new Point(818, 719);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(45, 40);
-            btnSua.TabIndex = 72;
-            btnSua.UseVisualStyleBackColor = true;
             // 
             // txtTang
             // 
@@ -162,18 +131,6 @@
             label3.Size = new Size(57, 28);
             label3.TabIndex = 151;
             label3.Text = "Tầng";
-            // 
-            // btnXoa
-            // 
-            btnXoa.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnXoa.FlatAppearance.BorderSize = 0;
-            btnXoa.FlatStyle = FlatStyle.Flat;
-            btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
-            btnXoa.Location = new Point(875, 719);
-            btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(45, 40);
-            btnXoa.TabIndex = 71;
-            btnXoa.UseVisualStyleBackColor = true;
             // 
             // txtMota
             // 
@@ -253,9 +210,6 @@
         private Button btnHuy;
         private Button btnLuu;
         private GroupBox groupBox1;
-        private Button btnUndo;
-        private Button btnSua;
-        private Button btnXoa;
         private TextBox txtKe;
         private Label label5;
         private TextBox txtTang;
