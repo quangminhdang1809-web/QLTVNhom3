@@ -38,23 +38,27 @@
             groupBox2 = new GroupBox();
             textBox1 = new TextBox();
             dataGridView2 = new DataGridView();
-            colTensach = new DataGridViewTextBoxColumn();
-            colMasach = new DataGridViewTextBoxColumn();
-            colSongaytratre = new DataGridViewTextBoxColumn();
-            colVipham = new DataGridViewTextBoxColumn();
-            colSotien = new DataGridViewTextBoxColumn();
             label1 = new Label();
             groupBox3 = new GroupBox();
             dataGridView1 = new DataGridView();
+            label5 = new Label();
+            label15 = new Label();
+            txtTendocgia = new TextBox();
+            txtMadocgia = new TextBox();
+            colMaphieumuon = new DataGridViewTextBoxColumn();
             colMasachtra = new DataGridViewTextBoxColumn();
             colTensachtra = new DataGridViewTextBoxColumn();
             colNgaymuon = new DataGridViewTextBoxColumn();
             colNgaytra = new DataGridViewTextBoxColumn();
             colTinhtrangsach = new DataGridViewTextBoxColumn();
-            label5 = new Label();
-            label15 = new Label();
-            txtTendocgia = new TextBox();
-            txtMadocgia = new TextBox();
+            colTinhtrangphieu = new DataGridViewTextBoxColumn();
+            colGhichu = new DataGridViewTextBoxColumn();
+            colMaphieumuonphat = new DataGridViewTextBoxColumn();
+            colMasach = new DataGridViewTextBoxColumn();
+            colTensach = new DataGridViewTextBoxColumn();
+            colSongaytratre = new DataGridViewTextBoxColumn();
+            colVipham = new DataGridViewTextBoxColumn();
+            colSotien = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -169,47 +173,12 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { colTensach, colMasach, colSongaytratre, colVipham, colSotien });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { colMaphieumuonphat, colMasach, colTensach, colSongaytratre, colVipham, colSotien });
             dataGridView2.Location = new Point(24, 45);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.Size = new Size(683, 256);
             dataGridView2.TabIndex = 1;
-            // 
-            // colTensach
-            // 
-            colTensach.HeaderText = "Tên sách";
-            colTensach.MinimumWidth = 6;
-            colTensach.Name = "colTensach";
-            colTensach.Width = 125;
-            // 
-            // colMasach
-            // 
-            colMasach.HeaderText = "Mã sách";
-            colMasach.MinimumWidth = 6;
-            colMasach.Name = "colMasach";
-            colMasach.Width = 125;
-            // 
-            // colSongaytratre
-            // 
-            colSongaytratre.HeaderText = "Trả trễ";
-            colSongaytratre.MinimumWidth = 6;
-            colSongaytratre.Name = "colSongaytratre";
-            colSongaytratre.Width = 125;
-            // 
-            // colVipham
-            // 
-            colVipham.HeaderText = "Vi phạm";
-            colVipham.MinimumWidth = 6;
-            colVipham.Name = "colVipham";
-            colVipham.Width = 125;
-            // 
-            // colSotien
-            // 
-            colSotien.HeaderText = "Số tiền";
-            colSotien.MinimumWidth = 6;
-            colSotien.Name = "colSotien";
-            colSotien.Width = 125;
             // 
             // label1
             // 
@@ -243,47 +212,12 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colMasachtra, colTensachtra, colNgaymuon, colNgaytra, colTinhtrangsach });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colMaphieumuon, colMasachtra, colTensachtra, colNgaymuon, colNgaytra, colTinhtrangsach, colTinhtrangphieu, colGhichu });
             dataGridView1.Location = new Point(24, 46);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(683, 210);
             dataGridView1.TabIndex = 0;
-            // 
-            // colMasachtra
-            // 
-            colMasachtra.HeaderText = "Mã sách";
-            colMasachtra.MinimumWidth = 6;
-            colMasachtra.Name = "colMasachtra";
-            colMasachtra.Width = 125;
-            // 
-            // colTensachtra
-            // 
-            colTensachtra.HeaderText = "Tên sách";
-            colTensachtra.MinimumWidth = 6;
-            colTensachtra.Name = "colTensachtra";
-            colTensachtra.Width = 125;
-            // 
-            // colNgaymuon
-            // 
-            colNgaymuon.HeaderText = "Ngày mượn";
-            colNgaymuon.MinimumWidth = 6;
-            colNgaymuon.Name = "colNgaymuon";
-            colNgaymuon.Width = 125;
-            // 
-            // colNgaytra
-            // 
-            colNgaytra.HeaderText = "Hạn trả";
-            colNgaytra.MinimumWidth = 6;
-            colNgaytra.Name = "colNgaytra";
-            colNgaytra.Width = 125;
-            // 
-            // colTinhtrangsach
-            // 
-            colTinhtrangsach.HeaderText = "Tình trạng sách";
-            colTinhtrangsach.MinimumWidth = 6;
-            colTinhtrangsach.Name = "colTinhtrangsach";
-            colTinhtrangsach.Width = 125;
             // 
             // label5
             // 
@@ -323,6 +257,104 @@
             txtMadocgia.Size = new Size(500, 34);
             txtMadocgia.TabIndex = 175;
             // 
+            // colMaphieumuon
+            // 
+            colMaphieumuon.HeaderText = "Mã phiếu mượn";
+            colMaphieumuon.MinimumWidth = 6;
+            colMaphieumuon.Name = "colMaphieumuon";
+            colMaphieumuon.Width = 125;
+            // 
+            // colMasachtra
+            // 
+            colMasachtra.HeaderText = "Mã sách";
+            colMasachtra.MinimumWidth = 6;
+            colMasachtra.Name = "colMasachtra";
+            colMasachtra.Width = 125;
+            // 
+            // colTensachtra
+            // 
+            colTensachtra.HeaderText = "Tên sách";
+            colTensachtra.MinimumWidth = 6;
+            colTensachtra.Name = "colTensachtra";
+            colTensachtra.Width = 125;
+            // 
+            // colNgaymuon
+            // 
+            colNgaymuon.HeaderText = "Ngày mượn";
+            colNgaymuon.MinimumWidth = 6;
+            colNgaymuon.Name = "colNgaymuon";
+            colNgaymuon.Width = 125;
+            // 
+            // colNgaytra
+            // 
+            colNgaytra.HeaderText = "Hạn trả";
+            colNgaytra.MinimumWidth = 6;
+            colNgaytra.Name = "colNgaytra";
+            colNgaytra.Width = 125;
+            // 
+            // colTinhtrangsach
+            // 
+            colTinhtrangsach.HeaderText = "Tình trạng sách";
+            colTinhtrangsach.MinimumWidth = 6;
+            colTinhtrangsach.Name = "colTinhtrangsach";
+            colTinhtrangsach.Width = 125;
+            // 
+            // colTinhtrangphieu
+            // 
+            colTinhtrangphieu.HeaderText = "Tình trạng phiếu mượn";
+            colTinhtrangphieu.MinimumWidth = 6;
+            colTinhtrangphieu.Name = "colTinhtrangphieu";
+            colTinhtrangphieu.Width = 125;
+            // 
+            // colGhichu
+            // 
+            colGhichu.HeaderText = "Ghi chú";
+            colGhichu.MinimumWidth = 6;
+            colGhichu.Name = "colGhichu";
+            colGhichu.Width = 125;
+            // 
+            // colMaphieumuonphat
+            // 
+            colMaphieumuonphat.HeaderText = "Mã phiếu mượn";
+            colMaphieumuonphat.MinimumWidth = 6;
+            colMaphieumuonphat.Name = "colMaphieumuonphat";
+            colMaphieumuonphat.Width = 125;
+            // 
+            // colMasach
+            // 
+            colMasach.HeaderText = "Mã sách";
+            colMasach.MinimumWidth = 6;
+            colMasach.Name = "colMasach";
+            colMasach.Width = 125;
+            // 
+            // colTensach
+            // 
+            colTensach.HeaderText = "Tên sách";
+            colTensach.MinimumWidth = 6;
+            colTensach.Name = "colTensach";
+            colTensach.Width = 125;
+            // 
+            // colSongaytratre
+            // 
+            colSongaytratre.HeaderText = "Trả trễ";
+            colSongaytratre.MinimumWidth = 6;
+            colSongaytratre.Name = "colSongaytratre";
+            colSongaytratre.Width = 125;
+            // 
+            // colVipham
+            // 
+            colVipham.HeaderText = "Vi phạm";
+            colVipham.MinimumWidth = 6;
+            colVipham.Name = "colVipham";
+            colVipham.Width = 125;
+            // 
+            // colSotien
+            // 
+            colSotien.HeaderText = "Số tiền";
+            colSotien.MinimumWidth = 6;
+            colSotien.Name = "colSotien";
+            colSotien.Width = 125;
+            // 
             // frmXacnhantrasach
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -360,15 +392,19 @@
         private Button btnLuu;
         private Label label2;
         private DateTimePicker dtpNgayhethan;
-        private DataGridViewTextBoxColumn colTensach;
+        private DataGridViewTextBoxColumn colMaphieumuonphat;
         private DataGridViewTextBoxColumn colMasach;
+        private DataGridViewTextBoxColumn colTensach;
         private DataGridViewTextBoxColumn colSongaytratre;
         private DataGridViewTextBoxColumn colVipham;
         private DataGridViewTextBoxColumn colSotien;
+        private DataGridViewTextBoxColumn colMaphieumuon;
         private DataGridViewTextBoxColumn colMasachtra;
         private DataGridViewTextBoxColumn colTensachtra;
         private DataGridViewTextBoxColumn colNgaymuon;
         private DataGridViewTextBoxColumn colNgaytra;
         private DataGridViewTextBoxColumn colTinhtrangsach;
+        private DataGridViewTextBoxColumn colTinhtrangphieu;
+        private DataGridViewTextBoxColumn colGhichu;
     }
 }
