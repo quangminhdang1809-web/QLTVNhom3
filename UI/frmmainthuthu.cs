@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLTVNhom3.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace QLTVNhom3
 {
     public partial class frmmainthuthu : Form
     {
-        public frmmainthuthu()
+        public string IDAccount;
+        public frmmainthuthu(string idAccount)
         {
             InitializeComponent();
+            this.IDAccount = idAccount;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -147,6 +150,17 @@ namespace QLTVNhom3
         {
             ucMacabiet uc = new ucMacabiet();
             AddUserControl(uc);
+        }
+
+        private void frmmainthuthu_Load(object sender, EventArgs e)
+        {
+            lblmatt.Text = IDAccount;
+            AccountDAL dal  = new AccountDAL();
+            string tenTT = dal.GetTenThuThu(IDAccount); 
+            if (!string.IsNullOrEmpty(tenTT))
+            {
+                lblten.Text = tenTT;
+            }
         }
     }
 }

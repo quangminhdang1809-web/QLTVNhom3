@@ -261,6 +261,7 @@
             Margin = new Padding(4);
             Name = "frmDocGia";
             Text = "Độc giả";
+            Load += frmDocGia_Load;
             panelMenu.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -277,7 +278,6 @@
         private Panel panelMenu;
         private Panel panelLogo;
         private PictureBox pictureBox1;
-        private Label lblExit;
         private Label label1;
         private Label lblTen;
         private Label lblMSV;

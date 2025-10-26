@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLTVNhom3.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,12 @@ namespace QLTVNhom3
 {
     public partial class frmDocGia : Form
     {
-        public frmDocGia()
+        public string IDAccount;
+        public frmDocGia(string iDAccount)
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
+            this.IDAccount = iDAccount;
         }
 
         private void btnThongtincanhan_Click(object sender, EventArgs e)
@@ -42,10 +45,21 @@ namespace QLTVNhom3
 
         private void btnLichsumuonsach_Click(object sender, EventArgs e)
         {
-            pnlMain.Controls.Clear();   
+            pnlMain.Controls.Clear();
             Lichsumuonsach lsm = new Lichsumuonsach();
-            lsm.Dock = DockStyle.Fill;  
+            lsm.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(lsm);
+        }
+
+        private void frmDocGia_Load(object sender, EventArgs e)
+        {
+            lblMSV.Text = IDAccount;
+            AccountDAL dal = new AccountDAL();
+            string tenDG = dal.GetTenDocGia(IDAccount);
+            if (!string.IsNullOrEmpty(tenDG))
+            {
+                lblTen.Text = tenDG;
+            }
         }
     }
 }
