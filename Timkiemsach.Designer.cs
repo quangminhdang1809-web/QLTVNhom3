@@ -28,33 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Timkiemsach));
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
-            panel2 = new Panel();
-            cbxLocsach = new ComboBox();
-            btnTimkiem = new Button();
-            lblSoluong = new Label();
-            txtNamxb = new TextBox();
-            txtTimsach = new TextBox();
-            lblNamxb = new Label();
-            txtTacgia = new TextBox();
-            lblTacgia = new Label();
-            txtNXB = new TextBox();
-            txtTensach = new TextBox();
-            txtTheloai = new TextBox();
-            lblNXB = new Label();
-            lblTensach = new Label();
-            lblTheloai = new Label();
-            textBox1 = new TextBox();
-            pbAnhbiasach = new PictureBox();
-            lblTimkiemsach = new Label();
             lblTimtheo = new Label();
+            lblTimkiemsach = new Label();
+            txtTimsach = new TextBox();
+            dgvHienthisach = new DataGridView();
+            clmTensach = new DataGridViewTextBoxColumn();
+            clmAnhbia = new DataGridViewTextBoxColumn();
+            clmNamxb = new DataGridViewTextBoxColumn();
+            clmNXB = new DataGridViewTextBoxColumn();
+            clmTacgia = new DataGridViewTextBoxColumn();
+            clmSoluong = new DataGridViewTextBoxColumn();
+            panel2 = new Panel();
+            btnTimkiem = new Button();
+            cbxLocsach = new ComboBox();
+            panel3 = new Panel();
+            label10 = new Label();
+            lblSoluong = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            lblVitri = new Label();
+            lblNamxuatban = new Label();
+            label4 = new Label();
+            lblTacgia = new Label();
+            label2 = new Label();
+            lblTensach = new Label();
+            pbAnhbia = new PictureBox();
             btnRefresh = new Button();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvHienthisach).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbAnhbiasach).BeginInit();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbAnhbia).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -71,56 +80,150 @@
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3355522F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.001667F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 41.6627769F));
-            tableLayoutPanel1.Controls.Add(panel2, 1, 1);
-            tableLayoutPanel1.Controls.Add(lblSoluong, 2, 5);
-            tableLayoutPanel1.Controls.Add(txtNamxb, 1, 6);
-            tableLayoutPanel1.Controls.Add(txtTimsach, 0, 1);
-            tableLayoutPanel1.Controls.Add(lblNamxb, 0, 6);
-            tableLayoutPanel1.Controls.Add(txtTacgia, 1, 5);
-            tableLayoutPanel1.Controls.Add(lblTacgia, 0, 5);
-            tableLayoutPanel1.Controls.Add(txtNXB, 1, 4);
-            tableLayoutPanel1.Controls.Add(txtTensach, 1, 2);
-            tableLayoutPanel1.Controls.Add(txtTheloai, 1, 3);
-            tableLayoutPanel1.Controls.Add(lblNXB, 0, 4);
-            tableLayoutPanel1.Controls.Add(lblTensach, 0, 2);
-            tableLayoutPanel1.Controls.Add(lblTheloai, 0, 3);
-            tableLayoutPanel1.Controls.Add(textBox1, 2, 6);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33555F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.0016689F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 41.66278F));
+            tableLayoutPanel1.Controls.Add(lblTimtheo, 2, 0);
             tableLayoutPanel1.Controls.Add(lblTimkiemsach, 0, 0);
-            tableLayoutPanel1.Controls.Add(lblTimtheo, 1, 0);
-            tableLayoutPanel1.Controls.Add(pbAnhbiasach, 2, 0);
-            tableLayoutPanel1.Location = new Point(46, 143);
+            tableLayoutPanel1.Controls.Add(txtTimsach, 0, 1);
+            tableLayoutPanel1.Controls.Add(dgvHienthisach, 0, 2);
+            tableLayoutPanel1.Controls.Add(panel2, 2, 1);
+            tableLayoutPanel1.Controls.Add(panel3, 2, 5);
+            tableLayoutPanel1.Controls.Add(pbAnhbia, 2, 2);
+            tableLayoutPanel1.Location = new Point(34, 84);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 7;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel1.Size = new Size(951, 598);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.289204F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 19.28835F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2844906F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2844906F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2844906F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2844906F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2844906F));
+            tableLayoutPanel1.Size = new Size(951, 632);
             tableLayoutPanel1.TabIndex = 19;
+            // 
+            // lblTimtheo
+            // 
+            lblTimtheo.AutoSize = true;
+            lblTimtheo.Dock = DockStyle.Bottom;
+            lblTimtheo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTimtheo.Location = new Point(557, 26);
+            lblTimtheo.Name = "lblTimtheo";
+            lblTimtheo.Size = new Size(391, 32);
+            lblTimtheo.TabIndex = 3;
+            lblTimtheo.Text = "Tìm theo";
+            lblTimtheo.TextAlign = ContentAlignment.BottomCenter;
+            // 
+            // lblTimkiemsach
+            // 
+            lblTimkiemsach.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(lblTimkiemsach, 2);
+            lblTimkiemsach.Dock = DockStyle.Bottom;
+            lblTimkiemsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTimkiemsach.Location = new Point(3, 26);
+            lblTimkiemsach.Name = "lblTimkiemsach";
+            lblTimkiemsach.Size = new Size(548, 32);
+            lblTimkiemsach.TabIndex = 0;
+            lblTimkiemsach.Text = "Tìm kiếm sách";
+            lblTimkiemsach.TextAlign = ContentAlignment.BottomCenter;
+            // 
+            // txtTimsach
+            // 
+            txtTimsach.BorderStyle = BorderStyle.FixedSingle;
+            tableLayoutPanel1.SetColumnSpan(txtTimsach, 2);
+            txtTimsach.Dock = DockStyle.Fill;
+            txtTimsach.Font = new Font("Segoe UI", 12F);
+            txtTimsach.ForeColor = SystemColors.ScrollBar;
+            txtTimsach.Location = new Point(3, 61);
+            txtTimsach.Name = "txtTimsach";
+            txtTimsach.Size = new Size(548, 39);
+            txtTimsach.TabIndex = 1;
+            txtTimsach.Text = "Khám phá 50.000+ đầu sách tại NEU Lib";
+            // 
+            // dgvHienthisach
+            // 
+            dgvHienthisach.AllowUserToAddRows = false;
+            dgvHienthisach.AllowUserToDeleteRows = false;
+            dgvHienthisach.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvHienthisach.BackgroundColor = SystemColors.Control;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvHienthisach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvHienthisach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHienthisach.Columns.AddRange(new DataGridViewColumn[] { clmTensach, clmAnhbia, clmNamxb, clmNXB, clmTacgia, clmSoluong });
+            tableLayoutPanel1.SetColumnSpan(dgvHienthisach, 2);
+            dgvHienthisach.EnableHeadersVisualStyles = false;
+            dgvHienthisach.Location = new Point(3, 182);
+            dgvHienthisach.Name = "dgvHienthisach";
+            dgvHienthisach.ReadOnly = true;
+            dgvHienthisach.RowHeadersWidth = 62;
+            tableLayoutPanel1.SetRowSpan(dgvHienthisach, 5);
+            dgvHienthisach.Size = new Size(548, 447);
+            dgvHienthisach.TabIndex = 4;
+            // 
+            // clmTensach
+            // 
+            clmTensach.HeaderText = "Tên sách";
+            clmTensach.MinimumWidth = 8;
+            clmTensach.Name = "clmTensach";
+            clmTensach.ReadOnly = true;
+            clmTensach.Width = 150;
+            // 
+            // clmAnhbia
+            // 
+            clmAnhbia.HeaderText = "Ảnh bìa";
+            clmAnhbia.MinimumWidth = 8;
+            clmAnhbia.Name = "clmAnhbia";
+            clmAnhbia.ReadOnly = true;
+            clmAnhbia.Width = 150;
+            // 
+            // clmNamxb
+            // 
+            clmNamxb.HeaderText = "Năm xuất bản";
+            clmNamxb.MinimumWidth = 8;
+            clmNamxb.Name = "clmNamxb";
+            clmNamxb.ReadOnly = true;
+            clmNamxb.Width = 150;
+            // 
+            // clmNXB
+            // 
+            clmNXB.HeaderText = "NXB";
+            clmNXB.MinimumWidth = 8;
+            clmNXB.Name = "clmNXB";
+            clmNXB.ReadOnly = true;
+            clmNXB.Width = 150;
+            // 
+            // clmTacgia
+            // 
+            clmTacgia.HeaderText = "Tác giả";
+            clmTacgia.MinimumWidth = 8;
+            clmTacgia.Name = "clmTacgia";
+            clmTacgia.ReadOnly = true;
+            clmTacgia.Width = 150;
+            // 
+            // clmSoluong
+            // 
+            clmSoluong.HeaderText = "Số lượng";
+            clmSoluong.MinimumWidth = 8;
+            clmSoluong.Name = "clmSoluong";
+            clmSoluong.ReadOnly = true;
+            clmSoluong.Width = 150;
             // 
             // panel2
             // 
-            panel2.Controls.Add(cbxLocsach);
             panel2.Controls.Add(btnTimkiem);
-            panel2.Location = new Point(320, 88);
+            panel2.Controls.Add(cbxLocsach);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(557, 61);
             panel2.Name = "panel2";
-            panel2.Size = new Size(231, 79);
-            panel2.TabIndex = 20;
-            // 
-            // cbxLocsach
-            // 
-            cbxLocsach.Font = new Font("Segoe UI", 12F);
-            cbxLocsach.FormattingEnabled = true;
-            cbxLocsach.Location = new Point(3, 4);
-            cbxLocsach.Name = "cbxLocsach";
-            cbxLocsach.Size = new Size(182, 40);
-            cbxLocsach.TabIndex = 2;
+            panel2.Size = new Size(391, 115);
+            panel2.TabIndex = 5;
             // 
             // btnTimkiem
             // 
@@ -130,177 +233,144 @@
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
             btnTimkiem.ImageAlign = ContentAlignment.TopLeft;
-            btnTimkiem.Location = new Point(186, 3);
+            btnTimkiem.Location = new Point(221, 0);
             btnTimkiem.Name = "btnTimkiem";
             btnTimkiem.Size = new Size(45, 45);
             btnTimkiem.TabIndex = 4;
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click;
             // 
+            // cbxLocsach
+            // 
+            cbxLocsach.Font = new Font("Segoe UI", 12F);
+            cbxLocsach.FormattingEnabled = true;
+            cbxLocsach.Location = new Point(0, 0);
+            cbxLocsach.Name = "cbxLocsach";
+            cbxLocsach.Size = new Size(182, 40);
+            cbxLocsach.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(label10);
+            panel3.Controls.Add(lblSoluong);
+            panel3.Controls.Add(label8);
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(lblVitri);
+            panel3.Controls.Add(lblNamxuatban);
+            panel3.Controls.Add(label4);
+            panel3.Controls.Add(lblTacgia);
+            panel3.Controls.Add(label2);
+            panel3.Controls.Add(lblTensach);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Font = new Font("Segoe UI", 10F);
+            panel3.Location = new Point(557, 452);
+            panel3.Name = "panel3";
+            tableLayoutPanel1.SetRowSpan(panel3, 2);
+            panel3.Size = new Size(391, 177);
+            panel3.TabIndex = 7;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(240, 153);
+            label10.Name = "label10";
+            label10.Size = new Size(76, 28);
+            label10.TabIndex = 9;
+            label10.Text = "label10";
+            // 
             // lblSoluong
             // 
             lblSoluong.AutoSize = true;
-            lblSoluong.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblSoluong.Location = new Point(557, 425);
+            lblSoluong.Location = new Point(60, 153);
             lblSoluong.Name = "lblSoluong";
-            lblSoluong.Size = new Size(117, 32);
-            lblSoluong.TabIndex = 17;
+            lblSoluong.Size = new Size(92, 28);
+            lblSoluong.TabIndex = 8;
             lblSoluong.Text = "Số lượng";
             // 
-            // txtNamxb
+            // label8
             // 
-            txtNamxb.BorderStyle = BorderStyle.FixedSingle;
-            txtNamxb.Font = new Font("Segoe UI", 12F);
-            txtNamxb.Location = new Point(320, 513);
-            txtNamxb.Name = "txtNamxb";
-            txtNamxb.ReadOnly = true;
-            txtNamxb.Size = new Size(150, 39);
-            txtNamxb.TabIndex = 16;
-            txtNamxb.TextChanged += textBox5_TextChanged;
+            label8.AutoSize = true;
+            label8.Location = new Point(241, 119);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 28);
+            label8.TabIndex = 7;
+            label8.Text = "label8";
             // 
-            // txtTimsach
+            // label7
             // 
-            txtTimsach.BorderStyle = BorderStyle.FixedSingle;
-            txtTimsach.Font = new Font("Segoe UI", 12F);
-            txtTimsach.Location = new Point(3, 88);
-            txtTimsach.Name = "txtTimsach";
-            txtTimsach.Size = new Size(310, 39);
-            txtTimsach.TabIndex = 1;
+            label7.AutoSize = true;
+            label7.Location = new Point(241, 85);
+            label7.Name = "label7";
+            label7.Size = new Size(65, 28);
+            label7.TabIndex = 6;
+            label7.Text = "label7";
             // 
-            // lblNamxb
+            // lblVitri
             // 
-            lblNamxb.AutoSize = true;
-            lblNamxb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblNamxb.Location = new Point(3, 510);
-            lblNamxb.Name = "lblNamxb";
-            lblNamxb.Size = new Size(175, 32);
-            lblNamxb.TabIndex = 15;
-            lblNamxb.Text = "Năm xuất bản";
+            lblVitri.AutoSize = true;
+            lblVitri.Location = new Point(60, 119);
+            lblVitri.Name = "lblVitri";
+            lblVitri.Size = new Size(58, 28);
+            lblVitri.TabIndex = 5;
+            lblVitri.Text = "Vị trí ";
             // 
-            // txtTacgia
+            // lblNamxuatban
             // 
-            txtTacgia.BorderStyle = BorderStyle.FixedSingle;
-            txtTacgia.Font = new Font("Segoe UI", 12F);
-            txtTacgia.Location = new Point(320, 428);
-            txtTacgia.Name = "txtTacgia";
-            txtTacgia.ReadOnly = true;
-            txtTacgia.Size = new Size(150, 39);
-            txtTacgia.TabIndex = 14;
+            lblNamxuatban.AutoSize = true;
+            lblNamxuatban.Location = new Point(60, 85);
+            lblNamxuatban.Name = "lblNamxuatban";
+            lblNamxuatban.Size = new Size(134, 28);
+            lblNamxuatban.TabIndex = 4;
+            lblNamxuatban.Text = "Năm xuất bản";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(241, 51);
+            label4.Name = "label4";
+            label4.Size = new Size(65, 28);
+            label4.TabIndex = 3;
+            label4.Text = "label4";
             // 
             // lblTacgia
             // 
             lblTacgia.AutoSize = true;
-            lblTacgia.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTacgia.Location = new Point(3, 425);
+            lblTacgia.Location = new Point(60, 51);
             lblTacgia.Name = "lblTacgia";
-            lblTacgia.Size = new Size(93, 32);
-            lblTacgia.TabIndex = 10;
+            lblTacgia.Size = new Size(71, 28);
+            lblTacgia.TabIndex = 2;
             lblTacgia.Text = "Tác giả";
             // 
-            // txtNXB
+            // label2
             // 
-            txtNXB.BorderStyle = BorderStyle.FixedSingle;
-            txtNXB.Font = new Font("Segoe UI", 12F);
-            txtNXB.Location = new Point(320, 343);
-            txtNXB.Name = "txtNXB";
-            txtNXB.ReadOnly = true;
-            txtNXB.Size = new Size(150, 39);
-            txtNXB.TabIndex = 13;
-            // 
-            // txtTensach
-            // 
-            txtTensach.BorderStyle = BorderStyle.FixedSingle;
-            txtTensach.Font = new Font("Segoe UI", 12F);
-            txtTensach.Location = new Point(320, 173);
-            txtTensach.Name = "txtTensach";
-            txtTensach.ReadOnly = true;
-            txtTensach.Size = new Size(150, 39);
-            txtTensach.TabIndex = 11;
-            txtTensach.TextChanged += txtTensach_TextChanged;
-            // 
-            // txtTheloai
-            // 
-            txtTheloai.BorderStyle = BorderStyle.FixedSingle;
-            txtTheloai.Font = new Font("Segoe UI", 12F);
-            txtTheloai.Location = new Point(320, 258);
-            txtTheloai.Name = "txtTheloai";
-            txtTheloai.ReadOnly = true;
-            txtTheloai.Size = new Size(150, 39);
-            txtTheloai.TabIndex = 12;
-            // 
-            // lblNXB
-            // 
-            lblNXB.AutoSize = true;
-            lblNXB.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblNXB.Location = new Point(3, 340);
-            lblNXB.Name = "lblNXB";
-            lblNXB.Size = new Size(167, 32);
-            lblNXB.TabIndex = 9;
-            lblNXB.Text = "Nhà xuất bản";
+            label2.AutoSize = true;
+            label2.Location = new Point(241, 17);
+            label2.Name = "label2";
+            label2.Size = new Size(65, 28);
+            label2.TabIndex = 1;
+            label2.Text = "label2";
             // 
             // lblTensach
             // 
             lblTensach.AutoSize = true;
-            lblTensach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTensach.Location = new Point(3, 170);
+            lblTensach.Location = new Point(60, 17);
             lblTensach.Name = "lblTensach";
-            lblTensach.Size = new Size(111, 32);
-            lblTensach.TabIndex = 7;
+            lblTensach.Size = new Size(84, 28);
+            lblTensach.TabIndex = 0;
             lblTensach.Text = "Tên sách";
             // 
-            // lblTheloai
+            // pbAnhbia
             // 
-            lblTheloai.AccessibleRole = AccessibleRole.None;
-            lblTheloai.AutoSize = true;
-            lblTheloai.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTheloai.Location = new Point(3, 255);
-            lblTheloai.Name = "lblTheloai";
-            lblTheloai.Size = new Size(104, 32);
-            lblTheloai.TabIndex = 8;
-            lblTheloai.Text = "Thể loại";
-            // 
-            // textBox1
-            // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(557, 513);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(150, 39);
-            textBox1.TabIndex = 18;
-            // 
-            // pbAnhbiasach
-            // 
-            pbAnhbiasach.BackColor = SystemColors.ActiveBorder;
-            pbAnhbiasach.BackgroundImageLayout = ImageLayout.Stretch;
-            pbAnhbiasach.Dock = DockStyle.Fill;
-            pbAnhbiasach.Location = new Point(557, 3);
-            pbAnhbiasach.Name = "pbAnhbiasach";
-            tableLayoutPanel1.SetRowSpan(pbAnhbiasach, 5);
-            pbAnhbiasach.Size = new Size(391, 419);
-            pbAnhbiasach.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbAnhbiasach.TabIndex = 6;
-            pbAnhbiasach.TabStop = false;
-            // 
-            // lblTimkiemsach
-            // 
-            lblTimkiemsach.AutoSize = true;
-            lblTimkiemsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTimkiemsach.Location = new Point(3, 0);
-            lblTimkiemsach.Name = "lblTimkiemsach";
-            lblTimkiemsach.Size = new Size(176, 32);
-            lblTimkiemsach.TabIndex = 0;
-            lblTimkiemsach.Text = "Tìm kiếm sách";
-            // 
-            // lblTimtheo
-            // 
-            lblTimtheo.AutoSize = true;
-            lblTimtheo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTimtheo.Location = new Point(320, 0);
-            lblTimtheo.Name = "lblTimtheo";
-            lblTimtheo.Size = new Size(115, 32);
-            lblTimtheo.TabIndex = 3;
-            lblTimtheo.Text = "Tìm theo";
+            pbAnhbia.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            pbAnhbia.BackColor = SystemColors.ButtonShadow;
+            pbAnhbia.ErrorImage = (Image)resources.GetObject("pbAnhbia.ErrorImage");
+            pbAnhbia.Location = new Point(636, 182);
+            pbAnhbia.Name = "pbAnhbia";
+            tableLayoutPanel1.SetRowSpan(pbAnhbia, 3);
+            pbAnhbia.Size = new Size(232, 264);
+            pbAnhbia.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbAnhbia.TabIndex = 6;
+            pbAnhbia.TabStop = false;
             // 
             // btnRefresh
             // 
@@ -326,8 +396,11 @@
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvHienthisach).EndInit();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbAnhbiasach).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbAnhbia).EndInit();
             ResumeLayout(false);
         }
 
@@ -340,20 +413,26 @@
         private TextBox txtTimsach;
         private Label lblTimkiemsach;
         private Button btnRefresh;
-        private PictureBox pbAnhbiasach;
-        private Label lblTensach;
-        private Label lblTheloai;
-        private Label lblNXB;
-        private Label lblTacgia;
-        private Label lblNamxb;
-        private TextBox txtNamxb;
-        private TextBox txtTacgia;
-        private TextBox txtNXB;
-        private TextBox txtTheloai;
-        private TextBox txtTensach;
-        private TextBox textBox1;
-        private Label lblSoluong;
         private TableLayoutPanel tableLayoutPanel1;
+        private DataGridView dgvHienthisach;
         private Panel panel2;
+        private DataGridViewTextBoxColumn clmTensach;
+        private DataGridViewTextBoxColumn clmAnhbia;
+        private DataGridViewTextBoxColumn clmNamxb;
+        private DataGridViewTextBoxColumn clmNXB;
+        private DataGridViewTextBoxColumn clmTacgia;
+        private DataGridViewTextBoxColumn clmSoluong;
+        private PictureBox pbAnhbia;
+        private Panel panel3;
+        private Label label8;
+        private Label label7;
+        private Label lblVitri;
+        private Label lblNamxuatban;
+        private Label label4;
+        private Label lblTacgia;
+        private Label label2;
+        private Label lblTensach;
+        private Label label10;
+        private Label lblSoluong;
     }
 }
