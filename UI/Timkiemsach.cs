@@ -17,26 +17,14 @@ namespace QLTVNhom3
             InitializeComponent();
         }
 
+        private void cbxLocsach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnTimkiem_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTensach_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

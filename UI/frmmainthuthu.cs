@@ -20,11 +20,6 @@ namespace QLTVNhom3
             this.IDAccount = idAccount;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnDanhmuc_Click(object sender, EventArgs e)
         {
             if (pnlDanhmuc.Visible == true)
