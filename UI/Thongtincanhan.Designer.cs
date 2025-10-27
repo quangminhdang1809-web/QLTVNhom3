@@ -70,6 +70,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -135,7 +136,7 @@
             textBox3.Location = new Point(751, 307);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(183, 39);
+            textBox3.Size = new Size(183, 50);
             textBox3.TabIndex = 12;
             // 
             // textBox2
@@ -146,7 +147,7 @@
             textBox2.Location = new Point(751, 225);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(183, 39);
+            textBox2.Size = new Size(183, 50);
             textBox2.TabIndex = 11;
             // 
             // textBox1
@@ -157,7 +158,7 @@
             textBox1.Location = new Point(751, 143);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(183, 39);
+            textBox1.Size = new Size(183, 50);
             textBox1.TabIndex = 10;
             // 
             // panel9
@@ -176,7 +177,7 @@
             lblSDT.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblSDT.Location = new Point(0, 0);
             lblSDT.Name = "lblSDT";
-            lblSDT.Size = new Size(164, 32);
+            lblSDT.Size = new Size(218, 45);
             lblSDT.TabIndex = 6;
             lblSDT.Text = "Số điện thoại";
             // 
@@ -206,7 +207,7 @@
             txtLoaiTK.Margin = new Padding(4);
             txtLoaiTK.Name = "txtLoaiTK";
             txtLoaiTK.ReadOnly = true;
-            txtLoaiTK.Size = new Size(186, 39);
+            txtLoaiTK.Size = new Size(186, 50);
             txtLoaiTK.TabIndex = 10;
             txtLoaiTK.Text = "Sinh viên";
             txtLoaiTK.TextAlign = HorizontalAlignment.Center;
@@ -227,7 +228,7 @@
             lblHoten.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblHoten.Location = new Point(0, 0);
             lblHoten.Name = "lblHoten";
-            lblHoten.Size = new Size(124, 32);
+            lblHoten.Size = new Size(165, 45);
             lblHoten.TabIndex = 4;
             lblHoten.Text = "Họ và tên";
             // 
@@ -237,7 +238,7 @@
             lblLoaitaikhoan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblLoaitaikhoan.Location = new Point(3, 304);
             lblLoaitaikhoan.Name = "lblLoaitaikhoan";
-            lblLoaitaikhoan.Size = new Size(174, 32);
+            lblLoaitaikhoan.Size = new Size(138, 82);
             lblLoaitaikhoan.TabIndex = 5;
             lblLoaitaikhoan.Text = "Loại tài khoản";
             // 
@@ -249,7 +250,7 @@
             txtMatkhau.Location = new Point(185, 225);
             txtMatkhau.Name = "txtMatkhau";
             txtMatkhau.ReadOnly = true;
-            txtMatkhau.Size = new Size(186, 39);
+            txtMatkhau.Size = new Size(186, 50);
             txtMatkhau.TabIndex = 9;
             // 
             // panel5
@@ -276,7 +277,7 @@
             lblMaDG.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblMaDG.Location = new Point(0, 0);
             lblMaDG.Name = "lblMaDG";
-            lblMaDG.Size = new Size(141, 32);
+            lblMaDG.Size = new Size(187, 45);
             lblMaDG.TabIndex = 2;
             lblMaDG.Text = "Mã độc giả";
             // 
@@ -307,7 +308,7 @@
             lblMatkhau.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblMatkhau.Location = new Point(3, 222);
             lblMatkhau.Name = "lblMatkhau";
-            lblMatkhau.Size = new Size(121, 32);
+            lblMatkhau.Size = new Size(162, 45);
             lblMatkhau.TabIndex = 3;
             lblMatkhau.Text = "Mật khẩu";
             // 
@@ -317,7 +318,7 @@
             lblTenTK.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblTenTK.Location = new Point(3, 140);
             lblTenTK.Name = "lblTenTK";
-            lblTenTK.Size = new Size(167, 32);
+            lblTenTK.Size = new Size(128, 82);
             lblTenTK.TabIndex = 1;
             lblTenTK.Text = "Tên tài khoản";
             // 
@@ -329,7 +330,7 @@
             txtTenTK.Location = new Point(185, 143);
             txtTenTK.Name = "txtTenTK";
             txtTenTK.ReadOnly = true;
-            txtTenTK.Size = new Size(186, 39);
+            txtTenTK.Size = new Size(186, 50);
             txtTenTK.TabIndex = 8;
             // 
             // textBox4
@@ -340,7 +341,7 @@
             textBox4.Location = new Point(751, 389);
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(183, 39);
+            textBox4.Size = new Size(183, 50);
             textBox4.TabIndex = 13;
             // 
             // textBox6
@@ -351,7 +352,7 @@
             textBox6.Location = new Point(751, 471);
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
-            textBox6.Size = new Size(183, 39);
+            textBox6.Size = new Size(183, 50);
             textBox6.TabIndex = 15;
             // 
             // textBox5
@@ -362,7 +363,7 @@
             textBox5.Location = new Point(751, 553);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
-            textBox5.Size = new Size(183, 39);
+            textBox5.Size = new Size(183, 50);
             textBox5.TabIndex = 14;
             // 
             // textBox7
@@ -373,7 +374,7 @@
             textBox7.Location = new Point(751, 635);
             textBox7.Name = "textBox7";
             textBox7.ReadOnly = true;
-            textBox7.Size = new Size(183, 39);
+            textBox7.Size = new Size(183, 50);
             textBox7.TabIndex = 16;
             // 
             // lblEmail
@@ -383,7 +384,7 @@
             lblEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblEmail.Location = new Point(564, 386);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(76, 82);
+            lblEmail.Size = new Size(101, 82);
             lblEmail.TabIndex = 8;
             lblEmail.Text = "Email";
             // 
@@ -394,7 +395,7 @@
             lblDiachi.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblDiachi.Location = new Point(564, 468);
             lblDiachi.Name = "lblDiachi";
-            lblDiachi.Size = new Size(92, 82);
+            lblDiachi.Size = new Size(122, 82);
             lblDiachi.TabIndex = 5;
             lblDiachi.Text = "Địa chỉ";
             // 
@@ -405,7 +406,7 @@
             lblNgaymo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblNgaymo.Location = new Point(564, 550);
             lblNgaymo.Name = "lblNgaymo";
-            lblNgaymo.Size = new Size(161, 82);
+            lblNgaymo.Size = new Size(166, 82);
             lblNgaymo.TabIndex = 9;
             lblNgaymo.Text = "Ngày mở thẻ";
             // 
@@ -416,7 +417,7 @@
             lblHethan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblHethan.Location = new Point(564, 632);
             lblHethan.Name = "lblHethan";
-            lblHethan.Size = new Size(166, 88);
+            lblHethan.Size = new Size(165, 88);
             lblHethan.TabIndex = 3;
             lblHethan.Text = "Ngày hết hạn";
             // 
@@ -429,9 +430,9 @@
             btnChangePassword.FlatStyle = FlatStyle.Flat;
             btnChangePassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnChangePassword.ForeColor = SystemColors.Control;
-            btnChangePassword.Location = new Point(65, 404);
+            btnChangePassword.Location = new Point(28, 389);
             btnChangePassword.Name = "btnChangePassword";
-            btnChangePassword.Size = new Size(317, 78);
+            btnChangePassword.Size = new Size(317, 76);
             btnChangePassword.TabIndex = 7;
             btnChangePassword.Text = "Đổi mật khẩu";
             btnChangePassword.UseVisualStyleBackColor = false;
@@ -453,6 +454,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(panel1);
             Margin = new Padding(4);
             Name = "Thongtincanhan";

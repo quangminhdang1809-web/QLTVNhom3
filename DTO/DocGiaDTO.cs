@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QLTVNhom3.DAL
+namespace QLTVNhom3.DTO
 {
-    public class DocGiaDAL
+    internal class DocGiaDTO
     {
-        private DBHelper db = new DBHelper(); 
     }
 }

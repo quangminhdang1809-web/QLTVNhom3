@@ -242,6 +242,7 @@
             // 
             // pnlMain
             // 
+            pnlMain.BackColor = Color.White;
             pnlMain.Dock = DockStyle.Fill;
             pnlMain.Location = new Point(426, 96);
             pnlMain.Margin = new Padding(4);
