@@ -9,7 +9,6 @@ namespace QLTVNhom3.DAL
 {
     public class DocGiaDAL
     {
-        private DBHelper db = new DBHelper();
-        public DataTable GetDanhSachDocGia ()
+        private DBHelper db = new DBHelper(); 
     }
 }
