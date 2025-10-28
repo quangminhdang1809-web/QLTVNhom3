@@ -41,22 +41,30 @@ namespace QLTVNhom3.DAL
              string query = @"select IDAccount from ACCOUNT";
             return db.ExecuteQuery(query);
         }
-        public int ThemDocGia(string hoTen, DateTime ngaySinh, string diaChi, string email, string SoDienThoai, string idAccount, string maLoaiDG, DateTime ngayLapThe, DateTime ngayHetHan)
+        public int ThemDocGia(string hoTen, DateTime ngaySinh, string diaChi, string email, string SoDienThoai, string idAccount, int maLoaiDG, DateTime ngayLapThe, DateTime ngayHetHan)
         {
-            string query = @"insert into DOCGIA (HoTen, NgaySinh, DiaChi, Email,SoDienThoai, NgayLapThe, NgayHetHan,IDAccount, MaLoaiDG)
-                             values (@HoTen, @NgaySinh,@DiaChi,@Email, @SoDienThoai,@NgayLapThe, @NgayHetHan, @IDAccount, @MaLoaiDG)";
-            SqlParameter[] parameters = {
+            try
+            {
+                string query = @"insert into DOCGIA (HoTen, NgaySinh, DiaChi, Email, NgayLapThe, NgayHetHan,IDAccount, SoDienThoai, MaLoaiDG)
+                             values (@HoTen, @NgaySinh,@DiaChi,@Email, @NgayLapThe, @NgayHetHan, @IDAccount, @SoDienThoai,@MaLoaiDG)";
+                SqlParameter[] parameters = {
                 new SqlParameter("@HoTen", hoTen),
                 new SqlParameter("@NgaySinh", ngaySinh),
-                new SqlParameter("@Email", email),
                 new SqlParameter("@DiaChi", diaChi),
+                new SqlParameter("@Email", email),
                 new SqlParameter("@SoDienThoai", SoDienThoai),
-                new SqlParameter("@NgayLapThe", ngayLapThe),
-                new SqlParameter("@NgayHetHan", ngayHetHan),
                 new SqlParameter("@IDAccount", idAccount),
-                new SqlParameter("@MaLoaiDG", maLoaiDG)
+                new SqlParameter("@MaLoaiDG", maLoaiDG),
+                new SqlParameter("@NgayLapThe", ngayLapThe),
+                new SqlParameter("@NgayHetHan", ngayHetHan)
             };
-            return db.ExecuteNonQuery(query, parameters);
+                return db.ExecuteNonQuery(query, parameters);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine ("Lỗi khi thêm độc giả: " + ex.Message);
+                return -1; // Hoặc giá trị khác để biểu thị lỗi
+            }
         }
         public int CapNhatDocGia(DocGiaDTO docGia)
         {

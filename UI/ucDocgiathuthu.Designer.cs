@@ -38,6 +38,11 @@
             btnThemdocgia = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             grdDocgia = new DataGridView();
+            colMadocgia = new DataGridViewTextBoxColumn();
+            colTenDocGia = new DataGridViewTextBoxColumn();
+            colNgaylapthe = new DataGridViewTextBoxColumn();
+            colNgayhethan = new DataGridViewTextBoxColumn();
+            colLoaidocgia = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             btnLuu = new Button();
             groupBox2 = new GroupBox();
@@ -79,11 +84,6 @@
             btnNext = new Button();
             btnLast = new Button();
             btnFirst = new Button();
-            colMadocgia = new DataGridViewTextBoxColumn();
-            colTenDocGia = new DataGridViewTextBoxColumn();
-            colNgaylapthe = new DataGridViewTextBoxColumn();
-            colNgayhethan = new DataGridViewTextBoxColumn();
-            colLoaidocgia = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdDocgia).BeginInit();
             groupBox1.SuspendLayout();
@@ -164,8 +164,8 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 38.70968F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 61.29032F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 342F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 448F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 203F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 491F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 160F));
             tableLayoutPanel1.Size = new Size(2502, 1409);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -205,9 +205,49 @@
             grdDocgia.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             grdDocgia.RowTemplate.Height = 50;
             grdDocgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdDocgia.Size = new Size(1183, 1034);
+            grdDocgia.Size = new Size(1183, 1077);
             grdDocgia.TabIndex = 20;
             grdDocgia.CellClick += grdDocgia_CellClick;
+            // 
+            // colMadocgia
+            // 
+            colMadocgia.DataPropertyName = "MaDocGia";
+            colMadocgia.FillWeight = 8F;
+            colMadocgia.HeaderText = "Mã Độc Giả";
+            colMadocgia.MinimumWidth = 6;
+            colMadocgia.Name = "colMadocgia";
+            // 
+            // colTenDocGia
+            // 
+            colTenDocGia.DataPropertyName = "HoTen";
+            colTenDocGia.FillWeight = 10.6906252F;
+            colTenDocGia.HeaderText = "Họ và tên";
+            colTenDocGia.MinimumWidth = 6;
+            colTenDocGia.Name = "colTenDocGia";
+            // 
+            // colNgaylapthe
+            // 
+            colNgaylapthe.DataPropertyName = "NgayLapThe";
+            colNgaylapthe.FillWeight = 8F;
+            colNgaylapthe.HeaderText = "Ngày lập thẻ";
+            colNgaylapthe.MinimumWidth = 6;
+            colNgaylapthe.Name = "colNgaylapthe";
+            // 
+            // colNgayhethan
+            // 
+            colNgayhethan.DataPropertyName = "NgayHetHan";
+            colNgayhethan.FillWeight = 8F;
+            colNgayhethan.HeaderText = "Ngày hết hạn";
+            colNgayhethan.MinimumWidth = 6;
+            colNgayhethan.Name = "colNgayhethan";
+            // 
+            // colLoaidocgia
+            // 
+            colLoaidocgia.DataPropertyName = "TenLoaiDG";
+            colLoaidocgia.FillWeight = 8F;
+            colLoaidocgia.HeaderText = "Loại độc giả";
+            colLoaidocgia.MinimumWidth = 6;
+            colLoaidocgia.Name = "colLoaidocgia";
             // 
             // groupBox1
             // 
@@ -638,11 +678,11 @@
             groupBox3.Controls.Add(btnLast);
             groupBox3.Controls.Add(btnFirst);
             groupBox3.Dock = DockStyle.Right;
-            groupBox3.Location = new Point(751, 1210);
+            groupBox3.Location = new Point(723, 1253);
             groupBox3.Margin = new Padding(5);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(5);
-            groupBox3.Size = new Size(437, 194);
+            groupBox3.Size = new Size(465, 151);
             groupBox3.TabIndex = 22;
             groupBox3.TabStop = false;
             // 
@@ -651,7 +691,7 @@
             btnPrevious.FlatAppearance.BorderSize = 0;
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(135, 42);
+            btnPrevious.Location = new Point(134, 42);
             btnPrevious.Margin = new Padding(5);
             btnPrevious.Name = "btnPrevious";
             btnPrevious.Size = new Size(93, 64);
@@ -664,10 +704,10 @@
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(250, 42);
+            btnNext.Location = new Point(240, 42);
             btnNext.Margin = new Padding(5);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(73, 64);
+            btnNext.Size = new Size(93, 64);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += btnNext_Click;
@@ -680,7 +720,7 @@
             btnLast.Location = new Point(346, 42);
             btnLast.Margin = new Padding(5);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(86, 74);
+            btnLast.Size = new Size(93, 64);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
             btnLast.Click += btnLast_Click;
@@ -690,53 +730,13 @@
             btnFirst.FlatAppearance.BorderSize = 0;
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(39, 42);
+            btnFirst.Location = new Point(28, 40);
             btnFirst.Margin = new Padding(5);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(73, 64);
+            btnFirst.Size = new Size(93, 64);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
             btnFirst.Click += button5_Click;
-            // 
-            // colMadocgia
-            // 
-            colMadocgia.DataPropertyName = "MaDocGia";
-            colMadocgia.FillWeight = 8F;
-            colMadocgia.HeaderText = "Mã Độc Giả";
-            colMadocgia.MinimumWidth = 6;
-            colMadocgia.Name = "colMadocgia";
-            // 
-            // colTenDocGia
-            // 
-            colTenDocGia.DataPropertyName = "HoTen";
-            colTenDocGia.FillWeight = 10.6906252F;
-            colTenDocGia.HeaderText = "Họ và tên";
-            colTenDocGia.MinimumWidth = 6;
-            colTenDocGia.Name = "colTenDocGia";
-            // 
-            // colNgaylapthe
-            // 
-            colNgaylapthe.DataPropertyName = "NgayLapThe";
-            colNgaylapthe.FillWeight = 8F;
-            colNgaylapthe.HeaderText = "Ngày lập thẻ";
-            colNgaylapthe.MinimumWidth = 6;
-            colNgaylapthe.Name = "colNgaylapthe";
-            // 
-            // colNgayhethan
-            // 
-            colNgayhethan.DataPropertyName = "NgayHetHan";
-            colNgayhethan.FillWeight = 8F;
-            colNgayhethan.HeaderText = "Ngày hết hạn";
-            colNgayhethan.MinimumWidth = 6;
-            colNgayhethan.Name = "colNgayhethan";
-            // 
-            // colLoaidocgia
-            // 
-            colLoaidocgia.DataPropertyName = "TenLoaiDG";
-            colLoaidocgia.FillWeight = 8F;
-            colLoaidocgia.HeaderText = "Loại độc giả";
-            colLoaidocgia.MinimumWidth = 6;
-            colLoaidocgia.Name = "colLoaidocgia";
             // 
             // ucDocgiathuthu
             // 

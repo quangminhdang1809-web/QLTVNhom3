@@ -340,6 +340,7 @@
             Name = "frmThemdocgia";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmThemdocgia";
+            Load += frmThemdocgia_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

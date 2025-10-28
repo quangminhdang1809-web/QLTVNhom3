@@ -150,11 +150,24 @@ namespace QLTVNhom3
         private void frmmainthuthu_Load(object sender, EventArgs e)
         {
             lblmatt.Text = IDAccount;
-            AccountDAL dal  = new AccountDAL();
-            string tenTT = dal.GetTenThuThu(IDAccount); 
-            if (!string.IsNullOrEmpty(tenTT))
+            try
             {
-                lblten.Text = tenTT;
+                AccountDAL dal = new AccountDAL();
+                string tenTT = dal.GetTenThuThu(IDAccount);
+                if (string.IsNullOrEmpty(tenTT))
+                {
+                    // hiển thị thông báo tạm để debug (bỏ/ẩn sau khi sửa xong)
+                    MessageBox.Show($"GetTenThuThu trả về rỗng cho IDAccount = {IDAccount}", "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lblten.Text = "(Chưa có tên)";
+                }
+                else
+                {
+                    lblten.Text = tenTT;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải thông tin thủ thư: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
