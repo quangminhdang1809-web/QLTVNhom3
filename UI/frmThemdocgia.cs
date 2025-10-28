@@ -16,6 +16,7 @@ namespace QLTVNhom3
     public partial class frmThemdocgia : Form
     {
         private DocGiaDAL docGiaDAL = new DocGiaDAL();
+        private LoaiDocGiaDAL loaiDocGiaDAL = new LoaiDocGiaDAL();
         public frmThemdocgia()
         {
             InitializeComponent();
@@ -24,8 +25,12 @@ namespace QLTVNhom3
         {
             try
             {
-                LoaiDocGiaDAL loaiDocGiaDAL = new LoaiDocGiaDAL();
-
+                if (!TestConnection())
+                {
+                    MessageBox.Show("Không thể kết nối đến cơ sở dữ liệu. Vui lòng kiểm tra kết nối và thử lại.", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    return;
+                }
                 //Load loại độc giả 
                 cbbLoaidocgia.DataSource = loaiDocGiaDAL.GetLoaiDocGia();
                 cbbLoaidocgia.DisplayMember = "TenLoaiDG";
@@ -34,7 +39,7 @@ namespace QLTVNhom3
 
                 //Ngay lap the la hnay 
                 dtpNgaylapthe.Value = DateTime.Now;
-                dtpNgayhethan.Enabled= false;
+                dtpNgayhethan.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -44,63 +49,121 @@ namespace QLTVNhom3
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            try
             {
-                string hoTen = txtTendocgia.Text;
-                DateTime ngaySinh = dtpNgaysinh.Value;
-                string diaChi = txtDiachi.Text.Trim();
-                string email = txtEmail.Text.Trim();
-                string soDienThoai = txtSdt.Text.Trim();
-                string idAccount = txtIDAccount.Text.Trim();
+                try
+                {
+                    if (!KiemTraDuLieuHopLe())
+                        return;
 
-                if (cbbLoaidocgia.SelectedIndex < 0)
-                {
-                    MessageBox.Show("Vui lòng chọn loại độc giả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                    // Lấy dữ liệu từ form
+                    string hoTen = txtTendocgia.Text.Trim();
+                    DateTime ngaySinh = dtpNgaysinh.Value;
+                    string diaChi = txtDiachi.Text.Trim();
+                    string email = txtEmail.Text.Trim();
+                    string soDienThoai = txtSdt.Text.Trim();
+                    string idAccount = txtIDAccount.Text.Trim();
+                    DateTime ngayLapThe = dtpNgaylapthe.Value;
+                    DateTime ngayHetHan = dtpNgayhethan.Value;
 
-                string maLoaiDG = cbbLoaidocgia.SelectedValue.ToString();
-                DateTime ngayLapThe = dtpNgaylapthe.Value;
-                DateTime ngayHetHan = dtpNgayhethan.Value;
+                    // Lấy mã loại độc giả
+                    int? maLoaiDG = GetMaLoaiDocGia();
+                    if (maLoaiDG == null)
+                    {
+                        MessageBox.Show("Vui lòng chọn loại độc giả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
-                //Kiểm tra dữ liệu nhập vào 
-                if (string.IsNullOrWhiteSpace(hoTen))
-                {
-                    MessageBox.Show("Vui lòng nhập họ tên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // Gọi DAL để thêm
+                    int result = docGiaDAL.ThemDocGia(hoTen, ngaySinh, diaChi, email, soDienThoai, idAccount, maLoaiDG.Value, ngayLapThe, ngayHetHan);
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Thêm độc giả thành công!");
+                        this.Close();
+                    }
+                    else if (result == -1)
+                    {
+                        MessageBox.Show("Lỗi kết nối database!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm độc giả thất bại!");
+                    }
                 }
-                if (string.IsNullOrWhiteSpace(diaChi))
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Vui lòng nhập địa chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(soDienThoai))
-                {
-                    MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                if (string.IsNullOrWhiteSpace(email))
-                {
-                    MessageBox.Show("Vui lòng nhập email!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Gọi DAL để thêm
-                int result = docGiaDAL.ThemDocGia(hoTen, ngaySinh, diaChi, email, soDienThoai, idAccount, maLoaiDG, ngayLapThe, ngayHetHan);
-                if (result > 0)
-                {
-                    MessageBox.Show("Thêm độc giả thành công!");
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm độc giả thất bại!");
+                    MessageBox.Show("Lỗi khi thêm độc giả: " + ex.Message);
                 }
             }
-            catch (Exception ex)
+        }
+        private bool KiemTraDuLieuHopLe()
+        {
+            //Kiểm tra dữ liệu nhập vào 
+            if (string.IsNullOrWhiteSpace(txtTendocgia.Text))
             {
-                MessageBox.Show("Lỗi khi thêm độc giả: " + ex.Message);
+                MessageBox.Show("Vui lòng nhập họ tên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTendocgia.Focus();
+                return false;
+            }
 
+            if (string.IsNullOrWhiteSpace(txtDiachi.Text))
+            {
+                MessageBox.Show("Vui lòng nhập địa chỉ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtDiachi.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtSdt.Text))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSdt.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Vui lòng nhập email!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return false;
+            }
+
+            if (cbbLoaidocgia.SelectedIndex < 0)
+            {
+                MessageBox.Show("Vui lòng chọn loại độc giả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cbbLoaidocgia.Focus();
+                return false;
+            }
+
+            // Kiểm tra tuổi (ví dụ: ít nhất 6 tuổi)
+            int tuoi = DateTime.Now.Year - dtpNgaysinh.Value.Year;
+            if (tuoi < 6)
+            {
+                MessageBox.Show("Độc giả phải ít nhất 6 tuổi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpNgaysinh.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private int? GetMaLoaiDocGia()
+        {
+            if (cbbLoaidocgia.SelectedValue == null)
+                return null;
+
+            string selectedValue = cbbLoaidocgia.SelectedValue.ToString();
+
+            // Kiểm tra nếu là DataRowView
+            //if (selectedValue.Contains("System.Data.DataRowView"))
+            //return null;
+
+            //return selectedValue;
+            try
+            {
+                return Convert.ToInt32(cbbLoaidocgia.SelectedValue);
+            }
+            catch
+            {
+                return null;
             }
         }
 
@@ -111,18 +174,42 @@ namespace QLTVNhom3
 
         private void cbbLoaidocgia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbbLoaidocgia.SelectedValue == null) return;
-
-            string maLoai = cbbLoaidocgia.SelectedValue.ToString();
-            LoaiDocGiaDAL loaiDAL = new LoaiDocGiaDAL();
-            LoaiDocGiaDTO loai = loaiDAL.GetLoaiDocGiaByMa(maLoai);
-
-            if (loai != null)
+            try
             {
-                DateTime ngayLap = dtpNgaylapthe.Value;
-                dtpNgayhethan.Value = ngayLap.AddYears(loai.ThoiHanThe);
+                int? maLoai = GetMaLoaiDocGia();
+                if (maLoai == null)
+                    return;
+
+                LoaiDocGiaDTO loai = loaiDocGiaDAL.GetLoaiDocGiaByMa(maLoai.Value);
+
+                if (loai != null && loai.ThoiHanThe > 0)
+                {
+                    DateTime ngayLap = dtpNgaylapthe.Value;
+                    dtpNgayhethan.Value = ngayLap.AddYears(loai.ThoiHanThe);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật ngày hết hạn: " + ex.Message);
             }
         }
-
+        private bool TestConnection()
+        {
+            try
+            {
+                DBHelper db = new DBHelper();
+                using (var con = db.Getconnection())
+                {
+                    con.Open();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi kết nối database: {ex.Message}\n\nKiểm tra:\n1. SQL Server có đang chạy không?\n2. Database QLTV có tồn tại không?",
+                    "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

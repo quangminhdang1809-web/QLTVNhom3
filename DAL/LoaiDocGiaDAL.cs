@@ -16,14 +16,14 @@ namespace QLTVNhom3.DAL
         // Lấy toàn bộ danh sách loại độc giả
         public DataTable GetLoaiDocGia()
         {
-            string query = "SELECT * FROM LoaiDocGia";
+            string query = "SELECT MaLoaiDG, TenLoaiDG, ThoiHanThe FROM LoaiDocGia";
             return db.ExecuteQuery(query);
         }
 
         // Lấy chi tiết 1 loại độc giả theo mã
-        public LoaiDocGiaDTO GetLoaiDocGiaByMa(string maLoaiDG)
+        public LoaiDocGiaDTO GetLoaiDocGiaByMa(int maLoaiDG)
         {
-            string query = "SELECT * FROM LoaiDocGia WHERE MaLoaiDG = @MaLoaiDG";
+            string query = "SELECT MaLoaiDG, TenLoaiDG, ThoiHanThe, SoSachToiDa, SoNgayMuonToiDa FROM LoaiDocGia WHERE MaLoaiDG = @MaLoaiDG";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@MaLoaiDG", maLoaiDG)
@@ -43,6 +43,5 @@ namespace QLTVNhom3.DAL
             }
             return null;
         }
-
     }
 }
