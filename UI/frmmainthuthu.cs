@@ -137,7 +137,7 @@ namespace QLTVNhom3
 
         private void btnKhosach_Click(object sender, EventArgs e)
         {
-            ucKhosach uc = new ucKhosach();
+            ucVitri uc = new ucVitri();
             AddUserControl(uc);
         }
 
