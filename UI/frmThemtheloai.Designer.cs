@@ -31,8 +31,6 @@
             groupBox1 = new GroupBox();
             txtTentheloai = new TextBox();
             label2 = new Label();
-            txtMatheloai = new TextBox();
-            label1 = new Label();
             btnLuu = new Button();
             btnHuy = new Button();
             groupBox1.SuspendLayout();
@@ -42,8 +40,6 @@
             // 
             groupBox1.Controls.Add(txtTentheloai);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(txtMatheloai);
-            groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
             groupBox1.Location = new Point(28, 22);
@@ -57,7 +53,7 @@
             // 
             txtTentheloai.BorderStyle = BorderStyle.FixedSingle;
             txtTentheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTentheloai.Location = new Point(148, 212);
+            txtTentheloai.Location = new Point(145, 145);
             txtTentheloai.Name = "txtTentheloai";
             txtTentheloai.Size = new Size(326, 34);
             txtTentheloai.TabIndex = 75;
@@ -66,30 +62,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(24, 215);
+            label2.Location = new Point(21, 148);
             label2.Name = "label2";
             label2.Size = new Size(118, 28);
             label2.TabIndex = 63;
             label2.Text = "Tên thể loại";
-            // 
-            // txtMatheloai
-            // 
-            txtMatheloai.BorderStyle = BorderStyle.FixedSingle;
-            txtMatheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMatheloai.Location = new Point(148, 135);
-            txtMatheloai.Name = "txtMatheloai";
-            txtMatheloai.Size = new Size(326, 34);
-            txtMatheloai.TabIndex = 61;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(24, 135);
-            label1.Name = "label1";
-            label1.Size = new Size(114, 28);
-            label1.TabIndex = 60;
-            label1.Text = "Mã thể loại";
             // 
             // btnLuu
             // 
@@ -104,6 +81,7 @@
             btnLuu.TabIndex = 141;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = false;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnHuy
             // 
@@ -142,8 +120,6 @@
         private GroupBox groupBox1;
         private TextBox txtTentheloai;
         private Label label2;
-        private TextBox txtMatheloai;
-        private Label label1;
         private Button btnLuu;
         private Button btnHuy;
     }

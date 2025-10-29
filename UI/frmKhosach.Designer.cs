@@ -1,6 +1,6 @@
 ﻿namespace QLTVNhom3
 {
-    partial class frmThemkesach
+    partial class frmThemvitri
     {
         /// <summary>
         /// Required designer variable.
@@ -189,7 +189,7 @@
             label2.TabIndex = 147;
             label2.Text = "Tên vị trí";
             // 
-            // frmThemkesach
+            // frmThemvitri
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -198,7 +198,7 @@
             Controls.Add(groupBox1);
             Controls.Add(btnHuy);
             Controls.Add(btnLuu);
-            Name = "frmThemkesach";
+            Name = "frmThemvitri";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmThemkesach";
             groupBox1.ResumeLayout(false);

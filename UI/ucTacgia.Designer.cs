@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTacgia));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTacgia));
             tableLayoutPanel1 = new TableLayoutPanel();
+            btnThemtacgia = new Button();
             grdTacgia = new DataGridView();
             colMatacgia = new DataGridViewTextBoxColumn();
             colTentacgia = new DataGridViewTextBoxColumn();
@@ -46,7 +47,7 @@
             btnLast = new Button();
             btnFirst = new Button();
             groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
+            txtQuoctich = new TextBox();
             label3 = new Label();
             txtHovaten = new TextBox();
             dtpNamsinhtacgia = new DateTimePicker();
@@ -58,7 +59,7 @@
             btnLuu = new Button();
             btnXoa = new Button();
             btnUndo = new Button();
-            btnThemtacgia = new Button();
+            btnSua = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdTacgia).BeginInit();
             groupBox2.SuspendLayout();
@@ -92,6 +93,19 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 98F));
             tableLayoutPanel1.Size = new Size(1494, 941);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // btnThemtacgia
+            // 
+            btnThemtacgia.Dock = DockStyle.Right;
+            btnThemtacgia.FlatAppearance.BorderSize = 0;
+            btnThemtacgia.FlatStyle = FlatStyle.Flat;
+            btnThemtacgia.Image = (Image)resources.GetObject("btnThemtacgia.Image");
+            btnThemtacgia.Location = new Point(1397, 3);
+            btnThemtacgia.Name = "btnThemtacgia";
+            btnThemtacgia.Size = new Size(94, 81);
+            btnThemtacgia.TabIndex = 104;
+            btnThemtacgia.UseVisualStyleBackColor = true;
+            btnThemtacgia.Click += btnThemtacgia_Click;
             // 
             // grdTacgia
             // 
@@ -130,10 +144,11 @@
             grdTacgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdTacgia.Size = new Size(725, 749);
             grdTacgia.TabIndex = 93;
-            grdTacgia.CellContentClick += grdTacgia_CellContentClick;
+            grdTacgia.CellClick += grdTacgia_CellClick;
             // 
             // colMatacgia
             // 
+            colMatacgia.DataPropertyName = "MaTacGia";
             colMatacgia.FillWeight = 80F;
             colMatacgia.HeaderText = "Mã tác giả";
             colMatacgia.MinimumWidth = 6;
@@ -141,6 +156,7 @@
             // 
             // colTentacgia
             // 
+            colTentacgia.DataPropertyName = "TenTacGia";
             colTentacgia.FillWeight = 150F;
             colTentacgia.HeaderText = "Họ và tên";
             colTentacgia.MinimumWidth = 6;
@@ -148,12 +164,14 @@
             // 
             // colNamsinh
             // 
+            colNamsinh.DataPropertyName = "NamSinh";
             colNamsinh.HeaderText = "Năm sinh";
             colNamsinh.MinimumWidth = 6;
             colNamsinh.Name = "colNamsinh";
             // 
             // colQuoctich
             // 
+            colQuoctich.DataPropertyName = "QuocTich";
             colQuoctich.HeaderText = "Quốc tịch";
             colQuoctich.MinimumWidth = 6;
             colQuoctich.Name = "colQuoctich";
@@ -169,6 +187,7 @@
             btnTimkiem.Size = new Size(90, 74);
             btnTimkiem.TabIndex = 34;
             btnTimkiem.UseVisualStyleBackColor = true;
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // txtTimkiem
             // 
@@ -203,6 +222,7 @@
             btnPrevious.Size = new Size(57, 40);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
+            btnPrevious.Click += btnPrevious_Click;
             // 
             // btnNext
             // 
@@ -214,6 +234,7 @@
             btnNext.Size = new Size(45, 40);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
             // 
             // btnLast
             // 
@@ -225,6 +246,7 @@
             btnLast.Size = new Size(53, 46);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
+            btnLast.Click += btnLast_Click;
             // 
             // btnFirst
             // 
@@ -236,10 +258,11 @@
             btnFirst.Size = new Size(45, 40);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += btnFirst_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txtQuoctich);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtHovaten);
             groupBox1.Controls.Add(dtpNamsinhtacgia);
@@ -258,14 +281,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin tác giả";
             // 
-            // textBox1
+            // txtQuoctich
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox1.Location = new Point(176, 234);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(326, 34);
-            textBox1.TabIndex = 77;
+            txtQuoctich.BorderStyle = BorderStyle.FixedSingle;
+            txtQuoctich.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtQuoctich.Location = new Point(176, 234);
+            txtQuoctich.Name = "txtQuoctich";
+            txtQuoctich.Size = new Size(326, 34);
+            txtQuoctich.TabIndex = 77;
             // 
             // label3
             // 
@@ -338,13 +361,14 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(btnSua);
             groupBox4.Controls.Add(btnLuu);
             groupBox4.Controls.Add(btnXoa);
             groupBox4.Controls.Add(btnUndo);
             groupBox4.Dock = DockStyle.Right;
-            groupBox4.Location = new Point(1241, 451);
+            groupBox4.Location = new Point(1173, 451);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(250, 112);
+            groupBox4.Size = new Size(318, 112);
             groupBox4.TabIndex = 95;
             groupBox4.TabStop = false;
             // 
@@ -353,46 +377,48 @@
             btnLuu.FlatAppearance.BorderSize = 0;
             btnLuu.FlatStyle = FlatStyle.Flat;
             btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
-            btnLuu.Location = new Point(164, 34);
+            btnLuu.Location = new Point(249, 35);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(44, 40);
             btnLuu.TabIndex = 72;
             btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnXoa
             // 
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
-            btnXoa.Location = new Point(103, 34);
+            btnXoa.Location = new Point(187, 35);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(44, 40);
             btnXoa.TabIndex = 71;
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnUndo
             // 
             btnUndo.FlatAppearance.BorderSize = 0;
             btnUndo.FlatStyle = FlatStyle.Flat;
             btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(48, 34);
+            btnUndo.Location = new Point(125, 35);
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new Size(44, 40);
             btnUndo.TabIndex = 73;
             btnUndo.UseVisualStyleBackColor = true;
+            btnUndo.Click += btnUndo_Click;
             // 
-            // btnThemtacgia
+            // btnSua
             // 
-            btnThemtacgia.Dock = DockStyle.Right;
-            btnThemtacgia.FlatAppearance.BorderSize = 0;
-            btnThemtacgia.FlatStyle = FlatStyle.Flat;
-            btnThemtacgia.Image = (Image)resources.GetObject("btnThemtacgia.Image");
-            btnThemtacgia.Location = new Point(1397, 3);
-            btnThemtacgia.Name = "btnThemtacgia";
-            btnThemtacgia.Size = new Size(94, 81);
-            btnThemtacgia.TabIndex = 104;
-            btnThemtacgia.UseVisualStyleBackColor = true;
-            btnThemtacgia.Click += btnThemtacgia_Click;
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.Location = new Point(62, 35);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(45, 40);
+            btnSua.TabIndex = 77;
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // ucTacgia
             // 
@@ -433,16 +459,17 @@
         private TextBox txtMatacgia;
         private Label label1;
         private DataGridView grdTacgia;
-        private DataGridViewTextBoxColumn colMatacgia;
-        private DataGridViewTextBoxColumn colTentacgia;
-        private DataGridViewTextBoxColumn colNamsinh;
-        private DataGridViewTextBoxColumn colQuoctich;
-        private TextBox textBox1;
+        private TextBox txtQuoctich;
         private Label label3;
         private GroupBox groupBox4;
         private Button btnLuu;
         private Button btnXoa;
         private Button btnUndo;
         private Button btnThemtacgia;
+        private DataGridViewTextBoxColumn colMatacgia;
+        private DataGridViewTextBoxColumn colTentacgia;
+        private DataGridViewTextBoxColumn colNamsinh;
+        private DataGridViewTextBoxColumn colQuoctich;
+        private Button btnSua;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace QLTVNhom3
 {
-    partial class ucKhosach
+    partial class ucVitri
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,16 +29,13 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucKhosach));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucVitri));
             tableLayoutPanel1 = new TableLayoutPanel();
             grdVitrisach = new DataGridView();
-            Mavitri = new DataGridViewTextBoxColumn();
-            Tenvitri = new DataGridViewTextBoxColumn();
-            colTang = new DataGridViewTextBoxColumn();
-            colKe = new DataGridViewTextBoxColumn();
             btnTimkiem = new Button();
             txtTimkiem = new TextBox();
             groupBox1 = new GroupBox();
+            btnSua = new Button();
             txtKe = new TextBox();
             label5 = new Label();
             txtTang = new TextBox();
@@ -46,7 +43,7 @@
             txtMota = new TextBox();
             txtTenvitri = new TextBox();
             btnUndo = new Button();
-            btnSua = new Button();
+            btnLuu = new Button();
             btnXoa = new Button();
             label4 = new Label();
             label2 = new Label();
@@ -58,6 +55,10 @@
             btnLast = new Button();
             btnFirst = new Button();
             btnThemvitrisach = new Button();
+            Mavitri = new DataGridViewTextBoxColumn();
+            Tenvitri = new DataGridViewTextBoxColumn();
+            colTang = new DataGridViewTextBoxColumn();
+            colKe = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdVitrisach).BeginInit();
             groupBox1.SuspendLayout();
@@ -108,34 +109,12 @@
             grdVitrisach.Location = new Point(3, 134);
             grdVitrisach.Name = "grdVitrisach";
             grdVitrisach.RowHeadersWidth = 50;
+            grdVitrisach.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            grdVitrisach.RowTemplate.Height = 40;
             grdVitrisach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdVitrisach.Size = new Size(942, 926);
             grdVitrisach.TabIndex = 31;
-            // 
-            // Mavitri
-            // 
-            Mavitri.FillWeight = 70F;
-            Mavitri.HeaderText = "Mã vị trí";
-            Mavitri.MinimumWidth = 6;
-            Mavitri.Name = "Mavitri";
-            // 
-            // Tenvitri
-            // 
-            Tenvitri.HeaderText = "Tên vị trí";
-            Tenvitri.MinimumWidth = 6;
-            Tenvitri.Name = "Tenvitri";
-            // 
-            // colTang
-            // 
-            colTang.HeaderText = "Tầng";
-            colTang.MinimumWidth = 6;
-            colTang.Name = "colTang";
-            // 
-            // colKe
-            // 
-            colKe.HeaderText = "Kệ";
-            colKe.MinimumWidth = 6;
-            colKe.Name = "colKe";
+            grdVitrisach.CellClick += grdVitrisach_CellClick;
             // 
             // btnTimkiem
             // 
@@ -148,19 +127,21 @@
             btnTimkiem.Size = new Size(177, 78);
             btnTimkiem.TabIndex = 27;
             btnTimkiem.UseVisualStyleBackColor = true;
+            btnTimkiem.Click += btnTimkiem_Click;
             // 
             // txtTimkiem
             // 
             txtTimkiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(3, 40);
+            txtTimkiem.Location = new Point(3, 48);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(942, 50);
+            txtTimkiem.Size = new Size(942, 34);
             txtTimkiem.TabIndex = 26;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(txtKe);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(txtTang);
@@ -168,7 +149,7 @@
             groupBox1.Controls.Add(txtMota);
             groupBox1.Controls.Add(txtTenvitri);
             groupBox1.Controls.Add(btnUndo);
-            groupBox1.Controls.Add(btnSua);
+            groupBox1.Controls.Add(btnLuu);
             groupBox1.Controls.Add(btnXoa);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label2);
@@ -184,13 +165,25 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin vị trí sách";
             // 
+            // btnSua
+            // 
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.Location = new Point(360, 580);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(120, 77);
+            btnSua.TabIndex = 81;
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
+            // 
             // txtKe
             // 
             txtKe.BorderStyle = BorderStyle.FixedSingle;
             txtKe.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtKe.Location = new Point(370, 392);
             txtKe.Name = "txtKe";
-            txtKe.Size = new Size(366, 50);
+            txtKe.Size = new Size(366, 34);
             txtKe.TabIndex = 80;
             // 
             // label5
@@ -199,7 +192,7 @@
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label5.Location = new Point(107, 394);
             label5.Name = "label5";
-            label5.Size = new Size(57, 45);
+            label5.Size = new Size(35, 28);
             label5.TabIndex = 79;
             label5.Text = "Kệ";
             // 
@@ -209,7 +202,7 @@
             txtTang.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTang.Location = new Point(370, 297);
             txtTang.Name = "txtTang";
-            txtTang.Size = new Size(366, 50);
+            txtTang.Size = new Size(366, 34);
             txtTang.TabIndex = 78;
             // 
             // label3
@@ -218,7 +211,7 @@
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label3.Location = new Point(107, 299);
             label3.Name = "label3";
-            label3.Size = new Size(93, 45);
+            label3.Size = new Size(57, 28);
             label3.TabIndex = 77;
             label3.Text = "Tầng";
             // 
@@ -228,7 +221,7 @@
             txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMota.Location = new Point(370, 487);
             txtMota.Name = "txtMota";
-            txtMota.Size = new Size(366, 50);
+            txtMota.Size = new Size(366, 34);
             txtMota.TabIndex = 76;
             // 
             // txtTenvitri
@@ -237,7 +230,7 @@
             txtTenvitri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTenvitri.Location = new Point(370, 202);
             txtTenvitri.Name = "txtTenvitri";
-            txtTenvitri.Size = new Size(366, 50);
+            txtTenvitri.Size = new Size(366, 34);
             txtTenvitri.TabIndex = 75;
             // 
             // btnUndo
@@ -246,23 +239,25 @@
             btnUndo.FlatAppearance.BorderSize = 0;
             btnUndo.FlatStyle = FlatStyle.Flat;
             btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(516, 580);
+            btnUndo.Location = new Point(484, 580);
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new Size(120, 77);
             btnUndo.TabIndex = 73;
             btnUndo.UseVisualStyleBackColor = true;
+            btnUndo.Click += btnUndo_Click;
             // 
-            // btnSua
+            // btnLuu
             // 
-            btnSua.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSua.FlatAppearance.BorderSize = 0;
-            btnSua.FlatStyle = FlatStyle.Flat;
-            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
-            btnSua.Location = new Point(618, 580);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(120, 77);
-            btnSua.TabIndex = 72;
-            btnSua.UseVisualStyleBackColor = true;
+            btnLuu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnLuu.FlatAppearance.BorderSize = 0;
+            btnLuu.FlatStyle = FlatStyle.Flat;
+            btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
+            btnLuu.Location = new Point(608, 580);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(120, 77);
+            btnLuu.TabIndex = 72;
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnXoa
             // 
@@ -270,11 +265,12 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
-            btnXoa.Location = new Point(720, 580);
+            btnXoa.Location = new Point(732, 580);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(120, 77);
             btnXoa.TabIndex = 71;
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // label4
             // 
@@ -282,7 +278,7 @@
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.Location = new Point(107, 489);
             label4.Name = "label4";
-            label4.Size = new Size(107, 45);
+            label4.Size = new Size(65, 28);
             label4.TabIndex = 65;
             label4.Text = "Mô tả";
             // 
@@ -292,7 +288,7 @@
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label2.Location = new Point(107, 204);
             label2.Name = "label2";
-            label2.Size = new Size(145, 45);
+            label2.Size = new Size(90, 28);
             label2.TabIndex = 63;
             label2.Text = "Tên vị trí";
             // 
@@ -302,7 +298,7 @@
             txtMavitri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMavitri.Location = new Point(370, 107);
             txtMavitri.Name = "txtMavitri";
-            txtMavitri.Size = new Size(366, 50);
+            txtMavitri.Size = new Size(366, 34);
             txtMavitri.TabIndex = 61;
             // 
             // label1
@@ -311,7 +307,7 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.Location = new Point(107, 109);
             label1.Name = "label1";
-            label1.Size = new Size(141, 45);
+            label1.Size = new Size(86, 28);
             label1.TabIndex = 60;
             label1.Text = "Mã vị trí";
             // 
@@ -338,7 +334,7 @@
             btnPrevious.Size = new Size(50, 50);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
-            btnPrevious.Click += btnNext_Click;
+            btnPrevious.Click += btnPrevious_Click;
             // 
             // btnNext
             // 
@@ -389,12 +385,42 @@
             btnThemvitrisach.UseVisualStyleBackColor = true;
             btnThemvitrisach.Click += btnThemkesach_Click;
             // 
-            // ucKhosach
+            // Mavitri
+            // 
+            Mavitri.DataPropertyName = "MaViTri";
+            Mavitri.FillWeight = 70F;
+            Mavitri.HeaderText = "Mã vị trí";
+            Mavitri.MinimumWidth = 6;
+            Mavitri.Name = "Mavitri";
+            // 
+            // Tenvitri
+            // 
+            Tenvitri.DataPropertyName = "TenViTri";
+            Tenvitri.FillWeight = 150F;
+            Tenvitri.HeaderText = "Tên vị trí";
+            Tenvitri.MinimumWidth = 6;
+            Tenvitri.Name = "Tenvitri";
+            // 
+            // colTang
+            // 
+            colTang.DataPropertyName = "Tang";
+            colTang.HeaderText = "Tầng";
+            colTang.MinimumWidth = 6;
+            colTang.Name = "colTang";
+            // 
+            // colKe
+            // 
+            colKe.DataPropertyName = "Ke";
+            colKe.HeaderText = "Kệ";
+            colKe.MinimumWidth = 6;
+            colKe.Name = "colKe";
+            // 
+            // ucVitri
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.White;
             Controls.Add(tableLayoutPanel1);
-            Name = "ucKhosach";
+            Name = "ucVitri";
             Size = new Size(2156, 1291);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -415,7 +441,7 @@
         private TextBox txtMota;
         private TextBox txtTenvitri;
         private Button btnUndo;
-        private Button btnSua;
+        private Button btnLuu;
         private Button btnXoa;
         private Label label4;
         private Label label2;
@@ -427,13 +453,14 @@
         private Button btnLast;
         private Button btnFirst;
         private DataGridView grdVitrisach;
-        private DataGridViewTextBoxColumn Mavitri;
-        private DataGridViewTextBoxColumn Tenvitri;
-        private DataGridViewTextBoxColumn colTang;
-        private DataGridViewTextBoxColumn colKe;
         private TextBox txtKe;
         private Label label5;
         private TextBox txtTang;
         private Label label3;
+        private Button btnSua;
+        private DataGridViewTextBoxColumn Mavitri;
+        private DataGridViewTextBoxColumn Tenvitri;
+        private DataGridViewTextBoxColumn colTang;
+        private DataGridViewTextBoxColumn colKe;
     }
 }
