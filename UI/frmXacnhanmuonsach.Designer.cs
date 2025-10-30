@@ -31,17 +31,15 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            dataGridView1 = new DataGridView();
-            colTensach = new DataGridViewTextBoxColumn();
-            colMasach = new DataGridViewTextBoxColumn();
-            colNamXB = new DataGridViewTextBoxColumn();
+            dgrXacnhan = new DataGridView();
+            colTensachmuon = new DataGridViewTextBoxColumn();
+            colMasachmuon = new DataGridViewTextBoxColumn();
+            colNamxb = new DataGridViewTextBoxColumn();
             colHantra = new DataGridViewTextBoxColumn();
-            comboBox1 = new ComboBox();
+            cbxHinhthucmuon = new ComboBox();
             label3 = new Label();
             label2 = new Label();
-            dtpNgayhethan = new DateTimePicker();
-            label1 = new Label();
-            textBox2 = new TextBox();
+            dtpNgaymuon = new DateTimePicker();
             label5 = new Label();
             label15 = new Label();
             txtTendocgia = new TextBox();
@@ -50,19 +48,17 @@
             btnHuy = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgrXacnhan).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.White;
             groupBox1.Controls.Add(groupBox2);
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(cbxHinhthucmuon);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(dtpNgayhethan);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(dtpNgaymuon);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label15);
             groupBox1.Controls.Add(txtTendocgia);
@@ -77,19 +73,19 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Controls.Add(dgrXacnhan);
             groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            groupBox2.Location = new Point(20, 412);
+            groupBox2.Location = new Point(16, 356);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(676, 280);
+            groupBox2.Size = new Size(680, 336);
             groupBox2.TabIndex = 178;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin sách mượn";
             // 
-            // dataGridView1
+            // dgrXacnhan
             // 
-            dataGridView1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgrXacnhan.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            dgrXacnhan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
@@ -97,32 +93,32 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colTensach, colMasach, colNamXB, colHantra });
-            dataGridView1.Location = new Point(27, 56);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(629, 202);
-            dataGridView1.TabIndex = 0;
+            dgrXacnhan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgrXacnhan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgrXacnhan.Columns.AddRange(new DataGridViewColumn[] { colTensachmuon, colMasachmuon, colNamxb, colHantra });
+            dgrXacnhan.Location = new Point(24, 62);
+            dgrXacnhan.Name = "dgrXacnhan";
+            dgrXacnhan.RowHeadersWidth = 51;
+            dgrXacnhan.Size = new Size(636, 224);
+            dgrXacnhan.TabIndex = 0;
             // 
-            // colTensach
+            // colTensachmuon
             // 
-            colTensach.HeaderText = "Tên sách";
-            colTensach.MinimumWidth = 6;
-            colTensach.Name = "colTensach";
+            colTensachmuon.HeaderText = "Tên sách";
+            colTensachmuon.MinimumWidth = 6;
+            colTensachmuon.Name = "colTensachmuon";
             // 
-            // colMasach
+            // colMasachmuon
             // 
-            colMasach.HeaderText = "Mã sách";
-            colMasach.MinimumWidth = 6;
-            colMasach.Name = "colMasach";
+            colMasachmuon.HeaderText = "Mã sách";
+            colMasachmuon.MinimumWidth = 6;
+            colMasachmuon.Name = "colMasachmuon";
             // 
-            // colNamXB
+            // colNamxb
             // 
-            colNamXB.HeaderText = "Năm XB";
-            colNamXB.MinimumWidth = 6;
-            colNamXB.Name = "colNamXB";
+            colNamxb.HeaderText = "Năm XB";
+            colNamxb.MinimumWidth = 6;
+            colNamxb.Name = "colNamxb";
             // 
             // colHantra
             // 
@@ -130,22 +126,23 @@
             colHantra.MinimumWidth = 6;
             colHantra.Name = "colHantra";
             // 
-            // comboBox1
+            // cbxHinhthucmuon
             // 
-            comboBox1.DisplayMember = "Mượn tại chỗ";
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Mượn tại chỗ", "Mượn về nhà" });
-            comboBox1.Location = new Point(246, 347);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(185, 36);
-            comboBox1.TabIndex = 177;
+            cbxHinhthucmuon.DisplayMember = "Tại chỗ";
+            cbxHinhthucmuon.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cbxHinhthucmuon.FormattingEnabled = true;
+            cbxHinhthucmuon.Items.AddRange(new object[] { "Tại chỗ", "Mang về" });
+            cbxHinhthucmuon.Location = new Point(245, 288);
+            cbxHinhthucmuon.Name = "cbxHinhthucmuon";
+            cbxHinhthucmuon.Size = new Size(185, 36);
+            cbxHinhthucmuon.TabIndex = 177;
+            cbxHinhthucmuon.ValueMember = "Tại chỗ";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label3.Location = new Point(60, 346);
+            label3.Location = new Point(59, 287);
             label3.Name = "label3";
             label3.Size = new Size(162, 28);
             label3.TabIndex = 176;
@@ -155,46 +152,27 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(60, 273);
+            label2.Location = new Point(59, 214);
             label2.Name = "label2";
             label2.Size = new Size(119, 28);
             label2.TabIndex = 175;
             label2.Text = "Ngày mượn";
             // 
-            // dtpNgayhethan
+            // dtpNgaymuon
             // 
-            dtpNgayhethan.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dtpNgayhethan.Font = new Font("Segoe UI", 10.8F);
-            dtpNgayhethan.Format = DateTimePickerFormat.Short;
-            dtpNgayhethan.Location = new Point(246, 276);
-            dtpNgayhethan.Name = "dtpNgayhethan";
-            dtpNgayhethan.Size = new Size(185, 31);
-            dtpNgayhethan.TabIndex = 171;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(60, 54);
-            label1.Name = "label1";
-            label1.Size = new Size(158, 28);
-            label1.TabIndex = 174;
-            label1.Text = "Mã phiếu mượn";
-            // 
-            // textBox2
-            // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox2.Location = new Point(246, 54);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(356, 34);
-            textBox2.TabIndex = 171;
+            dtpNgaymuon.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpNgaymuon.Font = new Font("Segoe UI", 10.8F);
+            dtpNgaymuon.Format = DateTimePickerFormat.Short;
+            dtpNgaymuon.Location = new Point(245, 217);
+            dtpNgaymuon.Name = "dtpNgaymuon";
+            dtpNgaymuon.Size = new Size(185, 31);
+            dtpNgaymuon.TabIndex = 171;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label5.Location = new Point(60, 127);
+            label5.Location = new Point(59, 68);
             label5.Name = "label5";
             label5.Size = new Size(112, 28);
             label5.TabIndex = 170;
@@ -204,7 +182,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label15.Location = new Point(60, 200);
+            label15.Location = new Point(59, 141);
             label15.Name = "label15";
             label15.Size = new Size(116, 28);
             label15.TabIndex = 169;
@@ -214,7 +192,7 @@
             // 
             txtTendocgia.BorderStyle = BorderStyle.FixedSingle;
             txtTendocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTendocgia.Location = new Point(246, 202);
+            txtTendocgia.Location = new Point(245, 143);
             txtTendocgia.Name = "txtTendocgia";
             txtTendocgia.Size = new Size(356, 34);
             txtTendocgia.TabIndex = 168;
@@ -223,7 +201,7 @@
             // 
             txtMadocgia.BorderStyle = BorderStyle.FixedSingle;
             txtMadocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMadocgia.Location = new Point(246, 128);
+            txtMadocgia.Location = new Point(245, 69);
             txtMadocgia.Name = "txtMadocgia";
             txtMadocgia.Size = new Size(356, 34);
             txtMadocgia.TabIndex = 167;
@@ -241,6 +219,7 @@
             btnXacnhan.TabIndex = 142;
             btnXacnhan.Text = "Xác nhận";
             btnXacnhan.UseVisualStyleBackColor = false;
+            btnXacnhan.Click += btnXacnhan_Click;
             // 
             // btnHuy
             // 
@@ -272,7 +251,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgrXacnhan).EndInit();
             ResumeLayout(false);
         }
 
@@ -283,19 +262,17 @@
         private Label label15;
         private TextBox txtTendocgia;
         private TextBox txtMadocgia;
-        private Label label1;
-        private TextBox textBox2;
-        private ComboBox comboBox1;
+        private ComboBox cbxHinhthucmuon;
         private Label label3;
         private Label label2;
-        private DateTimePicker dtpNgayhethan;
+        private DateTimePicker dtpNgaymuon;
         private GroupBox groupBox2;
-        private DataGridView dataGridView1;
+        private DataGridView dgrXacnhan;
         private Button btnXacnhan;
         private Button btnHuy;
-        private DataGridViewTextBoxColumn colTensach;
-        private DataGridViewTextBoxColumn colMasach;
-        private DataGridViewTextBoxColumn colNamXB;
+        private DataGridViewTextBoxColumn colTensachmuon;
+        private DataGridViewTextBoxColumn colMasachmuon;
+        private DataGridViewTextBoxColumn colNamxb;
         private DataGridViewTextBoxColumn colHantra;
     }
 }

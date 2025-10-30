@@ -77,5 +77,28 @@ namespace QLTVNhom3.DAL
                 return dt.Rows[0]["HoTen"].ToString();
             return null;
         }
+        // (Dán hàm mới này vào file AccountDAL.cs của bạn)
+
+        // Dùng IDAccount (string) để lấy MaThuThu (int)
+        public int LayMaThuThuTuAccount(string idAccount)
+        {
+            // 1. Câu query chỉ lấy MaThuThu
+            string query = "select MaThuThu from THUTHU where IDAccount = @id";
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("@id", idAccount)
+            };
+
+            // 2. Dùng ExecuteScalar, cách này hiệu quả nhất để lấy 1 giá trị duy nhất
+            object result = db.ExecuteScalar(query, parameter);
+
+            // 3. Kiểm tra và trả về kết quả
+            if (result != null && result != DBNull.Value)
+            {
+                return Convert.ToInt32(result);
+            }
+
+            return 0; // Trả về 0 nếu không tìm thấy thủ thư
+        }
     }
 }
