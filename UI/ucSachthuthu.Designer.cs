@@ -155,7 +155,6 @@
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.Size = new Size(728, 50);
             txtTimkiem.TabIndex = 82;
-            txtTimkiem.KeyPress += txtTimkiem_KeyPress;
             // 
             // grdSach
             // 
