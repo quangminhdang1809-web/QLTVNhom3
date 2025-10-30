@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLTVNhom3.DTO;
 
 namespace QLTVNhom3
 {
     public partial class frmDangnhap : Form
     {
+
         public frmDangnhap()
         {
             InitializeComponent();
@@ -52,6 +54,8 @@ namespace QLTVNhom3
 
                 if (acc.TypeOfAccount == "THUTHU")
                 {
+                    int maThuThu = dal.LayMaThuThuTuAccount(acc.IDAccount);
+                    ThuThuDTO.MaThuThu = maThuThu;
                     var frmmainthuthu = new frmmainthuthu(acc.IDAccount); 
                     this.Hide();
                     frmmainthuthu.ShowDialog();
