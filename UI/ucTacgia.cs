@@ -89,7 +89,15 @@ namespace QLTVNhom3
             tacGiaHienTai = (TacGiaDTO)grdTacgia.SelectedRows[0].DataBoundItem;
             txtMatacgia.Text = tacGiaHienTai.MaTacGia.ToString();
             txtHovaten.Text = tacGiaHienTai.TenTacGia;
-            dtpNamsinhtacgia.Value = new DateTime(tacGiaHienTai.NamSinh, 1, 1);
+            if (tacGiaHienTai.NamSinh.HasValue)
+            {
+                dtpNamsinhtacgia.Value = new DateTime(tacGiaHienTai.NamSinh.Value, 1, 1);
+            }
+            else
+            {
+                dtpNamsinhtacgia.Value = DateTime.Now; // hoặc để mặc định
+            }
+
             txtQuoctich.Text = tacGiaHienTai.QuocTich ?? "";
             SetEditMode(false); // Về chế độ xem
         }

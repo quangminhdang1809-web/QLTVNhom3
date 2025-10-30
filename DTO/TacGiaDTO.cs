@@ -10,7 +10,7 @@ namespace QLTVNhom3.DTO
     {
         public int MaTacGia { get; set; }
         public string TenTacGia { get; set; }
-        public int NamSinh { get; set; }
+        public int? NamSinh { get; set; }
         public string QuocTich { get; set; }
-            }
+    }
 }

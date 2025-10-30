@@ -20,21 +20,4 @@ namespace QLTVNhom3.DTO
         public string TenViTri { get; set; }
         public List<TacGiaDTO> DanhSachTacGia { get; set; }
     }
-    public class TacGiaDTO
-    {
-        public int MaTacGia { get; set; }
-        public string TenTacGia { get; set; }
-        public int? NamSinh { get; set; }
-        public string QuocTich { get; set; }
-    }
-    public class TheLoaiDTO
-    {
-        public int MaTheLoai { get; set; }
-        public string TenTheLoai { get; set; }
-    }
-    public class ViTriDTO
-    {
-        public string MaViTri { get; set; }
-        public string TenViTri { get; set; }
-    }
 }
