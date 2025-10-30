@@ -18,6 +18,7 @@ namespace QLTVNhom3
         private List<TacGiaDTO> danhSachTacGia;
         private string maSachDangChon;
         private DauSachDTO dauSachHienTai;
+        private bool dangTaiDuLieu = false; 
         public ucSachthuthu()
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace QLTVNhom3
         {
             try
             {
+                dangTaiDuLieu = true; 
                 var data = dauSachBLL.LayDanhSachDauSach();
                 grdSach.DataSource = data;
                 if (grdSach.Rows.Count > 0 && grdSach.Columns.Contains("colMadausach"))
@@ -49,11 +51,20 @@ namespace QLTVNhom3
                         }
                     }
                 }
+                else
+                {
+                    ClearForm(); 
+                } 
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tải danh sách sách: " + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dangTaiDuLieu = false; // THÊM DÒNG NÀY
             }
         }
 
@@ -141,7 +152,8 @@ namespace QLTVNhom3
 
         private void grdSach_SelectionChanged(object sender, EventArgs e)
         {
-            if (grdSach.SelectedRows.Count != null)
+            if (dangTaiDuLieu) return;
+            if (grdSach.SelectedRows.Count > 0 && grdSach.CurrentRow != null)
             {
                 string ma = grdSach.CurrentRow.Cells["colMadausach"].Value?.ToString();
                 if (!string.IsNullOrEmpty(ma))
@@ -160,16 +172,25 @@ namespace QLTVNhom3
                 {
                     txtMaDauSach.Text = sach.MaDauSach;
                     txtTenDauSach.Text = sach.TenDauSach;
-                    // XỬ LÝ DateTimePicker ĐÚNG CÁCH
-                    if (sach.NamXuatBan > 0)
+
+                    // THAY THẾ PHẦN NÀY - XỬ LÝ DateTimePicker VỚI TRY-CATCH
+                    try
                     {
-                        DateTime namXuatBan = new DateTime(sach.NamXuatBan, 1, 1);
-                        dtpNamXB.Value = namXuatBan;
+                        if (sach.NamXuatBan > 0 && sach.NamXuatBan <= DateTime.Now.Year)
+                        {
+                            DateTime namXuatBan = new DateTime(sach.NamXuatBan, 1, 1);
+                            dtpNamXB.Value = namXuatBan;
+                        }
+                        else
+                        {
+                            dtpNamXB.Value = DateTime.Now;
+                        }
                     }
-                    else
+                    catch
                     {
                         dtpNamXB.Value = DateTime.Now;
                     }
+
                     txtNhaXB.Text = sach.NhaXuatBan ?? "";
                     txtViTri.Text = sach.TenViTri ?? "";
                     txtSoLuong.Text = sach.SoLuongTong.ToString();
@@ -177,10 +198,24 @@ namespace QLTVNhom3
                     // Hiển thị ảnh bìa
                     if (sach.AnhBia != null && sach.AnhBia.Length > 0)
                     {
-                        using (var ms = new System.IO.MemoryStream(sach.AnhBia))
+                        try
                         {
-                            picAnhBia.Image = Image.FromStream(ms);
+                            if (picAnhBia.Image != null)
+                            {
+                                picAnhBia.Image.Dispose();
+                                picAnhBia.Image = null;
+                            }
+
+                            using (var ms = new System.IO.MemoryStream(sach.AnhBia))
+                            {
+                                picAnhBia.Image = Image.FromStream(ms);
+                            }
                         }
+                        catch
+                        {
+                            picAnhBia.Image = null; 
+                        } 
+                        
                     }
                     else
                     {
@@ -188,7 +223,7 @@ namespace QLTVNhom3
                     }
 
                     // Hiển thị danh sách tác giả
-                    grdTacgia.DataSource = sach.DanhSachTacGia;
+                    grdTacgia.DataSource = sach.DanhSachTacGia ?? new List<TacGiaDTO>();
                     dauSachHienTai = sach;
                 }
             }
@@ -204,6 +239,21 @@ namespace QLTVNhom3
             {
                 var data = dauSachBLL.TimKiemSach(txtTimkiem.Text.Trim());
                 grdSach.DataSource = data;
+                if (grdSach.Rows.Count > 0)
+                {
+                    grdSach.ClearSelection();
+                    grdSach.Rows[0].Selected = true;
+                    string ma = grdSach.Rows[0].Cells["colMadausach"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(ma))
+                    {
+                        maSachDangChon = ma;
+                        HienThiChiTietSach(ma);
+                    }
+                }
+                else
+                {
+                    ClearForm(); // Clear form nếu không tìm thấy
+                }
             }
             catch (Exception ex)
             {
@@ -244,22 +294,15 @@ namespace QLTVNhom3
         }
         private void ClearForm()
         {
-            txtMaDauSach.Clear();
-            txtTenDauSach.Clear();
-            txtNhaXB.Clear();
-            txtViTri.Clear();
-            txtSoLuong.Clear();
+            txtMaDauSach.Text = "";
+            txtTenDauSach.Text = "";
+            txtNhaXB.Text = "";
+            txtViTri.Text = "";
+            txtSoLuong.Text = "";
+            dtpNamXB.Value = DateTime.Now; // Reset date
             picAnhBia.Image = null;
-            grdTacgia.DataSource = null;
+            grdTacgia.DataSource = new List<TacGiaDTO>();
             maSachDangChon = null;
-        }
-
-        private void txtTimkiem_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                btnTimkiem_Click_1(sender, e);
-            }
         }
     }
 }
