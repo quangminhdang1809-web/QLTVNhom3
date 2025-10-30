@@ -32,16 +32,21 @@ namespace QLTVNhom3
             {
                 var data = dauSachBLL.LayDanhSachDauSach();
                 grdSach.DataSource = data;
-                if (grdSach.Rows.Count > 0)
+                if (grdSach.Rows.Count > 0 && grdSach.Columns.Contains("colMadausach"))
                 {
                     grdSach.ClearSelection();
                     grdSach.CurrentCell = grdSach.Rows[0].Cells[0];
                     grdSach.Rows[0].Selected = true;
-                    string ma = grdSach.Rows[0].Cells["colMadausach"].Value?.ToString();
-                    if (!string.IsNullOrEmpty(ma))
+
+                    var cellValue = grdSach.Rows[0].Cells["colMadausach"]?.Value;
+                    if (cellValue != null)
                     {
-                        maSachDangChon = ma; 
-                        HienThiChiTietSach(ma);
+                        string ma = cellValue.ToString();
+                        if (!string.IsNullOrEmpty(ma))
+                        {
+                            maSachDangChon = ma;
+                            HienThiChiTietSach(ma);
+                        }
                     }
                 }
             }
