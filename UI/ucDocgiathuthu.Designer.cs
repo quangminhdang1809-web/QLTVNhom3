@@ -33,7 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             txtTimkiem = new TextBox();
-            cbxLoaidocgia1 = new ComboBox();
+            cbbLocDocGia = new ComboBox();
             btnTimkiem = new Button();
             btnThemdocgia = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -44,6 +44,7 @@
             colNgayhethan = new DataGridViewTextBoxColumn();
             colLoaidocgia = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
+            btnSua = new Button();
             btnLuu = new Button();
             groupBox2 = new GroupBox();
             dgvLichsumuontra = new DataGridView();
@@ -103,16 +104,17 @@
             txtTimkiem.Size = new Size(823, 50);
             txtTimkiem.TabIndex = 15;
             // 
-            // cbxLoaidocgia1
+            // cbbLocDocGia
             // 
-            cbxLoaidocgia1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            cbxLoaidocgia1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            cbxLoaidocgia1.FormattingEnabled = true;
-            cbxLoaidocgia1.Location = new Point(838, 54);
-            cbxLoaidocgia1.Margin = new Padding(5);
-            cbxLoaidocgia1.Name = "cbxLoaidocgia1";
-            cbxLoaidocgia1.Size = new Size(350, 53);
-            cbxLoaidocgia1.TabIndex = 17;
+            cbbLocDocGia.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            cbbLocDocGia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cbbLocDocGia.FormattingEnabled = true;
+            cbbLocDocGia.Location = new Point(838, 54);
+            cbbLocDocGia.Margin = new Padding(5);
+            cbbLocDocGia.Name = "cbbLocDocGia";
+            cbbLocDocGia.Size = new Size(350, 53);
+            cbbLocDocGia.TabIndex = 17;
+            cbbLocDocGia.SelectedIndexChanged += cbbLocDocGia_SelectedIndexChanged;
             // 
             // btnTimkiem
             // 
@@ -153,7 +155,7 @@
             tableLayoutPanel1.Controls.Add(grdDocgia, 0, 1);
             tableLayoutPanel1.Controls.Add(btnThemdocgia, 3, 0);
             tableLayoutPanel1.Controls.Add(btnTimkiem, 2, 0);
-            tableLayoutPanel1.Controls.Add(cbxLoaidocgia1, 1, 0);
+            tableLayoutPanel1.Controls.Add(cbbLocDocGia, 1, 0);
             tableLayoutPanel1.Controls.Add(txtTimkiem, 0, 0);
             tableLayoutPanel1.Controls.Add(groupBox1, 3, 1);
             tableLayoutPanel1.Controls.Add(groupBox3, 0, 4);
@@ -164,8 +166,8 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 38.70968F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 61.29032F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 342F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 491F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 160F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 519F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 132F));
             tableLayoutPanel1.Size = new Size(2502, 1409);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -205,9 +207,10 @@
             grdDocgia.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             grdDocgia.RowTemplate.Height = 50;
             grdDocgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdDocgia.Size = new Size(1183, 1077);
+            grdDocgia.Size = new Size(1183, 1105);
             grdDocgia.TabIndex = 20;
             grdDocgia.CellClick += grdDocgia_CellClick;
+            grdDocgia.SelectionChanged += grdDocgia_SelectionChanged;
             // 
             // colMadocgia
             // 
@@ -251,6 +254,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnLuu);
             groupBox1.Controls.Add(groupBox2);
             groupBox1.Controls.Add(label5);
@@ -293,18 +297,31 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin độc giả";
             // 
+            // btnSua
+            // 
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.Location = new Point(694, 1138);
+            btnSua.Margin = new Padding(5);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(73, 81);
+            btnSua.TabIndex = 166;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = true;
+            // 
             // btnLuu
             // 
             btnLuu.FlatAppearance.BorderSize = 0;
             btnLuu.FlatStyle = FlatStyle.Flat;
             btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
-            btnLuu.Location = new Point(1006, 1170);
+            btnLuu.Location = new Point(890, 1138);
             btnLuu.Margin = new Padding(5);
             btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(73, 64);
+            btnLuu.Size = new Size(73, 81);
             btnLuu.TabIndex = 165;
             btnLuu.UseVisualStyleBackColor = true;
-            btnLuu.Click += btnLuu_Click;
+            btnLuu.Click += btnSua_Click;
             // 
             // groupBox2
             // 
@@ -314,7 +331,7 @@
             groupBox2.Margin = new Padding(5);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(5);
-            groupBox2.Size = new Size(1016, 506);
+            groupBox2.Size = new Size(1035, 462);
             groupBox2.TabIndex = 163;
             groupBox2.TabStop = false;
             groupBox2.Text = "Lịch sử mượn trả";
@@ -339,7 +356,7 @@
             dgvLichsumuontra.ReadOnly = true;
             dgvLichsumuontra.RowHeadersWidth = 51;
             dgvLichsumuontra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLichsumuontra.Size = new Size(951, 405);
+            dgvLichsumuontra.Size = new Size(968, 366);
             dgvLichsumuontra.TabIndex = 68;
             // 
             // colMaphieumuon
@@ -436,7 +453,7 @@
             // 
             cbbLoaidocgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cbbLoaidocgia.FormattingEnabled = true;
-            cbbLoaidocgia.Location = new Point(800, 336);
+            cbbLoaidocgia.Location = new Point(801, 114);
             cbbLoaidocgia.Margin = new Padding(5);
             cbbLoaidocgia.Name = "cbbLoaidocgia";
             cbbLoaidocgia.Size = new Size(298, 53);
@@ -447,10 +464,10 @@
             btnUndo.FlatAppearance.BorderSize = 0;
             btnUndo.FlatStyle = FlatStyle.Flat;
             btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(785, 1170);
+            btnUndo.Location = new Point(988, 1138);
             btnUndo.Margin = new Padding(5);
             btnUndo.Name = "btnUndo";
-            btnUndo.Size = new Size(73, 64);
+            btnUndo.Size = new Size(73, 81);
             btnUndo.TabIndex = 73;
             btnUndo.UseVisualStyleBackColor = true;
             // 
@@ -469,7 +486,7 @@
             dtpNgayhethan.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             dtpNgayhethan.Font = new Font("Segoe UI", 10.8F);
             dtpNgayhethan.Format = DateTimePickerFormat.Short;
-            dtpNgayhethan.Location = new Point(800, 224);
+            dtpNgayhethan.Location = new Point(800, 342);
             dtpNgayhethan.Margin = new Padding(5);
             dtpNgayhethan.Name = "dtpNgayhethan";
             dtpNgayhethan.Size = new Size(298, 46);
@@ -480,10 +497,10 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
-            btnXoa.Location = new Point(900, 1170);
+            btnXoa.Location = new Point(792, 1138);
             btnXoa.Margin = new Padding(5);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(73, 64);
+            btnXoa.Size = new Size(73, 81);
             btnXoa.TabIndex = 71;
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
@@ -494,7 +511,7 @@
             dtpNgaylapthe.CustomFormat = "";
             dtpNgaylapthe.Font = new Font("Segoe UI", 10.8F);
             dtpNgaylapthe.Format = DateTimePickerFormat.Short;
-            dtpNgaylapthe.Location = new Point(800, 112);
+            dtpNgaylapthe.Location = new Point(800, 230);
             dtpNgaylapthe.Margin = new Padding(5);
             dtpNgaylapthe.Name = "dtpNgaylapthe";
             dtpNgaylapthe.Size = new Size(298, 46);
@@ -558,6 +575,7 @@
             txtMadocgia.Location = new Point(205, 112);
             txtMadocgia.Margin = new Padding(5);
             txtMadocgia.Name = "txtMadocgia";
+            txtMadocgia.ReadOnly = true;
             txtMadocgia.Size = new Size(340, 50);
             txtMadocgia.TabIndex = 139;
             // 
@@ -608,7 +626,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label9.Location = new Point(572, 338);
+            label9.Location = new Point(572, 116);
             label9.Margin = new Padding(5, 0, 5, 0);
             label9.Name = "label9";
             label9.Size = new Size(195, 45);
@@ -630,7 +648,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label8.Location = new Point(572, 224);
+            label8.Location = new Point(572, 342);
             label8.Margin = new Padding(5, 0, 5, 0);
             label8.Name = "label8";
             label8.Size = new Size(218, 45);
@@ -652,7 +670,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label7.Location = new Point(572, 110);
+            label7.Location = new Point(572, 228);
             label7.Margin = new Padding(5, 0, 5, 0);
             label7.Name = "label7";
             label7.Size = new Size(207, 45);
@@ -678,11 +696,11 @@
             groupBox3.Controls.Add(btnLast);
             groupBox3.Controls.Add(btnFirst);
             groupBox3.Dock = DockStyle.Right;
-            groupBox3.Location = new Point(723, 1253);
+            groupBox3.Location = new Point(723, 1281);
             groupBox3.Margin = new Padding(5);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(5);
-            groupBox3.Size = new Size(465, 151);
+            groupBox3.Size = new Size(465, 123);
             groupBox3.TabIndex = 22;
             groupBox3.TabStop = false;
             // 
@@ -762,7 +780,7 @@
         #endregion
 
         private TextBox txtTimkiem;
-        private ComboBox cbxLoaidocgia1;
+        private ComboBox cbbLocDocGia;
         private Button btnTimkiem;
         private Button btnThemdocgia;
         private TableLayoutPanel tableLayoutPanel1;
@@ -813,5 +831,6 @@
         private DataGridViewTextBoxColumn colNgaylapthe;
         private DataGridViewTextBoxColumn colNgayhethan;
         private DataGridViewTextBoxColumn colLoaidocgia;
+        private Button btnSua;
     }
 }

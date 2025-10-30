@@ -6,7 +6,9 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using QLTVNhom3.DTO;
+using System.Linq.Expressions;
 
 namespace QLTVNhom3.DAL
 {
@@ -18,9 +20,33 @@ namespace QLTVNhom3.DAL
                          join ACCOUNT a on dg.IDAccount = a.IDAccount";
         public List<DocGiaDTO> GetDanhSachDocGia()
         {
-            string query = SELECT_QUERY;
-            DataTable dt = db.ExecuteQuery(query);
-            return ConvertToDTOList(dt);
+            List<DocGiaDTO> danhSach = new List<DocGiaDTO>();
+
+            try
+            {
+                string query = SELECT_QUERY;
+                DataTable dt = db.ExecuteQuery(query);
+
+                // DEBUG: In ra số lượng record
+                Console.WriteLine($"DAL: Đã lấy {dt.Rows.Count} độc giả từ database");
+
+                // DEBUG: In ra các MaDocGia
+                if (dt.Rows.Count > 0)
+                {
+                    Console.WriteLine("Các MaDocGia trong database:");
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        Console.WriteLine($"- {row["MaDocGia"]}: {row["HoTen"]}");
+                    }
+                }
+
+                return ConvertToDTOList(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy danh sách độc giả: " + ex.Message);
+                return new List<DocGiaDTO>();
+            }
         }
         public List<DocGiaDTO> TimKiemDocGia(string keyword)
         {
@@ -44,7 +70,14 @@ namespace QLTVNhom3.DAL
         public int ThemDocGia(string hoTen, DateTime ngaySinh, string diaChi, string email, string SoDienThoai, string idAccount, int maLoaiDG, DateTime ngayLapThe, DateTime ngayHetHan)
         {
             try
-            {
+            { 
+                // LUÔN TẠO IDAccount TỰ ĐỘNG THEO PATTERN docgia5,6,7...
+                string finalIdAccount = TaoTaiKhoanTuDong();
+                if (finalIdAccount == null)
+                {
+                    MessageBox.Show("Không thể tạo tài khoản tự động!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return -1;
+                }
                 string query = @"insert into DOCGIA (HoTen, NgaySinh, DiaChi, Email, NgayLapThe, NgayHetHan,IDAccount, SoDienThoai, MaLoaiDG)
                              values (@HoTen, @NgaySinh,@DiaChi,@Email, @NgayLapThe, @NgayHetHan, @IDAccount, @SoDienThoai,@MaLoaiDG)";
                 SqlParameter[] parameters = {
@@ -53,17 +86,74 @@ namespace QLTVNhom3.DAL
                 new SqlParameter("@DiaChi", diaChi),
                 new SqlParameter("@Email", email),
                 new SqlParameter("@SoDienThoai", SoDienThoai),
-                new SqlParameter("@IDAccount", idAccount),
+                new SqlParameter("@IDAccount", finalIdAccount),
                 new SqlParameter("@MaLoaiDG", maLoaiDG),
                 new SqlParameter("@NgayLapThe", ngayLapThe),
                 new SqlParameter("@NgayHetHan", ngayHetHan)
             };
-                return db.ExecuteNonQuery(query, parameters);
+                int result = db.ExecuteNonQuery(query, parameters);
+                if (result > 0)
+                {
+                    MessageBox.Show($"Thêm độc giả thành công!\nTài khoản: {finalIdAccount}\nMật khẩu: 12345",
+                          "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //DEBUG
+                    Console.WriteLine($"Đã thêm độc giả thành công:{hoTen}, ID: {finalIdAccount}"); 
+                }
+                else
+                {
+                    MessageBox.Show("Thêm độc giả thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                } 
+                
+                    return result;
+            }
+            catch (SqlException sqlEx)
+            {
+                // XỬ LÝ LỖI SQL CỤ THỂ
+                string errorMessage = $"Lỗi SQL khi thêm độc giả:\n";
+
+                if (sqlEx.Number == 547) // Foreign key violation
+                {
+                    errorMessage += "Lỗi khóa ngoại:\n";
+                    if (sqlEx.Message.Contains("IDAccount"))
+                        errorMessage += "- IDAccount không tồn tại trong bảng ACCOUNT\n";
+                    if (sqlEx.Message.Contains("MaLoaiDG"))
+                        errorMessage += "- MaLoaiDG không tồn tại trong bảng LOAIDOCGIA\n";
+                }
+                else if (sqlEx.Number == 2627 || sqlEx.Number == 2601) // Unique constraint violation
+                {
+                    errorMessage += "Dữ liệu bị trùng:\n";
+                    if (sqlEx.Message.Contains("Email"))
+                        errorMessage += "- Email đã tồn tại\n";
+                    if (sqlEx.Message.Contains("IDAccount"))
+                        errorMessage += "- IDAccount đã được sử dụng\n";
+                }
+                else
+                {
+                    errorMessage += sqlEx.Message;
+                }
+
+                MessageBox.Show(errorMessage, "Lỗi SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
             }
             catch (Exception ex)
             {
-                Console.WriteLine ("Lỗi khi thêm độc giả: " + ex.Message);
-                return -1; // Hoặc giá trị khác để biểu thị lỗi
+                MessageBox.Show($"Lỗi khi thêm độc giả: {ex.Message}\n\nStack Trace:\n{ex.StackTrace}",
+                      "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+        public bool KiemTraTonTaiIDAccount(string idAccount)
+        {
+            try
+            {
+                string query = "SELECT COUNT(*) FROM ACCOUNT WHERE IDAccount = @IDAccount";
+                SqlParameter[] parameters = { new SqlParameter("@IDAccount", idAccount) };
+                int count = Convert.ToInt32(db.ExecuteScalar(query, parameters));
+                return count > 0;
+            }
+            catch
+            {
+                return false;
             }
         }
         public int CapNhatDocGia(DocGiaDTO docGia)
@@ -122,9 +212,76 @@ namespace QLTVNhom3.DAL
                 Email = row["Email"].ToString(),
                 DiaChi = row["DiaChi"].ToString(),
                 IDAccount = row["IDAccount"].ToString(),
-                MaLoaiDG = row["MaLoaiDG"].ToString(),
+                MaLoaiDG = Convert.ToInt32(row["MaLoaiDG"]),
                 SoDienThoai = row["SoDienThoai"].ToString()
             };
+        }
+        public string TaoTaiKhoanTuDong()
+        {
+            try
+            {
+                // Lấy số lớn nhất hiện có - SỬA QUERY ĐỂ CHẮC CHẮN
+                string query = @"SELECT ISNULL(MAX(CAST(SUBSTRING(IDAccount, 7, LEN(IDAccount)) AS INT)), 0) 
+                        FROM ACCOUNT 
+                        WHERE IDAccount LIKE 'docgia[0-9]%'";
+                object result = db.ExecuteScalar(query);
+
+                int nextNumber = 1;
+                if (result != null && result != DBNull.Value)
+                {
+                    nextNumber = Convert.ToInt32(result) + 1;
+                }
+
+                string idAccount = $"docgia{nextNumber}";
+                string password = "12345";
+
+                // Thêm vào bảng ACCOUNT
+                string insertQuery = @"INSERT INTO ACCOUNT (IDAccount, PasswordAccount, TypeOfAccount) 
+                          VALUES (@IDAccount, @Password, 'DOCGIA')";
+
+                SqlParameter[] parameters = {
+            new SqlParameter("@IDAccount", idAccount),
+            new SqlParameter("@Password", password)
+        };
+
+                int insertResult = db.ExecuteNonQuery(insertQuery, parameters);
+
+                if (insertResult > 0)
+                {
+                    Console.WriteLine($"Đã tạo tài khoản: {idAccount}");
+                    return idAccount;
+                }
+                else
+                {
+                    MessageBox.Show("Không thể tạo tài khoản trong ACCOUNT!", "Lỗi");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tạo tài khoản tự động: {ex.Message}", "Lỗi");
+                return null;
+            }
+        }
+        public DocGiaDTO GetDocGiaMoiNhat()
+        {
+            try
+            {
+                string query = @"SELECT TOP 1 dg.MaDocGia, dg.HoTen, ld.TenLoaiDG, dg.NgaySinh, dg.SoDienThoai, 
+                        dg.NgayLapThe, dg.NgayHetHan, dg.Email, dg.DiaChi, a.IDAccount, dg.MaLoaiDG
+                        FROM DOCGIA dg 
+                        JOIN LOAIDOCGIA ld ON dg.MaLoaiDG = ld.MaLoaiDG
+                        JOIN ACCOUNT a ON dg.IDAccount = a.IDAccount
+                        ORDER BY dg.MaDocGia DESC";
+
+                DataTable dt = db.ExecuteQuery(query);
+                return dt.Rows.Count > 0 ? ConvertToDTO(dt.Rows[0]) : null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy độc giả mới nhất: " + ex.Message);
+                return null;
+            }
         }
     }
 }

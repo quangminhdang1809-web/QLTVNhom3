@@ -17,7 +17,7 @@ namespace QLTVNhom3.DTO
         public string DiaChi { get; set; }
         public string IDAccount { get; set; }
         public string SoDienThoai { get; set; }
-        public string MaLoaiDG { get; set; }
+        public int MaLoaiDG { get; set; }
         public string TenLoaiDG { get; set; }
     }
 }

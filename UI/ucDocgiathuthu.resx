@@ -191,6 +191,17 @@
   <metadata name="colLoaidocgia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="btnSua.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAARZJREFUSEvtlkFOwzAQRXOTKu6mi7KCHXRfjlY7XAokeg8qTwqXAE/6kRz0JSZT
+        pCI1T/qKZU/eJFYSpZn5t4SY9yHJZ502ySuWzyNEefkpd6e4oP2dP22c5BnaGQ7ZMlegs8MknkBnh0k8
+        gc4Ok3gCnR0m8QQ6O0xSvlr3y05u25jfv+d0rHOhyw+jWgQ6O0yiDU5r/Vobni6gXw9zO7lj5+jaJJhk
+        1Kgc63G9C3V0fRJMomlT/ghPxxuUNYsur0LKPavVoMwOk2ho45iF1WpQZodJLrbVF3u4hlemNKjvbhjr
+        3C5vRrUIdHaYxBPo7DCJJ9DZYRJPoLNTfuAOTDQlbZQ36OyUEx/Paa5Nl1G20M1cHU3zBcWOfOmX8XE3
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnLuu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
