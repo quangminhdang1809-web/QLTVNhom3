@@ -213,8 +213,7 @@
             groupBox1.TabIndex = 104;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
-            groupBox1.Enter += groupBox1_Enter_1;
-            // 
+           // 
             // dtpNamxb
             // 
             dtpNamxb.CustomFormat = "yyyy";

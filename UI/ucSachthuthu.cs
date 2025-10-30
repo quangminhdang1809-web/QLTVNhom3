@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QLTVNhom3.BLL;
+using QLTVNhom3.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,25 +14,18 @@ namespace QLTVNhom3
 {
     public partial class ucSachthuthu : UserControl
     {
+        private SachBLL sachBLL; 
+        private List<TacGiaDTO> danhSachTacGia;
         public ucSachthuthu()
         {
             InitializeComponent();
+            sachBLL = new SachBLL();
+            danhSachTacGia = new List<TacGiaDTO>();       
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             frmThemsach frm = new frmThemsach();
             frm.ShowDialog();
-        }
-
-        private void btnTimkiem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
@@ -48,11 +43,6 @@ namespace QLTVNhom3
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnNext_Click(object sender, EventArgs e)
         {
             int i = grdSach.CurrentRow.Index;
@@ -65,21 +55,6 @@ namespace QLTVNhom3
         {
             int i = grdSach.RowCount - 1;
             grdSach.CurrentCell = grdSach[0, i];//Dòng  cuối cùng
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnFirst_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -40,6 +40,9 @@ namespace QLTVNhom3
                 //Ngay lap the la hnay 
                 dtpNgaylapthe.Value = DateTime.Now;
                 dtpNgayhethan.Enabled = false;
+
+                MessageBox.Show("Hệ thống sẽ tự động tạo tài khoản (docgiaX) với mật khẩu mặc định: 12345",
+                       "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -61,20 +64,12 @@ namespace QLTVNhom3
                     string diaChi = txtDiachi.Text.Trim();
                     string email = txtEmail.Text.Trim();
                     string soDienThoai = txtSdt.Text.Trim();
-                    string idAccount = txtIDAccount.Text.Trim();
                     DateTime ngayLapThe = dtpNgaylapthe.Value;
                     DateTime ngayHetHan = dtpNgayhethan.Value;
-
-                    // Lấy mã loại độc giả
-                    int? maLoaiDG = GetMaLoaiDocGia();
-                    if (maLoaiDG == null)
-                    {
-                        MessageBox.Show("Vui lòng chọn loại độc giả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
+                    int maLoaiDG = Convert.ToInt32(cbbLoaidocgia.SelectedValue);
 
                     // Gọi DAL để thêm
-                    int result = docGiaDAL.ThemDocGia(hoTen, ngaySinh, diaChi, email, soDienThoai, idAccount, maLoaiDG.Value, ngayLapThe, ngayHetHan);
+                    int result = docGiaDAL.ThemDocGia(hoTen, ngaySinh, diaChi, email, soDienThoai, "", maLoaiDG, ngayLapThe, ngayHetHan);
                     if (result > 0)
                     {
                         MessageBox.Show("Thêm độc giả thành công!");
@@ -133,11 +128,11 @@ namespace QLTVNhom3
                 return false;
             }
 
-            // Kiểm tra tuổi (ví dụ: ít nhất 6 tuổi)
+            // Kiểm tra tuổi (ví dụ: ít nhất 18 tuổi)
             int tuoi = DateTime.Now.Year - dtpNgaysinh.Value.Year;
-            if (tuoi < 6)
+            if (tuoi < 18)
             {
-                MessageBox.Show("Độc giả phải ít nhất 6 tuổi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Độc giả phải ít nhất 18 tuổi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dtpNgaysinh.Focus();
                 return false;
             }
@@ -174,18 +169,16 @@ namespace QLTVNhom3
 
         private void cbbLoaidocgia_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbbLoaidocgia.SelectedValue == null || cbbLoaidocgia.SelectedValue is DataRowView)
+                return;
             try
             {
-                int? maLoai = GetMaLoaiDocGia();
-                if (maLoai == null)
-                    return;
-
-                LoaiDocGiaDTO loai = loaiDocGiaDAL.GetLoaiDocGiaByMa(maLoai.Value);
+                int maLoai = Convert.ToInt32(cbbLoaidocgia.SelectedValue);
+                LoaiDocGiaDTO loai = loaiDocGiaDAL.GetLoaiDocGiaByMa(maLoai);
 
                 if (loai != null && loai.ThoiHanThe > 0)
                 {
-                    DateTime ngayLap = dtpNgaylapthe.Value;
-                    dtpNgayhethan.Value = ngayLap.AddYears(loai.ThoiHanThe);
+                    dtpNgayhethan.Value = dtpNgaylapthe.Value.AddYears(loai.ThoiHanThe);
                 }
             }
             catch (Exception ex)
