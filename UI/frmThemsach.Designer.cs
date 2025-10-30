@@ -89,7 +89,6 @@
             btnLuu.TabIndex = 56;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = false;
-            btnLuu.Click += btnLuu_Click;
             // 
             // pbThemanh
             // 
@@ -244,7 +243,6 @@
             txtTacgia.Name = "txtTacgia";
             txtTacgia.Size = new Size(632, 50);
             txtTacgia.TabIndex = 63;
-            txtTacgia.TextChanged += txtTacgia_TextChanged;
             // 
             // grdTacgia
             // 
@@ -339,7 +337,6 @@
             btnXoatg.Size = new Size(76, 46);
             btnXoatg.TabIndex = 143;
             btnXoatg.UseVisualStyleBackColor = false;
-            btnXoatg.Click += btnXoatg_Click;
             // 
             // label8
             // 
@@ -465,7 +462,6 @@
             grdTimkiemtacgia.Size = new Size(630, 265);
             grdTimkiemtacgia.TabIndex = 152;
             grdTimkiemtacgia.Visible = false;
-            grdTimkiemtacgia.CellDoubleClick += grdTimkiemtacgia_CellDoubleClick;
             // 
             // colma
             // 
