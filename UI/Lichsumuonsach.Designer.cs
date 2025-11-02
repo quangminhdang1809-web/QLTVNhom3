@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             lblLichsumuon = new Label();
@@ -67,8 +67,9 @@
             panel1.Controls.Add(tableLayoutPanel1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1043, 847);
+            panel1.Size = new Size(1356, 1084);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -92,7 +93,8 @@
             tableLayoutPanel1.Controls.Add(txtTratre, 1, 3);
             tableLayoutPanel1.Controls.Add(lblSachdangmuon, 0, 2);
             tableLayoutPanel1.Controls.Add(textBox1, 1, 2);
-            tableLayoutPanel1.Location = new Point(67, 17);
+            tableLayoutPanel1.Location = new Point(87, 22);
+            tableLayoutPanel1.Margin = new Padding(4, 4, 4, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.0304146F));
@@ -102,8 +104,8 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0190086F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10.0190086F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40.0760345F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(882, 759);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
+            tableLayoutPanel1.Size = new Size(1237, 972);
             tableLayoutPanel1.TabIndex = 1;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
@@ -113,9 +115,10 @@
             tableLayoutPanel1.SetColumnSpan(lblLichsumuon, 2);
             lblLichsumuon.Dock = DockStyle.Top;
             lblLichsumuon.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            lblLichsumuon.Location = new Point(179, 377);
+            lblLichsumuon.Location = new Point(251, 482);
+            lblLichsumuon.Margin = new Padding(4, 0, 4, 0);
             lblLichsumuon.Name = "lblLichsumuon";
-            lblLichsumuon.Size = new Size(522, 41);
+            lblLichsumuon.Size = new Size(734, 54);
             lblLichsumuon.TabIndex = 1;
             lblLichsumuon.Text = "Lịch sử mượn";
             lblLichsumuon.TextAlign = ContentAlignment.MiddleCenter;
@@ -125,25 +128,26 @@
             dgvLichsumuon.AllowUserToAddRows = false;
             dgvLichsumuon.AllowUserToDeleteRows = false;
             dgvLichsumuon.BackgroundColor = SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = SystemColors.Control;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvLichsumuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvLichsumuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvLichsumuon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvLichsumuon.Columns.AddRange(new DataGridViewColumn[] { clmMaphieumuon, clmNgaymuon, clmNgaytra, clmTrangthai, clmTensach, clmNXB, clmTacgia });
             tableLayoutPanel1.SetColumnSpan(dgvLichsumuon, 4);
             dgvLichsumuon.Dock = DockStyle.Fill;
             dgvLichsumuon.EnableHeadersVisualStyles = false;
             dgvLichsumuon.GridColor = SystemColors.Control;
-            dgvLichsumuon.Location = new Point(3, 456);
+            dgvLichsumuon.Location = new Point(4, 583);
+            dgvLichsumuon.Margin = new Padding(4, 4, 4, 4);
             dgvLichsumuon.Name = "dgvLichsumuon";
             dgvLichsumuon.ReadOnly = true;
             dgvLichsumuon.RowHeadersWidth = 62;
-            dgvLichsumuon.Size = new Size(876, 300);
+            dgvLichsumuon.Size = new Size(1229, 385);
             dgvLichsumuon.TabIndex = 3;
             // 
             // clmMaphieumuon
@@ -206,9 +210,10 @@
             // 
             lblSosachmuon.AutoSize = true;
             lblSosachmuon.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblSosachmuon.Location = new Point(3, 121);
+            lblSosachmuon.Location = new Point(4, 155);
+            lblSosachmuon.Margin = new Padding(4, 0, 4, 0);
             lblSosachmuon.Name = "lblSosachmuon";
-            lblSosachmuon.Size = new Size(99, 60);
+            lblSosachmuon.Size = new Size(230, 45);
             lblSosachmuon.TabIndex = 1;
             lblSosachmuon.Text = "Số sách mượn";
             lblSosachmuon.TextAlign = ContentAlignment.MiddleRight;
@@ -217,10 +222,11 @@
             // 
             txtSosachmuon.BorderStyle = BorderStyle.FixedSingle;
             txtSosachmuon.Font = new Font("Segoe UI", 12F);
-            txtSosachmuon.Location = new Point(179, 124);
+            txtSosachmuon.Location = new Point(251, 159);
+            txtSosachmuon.Margin = new Padding(4, 4, 4, 4);
             txtSosachmuon.Name = "txtSosachmuon";
             txtSosachmuon.ReadOnly = true;
-            txtSosachmuon.Size = new Size(258, 39);
+            txtSosachmuon.Size = new Size(335, 50);
             txtSosachmuon.TabIndex = 2;
             // 
             // lblThongke
@@ -229,9 +235,10 @@
             tableLayoutPanel1.SetColumnSpan(lblThongke, 2);
             lblThongke.Dock = DockStyle.Top;
             lblThongke.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            lblThongke.Location = new Point(179, 0);
+            lblThongke.Location = new Point(251, 0);
+            lblThongke.Margin = new Padding(4, 0, 4, 0);
             lblThongke.Name = "lblThongke";
-            lblThongke.Size = new Size(522, 41);
+            lblThongke.Size = new Size(734, 54);
             lblThongke.TabIndex = 0;
             lblThongke.Text = "Thống kê nhanh";
             lblThongke.TextAlign = ContentAlignment.MiddleCenter;
@@ -241,9 +248,10 @@
             lblChitietphat.AutoSize = true;
             lblChitietphat.Dock = DockStyle.Left;
             lblChitietphat.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblChitietphat.Location = new Point(707, 0);
+            lblChitietphat.Location = new Point(993, 0);
+            lblChitietphat.Margin = new Padding(4, 0, 4, 0);
             lblChitietphat.Name = "lblChitietphat";
-            lblChitietphat.Size = new Size(153, 121);
+            lblChitietphat.Size = new Size(204, 155);
             lblChitietphat.TabIndex = 7;
             lblChitietphat.Text = "Chi tiết phạt";
             lblChitietphat.TextAlign = ContentAlignment.BottomCenter;
@@ -254,26 +262,27 @@
             dgvChitietphat.AllowUserToAddRows = false;
             dgvChitietphat.AllowUserToDeleteRows = false;
             dgvChitietphat.BackgroundColor = SystemColors.Control;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = SystemColors.Control;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvChitietphat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvChitietphat.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvChitietphat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvChitietphat.Columns.AddRange(new DataGridViewColumn[] { clmNgayphat, clmSachtre, clmSongaytre, clmSotienphat });
             tableLayoutPanel1.SetColumnSpan(dgvChitietphat, 2);
             dgvChitietphat.Dock = DockStyle.Top;
             dgvChitietphat.EnableHeadersVisualStyles = false;
             dgvChitietphat.GridColor = SystemColors.Control;
-            dgvChitietphat.Location = new Point(443, 124);
+            dgvChitietphat.Location = new Point(622, 159);
+            dgvChitietphat.Margin = new Padding(4, 4, 4, 4);
             dgvChitietphat.Name = "dgvChitietphat";
             dgvChitietphat.ReadOnly = true;
             dgvChitietphat.RowHeadersWidth = 62;
             tableLayoutPanel1.SetRowSpan(dgvChitietphat, 4);
-            dgvChitietphat.Size = new Size(436, 250);
+            dgvChitietphat.Size = new Size(611, 319);
             dgvChitietphat.TabIndex = 9;
             // 
             // clmNgayphat
@@ -312,9 +321,10 @@
             // 
             lblPhat.AutoSize = true;
             lblPhat.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblPhat.Location = new Point(3, 301);
+            lblPhat.Location = new Point(4, 385);
+            lblPhat.Margin = new Padding(4, 0, 4, 0);
             lblPhat.Name = "lblPhat";
-            lblPhat.Size = new Size(121, 32);
+            lblPhat.Size = new Size(161, 45);
             lblPhat.TabIndex = 4;
             lblPhat.Text = "Tiền phạt";
             lblPhat.TextAlign = ContentAlignment.MiddleRight;
@@ -323,19 +333,21 @@
             // 
             txtPhat.BorderStyle = BorderStyle.FixedSingle;
             txtPhat.Font = new Font("Segoe UI", 12F);
-            txtPhat.Location = new Point(179, 304);
+            txtPhat.Location = new Point(251, 389);
+            txtPhat.Margin = new Padding(4, 4, 4, 4);
             txtPhat.Name = "txtPhat";
             txtPhat.ReadOnly = true;
-            txtPhat.Size = new Size(258, 39);
+            txtPhat.Size = new Size(335, 50);
             txtPhat.TabIndex = 6;
             // 
             // lblTratre
             // 
             lblTratre.AutoSize = true;
             lblTratre.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTratre.Location = new Point(3, 239);
+            lblTratre.Location = new Point(4, 306);
+            lblTratre.Margin = new Padding(4, 0, 4, 0);
             lblTratre.Name = "lblTratre";
-            lblTratre.Size = new Size(88, 32);
+            lblTratre.Size = new Size(118, 45);
             lblTratre.TabIndex = 3;
             lblTratre.Text = "Trả trễ";
             lblTratre.TextAlign = ContentAlignment.MiddleRight;
@@ -345,19 +357,21 @@
             txtTratre.BorderStyle = BorderStyle.FixedSingle;
             txtTratre.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             txtTratre.ForeColor = Color.Red;
-            txtTratre.Location = new Point(179, 242);
+            txtTratre.Location = new Point(251, 310);
+            txtTratre.Margin = new Padding(4, 4, 4, 4);
             txtTratre.Name = "txtTratre";
             txtTratre.ReadOnly = true;
-            txtTratre.Size = new Size(258, 39);
+            txtTratre.Size = new Size(335, 50);
             txtTratre.TabIndex = 5;
             // 
             // lblSachdangmuon
             // 
             lblSachdangmuon.AutoSize = true;
             lblSachdangmuon.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblSachdangmuon.Location = new Point(3, 181);
+            lblSachdangmuon.Location = new Point(4, 232);
+            lblSachdangmuon.Margin = new Padding(4, 0, 4, 0);
             lblSachdangmuon.Name = "lblSachdangmuon";
-            lblSachdangmuon.Size = new Size(150, 32);
+            lblSachdangmuon.Size = new Size(198, 45);
             lblSachdangmuon.TabIndex = 10;
             lblSachdangmuon.Text = "Đang mượn";
             // 
@@ -365,19 +379,21 @@
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(179, 184);
+            textBox1.Location = new Point(251, 236);
+            textBox1.Margin = new Padding(4, 4, 4, 4);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(258, 39);
+            textBox1.Size = new Size(335, 50);
             textBox1.TabIndex = 11;
             // 
             // Lichsumuonsach
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Lichsumuonsach";
-            Size = new Size(1043, 847);
+            Size = new Size(1356, 1084);
             panel1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

@@ -79,7 +79,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.3266563F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 87.67334F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 116F));
-            tableLayoutPanel1.Size = new Size(1491, 889);
+            tableLayoutPanel1.Size = new Size(1833, 1108);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // grdSach
@@ -101,11 +101,11 @@
             grdSach.Columns.AddRange(new DataGridViewColumn[] { Madausach, Masach, Tendausach, Trangthai });
             grdSach.Dock = DockStyle.Fill;
             grdSach.EnableHeadersVisualStyles = false;
-            grdSach.Location = new Point(3, 98);
+            grdSach.Location = new Point(3, 125);
             grdSach.Name = "grdSach";
             grdSach.RowHeadersWidth = 51;
             grdSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdSach.Size = new Size(701, 671);
+            grdSach.Size = new Size(864, 863);
             grdSach.TabIndex = 89;
             grdSach.CellContentClick += grdTheloai_CellContentClick;
             // 
@@ -139,9 +139,9 @@
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
-            btnTimkiem.Location = new Point(710, 14);
+            btnTimkiem.Location = new Point(873, 27);
             btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.Size = new Size(130, 67);
+            btnTimkiem.Size = new Size(162, 67);
             btnTimkiem.TabIndex = 27;
             btnTimkiem.UseVisualStyleBackColor = true;
             // 
@@ -150,9 +150,9 @@
             txtTimkiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(3, 30);
+            txtTimkiem.Location = new Point(3, 36);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(701, 34);
+            txtTimkiem.Size = new Size(864, 50);
             txtTimkiem.TabIndex = 26;
             // 
             // groupBox2
@@ -162,7 +162,7 @@
             groupBox2.Controls.Add(btnNext);
             groupBox2.Controls.Add(btnLast);
             groupBox2.Controls.Add(btnFirst);
-            groupBox2.Location = new Point(424, 801);
+            groupBox2.Location = new Point(587, 1020);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(280, 85);
             groupBox2.TabIndex = 33;
@@ -232,9 +232,9 @@
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(846, 98);
+            groupBox1.Location = new Point(1041, 125);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(642, 489);
+            groupBox1.Size = new Size(789, 489);
             groupBox1.TabIndex = 92;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
@@ -244,9 +244,9 @@
             textBox1.Anchor = AnchorStyles.Right;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            textBox1.Location = new Point(169, 172);
+            textBox1.Location = new Point(316, 172);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(429, 34);
+            textBox1.Size = new Size(429, 50);
             textBox1.TabIndex = 78;
             // 
             // label3
@@ -256,7 +256,7 @@
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label3.Location = new Point(22, 171);
             label3.Name = "label3";
-            label3.Size = new Size(90, 28);
+            label3.Size = new Size(145, 45);
             label3.TabIndex = 77;
             label3.Text = "Tên sách";
             // 
@@ -265,9 +265,9 @@
             txtMota.Anchor = AnchorStyles.Right;
             txtMota.BorderStyle = BorderStyle.FixedSingle;
             txtMota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMota.Location = new Point(169, 315);
+            txtMota.Location = new Point(316, 315);
             txtMota.Name = "txtMota";
-            txtMota.Size = new Size(429, 34);
+            txtMota.Size = new Size(429, 50);
             txtMota.TabIndex = 76;
             // 
             // txtTentheloai
@@ -275,9 +275,9 @@
             txtTentheloai.Anchor = AnchorStyles.Right;
             txtTentheloai.BorderStyle = BorderStyle.FixedSingle;
             txtTentheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTentheloai.Location = new Point(169, 238);
+            txtTentheloai.Location = new Point(316, 238);
             txtTentheloai.Name = "txtTentheloai";
-            txtTentheloai.Size = new Size(429, 34);
+            txtTentheloai.Size = new Size(429, 50);
             txtTentheloai.TabIndex = 75;
             // 
             // btnUndo
@@ -286,7 +286,7 @@
             btnUndo.FlatAppearance.BorderSize = 0;
             btnUndo.FlatStyle = FlatStyle.Flat;
             btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(458, 429);
+            btnUndo.Location = new Point(605, 429);
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new Size(45, 40);
             btnUndo.TabIndex = 73;
@@ -298,7 +298,7 @@
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.Image = (Image)resources.GetObject("btnSua.Image");
-            btnSua.Location = new Point(522, 429);
+            btnSua.Location = new Point(669, 429);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(45, 40);
             btnSua.TabIndex = 72;
@@ -310,7 +310,7 @@
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
-            btnXoa.Location = new Point(573, 429);
+            btnXoa.Location = new Point(720, 429);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(45, 40);
             btnXoa.TabIndex = 71;
@@ -323,7 +323,7 @@
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label4.Location = new Point(22, 320);
             label4.Name = "label4";
-            label4.Size = new Size(102, 28);
+            label4.Size = new Size(167, 45);
             label4.TabIndex = 65;
             label4.Text = "Trạng thái";
             // 
@@ -334,7 +334,7 @@
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label2.Location = new Point(22, 240);
             label2.Name = "label2";
-            label2.Size = new Size(126, 28);
+            label2.Size = new Size(205, 45);
             label2.TabIndex = 63;
             label2.Text = "Mã đầu sách";
             // 
@@ -343,9 +343,9 @@
             txtMatheloai.Anchor = AnchorStyles.Right;
             txtMatheloai.BorderStyle = BorderStyle.FixedSingle;
             txtMatheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMatheloai.Location = new Point(169, 109);
+            txtMatheloai.Location = new Point(316, 109);
             txtMatheloai.Name = "txtMatheloai";
-            txtMatheloai.Size = new Size(429, 34);
+            txtMatheloai.Size = new Size(429, 50);
             txtMatheloai.TabIndex = 61;
             // 
             // label1
@@ -355,7 +355,7 @@
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             label1.Location = new Point(22, 108);
             label1.Name = "label1";
-            label1.Size = new Size(86, 28);
+            label1.Size = new Size(141, 45);
             label1.TabIndex = 60;
             label1.Text = "Mã sách";
             // 
@@ -365,7 +365,7 @@
             BackColor = Color.White;
             Controls.Add(tableLayoutPanel1);
             Name = "ucMacabiet";
-            Size = new Size(1650, 1000);
+            Size = new Size(1992, 1219);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)grdSach).EndInit();
