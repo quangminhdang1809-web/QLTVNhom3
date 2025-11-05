@@ -25,13 +25,21 @@ namespace QLTVNhom3.DAL
         }
         public DataTable ExecuteQuery(string query, SqlParameter[] para = null, bool isStoredProc = false)
         {
-            using (var con = Getconnection())
-            using (var cmd = CreateCommand(query, con, para, isStoredProc))
-            using (var adt = new SqlDataAdapter(cmd))
+            try
             {
-                DataTable dt = new DataTable();
-                adt.Fill(dt);
-                return dt;
+                using (var con = Getconnection())
+                using (var cmd = CreateCommand(query, con, para, isStoredProc))
+                using (var adt = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    adt.Fill(dt);
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi ExecuteQuery: " + ex.Message);
+                return new DataTable();
             }
         }
         //Những câu lệnh không phải truy vấn select (
@@ -55,10 +63,18 @@ namespace QLTVNhom3.DAL
         //Trả về 1 giá trị đơn 
         public object ExecuteScalar(string query, SqlParameter[] para = null, bool isStoredProc = false)
         {
-            using (var con = Getconnection())
-            using (var cmd = CreateCommand(query, con, para, isStoredProc))
+            try
             {
-                con.Open(); return cmd.ExecuteScalar();
+                using (var con = Getconnection())
+                using (var cmd = CreateCommand(query, con, para, isStoredProc))
+                {
+                    con.Open(); return cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi ExecuteScalar: " + ex.Message);
+                return null;
             }
         }
 
