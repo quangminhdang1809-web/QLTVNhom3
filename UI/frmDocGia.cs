@@ -24,7 +24,7 @@ namespace QLTVNhom3
         private void btnThongtincanhan_Click(object sender, EventArgs e)
         {
             pnlMain.Controls.Clear();
-            Thongtincanhan ttcndg = new Thongtincanhan();
+            Thongtincanhan ttcndg = new Thongtincanhan(IDAccount);
             ttcndg.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(ttcndg);
 

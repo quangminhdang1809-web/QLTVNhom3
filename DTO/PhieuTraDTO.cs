@@ -25,5 +25,14 @@ namespace QLTVNhom3.DTO
         public decimal TongTienPhat { get; set; }
         public string GhiChu { get; set; }
         public int MaThuThu { get; set; }
+        // Thêm các thuộc tính để hiển thị thông tin
+        public string TenLoiQuaHan { get; set; }
+        public string TenLoiSach { get; set; }
+        public decimal MucPhatQuaHan { get; set; }
+        public decimal MucPhatLoiSach { get; set; }
+
+        // Thuộc tính tính toán
+        public bool DaQuaHan => SoNgayTraTre > 0;
+        public string TrangThai => DaQuaHan ? "Trả trễ" : "Trả đúng hạn";
     }
 }

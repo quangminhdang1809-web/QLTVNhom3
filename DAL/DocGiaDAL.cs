@@ -283,5 +283,81 @@ namespace QLTVNhom3.DAL
                 return null;
             }
         }
+        public DocGiaDTO GetThongTinDocGia (string idAccount)
+        {
+            try
+            {
+                string query = @"SELECT a.IDAccount, a.PasswordAccount,a.TypeOfAccount,dg.MaDocGia,dg.HoTen,dg.SoDienThoai,dg.Email,dg.DiaChi,dg.NgayLapThe,dg.NgayHetHan,ld.TenLoaiDG from ACCOUNT a
+                join DOCGIA dg ON a.IDAccount = dg.IDAccount 
+                join LOAIDOCGIA ld ON dg.MaLoaiDG = ld.MaLoaiDG 
+                where a.IDAccount = @IDAccount";
+
+                SqlParameter[] parameters = {
+                    new SqlParameter("@IDAccount", idAccount)
+                };
+                DataTable dt = db.ExecuteQuery(query, parameters);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    return new DocGiaDTO()
+                    {
+                        IDAccount = row["IDAccount"].ToString(),
+                        PasswordAccount = row["PasswordAccount"].ToString(),
+                        TypeOfAccount = row["TypeOfAccount"].ToString(),
+                        MaDocGia = Convert.ToInt32(row["MaDocGia"]),
+                        HoTen = row["HoTen"].ToString(),
+                        SoDienThoai = row["SoDienThoai"].ToString(),
+                        Email = row["Email"].ToString(),
+                        DiaChi = row["DiaChi"].ToString(),
+                        NgayLapThe = Convert.ToDateTime(row["NgayLapThe"]),
+                        NgayHetHan = Convert.ToDateTime(row["NgayHetHan"]),
+                        TenLoaiDG = row["TenLoaiDG"].ToString()
+                    };
+                }
+                return null; 
+            }
+
+            catch (Exception ex) 
+            {
+                throw new Exception($"Lỗi khi lấy thông tin độc giả: {ex.Message}");
+            } 
+        }
+        public bool DoiMatKhau(string idAccount, string matKhauMoi)
+        {
+            try
+            {
+                string query = @"UPDATE ACCOUNT SET PasswordAccount = @Password WHERE IDAccount = @IDAccount";
+                SqlParameter[] parameters = {
+                    new SqlParameter("@Password", matKhauMoi),
+                    new SqlParameter("@IDAccount", idAccount)
+                };
+
+                int result = db.ExecuteNonQuery(query, parameters);
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi đổi mật khẩu: {ex.Message}");
+            }
+        }
+        public int GetMaLoaiDGFromTenLoai(string tenLoai)
+        {
+            try
+            {
+                string query = "SELECT MaLoaiDG FROM LOAIDOCGIA WHERE TenLoaiDG = @TenLoaiDG";
+                SqlParameter[] parameters = {
+                    new SqlParameter("@TenLoaiDG", tenLoai)
+                };
+
+                object result = db.ExecuteScalar(query, parameters);
+                return result != null ? Convert.ToInt32(result) : 1; // Mặc định return 1 nếu không tìm thấy
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi lấy mã loại độc giả: {ex.Message}");
+                return 1;
+            }
+        }
     }
 }
