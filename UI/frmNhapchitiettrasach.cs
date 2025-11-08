@@ -1,4 +1,5 @@
-﻿using QLTVNhom3.DTO;
+﻿using QLTVNhom3.DAL;
+using QLTVNhom3.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,23 +26,59 @@ namespace QLTVNhom3
             KhoiTaoThongTin();
             TinhToanTienPhat();
         }
+        private (int maLoi, decimal mucPhat) GetMaLoiVaMucPhat()
+        {
+            // 1. Kiểm tra SelectedItem
+            if (cboTinhTrangSach.SelectedItem == null)
+                return (0, 0); // Không có lỗi
+
+            // Lấy DataRowView (cần thiết khi DataSource là DataTable)
+            if (cboTinhTrangSach.SelectedItem is DataRowView drv)
+            {
+                // 2. Lấy Mã lỗi (MaLoi) từ ValueMember
+                // LƯU Ý: Nếu ValueMember là int, SelectedValue sẽ trả về object kiểu int
+                int maLoi = (int)cboTinhTrangSach.SelectedValue;
+
+                // 3. Lấy mức phạt (MucPhat) từ DataRowView
+                // Cột MucPhat phải được định nghĩa trong DataTable của bạn
+                decimal mucPhat = (decimal)drv["MucPhat"];
+
+                return (maLoi, mucPhat);
+            }
+
+            // Trường hợp không phải DataRowView (lỗi bất thường)
+            return (0, 0);
+        }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (cboTinhTrangSach.SelectedItem == null)
+            // Kiểm tra ComboBox đã chọn
+            if (cboTinhTrangSach.SelectedValue == null)
             {
                 MessageBox.Show("Vui lòng chọn tình trạng sách!", "Thông báo");
                 return;
             }
-            // XỬ LÝ LỖI KHI PARSE MÃ PHIẾU MƯỢN
-            if (!int.TryParse(txtMaPhieuMuon.Text, out int maPhieuMS))
+
+            // Lấy mã lỗi và mức phạt
+            var (maLoiSach, tienPhatLoiSach) = GetMaLoiVaMucPhat(); // Dùng hàm sửa lỗi
+
+            int maPhieuMS;
+            if (!int.TryParse(txtMaPhieuMuon.Text, out maPhieuMS))
             {
                 MessageBox.Show("Mã phiếu mượn không hợp lệ!", "Lỗi");
                 return;
             }
-            // Lấy thông tin lỗi
-            var (maLoiSach, tienPhatLoiSach) = GetMaLoiVaMucPhat(cboTinhTrangSach.SelectedItem.ToString());
+
+            // Tính tiền phạt trả trễ
             decimal tienPhatTraTre = _soNgayTraTre * 5000;
+
+            // TẠO DANH SÁCH LỖI (CHỈ LƯU MÃ LỖI)
+            List<int> dsMaLoi = new List<int>();
+            if (maLoiSach > 0)
+            {
+                dsMaLoi.Add(maLoiSach); // Thêm Mã lỗi sách đã chọn
+            }
+            // LƯU Ý: Tầng DAL sẽ tự thêm lỗi Quá hạn nếu SoNgayTraTre > 0
 
             // TẠO DTO VỚI ĐẦY ĐỦ THÔNG TIN
             ThongTinSachTra = new PhieuTraDTO
@@ -54,10 +91,12 @@ namespace QLTVNhom3
                 NgayTra = DateTime.Now,
                 SoNgayTraTre = _soNgayTraTre,
 
-                // Thông tin vi phạm
-                TinhTrangSach = cboTinhTrangSach.SelectedItem.ToString(),
-                MaLoiQuaHan = (_soNgayTraTre > 0) ? 1 : (int?)null, // MaLoi = 1 cho quá hạn
-                MaLoiSach = maLoiSach,
+                // Gán Mã lỗi cho DAL (quan trọng cho CTVIPHAM)
+                DsMaLoiViPham = dsMaLoi,
+
+                // Gán Mã Tình trạng mới (MaTinhTrangMoi) - Cần được tính toán từ tên tình trạng
+                // Giả sử 1 là mã 'Bình thường/Tốt'
+                MaTinhTrangMoi = (maLoiSach == 0 || maLoiSach == 3) ? 1 : 3, // Logic giả định: Nếu không có lỗi nghiêm trọng, trạng thái sách là Tốt (1). Nếu có lỗi, trạng thái là Cần sửa (3). 
 
                 // Tiền phạt
                 TienPhatQuaHan = tienPhatTraTre,
@@ -91,9 +130,8 @@ namespace QLTVNhom3
             // Tính số ngày trả trễ
             _soNgayTraTre = TinhSoNgayTraTre(hanTra, ngayHienTai);
             txtSoNgayTraTre.Text = _soNgayTraTre.ToString();
+            LoadCboLoaiViPham();
 
-            // Khởi tạo combo box tình trạng sách
-            KhoiTaoComboBoxTinhTrang();
         }
         private int TinhSoNgayTraTre(DateTime hanTra, DateTime ngayTra)
         {
@@ -103,42 +141,44 @@ namespace QLTVNhom3
             TimeSpan diff = ngayTra - hanTra;
             return diff.Days;
         }
-        private void KhoiTaoComboBoxTinhTrang()
+        public void LoadCboLoaiViPham()
         {
-            // Thêm các tình trạng sách
-            cboTinhTrangSach.Items.Add("Bình thường");
-            cboTinhTrangSach.Items.Add("Rách bìa");
-            cboTinhTrangSach.Items.Add("Rách trang");
-            cboTinhTrangSach.Items.Add("Bẩn");
-            cboTinhTrangSach.Items.Add("Mất sách");
-            cboTinhTrangSach.SelectedIndex = 0; // Mặc định là "Bình thường"
+            PhieuTraDAL dal = new PhieuTraDAL();
+            DataTable dt = dal.LayDanhSachLoaiViPham();
+
+            // --- Bổ sung hàng "Không lỗi" (MaLoi = 0) ---
+            DataRow noErrorRow = dt.NewRow();
+            noErrorRow["MaLoi"] = 0;
+            noErrorRow["TenLoi"] = "Không lỗi";
+            noErrorRow["MucPhat"] = 0m; // Mức phạt là 0
+
+            // Thêm hàng "Không lỗi" vào đầu DataTable
+            dt.Rows.InsertAt(noErrorRow, 0);
+
+            cboTinhTrangSach.DataSource = dt;
+            cboTinhTrangSach.DisplayMember = "TenLoi";
+            cboTinhTrangSach.ValueMember = "MaLoi";
+
+            // Chọn giá trị "Không lỗi" (SelectedIndex = 0) làm mặc định
+            cboTinhTrangSach.SelectedIndex = 0;
         }
         private void TinhToanTienPhat()
         {
-            // Tính tiền phạt do trả trễ
+            // Tính tiền phạt do trả trễ (Nên dùng hàm DAL TinhTienPhat nếu có)
             decimal tienPhatTraTre = _soNgayTraTre * 5000;
 
-            // Tính tiền phạt do lỗi sách (nếu có)
-            var (maLoiSach, tienPhatLoiSach) = GetMaLoiVaMucPhat(cboTinhTrangSach.SelectedItem?.ToString());
+            // SỬA LỖI: Gọi hàm mới KHÔNG tham số
+            var (maLoiSach, tienPhatLoiSach) = GetMaLoiVaMucPhat();
 
             _tienPhat = tienPhatTraTre + tienPhatLoiSach;
             txtTienPhat.Text = _tienPhat.ToString("N0") + " VNĐ";
         }
-        private (int maLoi, decimal mucPhat) GetMaLoiVaMucPhat(string tinhTrang)
-        {
-            // Ánh xạ tình trạng sang mã lỗi (bạn cần query từ database)
-            switch (tinhTrang)
-            {
-                case "Bình thường": return (3, 0);      // MaLoi = 3
-                case "Rách bìa": return (4, 20000);     // MaLoi = 4
-                case "Rách trang": return (5, 20000);   // MaLoi = 5
-                case "Bẩn": return (6, 5000);          // MaLoi = 6
-                case "Mất sách": return (7, 500000);   // MaLoi = 7
-                default: return (3, 0);
-            }
-        }
+
         private void cboTinhTrangSach_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            // Bắt lỗi SelectionChanged xảy ra khi load dữ liệu (SelectedIndex = -1)
+            if (cboTinhTrangSach.SelectedIndex == -1) return;
+
             TinhToanTienPhat();
         }
     }

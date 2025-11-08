@@ -144,49 +144,55 @@ namespace QLTVNhom3
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            var Result = MessageBox.Show("Bạn có chắc muốn lưu phiếu trả này?",
-                               "Xác nhận",
-                               MessageBoxButtons.YesNo,
-                               MessageBoxIcon.Question);
+            // 1. Xác nhận từ người dùng
+            var Result = MessageBox.Show("Bạn có chắc chắn muốn lưu phiếu trả này?",
+                                         "Xác nhận",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
 
             if (Result != DialogResult.Yes) return;
 
             try
             {
-                // DEBUG: Hiển thị chi tiết dữ liệu sẽ lưu
-                string debugInfo = "=== THÔNG TIN SẼ LƯU ===\n";
-                debugInfo += $"Tổng số sách: {danhSachPhieuTra.Count}\n";
-                debugInfo += $"Mã thủ thư: {danhSachPhieuTra[0].MaThuThu}\n\n";
+                // ** LOẠI BỎ CODE DEBUG TRƯỚC KHI LƯU **
+                // Nếu cần, bạn có thể thêm logic xác thực cuối cùng ở đây.
 
-                foreach (var pt in danhSachPhieuTra)
-                {
-                    debugInfo += $"Sách: {pt.MaSach}\n";
-                    debugInfo += $"  - Mã phiếu mượn: {pt.MaPhieuMS}\n";
-                    debugInfo += $"  - Ngày trả: {pt.NgayTra}\n";
-                    debugInfo += $"  - Số ngày trả trễ: {pt.SoNgayTraTre}\n";
-                    debugInfo += $"  - Tiền phạt: {pt.TongTienPhat}\n";
-                    debugInfo += $"  - Tình trạng: {pt.TinhTrangSach}\n\n";
-                }
-                MessageBox.Show(debugInfo, "DEBUG - Trước khi lưu");
-                // Lưu danh sách phiếu trả vào CSDL
+                // 2. Gọi DAL/BLL để Lưu dữ liệu
+                // GIẢ ĐỊNH: phieuTraBLL.LuuDanhSachPhieuTra sẽ ném lỗi (throw) nếu transaction thất bại
                 bool result = phieuTraBLL.LuuDanhSachPhieuTra(danhSachPhieuTra);
 
+                // 3. Xử lý kết quả THÀNH CÔNG
                 if (result)
                 {
-                    MessageBox.Show("Lưu phiếu trả thành công! Sách đã được cập nhật trạng thái.", "Thông báo");
+                    MessageBox.Show("Lưu phiếu trả thành công! Sách đã được cập nhật trạng thái.",
+                                    "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi khi lưu phiếu trả! Vui lòng kiểm tra Console để biết chi tiết.", "Lỗi");
+                    // Trường hợp BLL/DAL trả về 'false' mà không ném lỗi (ít xảy ra)
+                    MessageBox.Show("Lỗi khi lưu phiếu trả! Giao dịch thất bại. Vui lòng thử lại.",
+                                    "Lỗi Giao dịch",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                string errorDetails = $"Lỗi UI: {ex.Message}\n\n";
-                errorDetails += $"Stack Trace: {ex.StackTrace}";
-                MessageBox.Show(errorDetails, "Lỗi nghiêm trọng");
+                // 4. Bắt lỗi được ném từ DAL/BLL (Lỗi CSDL/Transaction)
+
+                // Ghi log chi tiết (chỉ hiển thị trong cửa sổ Console)
+                Console.WriteLine($"=== LỖI NGHIÊM TRỌNG BỊ BẮT TẠI UI ===");
+                Console.WriteLine($"Message: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+
+                // Hiển thị lỗi chi tiết từ ex.Message (lỗi SQL/Transaction)
+                string errorMessage = $"LỖI GIAO DỊCH CSDL: Thao tác không thành công.\n\nChi tiết: {ex.Message}";
+
+                MessageBox.Show(errorMessage,
+                                "Lỗi Hệ thống",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

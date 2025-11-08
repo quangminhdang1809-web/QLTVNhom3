@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using QLTVNhom3.BLL;
 using QLTVNhom3.DAL;
 using QLTVNhom3.DTO;
 using System;
@@ -52,7 +53,7 @@ namespace QLTVNhom3
                 }
 
                 // 🌟 BƯỚC QUAN TRỌNG: Lấy mã thủ thư từ DTO (Session)
-                int maThuThuHienTai = ThuThuDTO.MaThuThu;
+                int maThuThuHienTai = UserSession.MaThuThu;
 
                 // Kiểm tra xem mã thủ thư có hợp lệ không
                 if (maThuThuHienTai <= 0)

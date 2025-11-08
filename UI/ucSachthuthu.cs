@@ -18,7 +18,7 @@ namespace QLTVNhom3
         private List<TacGiaDTO> danhSachTacGia;
         private string maSachDangChon;
         private DauSachDTO dauSachHienTai;
-        private bool dangTaiDuLieu = false; 
+        private bool dangTaiDuLieu = false;
         public ucSachthuthu()
         {
             InitializeComponent();
@@ -26,12 +26,43 @@ namespace QLTVNhom3
             danhSachTacGia = new List<TacGiaDTO>();
             grdSach.AutoGenerateColumns = false;
             LoadDanhSachDauSach();
+            LoadViTriComboBox();
+        }
+
+        private void SetViewMode(bool isEditing)
+        {
+            // 1. Bật/Tắt các ô nhập liệu
+            // Chỉ các ô này được sửa
+            txtTenDauSach.ReadOnly = !isEditing;
+            dtpNamXB.Enabled = isEditing; // DateTimePicker không có ReadOnly
+            txtNhaXB.ReadOnly = !isEditing;
+            txtSoLuong.ReadOnly = !isEditing;
+
+            // Các ô này luôn khóa
+            txtMaDauSach.ReadOnly = true;
+            cboViTri.Enabled = true;
+
+            // 2. Bật/Tắt các nút hành động chính
+            btnSua.Enabled = !isEditing;
+            btnLuu.Enabled = isEditing;
+            btnUndo.Enabled = isEditing;
+
+            // 3. Khóa các hành động "nguy hiểm" khi đang sửa
+            btnXoa.Enabled = !isEditing;
+            btnThemsach.Enabled = !isEditing;
+            grdSach.Enabled = !isEditing; // Khóa lưới chính
+
+            // Khóa các nút điều hướng
+            btnFirst.Enabled = !isEditing;
+            btnPrevious.Enabled = !isEditing;
+            btnNext.Enabled = !isEditing;
+            btnLast.Enabled = !isEditing;
         }
         private void LoadDanhSachDauSach()
         {
             try
             {
-                dangTaiDuLieu = true; 
+                dangTaiDuLieu = true;
                 var data = dauSachBLL.LayDanhSachDauSach();
                 grdSach.DataSource = data;
                 if (grdSach.Rows.Count > 0 && grdSach.Columns.Contains("colMadausach"))
@@ -53,9 +84,9 @@ namespace QLTVNhom3
                 }
                 else
                 {
-                    ClearForm(); 
-                } 
-                
+                    ClearForm();
+                }
+
             }
             catch (Exception ex)
             {
@@ -163,74 +194,63 @@ namespace QLTVNhom3
                 }
             }
         }
+        // [THAY THẾ HÀM NÀY TRONG ucSachthuthu.cs]
+
+        // [TRONG FILE ucSachthuthu.cs]
+        // THAY THẾ HÀM NÀY
+
         private void HienThiChiTietSach(string maDauSach)
         {
+            if (string.IsNullOrEmpty(maDauSach))
+            {
+                ClearForm();
+                SetViewMode(false);
+                return;
+            }
+
+            dangTaiDuLieu = true;
             try
             {
-                var sach = dauSachBLL.LayChiTietSach(maDauSach);
-                if (sach != null)
-                {
-                    txtMaDauSach.Text = sach.MaDauSach;
-                    txtTenDauSach.Text = sach.TenDauSach;
+                dauSachHienTai = dauSachBLL.LayChiTietSach(maDauSach);
 
-                    // THAY THẾ PHẦN NÀY - XỬ LÝ DateTimePicker VỚI TRY-CATCH
+                if (dauSachHienTai != null)
+                {
+                    txtMaDauSach.Text = dauSachHienTai.MaDauSach;
+                    txtTenDauSach.Text = dauSachHienTai.TenDauSach;
+                    txtNhaXB.Text = dauSachHienTai.NhaXuatBan ?? "";
+
+                    // SỬA DÒNG NÀY:
+                    cboViTri.SelectedValue = dauSachHienTai.MaViTri;
+
+                    txtSoLuong.Text = dauSachHienTai.SoLuongTong.ToString();
+
                     try
                     {
-                        if (sach.NamXuatBan > 0 && sach.NamXuatBan <= DateTime.Now.Year)
-                        {
-                            DateTime namXuatBan = new DateTime(sach.NamXuatBan, 1, 1);
-                            dtpNamXB.Value = namXuatBan;
-                        }
+                        if (dauSachHienTai.NamXuatBan > 1000)
+                            dtpNamXB.Value = new DateTime(dauSachHienTai.NamXuatBan, 1, 1);
                         else
-                        {
                             dtpNamXB.Value = DateTime.Now;
-                        }
                     }
-                    catch
-                    {
-                        dtpNamXB.Value = DateTime.Now;
-                    }
+                    catch { dtpNamXB.Value = DateTime.Now; }
 
-                    txtNhaXB.Text = sach.NhaXuatBan ?? "";
-                    txtViTri.Text = sach.TenViTri ?? "";
-                    txtSoLuong.Text = sach.SoLuongTong.ToString();
+                    grdTacgia.DataSource = dauSachHienTai.DanhSachTacGia;
 
-                    // Hiển thị ảnh bìa
-                    if (sach.AnhBia != null && sach.AnhBia.Length > 0)
-                    {
-                        try
-                        {
-                            if (picAnhBia.Image != null)
-                            {
-                                picAnhBia.Image.Dispose();
-                                picAnhBia.Image = null;
-                            }
-
-                            using (var ms = new System.IO.MemoryStream(sach.AnhBia))
-                            {
-                                picAnhBia.Image = Image.FromStream(ms);
-                            }
-                        }
-                        catch
-                        {
-                            picAnhBia.Image = null; 
-                        } 
-                        
-                    }
-                    else
-                    {
-                        picAnhBia.Image = null;
-                    }
-
-                    // Hiển thị danh sách tác giả
-                    grdTacgia.DataSource = sach.DanhSachTacGia ?? new List<TacGiaDTO>();
-                    dauSachHienTai = sach;
+                    SetViewMode(false);
+                }
+                else
+                {
+                    ClearForm();
+                    SetViewMode(false);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tải chi tiết sách: " + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dangTaiDuLieu = false;
             }
         }
         private void btnTimkiem_Click_1(object sender, EventArgs e)
@@ -297,12 +317,119 @@ namespace QLTVNhom3
             txtMaDauSach.Text = "";
             txtTenDauSach.Text = "";
             txtNhaXB.Text = "";
-            txtViTri.Text = "";
+            cboViTri.Text = "";
             txtSoLuong.Text = "";
             dtpNamXB.Value = DateTime.Now; // Reset date
             picAnhBia.Image = null;
             grdTacgia.DataSource = new List<TacGiaDTO>();
             maSachDangChon = null;
+        }
+        // [THÊM 3 HÀM NÀY VÀO ucSachthuthu.cs]
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            // Nếu chưa chọn sách
+            if (dauSachHienTai == null)
+            {
+                MessageBox.Show("Vui lòng chọn một cuốn sách để sửa.");
+                return;
+            }
+
+            // Chuyển sang chế độ SỬA
+            SetViewMode(true);
+            txtTenDauSach.Focus(); // Đặt con trỏ vào ô Tên sách
+        }
+
+        // [TRONG FILE ucSachthuthu.cs]
+        // THAY THẾ HÀM NÀY
+
+        // [TRONG FILE ucSachthuthu.cs]
+        // THAY THẾ HÀM NÀY
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // ▼▼▼ THÊM KIỂM TRA 1 ▼▼▼
+                if (dauSachHienTai == null)
+                {
+                    MessageBox.Show("Không có sách nào được chọn để lưu.");
+                    return;
+                }
+
+                if (!int.TryParse(txtSoLuong.Text, out int soLuongMoi) || soLuongMoi < 0)
+                {
+                    MessageBox.Show("Số lượng phải là một số không âm!");
+                    return;
+                }
+
+                // ▼▼▼ THÊM KIỂM TRA 2 ▼▼▼
+                if (cboViTri.SelectedValue == null)
+                {
+                    MessageBox.Show("Vui lòng chọn một vị trí.");
+                    return;
+                }
+
+                int soLuongCu = dauSachHienTai.SoLuongTong;
+
+                DauSachDTO sachDaSua = dauSachHienTai;
+                sachDaSua.TenDauSach = txtTenDauSach.Text;
+                sachDaSua.NamXuatBan = (short)dtpNamXB.Value.Year;
+                sachDaSua.NhaXuatBan = txtNhaXB.Text;
+                sachDaSua.SoLuongTong = soLuongMoi;
+                sachDaSua.MaViTri = cboViTri.SelectedValue.ToString();
+
+                // Lưu ý: Code này của bạn đã bỏ qua việc cập nhật Tác giả
+                bool success = dauSachBLL.CapNhatSach(sachDaSua, soLuongCu);
+
+                if (success)
+                {
+                    MessageBox.Show("Cập nhật sách thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // ... (code tải lại lưới) ...
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lưu: " + ex.Message, "Lỗi nghiêm trọng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SetViewMode(true);
+            }
+        }
+
+        private void btnUndo_Click(object sender, EventArgs e)
+        {
+            // Chỉ cần tải lại thông tin gốc của sách đang chọn
+            // Hàm HienThiChiTietSach sẽ tự động gọi SetViewMode(false)
+            if (dauSachHienTai != null)
+            {
+                HienThiChiTietSach(dauSachHienTai.MaDauSach);
+            }
+        }
+
+        private void btnBanSach_Click(object sender, EventArgs e)
+        {
+            if (dauSachHienTai == null || string.IsNullOrEmpty(dauSachHienTai.MaDauSach))
+            {
+                MessageBox.Show("Vui lòng chọn một đầu sách trước.");
+                return;
+            }
+            frmMaCaBiet frm = new frmMaCaBiet(dauSachHienTai.MaDauSach, dauSachHienTai.TenDauSach);
+            frm.ShowDialog();
+            int selectedRowIndex = grdSach.CurrentRow?.Index ?? 0;
+            LoadDanhSachDauSach();
+
+        }
+        private void LoadViTriComboBox()
+        {
+            try
+            {
+                cboViTri.DataSource = dauSachBLL.LayDanhSachViTri();
+                cboViTri.DisplayMember = "TenViTri";
+                cboViTri.ValueMember = "MaViTri";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải danh sách vị trí: " + ex.Message);
+            }
         }
     }
 }

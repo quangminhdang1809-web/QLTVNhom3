@@ -18,12 +18,12 @@ namespace QLTVNhom3.DTO
         public DateTime NgayTra { get; set; }
         public int SoNgayTraTre { get; set; }
         public string TinhTrangSach { get; set; }
-        public int? MaLoiQuaHan { get; set; }
-        public int MaLoiSach { get; set; }
+        public List<int> DsMaLoiViPham { get; set; }
         public decimal TienPhatQuaHan { get; set; }
         public decimal TienPhatLoiSach { get; set; }
         public decimal TongTienPhat { get; set; }
         public string GhiChu { get; set; }
         public int MaThuThu { get; set; }
+        public int MaTinhTrangMoi { get; set; }
     }
 }

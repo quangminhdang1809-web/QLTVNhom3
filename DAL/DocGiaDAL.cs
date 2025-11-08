@@ -283,5 +283,45 @@ namespace QLTVNhom3.DAL
                 return null;
             }
         }
+        public DataTable LayLichSuMuonTra(int maDocGia)
+        {
+            string query = @"
+                SELECT
+                    pm.MaPhieuMS,
+                    ct.MaSach,
+                    ds.TenDauSach,
+                    pm.NgayMuon,
+                    tt.TenTinhTrang AS TrangThai
+                FROM PHIEUMUON pm
+                JOIN CTPHIEUMUON ct ON pm.MaPhieuMS = ct.MaPhieuMS
+                JOIN SACH s ON ct.MaSach = s.MaSach
+                JOIN DAUSACH ds ON s.MaDauSach = ds.MaDauSach
+                JOIN TINHTRANG tt ON ct.MaTinhTrang = tt.MaTinhTrang
+                WHERE pm.MaDocGia = @MaDocGia
+                ORDER BY pm.NgayMuon DESC";
+
+            SqlParameter[] parameters = {
+                new SqlParameter("@MaDocGia", maDocGia)
+            };
+
+            return db.ExecuteQuery(query, parameters);
+        }
+        public bool KiemTraPhieuMuonTonTai(int maDocGia)
+        {
+            string query = "SELECT COUNT(*) FROM PHIEUMUON WHERE MaDocGia = @MaDocGia";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@MaDocGia", maDocGia)
+    };
+
+            // Thực thi và lấy kết quả
+            object result = db.ExecuteScalar(query, parameters);
+
+            // Chuyển kết quả sang số nguyên
+            int count = Convert.ToInt32(result);
+
+            // Nếu count > 0, nghĩa là đã có phiếu mượn
+            return (count > 0);
+        }
     }
 }

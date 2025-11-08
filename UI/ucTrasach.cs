@@ -66,6 +66,7 @@ namespace QLTVNhom3
                     // Tạo 1 PhieuTraDTO cho mỗi sách trả
                     var phieuTra = new PhieuTraDTO
                     {
+                        MaPhieuMS = Convert.ToInt32(row.Cells["colMaPhieuMS"].Value),
                         MaDocGia = maDG,
                         TenDocGia = tenDG,
                         MaSach = row.Cells["colMasachtra"].Value?.ToString(),
@@ -77,7 +78,7 @@ namespace QLTVNhom3
                         TinhTrangSach = row.Cells["colTinhTrangSach"].Value?.ToString(),
                         TongTienPhat = tienPhat,
                         // Các trường khác có thể để mặc định (0 hoặc null)
-                        MaThuThu = ThuThuDTO.MaThuThu
+                        MaThuThu = UserSession.MaThuThu
                     };
 
                     danhSachPhieuTra.Add(phieuTra);
@@ -134,6 +135,7 @@ namespace QLTVNhom3
                     newRow.Cells["colSongaytratre"].Value = info.SoNgayTraTre;
                     newRow.Cells["colTinhTrangSach"].Value = info.TinhTrangSach;
                     newRow.Cells["colTienPhat"].Value = info.TongTienPhat.ToString("N0") + " VNĐ";
+                    newRow.Cells["colMaPhieuMS"].Value = info.MaPhieuMS;
 
                     // XÓA KHỎI DANH SÁCH MƯỢN
                     DataTable dtSachMuon = grdSachdangmuon.DataSource as DataTable;
