@@ -42,13 +42,6 @@ namespace QLTVNhom3.UI
             txtTimkiem.TextChanged += TimKiemVaLoc;
             cboLoaiTaiKhoan.SelectedIndexChanged += TimKiemVaLoc;
 
-            // Gán sự kiện cho các nút Sửa/Xóa (đổi tên btnLuu -> btnReset)
-            btnSua.Visible = false; // Ẩn nút Sửa
-            btnXoa.Visible = false; // Ẩn nút Xóa
-            btnResetmatkau.Visible = false; // Ẩn nút Undo
-            btnLuu.Text = "Reset Mật khẩu"; // Đổi tên nút Lưu thành Reset
-            btnLuu.Click += btnResetMatKhau_Click;
-
             // Vô hiệu hóa panel chi tiết (chỉ xem)
             SetEditMode(false);
         }
