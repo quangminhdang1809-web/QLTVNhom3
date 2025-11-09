@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucQuanLyTaiKhoan));
             tableLayoutPanel1 = new TableLayoutPanel();
             grdTaikhoan = new DataGridView();
@@ -97,14 +97,14 @@
             grdTaikhoan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdTaikhoan.BackgroundColor = Color.Gainsboro;
             grdTaikhoan.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            grdTaikhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            grdTaikhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             grdTaikhoan.ColumnHeadersHeight = 50;
             grdTaikhoan.Columns.AddRange(new DataGridViewColumn[] { colAccount, colHoten, colMatkhau, colTypeOfAccount });
             tableLayoutPanel1.SetColumnSpan(grdTaikhoan, 2);
@@ -112,18 +112,18 @@
             grdTaikhoan.EnableHeadersVisualStyles = false;
             grdTaikhoan.Location = new Point(3, 120);
             grdTaikhoan.Name = "grdTaikhoan";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            grdTaikhoan.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            grdTaikhoan.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grdTaikhoan.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
-            grdTaikhoan.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ActiveCaptionText;
+            grdTaikhoan.RowsDefaultCellStyle = dataGridViewCellStyle3;
             tableLayoutPanel1.SetRowSpan(grdTaikhoan, 5);
             grdTaikhoan.RowTemplate.Height = 50;
             grdTaikhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -323,22 +323,25 @@
             // 
             groupBox4.Controls.Add(btnResetmatkau);
             groupBox4.Dock = DockStyle.Right;
-            groupBox4.Location = new Point(1461, 538);
+            groupBox4.Location = new Point(1281, 538);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(127, 112);
+            groupBox4.Size = new Size(307, 112);
             groupBox4.TabIndex = 95;
             groupBox4.TabStop = false;
             // 
             // btnResetmatkau
             // 
+            btnResetmatkau.BackColor = SystemColors.Highlight;
             btnResetmatkau.FlatAppearance.BorderSize = 0;
             btnResetmatkau.FlatStyle = FlatStyle.Flat;
-            btnResetmatkau.Image = (Image)resources.GetObject("btnResetmatkau.Image");
-            btnResetmatkau.Location = new Point(16, 26);
+            btnResetmatkau.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnResetmatkau.ForeColor = Color.White;
+            btnResetmatkau.Location = new Point(59, 35);
             btnResetmatkau.Name = "btnResetmatkau";
-            btnResetmatkau.Size = new Size(93, 71);
+            btnResetmatkau.Size = new Size(204, 52);
             btnResetmatkau.TabIndex = 73;
-            btnResetmatkau.UseVisualStyleBackColor = true;
+            btnResetmatkau.Text = "Reset mật khẩu";
+            btnResetmatkau.UseVisualStyleBackColor = false;
             btnResetmatkau.Click += btnResetMatKhau_Click;
             // 
             // btnTimkiem

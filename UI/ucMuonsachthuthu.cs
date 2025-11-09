@@ -1,13 +1,11 @@
-﻿using QLTVNhom3.DAL;
+﻿using QLTVNhom3.BLL;
+using QLTVNhom3.DAL;
 using QLTVNhom3.DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLTVNhom3
@@ -16,28 +14,30 @@ namespace QLTVNhom3
     {
         private DocGiaMuonDAL docGiaMuonDAL = new DocGiaMuonDAL();
         private PhieuMuonDAL phieuMuonDAL = new PhieuMuonDAL();
+        private int soNgayMuonToiDa = 7;
 
-        // 💡 1. THÊM CÁC BIẾN CẦN THIẾT
-        private int soNgayMuonToiDa = 7; // Lưu số ngày mượn tối đa, mặc định là 7
-                                         // Dùng cho vị trí dtpNgay
-                                         // Dùng cho ô Hạn trả
+        private DateTimePicker dtpNgay;
+        private Rectangle _rectangle;
 
         public ucMuonsachthuthu()
         {
             InitializeComponent();
 
-            // 💡 2. KHỞI TẠO DATETIMEPICKER ẨN
             this.dtpNgay = new System.Windows.Forms.DateTimePicker();
             grdThongtinsachmuon.Controls.Add(dtpNgay);
             dtpNgay.Visible = false;
             dtpNgay.Format = DateTimePickerFormat.Short;
             dtpNgay.TextChanged += new EventHandler(dtpNgay_TextChanged);
+
+            // GÁN SỰ KIỆN TẢI ẢNH CHO CẢ 3 LƯỚI
+            this.grdSachdangmuon.CellFormatting += new DataGridViewCellFormattingEventHandler(grdSachdangmuon_CellFormatting);
+            this.drgTimkiemsach.CellFormatting += new DataGridViewCellFormattingEventHandler(drgTimkiemsach_CellFormatting);
+            this.grdThongtinsachmuon.CellFormatting += new DataGridViewCellFormattingEventHandler(grdThongtinsachmuon_CellFormatting);
         }
 
         private void ucMuonsachthuthu_Load(object sender, EventArgs e)
         {
             LoadThongTinDocGia();
-            // LoadSachDangMuon(); // 💡 3. BỎ DÒNG LẶP NÀY
         }
 
         private void LoadThongTinDocGia()
@@ -45,86 +45,70 @@ namespace QLTVNhom3
             string maDG = txtMadocgia.Text.Trim();
             if (string.IsNullOrEmpty(maDG))
             {
-                // Xóa thông tin nếu không nhập mã
-                txtTendocgia.Text = "";
-                lblThongbao.Text = "Vui lòng nhập mã độc giả";
-                lblDangmuon.Text = "0";
-                lblQuahan.Text = "0";
-                grdSachdangmuon.DataSource = null; // Xóa lưới
-                this.soNgayMuonToiDa = 7; // Reset về mặc định
+                ResetForm();
                 return;
             }
 
-            // 1. Lấy thông tin cơ bản của độc giả
-            DataTable dtDocGia = docGiaMuonDAL.LayThongTinDocGia(maDG);
+            try
+            {
+                DataTable dtDocGia = docGiaMuonDAL.LayThongTinDocGia(maDG);
 
-            if (dtDocGia == null || dtDocGia.Rows.Count == 0)
-            {
-                // ... (code xử lý không tìm thấy độc giả) ...
-                this.soNgayMuonToiDa = 7; // Reset về mặc định
-                return;
-            }
+                if (dtDocGia == null || dtDocGia.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy độc giả!");
+                    ResetForm();
+                    return;
+                }
 
-            // 2. Tìm thấy độc giả -> Trích xuất thông tin
-            DataRow docGia = dtDocGia.Rows[0];
-            txtTendocgia.Text = docGia["HoTen"].ToString();
-            DateTime ngayHetHan = Convert.ToDateTime(docGia["NgayHetHan"]);
-            int soSachToiDa = Convert.ToInt32(docGia["SoSachToiDa"]);
-            dtpNgayhethan.Value = ngayHetHan;
+                DataRow docGia = dtDocGia.Rows[0];
+                txtTendocgia.Text = docGia["HoTen"].ToString();
+                DateTime ngayHetHan = Convert.ToDateTime(docGia["NgayHetHan"]);
+                int soSachToiDa = Convert.ToInt32(docGia["SoSachToiDa"]);
+                dtpNgayhethan.Value = ngayHetHan;
+                this.soNgayMuonToiDa = Convert.ToInt32(docGia["SoNgayMuonToiDa"]);
 
-            // 💡 4. LẤY SỐ NGÀY MƯỢN TỐI ĐA (TỪ DAL)
-            this.soNgayMuonToiDa = Convert.ToInt32(docGia["SoNgayMuonToiDa"]);
+                DataTable dtSachMuon = docGiaMuonDAL.GetSachDangMuonTheoDocGia(maDG);
+                grdSachdangmuon.DataSource = dtSachMuon;
 
-            // 3. Lấy thông tin sách đang mượn (đã tích hợp)
-            DataTable dtSachMuon = docGiaMuonDAL.GetSachDangMuonTheoDocGia(maDG);
-            grdSachdangmuon.DataSource = dtSachMuon;
+                // Ẩn cột tên file cho lưới Đang Mượn
+                if (grdSachdangmuon.Columns.Contains("QuaHan"))
+                    grdSachdangmuon.Columns["QuaHan"].Visible = false;
+                if (grdSachdangmuon.Columns.Contains("AnhBia"))
+                    grdSachdangmuon.Columns["AnhBia"].Visible = false;
 
-            // ... (code ẩn cột QuaHan, đếm sách, logic lblThongbao) ...
-            if (grdSachdangmuon.Columns["QuaHan"] != null)
-            {
-                grdSachdangmuon.Columns["QuaHan"].Visible = false;
+                // Đếm sách
+                int soSachDangMuon = dtSachMuon.Rows.Count;
+                lblDangmuon.Text = soSachDangMuon.ToString();
+                int soSachQuaHan = dtSachMuon.AsEnumerable().Count(row => Convert.ToBoolean(row["QuaHan"]));
+                lblQuahan.Text = soSachQuaHan.ToString();
+
+                // Kiểm tra trạng thái
+                if (DateTime.Now > ngayHetHan)
+                    lblThongbao.Text = "Thẻ đã hết hạn! Không thể mượn.";
+                else if (soSachQuaHan > 0)
+                    lblThongbao.Text = "Có sách quá hạn! Không thể mượn.";
+                else if (soSachDangMuon >= soSachToiDa)
+                    lblThongbao.Text = $"Đã mượn tối đa ({soSachToiDa}) quyển.";
+                else
+                    lblThongbao.Text = "Thẻ còn hạn. Có thể mượn.";
             }
-            int soSachDangMuon = dtSachMuon.Rows.Count;
-            lblDangmuon.Text = soSachDangMuon.ToString();
-            int soSachQuaHan = 0;
-            foreach (DataRow row in dtSachMuon.Rows)
+            catch (Exception ex)
             {
-                if (Convert.ToBoolean(row["QuaHan"]))
-                    soSachQuaHan++;
-            }
-            lblQuahan.Text = soSachQuaHan.ToString();
-            if (DateTime.Now > ngayHetHan)
-            {
-                lblThongbao.Text = "Thẻ đã hết hạn! Không thể mượn.";
-            }
-            else if (soSachQuaHan > 0)
-            {
-                lblThongbao.Text = "Có sách quá hạn! Không thể mượn.";
-            }
-            else if (soSachDangMuon >= soSachToiDa)
-            {
-                lblThongbao.Text = $"Đã mượn tối đa ({soSachToiDa}) quyển.";
-            }
-            else
-            {
-                lblThongbao.Text = "Thẻ còn hạn. Có thể mượn.";
+                MessageBox.Show("Mã độc giả không hợp lệ. Vui lòng kiểm tra lại. \nChi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ResetForm();
             }
         }
 
-        // 💡 5. XÓA BỎ HÀM LoadSachDangMuon() VÌ BỊ LẶP
-        // private void LoadSachDangMuon() { ... }
 
         private void txtMadocgia_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Ngăn tiếng 'ding'
-                LoadThongTinDocGia();      // 💡 6. CHỈ CẦN GỌI HÀM NÀY
-                // LoadSachDangMuon();     // Bỏ dòng lặp
+                e.SuppressKeyPress = true;
+                LoadThongTinDocGia();
             }
         }
 
-        // (Hàm grdThongtinsachmuon_CellClick của bạn đã đúng, giữ nguyên)
         private void grdThongtinsachmuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && (e.ColumnIndex == grdThongtinsachmuon.Columns["colHantra"].Index))
@@ -140,22 +124,17 @@ namespace QLTVNhom3
                 dtpNgay.MaxDate = ngayTraToiDa;
                 dtpNgay.Visible = true;
 
-                if (grdThongtinsachmuon.CurrentCell.Value != null)
+                object cellValue = grdThongtinsachmuon.CurrentCell.Value;
+                DateTime giaTriTrongO;
+
+                if (cellValue != null && DateTime.TryParse(cellValue.ToString(), out giaTriTrongO))
                 {
-                    DateTime giaTriTrongO;
-                    if (DateTime.TryParse(grdThongtinsachmuon.CurrentCell.Value.ToString(), out giaTriTrongO))
-                    {
-                        if (giaTriTrongO > dtpNgay.MaxDate)
-                            dtpNgay.Value = dtpNgay.MaxDate;
-                        else if (giaTriTrongO < dtpNgay.MinDate)
-                            dtpNgay.Value = dtpNgay.MinDate;
-                        else
-                            dtpNgay.Value = giaTriTrongO;
-                    }
+                    if (giaTriTrongO > dtpNgay.MaxDate)
+                        dtpNgay.Value = dtpNgay.MaxDate;
+                    else if (giaTriTrongO < dtpNgay.MinDate)
+                        dtpNgay.Value = dtpNgay.MinDate;
                     else
-                    {
-                        dtpNgay.Value = ngayTraToiDa;
-                    }
+                        dtpNgay.Value = giaTriTrongO;
                 }
                 else
                 {
@@ -168,13 +147,12 @@ namespace QLTVNhom3
             }
         }
 
-        // (Hàm dtpNgay_TextChanged của bạn đã đúng, giữ nguyên)
         private void dtpNgay_TextChanged(object sender, EventArgs e)
         {
             grdThongtinsachmuon.CurrentCell.Value = dtpNgay.Text;
+            dtpNgay.Visible = false;
         }
 
-        // (Hàm txtTimkiem_TextChanged của bạn đã đúng, giữ nguyên)
         private void txtTimkiem_TextChanged(object sender, EventArgs e)
         {
             string keyword = txtTimkiem.Text.Trim();
@@ -188,6 +166,10 @@ namespace QLTVNhom3
                 DataTable dt = phieuMuonDAL.TimKiemSach(keyword);
                 if (dt != null && dt.Rows.Count > 0)
                 {
+                    // Ẩn cột tên file (cột AnhBia từ DAL)
+                    if (drgTimkiemsach.Columns.Contains("AnhBia"))
+                        drgTimkiemsach.Columns["AnhBia"].Visible = false;
+
                     drgTimkiemsach.DataSource = dt;
                     drgTimkiemsach.Visible = true;
                 }
@@ -199,13 +181,22 @@ namespace QLTVNhom3
             }
         }
 
-        // (Hàm drgTimkiemsach_CellDoubleClick của bạn đã đúng, giữ nguyên)
+        // SỬA LỖI: CỘT ẨN CHO LƯỚI CHUẨN BỊ MƯỢN LÀ "colAnhBiaFileName"
         private void drgTimkiemsach_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow selectedRow = drgTimkiemsach.Rows[e.RowIndex];
-                string maSach = selectedRow.Cells["MaSach"].Value.ToString();
+
+                object maSachValue = selectedRow.Cells["MaSach"].Value;
+                if (maSachValue == null || maSachValue == DBNull.Value)
+                {
+                    MessageBox.Show("Lỗi: Không thể đọc mã sách. Vui lòng thử lại.");
+                    return;
+                }
+                string maSach = maSachValue.ToString();
+
+                // Kiểm tra trùng
                 foreach (DataGridViewRow row in grdThongtinsachmuon.Rows)
                 {
                     if (row.Cells["colMasachmuon"].Value != null && row.Cells["colMasachmuon"].Value.ToString() == maSach)
@@ -215,18 +206,28 @@ namespace QLTVNhom3
                         return;
                     }
                 }
+
                 int n = grdThongtinsachmuon.Rows.Add();
                 grdThongtinsachmuon.Rows[n].Cells["colTensachmuon"].Value = selectedRow.Cells["TenDauSach"].Value?.ToString();
                 grdThongtinsachmuon.Rows[n].Cells["colMasachmuon"].Value = selectedRow.Cells["MaSach"].Value?.ToString();
                 grdThongtinsachmuon.Rows[n].Cells["colNamxb"].Value = selectedRow.Cells["NamXuatBan"].Value?.ToString();
                 grdThongtinsachmuon.Rows[n].Cells["colTacgia"].Value = selectedRow.Cells["TacGia"].Value?.ToString();
+                string tenFileAnh = selectedRow.Cells["AnhBia"].Value?.ToString();
+                // Gán tên file ảnh vào cột ẩn colAnhBiaFileName
+                // LƯU Ý: Nếu không có cột này trong Designer sẽ bị lỗi CS0103.
+                if (grdThongtinsachmuon.Columns.Contains("colAnhBiaFileName"))
+                {
+                    grdThongtinsachmuon.Rows[n].Cells["colAnhBiaFileName"].Value = tenFileAnh;
+                }
+
                 DateTime hanTraMacDinh = DateTime.Now.Date.AddDays(this.soNgayMuonToiDa);
                 grdThongtinsachmuon.Rows[n].Cells["colHantra"].Value = hanTraMacDinh.ToShortDateString();
+
                 AnLuoiTimKiem();
             }
         }
 
-        // (Hàm AnLuoiTimKiem của bạn đã đúng, giữ nguyên)
+
         private void AnLuoiTimKiem()
         {
             txtTimkiem.Text = "";
@@ -242,12 +243,10 @@ namespace QLTVNhom3
 
             DataTable dtSachMuon = new DataTable();
 
-            // 💡 7. SỬA TÊN CỘT ĐỂ KHỚP VỚI 'frmXacnhanmuonsach'
-            // Form xác nhận (theo code tôi gửi bạn) sẽ đọc "TenDauSach", "MaSach", và "NamXuatBan"
             dtSachMuon.Columns.Add("Tên sách");
             dtSachMuon.Columns.Add("Mã sách");
             dtSachMuon.Columns.Add("Năm xuất bản");
-            // Không cần cột "Hạn trả", vì form xác nhận tự tính toán lại
+            dtSachMuon.Columns.Add("Hạn trả");
 
             foreach (DataGridViewRow row in grdThongtinsachmuon.Rows)
             {
@@ -255,87 +254,131 @@ namespace QLTVNhom3
                 dtSachMuon.Rows.Add(
                     row.Cells["colTensachmuon"].Value?.ToString(),
                     row.Cells["colMasachmuon"].Value?.ToString(),
-                    row.Cells["colNamxb"].Value?.ToString()
+                    row.Cells["colNamxb"].Value?.ToString(),
+                    row.Cells["colHantra"].Value?.ToString()
                 );
             }
 
-            // Gọi form xác nhận và truyền dữ liệu
             frmXacnhanmuonsach frm = new frmXacnhanmuonsach(maDG, tenDG, dtSachMuon);
             DialogResult result = frm.ShowDialog();
 
-            // 1. Kiểm tra nếu người dùng nhấn "Xác nhận" (DialogResult.OK)
             if (result == DialogResult.OK)
             {
-                // 2. RELOAD: Tải lại toàn bộ thông tin độc giả (bao gồm lưới sách đang mượn)
                 LoadThongTinDocGia();
-
-                // 3. Xóa lưới sách "chuẩn bị mượn" vì đã mượn xong
                 grdThongtinsachmuon.Rows.Clear();
             }
         }
-        // Hàm này làm sạch toàn bộ form
+
         private void ResetForm()
         {
-            // 1. Xóa thông tin độc giả
             txtMadocgia.Text = "";
             txtTendocgia.Text = "";
-            dtpNgayhethan.Value = DateTime.Now; // Reset về ngày hiện tại
+            dtpNgayhethan.Value = DateTime.Now;
             lblThongbao.Text = "Vui lòng nhập mã độc giả";
             lblDangmuon.Text = "0";
             lblQuahan.Text = "0";
-            this.soNgayMuonToiDa = 7; // Reset số ngày mượn về mặc định
-
-            // 2. Xóa lưới sách ĐANG MƯỢN
+            this.soNgayMuonToiDa = 7;
             grdSachdangmuon.DataSource = null;
-
-            // 3. Xóa lưới sách CHUẨN BỊ MƯỢN
             grdThongtinsachmuon.Rows.Clear();
-
-            // 4. Xóa ô tìm kiếm sách và ẩn kết quả (nếu có)
             AnLuoiTimKiem();
-
-            // 5. Đưa con trỏ chuột về ô Mã độc giả
             txtMadocgia.Focus();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn làm mới toàn bộ form không?\nTất cả thông tin độc giả và sách đã chọn sẽ bị xóa.",
-                                      "Xác nhận làm mới",
-                                      MessageBoxButtons.YesNo,
-                                      MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn làm mới toàn bộ form không?",
+                                           "Xác nhận làm mới",
+                                           MessageBoxButtons.YesNo,
+                                           MessageBoxIcon.Question);
 
             if (dr == DialogResult.Yes)
             {
-                // Gọi hàm làm sạch toàn bộ form
                 ResetForm();
             }
         }
 
         private void btnXoaSach_Click(object sender, EventArgs e)
         {
-            // 1. Kiểm tra xem có dòng nào đang được chọn không
             if (grdThongtinsachmuon.CurrentRow != null && !grdThongtinsachmuon.CurrentRow.IsNewRow)
             {
-                // 2. Lấy tên sách để hỏi xác nhận (cho thân thiện hơn)
-                // (Đảm bảo tên cột của bạn là 'colTensachmuon')
                 string tenSach = grdThongtinsachmuon.CurrentRow.Cells["colTensachmuon"].Value?.ToString() ?? "sách này";
 
-                // 3. Hỏi xác nhận
                 DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn xóa '{tenSach}' khỏi danh sách mượn không?",
-                                                  "Xác nhận xóa",
-                                                  MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Question);
+                                                   "Xác nhận xóa",
+                                                   MessageBoxButtons.YesNo,
+                                                   MessageBoxIcon.Question);
 
                 if (dr == DialogResult.Yes)
                 {
-                    // 4. Xóa dòng đang chọn
                     grdThongtinsachmuon.Rows.Remove(grdThongtinsachmuon.CurrentRow);
                 }
             }
             else
             {
-                // Thông báo nếu chưa chọn sách
                 MessageBox.Show("Vui lòng chọn một cuốn sách trong danh sách để xóa.", "Chưa chọn sách", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        // ▼▼▼ CÁC HÀM XỬ LÝ ẢNH ▼▼▼
+
+        // Hàm chung để tải ảnh
+        private void LoadImageToCell(DataGridViewCellFormattingEventArgs e, string tenFileAnh)
+        {
+            if (string.IsNullOrEmpty(tenFileAnh))
+            {
+                e.Value = null;
+                return;
+            }
+
+            try
+            {
+                string fullPath = Path.Combine(Application.StartupPath, "Image", tenFileAnh.Trim());
+                if (File.Exists(fullPath))
+                {
+                    using (Image tempImage = Image.FromFile(fullPath))
+                    {
+                        e.Value = new Bitmap(tempImage);
+                    }
+                }
+                else
+                {
+                    e.Value = null;
+                }
+            }
+            catch
+            {
+                e.Value = null;
+            }
+        }
+
+        // Sự kiện cho lưới SÁCH ĐANG MƯỢN
+        private void grdSachdangmuon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (grdSachdangmuon.Columns[e.ColumnIndex].Name == "colAnhbia")
+            {
+                string tenFileAnh = grdSachdangmuon.Rows[e.RowIndex].Cells["AnhBia"].Value?.ToString();
+                LoadImageToCell(e, tenFileAnh);
+            }
+        }
+
+        // Sự kiện cho lưới TÌM KIẾM
+        private void drgTimkiemsach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (drgTimkiemsach.Columns[e.ColumnIndex].Name == "colAnhbiatrongtimkiem")
+            {
+                string tenFileAnh = drgTimkiemsach.Rows[e.RowIndex].Cells["AnhBia"].Value?.ToString();
+                LoadImageToCell(e, tenFileAnh);
+            }
+        }
+
+        // Sự kiện cho lưới SÁCH CHUẨN BỊ MƯỢN
+        private void grdThongtinsachmuon_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (grdThongtinsachmuon.Columns[e.ColumnIndex].Name == "AnhBia")
+            {
+                string tenFileAnh = grdThongtinsachmuon.Rows[e.RowIndex].Cells["colAnhBiaFileName"].Value?.ToString();
+                LoadImageToCell(e, tenFileAnh);
             }
         }
     }

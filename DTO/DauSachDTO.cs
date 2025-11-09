@@ -18,5 +18,6 @@ namespace QLTVNhom3.DTO
         public string TenTheLoai { get; set; }
         public string TenViTri { get; set; }
         public List<TacGiaDTO> DanhSachTacGia { get; set; }
+        public string AnhBia { get; set; }
     }
 }

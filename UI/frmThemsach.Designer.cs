@@ -112,6 +112,7 @@
             btnThemanh.TabIndex = 69;
             btnThemanh.Text = "Thêm ảnh";
             btnThemanh.UseVisualStyleBackColor = false;
+            btnThemanh.Click += btnThemanh_Click;
             // 
             // label1
             // 

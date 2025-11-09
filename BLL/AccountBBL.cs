@@ -17,7 +17,7 @@ namespace QLTVNhom3.BLL
 
         public string ResetPassword(string idAccount)
         {
-            string newPassword = "123456";
+            string newPassword = "12345";
             string hashedPassword = HashPassword(newPassword);
 
             if (accountDAL.ResetPassword(idAccount, hashedPassword))

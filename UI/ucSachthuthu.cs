@@ -1,10 +1,12 @@
 ﻿using QLTVNhom3.BLL;
 using QLTVNhom3.DTO;
+using QLTVNhom3.DAL; // Cần cho TacGiaDAL
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO; // Cần cho xử lý Ảnh
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,190 +17,33 @@ namespace QLTVNhom3
     public partial class ucSachthuthu : UserControl
     {
         private DauSachBLL dauSachBLL;
-        private List<TacGiaDTO> danhSachTacGia;
+        private TacGiaDAL tacGiaDAL; // Dùng để tìm tác giả
+        private BindingList<TacGiaDTO> danhSachTacGiaSua;
         private string maSachDangChon;
         private DauSachDTO dauSachHienTai;
         private bool dangTaiDuLieu = false;
+        private bool isProcessing = false;
+        private DataTable dtSachGoc;
+
         public ucSachthuthu()
         {
             InitializeComponent();
             dauSachBLL = new DauSachBLL();
-            danhSachTacGia = new List<TacGiaDTO>();
+            tacGiaDAL = new TacGiaDAL(); // Khởi tạo
+            danhSachTacGiaSua = new BindingList<TacGiaDTO>();
+
             grdSach.AutoGenerateColumns = false;
-            LoadDanhSachDauSach();
+            grdTacgia.AutoGenerateColumns = false;
+            grdTacgia.DataSource = danhSachTacGiaSua;
+
             LoadViTriComboBox();
+            LoadComboBoxLoc();
+            LoadDanhSachDauSach();
+           
         }
 
-        private void SetViewMode(bool isEditing)
-        {
-            // 1. Bật/Tắt các ô nhập liệu
-            // Chỉ các ô này được sửa
-            txtTenDauSach.ReadOnly = !isEditing;
-            dtpNamXB.Enabled = isEditing; // DateTimePicker không có ReadOnly
-            txtNhaXB.ReadOnly = !isEditing;
-            txtSoLuong.ReadOnly = !isEditing;
-
-            // Các ô này luôn khóa
-            txtMaDauSach.ReadOnly = true;
-            cboViTri.Enabled = true;
-
-            // 2. Bật/Tắt các nút hành động chính
-            btnSua.Enabled = !isEditing;
-            btnLuu.Enabled = isEditing;
-            btnUndo.Enabled = isEditing;
-
-            // 3. Khóa các hành động "nguy hiểm" khi đang sửa
-            btnXoa.Enabled = !isEditing;
-            btnThemsach.Enabled = !isEditing;
-            grdSach.Enabled = !isEditing; // Khóa lưới chính
-
-            // Khóa các nút điều hướng
-            btnFirst.Enabled = !isEditing;
-            btnPrevious.Enabled = !isEditing;
-            btnNext.Enabled = !isEditing;
-            btnLast.Enabled = !isEditing;
-        }
-        private void LoadDanhSachDauSach()
-        {
-            try
-            {
-                dangTaiDuLieu = true;
-                var data = dauSachBLL.LayDanhSachDauSach();
-                grdSach.DataSource = data;
-                if (grdSach.Rows.Count > 0 && grdSach.Columns.Contains("colMadausach"))
-                {
-                    grdSach.ClearSelection();
-                    grdSach.CurrentCell = grdSach.Rows[0].Cells[0];
-                    grdSach.Rows[0].Selected = true;
-
-                    var cellValue = grdSach.Rows[0].Cells["colMadausach"]?.Value;
-                    if (cellValue != null)
-                    {
-                        string ma = cellValue.ToString();
-                        if (!string.IsNullOrEmpty(ma))
-                        {
-                            maSachDangChon = ma;
-                            HienThiChiTietSach(ma);
-                        }
-                    }
-                }
-                else
-                {
-                    ClearForm();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải danh sách sách: " + ex.Message, "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                dangTaiDuLieu = false; // THÊM DÒNG NÀY
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmThemsach frm = new frmThemsach();
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                LoadDanhSachDauSach();
-            }
-        }
-        private void btnFirst_Click(object sender, EventArgs e)
-        {
-            if (grdSach.Rows.Count > 0)
-            {
-                grdSach.ClearSelection();
-                grdSach.CurrentCell = grdSach.Rows[0].Cells[0];
-                grdSach.Rows[0].Selected = true;
-                grdSach.Focus();
-                string ma = grdSach.Rows[0].Cells["colMadausach"].Value?.ToString();
-                if (!string.IsNullOrEmpty(ma))
-                {
-                    maSachDangChon = ma;
-                    HienThiChiTietSach(ma);
-                }
-            }
-        }
-
-        private void btnPrevious_Click(object sender, EventArgs e)
-        {
-            if (grdSach.CurrentRow == null) return;
-
-            int i = grdSach.CurrentRow.Index;
-            if (i > 0)
-            {
-                grdSach.ClearSelection();
-                grdSach.CurrentCell = grdSach.Rows[i - 1].Cells[0];
-                grdSach.Rows[i - 1].Selected = true;
-                grdSach.Focus();
-                string ma = grdSach.Rows[i - 1].Cells["colMadausach"].Value?.ToString();
-                if (!string.IsNullOrEmpty(ma))
-                {
-                    maSachDangChon = ma;
-                    HienThiChiTietSach(ma);
-                }
-            }
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            if (grdSach.CurrentRow == null) return;
-
-            int i = grdSach.CurrentRow.Index;
-            if (i < grdSach.RowCount - 1)
-            {
-                grdSach.ClearSelection();
-                grdSach.CurrentCell = grdSach.Rows[i + 1].Cells[0];
-                grdSach.Rows[i + 1].Selected = true;
-                grdSach.Focus();
-                string ma = grdSach.Rows[i + 1].Cells["colMadausach"].Value?.ToString();
-                if (!string.IsNullOrEmpty(ma))
-                {
-                    maSachDangChon = ma;
-                    HienThiChiTietSach(ma);
-                }
-            }
-        }
-        private void btnLast_Click(object sender, EventArgs e)
-        {
-            if (grdSach.Rows.Count > 0)
-            {
-                int i = grdSach.RowCount - 1;
-                grdSach.ClearSelection();
-                grdSach.CurrentCell = grdSach.Rows[i].Cells[0];
-                grdSach.Rows[i].Selected = true;
-                grdSach.Focus();
-                string ma = grdSach.Rows[i].Cells["colMadausach"].Value?.ToString();
-                if (!string.IsNullOrEmpty(ma))
-                {
-                    maSachDangChon = ma;
-                    HienThiChiTietSach(ma);
-                }
-            }
-        }
-
-        private void grdSach_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dangTaiDuLieu) return;
-            if (grdSach.SelectedRows.Count > 0 && grdSach.CurrentRow != null)
-            {
-                string ma = grdSach.CurrentRow.Cells["colMadausach"].Value?.ToString();
-                if (!string.IsNullOrEmpty(ma))
-                {
-                    maSachDangChon = ma;
-                    HienThiChiTietSach(ma);
-                }
-            }
-        }
+        // 1. HIỂN THỊ ẢNH (ĐÃ SỬA)
         // [THAY THẾ HÀM NÀY TRONG ucSachthuthu.cs]
-
-        // [TRONG FILE ucSachthuthu.cs]
-        // THAY THẾ HÀM NÀY
-
         private void HienThiChiTietSach(string maDauSach)
         {
             if (string.IsNullOrEmpty(maDauSach))
@@ -211,29 +56,78 @@ namespace QLTVNhom3
             dangTaiDuLieu = true;
             try
             {
+                panel1.AutoScrollPosition = new Point(0, 0);
                 dauSachHienTai = dauSachBLL.LayChiTietSach(maDauSach);
-
                 if (dauSachHienTai != null)
                 {
                     txtMaDauSach.Text = dauSachHienTai.MaDauSach;
                     txtTenDauSach.Text = dauSachHienTai.TenDauSach;
                     txtNhaXB.Text = dauSachHienTai.NhaXuatBan ?? "";
-
-                    // SỬA DÒNG NÀY:
                     cboViTri.SelectedValue = dauSachHienTai.MaViTri;
-
                     txtSoLuong.Text = dauSachHienTai.SoLuongTong.ToString();
 
                     try
                     {
-                        if (dauSachHienTai.NamXuatBan > 1000)
+                        if (dauSachHienTai.NamXuatBan > 1000 && dauSachHienTai.NamXuatBan < 9999)
                             dtpNamXB.Value = new DateTime(dauSachHienTai.NamXuatBan, 1, 1);
                         else
                             dtpNamXB.Value = DateTime.Now;
                     }
                     catch { dtpNamXB.Value = DateTime.Now; }
 
-                    grdTacgia.DataSource = dauSachHienTai.DanhSachTacGia;
+                    danhSachTacGiaSua.Clear();
+                    if (dauSachHienTai.DanhSachTacGia != null)
+                    {
+                        foreach (var tg in dauSachHienTai.DanhSachTacGia)
+                        {
+                            danhSachTacGiaSua.Add(tg);
+                        }
+                    }
+
+                    // --- DEBUGGING ẢNH BÌA ---
+                    string tenFileAnh = dauSachHienTai.AnhBia;
+
+                    // 1. Kiểm tra xem CSDL có trả về tên file không
+                    if (string.IsNullOrEmpty(tenFileAnh))
+                    {
+                        picAnhBia.Image = null;
+                        // Không cần báo lỗi, vì có thể sách này không có ảnh
+                    }
+                    else
+                    {
+                        try
+                        {
+                            // 2. Kiểm tra đường dẫn (DÙNG "Image" - không có 's')
+                            string imageFolderPath = Path.Combine(Application.StartupPath, "Image");
+                            string fullPath = Path.Combine(imageFolderPath, tenFileAnh.Trim()); // Thêm Trim()
+
+                            // 3. Kiểm tra file có tồn tại không
+                            if (File.Exists(fullPath))
+                            {
+                                using (Image tempImage = Image.FromFile(fullPath))
+                                {
+                                    picAnhBia.Image = new Bitmap(tempImage);
+                                }
+                            }
+                            else
+                            {
+                                // 4. BÁO LỖI NẾU KHÔNG TÌM THẤY
+                                MessageBox.Show($"Debug: Không tìm thấy file ảnh.\n" +
+                                                $"Đã kiểm tra tại: {fullPath}",
+                                                "Lỗi đường dẫn ảnh");
+                                picAnhBia.Image = null;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // 5. BÁO LỖI NẾU FILE BỊ HỎNG
+                            MessageBox.Show($"Debug: Lỗi khi tải file ảnh (file có thể bị hỏng).\n" +
+                                            $"Lỗi: {ex.Message}",
+                                            "Lỗi đọc file ảnh");
+                            picAnhBia.Image = null;
+                        }
+                    }
+                    // --- KẾT THÚC DEBUGGING ---
 
                     SetViewMode(false);
                 }
@@ -253,33 +147,150 @@ namespace QLTVNhom3
                 dangTaiDuLieu = false;
             }
         }
-        private void btnTimkiem_Click_1(object sender, EventArgs e)
+        // 2. UPLOAD ẢNH (ĐÃ SỬA)
+        private void btnThayAnh_Click(object sender, EventArgs e)
+        {
+            if (!btnLuu.Enabled)
+            {
+                MessageBox.Show("Vui lòng nhấn nút 'Sửa' trước khi thay đổi ảnh.");
+                return;
+            }
+
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files (*.jpg;*.png;*.jpeg)|*.jpg;*.png;*.jpeg";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string sourceFilePath = ofd.FileName;
+                        string fileName = Path.GetFileName(sourceFilePath);
+
+                        string imageFolderPath = Path.Combine(Application.StartupPath, "Image");
+
+                        if (!Directory.Exists(imageFolderPath))
+                        {
+                            Directory.CreateDirectory(imageFolderPath);
+                        }
+
+                        string targetPath = Path.Combine(imageFolderPath, fileName);
+                        File.Copy(sourceFilePath, targetPath, true);
+
+                        using (Image tempImage = Image.FromFile(targetPath))
+                        {
+                            picAnhBia.Image = new Bitmap(tempImage);
+                        }
+
+                        dauSachHienTai.AnhBia = fileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi đọc/copy file ảnh: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        #region Các hàm CRUD và Quản lý Giao diện
+
+        private void LoadViTriComboBox()
         {
             try
             {
-                var data = dauSachBLL.TimKiemSach(txtTimkiem.Text.Trim());
-                grdSach.DataSource = data;
-                if (grdSach.Rows.Count > 0)
+                cboViTri.DataSource = dauSachBLL.LayDanhSachViTri();
+                cboViTri.DisplayMember = "TenViTri";
+                cboViTri.ValueMember = "MaViTri";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải danh sách vị trí: " + ex.Message);
+            }
+        }
+
+        private void SetViewMode(bool isEditing)
+        {
+            txtTenDauSach.ReadOnly = !isEditing;
+            dtpNamXB.Enabled = isEditing;
+            txtNhaXB.ReadOnly = !isEditing;
+            txtSoLuong.ReadOnly = !isEditing;
+            cboViTri.Enabled = isEditing;
+            txtMaDauSach.ReadOnly = true;
+
+            btnSua.Enabled = !isEditing;
+            btnLuu.Enabled = isEditing;
+            btnUndo.Enabled = isEditing; // Sửa: Undo bật khi SỬA
+
+            btnXoa.Enabled = !isEditing;
+            btnThemsach.Enabled = !isEditing;
+            grdSach.Enabled = !isEditing;
+
+            btnFirst.Enabled = !isEditing;
+            btnPrevious.Enabled = !isEditing;
+            btnNext.Enabled = !isEditing;
+            btnLast.Enabled = !isEditing;
+
+            btnThayAnh.Enabled = isEditing;
+
+            grdTacgia.Enabled = isEditing;
+            // (Thêm các control khác nếu có: txtTimKiemTacGia.Enabled = isEditing...)
+        }
+
+        private void LoadDanhSachDauSach()
+        {
+            try
+            {
+                dangTaiDuLieu = true;
+                dtSachGoc = dauSachBLL.LayDanhSachDauSach(); // Tải vào biến Gốc
+                grdSach.DataSource = dtSachGoc;
+                if (grdSach.Rows.Count > 0 && grdSach.Columns.Contains("colMadausach"))
                 {
                     grdSach.ClearSelection();
                     grdSach.Rows[0].Selected = true;
-                    string ma = grdSach.Rows[0].Cells["colMadausach"].Value?.ToString();
-                    if (!string.IsNullOrEmpty(ma))
-                    {
-                        maSachDangChon = ma;
-                        HienThiChiTietSach(ma);
-                    }
                 }
                 else
                 {
-                    ClearForm(); // Clear form nếu không tìm thấy
+                    ClearForm();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi",
+                MessageBox.Show("Lỗi khi tải danh sách sách: " + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                dangTaiDuLieu = false;
+                if (grdSach.Rows.Count > 0)
+                {
+                    grdSach_SelectionChanged(null, null);
+                }
+            }
+        }
+
+        private void btnThemsach_Click(object sender, EventArgs e)
+        {
+            frmThemsach frm = new frmThemsach();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadDanhSachDauSach();
+            }
+        }
+
+        private void grdSach_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dangTaiDuLieu || grdSach.SelectedRows.Count == 0) return;
+
+            string ma = grdSach.SelectedRows[0].Cells["colMadausach"].Value?.ToString();
+            if (!string.IsNullOrEmpty(ma))
+            {
+                maSachDangChon = ma;
+                HienThiChiTietSach(ma);
+            }
+        }
+
+        private void btnTimkiem_Click_1(object sender, EventArgs e)
+        {
+            ApplyFilter(sender, e);
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -302,7 +313,6 @@ namespace QLTVNhom3
                         MessageBox.Show("Xóa sách thành công!", "Thành công",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDanhSachDauSach();
-                        ClearForm();
                     }
                 }
                 catch (Exception ex)
@@ -317,56 +327,47 @@ namespace QLTVNhom3
             txtMaDauSach.Text = "";
             txtTenDauSach.Text = "";
             txtNhaXB.Text = "";
-            cboViTri.Text = "";
+            cboViTri.SelectedIndex = -1;
             txtSoLuong.Text = "";
-            dtpNamXB.Value = DateTime.Now; // Reset date
+            dtpNamXB.Value = DateTime.Now;
             picAnhBia.Image = null;
-            grdTacgia.DataSource = new List<TacGiaDTO>();
+            danhSachTacGiaSua.Clear();
             maSachDangChon = null;
         }
-        // [THÊM 3 HÀM NÀY VÀO ucSachthuthu.cs]
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            // Nếu chưa chọn sách
             if (dauSachHienTai == null)
             {
                 MessageBox.Show("Vui lòng chọn một cuốn sách để sửa.");
                 return;
             }
-
-            // Chuyển sang chế độ SỬA
             SetViewMode(true);
-            txtTenDauSach.Focus(); // Đặt con trỏ vào ô Tên sách
+            txtTenDauSach.Focus();
         }
-
-        // [TRONG FILE ucSachthuthu.cs]
-        // THAY THẾ HÀM NÀY
-
-        // [TRONG FILE ucSachthuthu.cs]
-        // THAY THẾ HÀM NÀY
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            if (isProcessing) return;
+
             try
             {
-                // ▼▼▼ THÊM KIỂM TRA 1 ▼▼▼
+                isProcessing = true;
+                btnLuu.Enabled = false;
+
                 if (dauSachHienTai == null)
                 {
                     MessageBox.Show("Không có sách nào được chọn để lưu.");
                     return;
                 }
-
-                if (!int.TryParse(txtSoLuong.Text, out int soLuongMoi) || soLuongMoi < 0)
-                {
-                    MessageBox.Show("Số lượng phải là một số không âm!");
-                    return;
-                }
-
-                // ▼▼▼ THÊM KIỂM TRA 2 ▼▼▼
                 if (cboViTri.SelectedValue == null)
                 {
                     MessageBox.Show("Vui lòng chọn một vị trí.");
+                    return;
+                }
+                if (!int.TryParse(txtSoLuong.Text, out int soLuongMoi) || soLuongMoi < 0)
+                {
+                    MessageBox.Show("Số lượng phải là một số không âm!");
                     return;
                 }
 
@@ -378,14 +379,23 @@ namespace QLTVNhom3
                 sachDaSua.NhaXuatBan = txtNhaXB.Text;
                 sachDaSua.SoLuongTong = soLuongMoi;
                 sachDaSua.MaViTri = cboViTri.SelectedValue.ToString();
+                // (sachDaSua.AnhBia đã được cập nhật bởi btnThayAnh_Click)
 
-                // Lưu ý: Code này của bạn đã bỏ qua việc cập nhật Tác giả
-                bool success = dauSachBLL.CapNhatSach(sachDaSua, soLuongCu);
+                List<TacGiaDTO> tacGiasMoi = danhSachTacGiaSua.ToList();
+
+                bool success = dauSachBLL.CapNhatSach(sachDaSua, tacGiasMoi, soLuongCu);
 
                 if (success)
                 {
                     MessageBox.Show("Cập nhật sách thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // ... (code tải lại lưới) ...
+                    int selectedRowIndex = grdSach.CurrentRow?.Index ?? 0;
+                    LoadDanhSachDauSach();
+
+                    if (grdSach.Rows.Count > selectedRowIndex)
+                    {
+                        grdSach.ClearSelection();
+                        grdSach.Rows[selectedRowIndex].Selected = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -393,15 +403,20 @@ namespace QLTVNhom3
                 MessageBox.Show("Lỗi khi lưu: " + ex.Message, "Lỗi nghiêm trọng", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SetViewMode(true);
             }
+            finally
+            {
+                Application.DoEvents();
+                isProcessing = false;
+                SetViewMode(false);
+            }
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
         {
-            // Chỉ cần tải lại thông tin gốc của sách đang chọn
-            // Hàm HienThiChiTietSach sẽ tự động gọi SetViewMode(false)
             if (dauSachHienTai != null)
             {
                 HienThiChiTietSach(dauSachHienTai.MaDauSach);
+                SetViewMode(false);
             }
         }
 
@@ -414,22 +429,158 @@ namespace QLTVNhom3
             }
             frmMaCaBiet frm = new frmMaCaBiet(dauSachHienTai.MaDauSach, dauSachHienTai.TenDauSach);
             frm.ShowDialog();
-            int selectedRowIndex = grdSach.CurrentRow?.Index ?? 0;
-            LoadDanhSachDauSach();
+
+            // Tải lại chi tiết phòng trường hợp số lượng thay đổi (do xóa mềm)
+            HienThiChiTietSach(dauSachHienTai.MaDauSach);
+        }
+        #endregion
+
+        #region Nút điều hướng
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            if (grdSach.Rows.Count > 0)
+            {
+                grdSach.ClearSelection();
+                grdSach.Rows[0].Selected = true;
+            }
+        }
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (grdSach.CurrentRow == null || grdSach.CurrentRow.Index == 0) return;
+            int i = grdSach.CurrentRow.Index;
+            grdSach.ClearSelection();
+            grdSach.Rows[i - 1].Selected = true;
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (grdSach.CurrentRow == null || grdSach.CurrentRow.Index == grdSach.RowCount - 1) return;
+            int i = grdSach.CurrentRow.Index;
+            grdSach.ClearSelection();
+            grdSach.Rows[i + 1].Selected = true;
+        }
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            if (grdSach.Rows.Count > 0)
+            {
+                grdSach.ClearSelection();
+                grdSach.Rows[grdSach.RowCount - 1].Selected = true;
+            }
+        }
+        private void grdSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Kiểm tra xem đây có phải là cột "Ảnh bìa" (ImageColumn) của chúng ta không
+            if (grdSach.Columns[e.ColumnIndex].Name == "AnhBia")
+            {
+                // 1. Lấy tên file từ cột ẩn (cột TextColumn)
+                // (Tên cột ẩn này là "colAnhBiaFileName" sau khi bạn sửa ở Bước 2)
+                string tenFileAnh = grdSach.Rows[e.RowIndex].Cells["colAnhBiaFileName"].Value.ToString();
+
+                // 2. Kiểm tra
+                if (!string.IsNullOrEmpty(tenFileAnh))
+                {
+                    try
+                    {
+                        // 3. Tạo đường dẫn đầy đủ (ví dụ: C:\...\bin\Debug\Image\1984.jpg)
+                        string fullPath = Path.Combine(Application.StartupPath, "Image", tenFileAnh.Trim());
+
+                        if (File.Exists(fullPath))
+                        {
+                            // 4. Tải ảnh và gán vào cell
+                            // (Chúng ta tải ảnh dưới dạng "không khóa file")
+                            using (Image tempImage = Image.FromFile(fullPath))
+                            {
+                                e.Value = new Bitmap(tempImage);
+                            }
+                        }
+                        else
+                        {
+                            e.Value = null; // Không tìm thấy file
+                        }
+                    }
+                    catch
+                    {
+                        e.Value = null; // Lỗi đọc file
+                    }
+                }
+                else
+                {
+                    e.Value = null; // Sách này không có ảnh
+                }
+            }
 
         }
-        private void LoadViTriComboBox()
+        private void LoadComboBoxLoc()
         {
             try
             {
-                cboViTri.DataSource = dauSachBLL.LayDanhSachViTri();
-                cboViTri.DisplayMember = "TenViTri";
-                cboViTri.ValueMember = "MaViTri";
+                // 1. Lấy danh sách thể loại từ BLL
+                // (Giả sử bạn đã có hàm LayDanhSachTheLoai trả về List<TheLoaiDTO> hoặc DataTable)
+                var dsTheLoai = dauSachBLL.LayDanhSachTheLoai();
+
+                // 2. Tạo một DataTable mới để thêm "Tất cả"
+                DataTable dtFilter = new DataTable();
+                dtFilter.Columns.Add("MaTheLoai", typeof(int));
+                dtFilter.Columns.Add("TenTheLoai", typeof(string));
+
+                // 3. Thêm dòng "Tất cả"
+                dtFilter.Rows.Add(0, "-- Tất cả thể loại --");
+
+                // 4. Copy dữ liệu từ BLL sang
+                foreach (var tl in dsTheLoai)
+                {
+                    dtFilter.Rows.Add(tl.MaTheLoai, tl.TenTheLoai);
+                }
+
+                // 5. Gán DataSource
+                cbxTheloaisach.DataSource = dtFilter;
+                cbxTheloaisach.DisplayMember = "TenTheLoai";
+                cbxTheloaisach.ValueMember = "MaTheLoai";
+                cbxTheloaisach.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải danh sách vị trí: " + ex.Message);
+                MessageBox.Show("Lỗi tải danh sách thể loại: " + ex.Message);
             }
         }
+        // [THÊM HÀM MỚI NÀY VÀO ucSachthuthu.cs]
+
+        private void ApplyFilter(object sender, EventArgs e)
+        {
+            if (dtSachGoc == null) return;
+
+            string tuKhoa = txtTimkiem.Text.Trim().ToLower();
+            string tenTheLoai = cbxTheloaisach.Text; // Lấy TÊN thể loại
+
+            DataView dv = dtSachGoc.DefaultView;
+            string filter = "1=1";
+
+            // 1. Lọc theo Thể loại
+            if (tenTheLoai != "-- Tất cả thể loại --")
+            {
+                filter += $" AND TenTheLoai = '{tenTheLoai}'";
+            }
+
+            // 2. Lọc theo Từ khóa (Tên sách)
+            if (!string.IsNullOrEmpty(tuKhoa))
+            {
+                filter += $" AND (CONVERT(TenDauSach, 'System.String') LIKE '%{tuKhoa}%' OR " +
+                  $"      CONVERT(MaDauSach, 'System.String') LIKE '%{tuKhoa}%')";
+            }
+
+            dv.RowFilter = filter;
+            grdSach.DataSource = dv.ToTable();
+        }
+        private void txtTimkiem_TextChanged(object sender, EventArgs e)
+        {
+            ApplyFilter(sender, e);
+        }
+        private void cbxTheloaisach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyFilter(sender, e);
+        }
+
+
+        #endregion
     }
 }

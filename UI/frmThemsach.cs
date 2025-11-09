@@ -19,6 +19,7 @@ namespace QLTVNhom3
         private TacGiaDAL tacGiaDAL;
         private BindingList<TacGiaDTO> danhSachTacGiaChon;
         private BindingList<BanSachDTO> danhSachBanSach;
+        private string tenFileAnh = null;
 
         public frmThemsach()
         {
@@ -167,7 +168,8 @@ namespace QLTVNhom3
                     NamXuatBan = (short)dtpNamxb.Value.Year,
                     NhaXuatBan = txtNxb.Text,
                     MaViTri = (string)cbbVitri.SelectedValue,
-                    SoLuongTong = int.Parse(txtSoluong.Text)
+                    SoLuongTong = int.Parse(txtSoluong.Text),
+                    AnhBia = this.tenFileAnh
                 };
                 List<TacGiaDTO> tacGias = danhSachTacGiaChon.ToList();
                 List<BanSachDTO> banSach = danhSachBanSach.ToList();
@@ -201,6 +203,45 @@ namespace QLTVNhom3
         private void grdTimkiemtacgia_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnThemanh_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files (*.jpg;*.png;*.jpeg)|*.jpg;*.png;*.jpeg";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string sourceFilePath = ofd.FileName;
+                        string fileName = Path.GetFileName(sourceFilePath);
+
+                        string imageFolderPath = Path.Combine(Application.StartupPath, "Image");
+
+                        if (!Directory.Exists(imageFolderPath))
+                        {
+                            Directory.CreateDirectory(imageFolderPath);
+                        }
+
+                        string targetPath = Path.Combine(imageFolderPath, fileName);
+                        File.Copy(sourceFilePath, targetPath, true);
+
+                        using (Image tempImage = Image.FromFile(targetPath))
+                        {
+                            pbThemanh.Image = new Bitmap(tempImage);
+                            pbThemanh.SizeMode = PictureBoxSizeMode.Zoom;
+                        }
+
+                        // 2. Lưu tên file vào biến
+                        this.tenFileAnh = fileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi đọc/copy file ảnh: " + ex.Message);
+                    }
+                }
+            }
         }
     }
 }

@@ -20,7 +20,8 @@ namespace QLTVNhom3.DAL
             string query = @"
         SELECT 
             s.MaSach, 
-            ds.TenDauSach, 
+            ds.TenDauSach,
+            ds.AnhBia,
             
             -- Ghép tên tác giả và đặt bí danh là 'TacGia'
             STRING_AGG(tg.TenTacGia, N', ') AS TacGia, 
@@ -45,13 +46,15 @@ namespace QLTVNhom3.DAL
 
         // 🔹 Tìm kiếm sách (theo Tên hoặc Mã) để cho mượn
         // 🔹 Tìm kiếm sách (theo Tên hoặc Mã) để cho mượn
+        // [THAY THẾ HÀM NÀY TRONG PhieuMuonDAL.cs]
+
         public DataTable TimKiemSach(string keyword)
         {
-            // 💡 ĐÃ CẬP NHẬT TRUY VẤN DỰA TRÊN SCHEMA MỚI CỦA BẠN
             string query = @"
         SELECT 
-            s.MaSach,           -- ✅ PHẢI CÓ DÒNG NÀY
-            ds.TenDauSach, 
+            s.MaSach, 
+            ds.TenDauSach,
+            ds.AnhBia,
             
             -- Ghép tên các tác giả thành 1 chuỗi
             STRING_AGG(tg.TenTacGia, N', ') AS TacGia, 
@@ -65,14 +68,15 @@ namespace QLTVNhom3.DAL
         
         WHERE 
             (s.MaSach LIKE @Keyword OR ds.TenDauSach LIKE @Keyword)
-            AND s.MaTinhTrang = 1 -- Chỉ tìm sách 'Sẵn có' (Giả sử 1 = Sẵn có)
+            AND s.MaTinhTrang = 1 -- Chỉ tìm sách 'Có sẵn'
         
         -- Phải GROUP BY vì chúng ta đã dùng hàm STRING_AGG
         GROUP BY 
             s.MaSach, 
             ds.TenDauSach, 
             ds.NamXuatBan, 
-            s.MaTinhTrang";
+            s.MaTinhTrang,
+            ds.AnhBia"; 
 
             SqlParameter[] parameters = {
         new SqlParameter("@Keyword", "%" + keyword + "%")

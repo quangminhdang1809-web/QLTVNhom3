@@ -164,12 +164,16 @@ namespace QLTVNhom3
                 btnHethong.Visible = true;
                 btnQuanlytaikhoan.Visible = true;
                 btnVipham.Visible = true;
+                btnMuonsach.Visible = false;
+                btnTrasach.Visible = false;
             }
             else if (currentUser.TypeOfAccount == "THUTHU")
             {
                 btnHethong.Visible = false;
                 btnQuanlytaikhoan.Visible = false;
                 btnVipham.Visible = false;
+                btnMuonsach.Visible = true;
+                btnTrasach.Visible = true;
             }
         }
 
