@@ -72,7 +72,5 @@ namespace QLTVNhom3
                 frm.ShowDialog(this);
             }
         }
-
-        
     }
 }
