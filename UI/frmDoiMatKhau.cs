@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace QLTVNhom3
 {
-    public partial class FrmChangePassword : Form
+    public partial class frmDoiMatKhau : Form
     {
         public string OldPassword => txtOldPassword.Text;
         public string NewPassword => txtNewPassword.Text;
         public string ConfirmPassword => txtConfirmPassword.Text;
-        public FrmChangePassword()
+        public frmDoiMatKhau()
         {
             InitializeComponent();
         }

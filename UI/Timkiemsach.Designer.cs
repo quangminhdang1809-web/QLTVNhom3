@@ -440,23 +440,24 @@
         #endregion
 
         private Panel panel1;
-        private Button btnTimkiem;
-        private Label lblTimtheo;
-        private ComboBox cbxLocsach;
-        private TextBox txtTimsach;
-        private Label lblTimkiemsach;
-        private Button btnRefresh;
         private TableLayoutPanel tableLayoutPanel1;
+        private Label lblTimtheo;
+        private Label lblTimkiemsach;
+        private TextBox txtTimsach;
         private DataGridView dgvHienthisach;
-        private Panel panel2;
         private DataGridViewTextBoxColumn clmTensach;
         private DataGridViewTextBoxColumn clmAnhbia;
         private DataGridViewTextBoxColumn clmNamxb;
         private DataGridViewTextBoxColumn clmNXB;
         private DataGridViewTextBoxColumn clmTacgia;
         private DataGridViewTextBoxColumn clmSoluong;
-        private PictureBox pbAnhbia;
+        private Panel panel2;
+        private Button btnTimkiem;
+        private ComboBox cbxLocsach;
         private Panel panel3;
+        private Label label10;
+        private Button btnRefresh;
+        private Label lblSoluong;
         private Label label8;
         private Label label7;
         private Label lblVitri;
@@ -465,7 +466,6 @@
         private Label lblTacgia;
         private Label label2;
         private Label lblTensach;
-        private Label label10;
-        private Label lblSoluong;
+        private PictureBox pbAnhbia;
     }
 }

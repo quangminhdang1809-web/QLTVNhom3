@@ -38,7 +38,6 @@
             lblMSV = new Label();
             lblTen = new Label();
             btnTimkiemsach = new Button();
-            btnLichsumuonsach = new Button();
             btnThongtincanhan = new Button();
             pictureBox1 = new PictureBox();
             panelLogo = new Panel();
@@ -72,7 +71,6 @@
             panelMenu.Controls.Add(panel2);
             panelMenu.Controls.Add(panel1);
             panelMenu.Controls.Add(btnTimkiemsach);
-            panelMenu.Controls.Add(btnLichsumuonsach);
             panelMenu.Controls.Add(btnThongtincanhan);
             panelMenu.Controls.Add(pictureBox1);
             panelMenu.Dock = DockStyle.Left;
@@ -159,7 +157,7 @@
             btnTimkiemsach.FlatStyle = FlatStyle.Flat;
             btnTimkiemsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnTimkiemsach.ForeColor = SystemColors.Control;
-            btnTimkiemsach.Location = new Point(53, 749);
+            btnTimkiemsach.Location = new Point(49, 591);
             btnTimkiemsach.Margin = new Padding(4);
             btnTimkiemsach.Name = "btnTimkiemsach";
             btnTimkiemsach.Size = new Size(316, 61);
@@ -169,35 +167,18 @@
             btnTimkiemsach.UseVisualStyleBackColor = true;
             btnTimkiemsach.Click += btnTimkiemsach_Click;
             // 
-            // btnLichsumuonsach
-            // 
-            btnLichsumuonsach.FlatAppearance.BorderSize = 0;
-            btnLichsumuonsach.FlatStyle = FlatStyle.Flat;
-            btnLichsumuonsach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnLichsumuonsach.ForeColor = SystemColors.Control;
-            btnLichsumuonsach.Location = new Point(53, 605);
-            btnLichsumuonsach.Margin = new Padding(4);
-            btnLichsumuonsach.Name = "btnLichsumuonsach";
-            btnLichsumuonsach.Size = new Size(316, 69);
-            btnLichsumuonsach.TabIndex = 2;
-            btnLichsumuonsach.Text = "Lịch sử mượn sách";
-            btnLichsumuonsach.TextAlign = ContentAlignment.MiddleLeft;
-            btnLichsumuonsach.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnLichsumuonsach.UseVisualStyleBackColor = true;
-            btnLichsumuonsach.Click += btnLichsumuonsach_Click;
-            // 
             // btnThongtincanhan
             // 
             btnThongtincanhan.FlatAppearance.BorderSize = 0;
             btnThongtincanhan.FlatStyle = FlatStyle.Flat;
             btnThongtincanhan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnThongtincanhan.ForeColor = SystemColors.Control;
-            btnThongtincanhan.Location = new Point(53, 472);
+            btnThongtincanhan.Location = new Point(49, 477);
             btnThongtincanhan.Margin = new Padding(4);
             btnThongtincanhan.Name = "btnThongtincanhan";
             btnThongtincanhan.Size = new Size(316, 63);
             btnThongtincanhan.TabIndex = 1;
-            btnThongtincanhan.Text = "Thông tin cá nhân";
+            btnThongtincanhan.Text = "Hồ sơ độc giả";
             btnThongtincanhan.TextAlign = ContentAlignment.MiddleLeft;
             btnThongtincanhan.UseVisualStyleBackColor = true;
             btnThongtincanhan.Click += btnThongtincanhan_Click;
@@ -283,7 +264,6 @@
         private Label lblTen;
         private Label lblMSV;
         private Button btnTimkiemsach;
-        private Button btnLichsumuonsach;
         private Button btnThongtincanhan;
         private Panel pnlMain;
         private Panel panel1;
