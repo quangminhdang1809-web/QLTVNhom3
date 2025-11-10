@@ -1,6 +1,6 @@
 ﻿namespace QLTVNhom3
 {
-    partial class FrmChangePassword
+    partial class frmDoiMatKhau
     {
         /// <summary>
         /// Required designer variable.

@@ -323,5 +323,45 @@ namespace QLTVNhom3.DAL
             // Nếu count > 0, nghĩa là đã có phiếu mượn
             return (count > 0);
         }
+        public DocGiaDTO GetThongTinDocGia(string idAccount)
+        {
+            try
+            {
+                string query = @"SELECT a.IDAccount, a.PasswordAccount,a.TypeOfAccount,dg.MaDocGia,dg.HoTen,dg.SoDienThoai,dg.Email,dg.DiaChi,dg.NgayLapThe,dg.NgayHetHan,ld.TenLoaiDG from ACCOUNT a
+        join DOCGIA dg ON a.IDAccount = dg.IDAccount 
+        join LOAIDOCGIA ld ON dg.MaLoaiDG = ld.MaLoaiDG 
+        where a.IDAccount = @IDAccount";
+
+                SqlParameter[] parameters = {
+            new SqlParameter("@IDAccount", idAccount)
+        };
+                DataTable dt = db.ExecuteQuery(query, parameters);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    return new DocGiaDTO()
+                    {
+                        IDAccount = row["IDAccount"].ToString(),
+                        PasswordAccount = row["PasswordAccount"].ToString(),
+                        TypeOfAccount = row["TypeOfAccount"].ToString(),
+                        MaDocGia = Convert.ToInt32(row["MaDocGia"]),
+                        HoTen = row["HoTen"].ToString(),
+                        SoDienThoai = row["SoDienThoai"].ToString(),
+                        Email = row["Email"].ToString(),
+                        DiaChi = row["DiaChi"].ToString(),
+                        NgayLapThe = Convert.ToDateTime(row["NgayLapThe"]),
+                        NgayHetHan = Convert.ToDateTime(row["NgayHetHan"]),
+                        TenLoaiDG = row["TenLoaiDG"].ToString()
+                    };
+                }
+                return null;
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lấy thông tin độc giả: {ex.Message}");
+            }
+        }
     }
 }
