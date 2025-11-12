@@ -16,6 +16,5 @@ namespace QLTVNhom3.DTO
         public string TenViTri { get; set; }
         public int MaTinhTrang { get; set; }
         public string TenTinhTrang { get; set; }
-        public string TenDauSach { get; set; } // THÊM DÒNG NÀY
     }
 }
