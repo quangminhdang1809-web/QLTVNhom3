@@ -54,10 +54,6 @@
             btnMuonsach = new Button();
             btnTrasach = new Button();
             btnBaocao = new Button();
-            pnlBaocao = new Panel();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel5 = new Panel();
             label4 = new Label();
@@ -69,7 +65,6 @@
             flowLayoutPanel1.SuspendLayout();
             pnlHethong.SuspendLayout();
             pnlDanhmuc.SuspendLayout();
-            pnlBaocao.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -84,7 +79,7 @@
             btnThoat.FlatStyle = FlatStyle.Flat;
             btnThoat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnThoat.ForeColor = Color.White;
-            btnThoat.Location = new Point(954, 0);
+            btnThoat.Location = new Point(989, 0);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(40, 60);
             btnThoat.TabIndex = 1;
@@ -185,11 +180,10 @@
             flowLayoutPanel1.Controls.Add(btnMuonsach);
             flowLayoutPanel1.Controls.Add(btnTrasach);
             flowLayoutPanel1.Controls.Add(btnBaocao);
-            flowLayoutPanel1.Controls.Add(pnlBaocao);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(244, 994);
+            flowLayoutPanel1.Size = new Size(244, 1011);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // btnHethong
@@ -487,70 +481,7 @@
             btnBaocao.Text = "        Báo cáo";
             btnBaocao.TextAlign = ContentAlignment.MiddleLeft;
             btnBaocao.UseVisualStyleBackColor = false;
-            // 
-            // pnlBaocao
-            // 
-            pnlBaocao.BackColor = SystemColors.Highlight;
-            pnlBaocao.Controls.Add(button2);
-            pnlBaocao.Controls.Add(button3);
-            pnlBaocao.Controls.Add(button4);
-            pnlBaocao.Location = new Point(25, 1102);
-            pnlBaocao.Margin = new Padding(25, 3, 3, 3);
-            pnlBaocao.Name = "pnlBaocao";
-            pnlBaocao.Size = new Size(200, 179);
-            pnlBaocao.TabIndex = 51;
-            pnlBaocao.Visible = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.Highlight;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(0, 121);
-            button2.Margin = new Padding(25, 3, 3, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(200, 53);
-            button2.TabIndex = 8;
-            button2.Text = "Tình trạng phạt";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.Highlight;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(0, 62);
-            button3.Margin = new Padding(25, 3, 3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(200, 53);
-            button3.TabIndex = 7;
-            button3.Text = "Sách trả trễ";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.Highlight;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(0, 3);
-            button4.Margin = new Padding(25, 3, 3, 3);
-            button4.Name = "button4";
-            button4.Size = new Size(200, 53);
-            button4.TabIndex = 6;
-            button4.Text = "Sách đang mượn";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.UseVisualStyleBackColor = false;
+            btnBaocao.Click += btnBaocao_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -565,7 +496,7 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 92.28675F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 7.71324873F));
-            tableLayoutPanel1.Size = new Size(250, 1084);
+            tableLayoutPanel1.Size = new Size(250, 1102);
             tableLayoutPanel1.TabIndex = 2;
             // 
             // panel5
@@ -574,7 +505,7 @@
             panel5.Controls.Add(label4);
             panel5.Controls.Add(btnDangxuat);
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(3, 1015);
+            panel5.Location = new Point(3, 1033);
             panel5.Name = "panel5";
             panel5.Size = new Size(244, 66);
             panel5.TabIndex = 1;
@@ -616,7 +547,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(250, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(994, 60);
+            panel1.Size = new Size(1029, 60);
             panel1.TabIndex = 3;
             // 
             // pnlMaincontent
@@ -624,14 +555,14 @@
             pnlMaincontent.Dock = DockStyle.Fill;
             pnlMaincontent.Location = new Point(250, 60);
             pnlMaincontent.Name = "pnlMaincontent";
-            pnlMaincontent.Size = new Size(994, 1024);
+            pnlMaincontent.Size = new Size(1029, 1042);
             pnlMaincontent.TabIndex = 4;
             // 
             // frmmainthuthu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1244, 1084);
+            ClientSize = new Size(1279, 1102);
             Controls.Add(pnlMaincontent);
             Controls.Add(panel1);
             Controls.Add(tableLayoutPanel1);
@@ -648,7 +579,6 @@
             flowLayoutPanel1.PerformLayout();
             pnlHethong.ResumeLayout(false);
             pnlDanhmuc.ResumeLayout(false);
-            pnlBaocao.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -689,9 +619,5 @@
         private Button btnMuonsach;
         private Button btnTrasach;
         private Button btnBaocao;
-        private Panel pnlBaocao;
-        private Button button2;
-        private Button button3;
-        private Button button4;
     }
 }

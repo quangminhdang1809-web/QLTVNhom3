@@ -40,14 +40,8 @@ namespace QLTVNhom3
 
         private void btnBaocao_Click(object sender, EventArgs e)
         {
-            if (pnlBaocao.Visible == true)
-            {
-                pnlBaocao.Visible = false;
-            }
-            else
-            {
-                pnlBaocao.Visible = true;
-            }
+            ucBaoCao uc = new ucBaoCao();
+            AddUserControl(uc);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
