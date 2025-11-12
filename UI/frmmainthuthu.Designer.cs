@@ -494,6 +494,7 @@
             btnBaocao.Text = "        Báo cáo";
             btnBaocao.TextAlign = ContentAlignment.MiddleLeft;
             btnBaocao.UseVisualStyleBackColor = false;
+            btnBaocao.Click += btnBaocao_Click;
             // 
             // pnlBaocao
             // 
