@@ -21,7 +21,5 @@ namespace QLTVNhom3.DTO
         public string SoDienThoai { get; set; }
         public int MaLoaiDG { get; set; }
         public string TenLoaiDG { get; set; }
-        public string PasswordAccount { get; set; }
-        public string TypeOfAccount { get; set; }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Data.SqlClient;
+using QLTVNhom3.DTO; 
+using System.Collections.Generic;
 
 namespace QLTVNhom3.DAL
 {
