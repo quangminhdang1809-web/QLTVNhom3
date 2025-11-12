@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.Data.SqlClient;
 using QLTVNhom3.DTO; 
 using System.Collections.Generic;
+using System.Data;
 
 namespace QLTVNhom3.DAL
 {
