@@ -10,7 +10,6 @@ namespace QLTVNhom3.DTO
     {
         public string MaDauSach { get; set; }
         public string TenDauSach { get; set; }
-        public byte[] AnhBia { get; set; }
         public int MaTheLoai { get; set; }
         public short NamXuatBan { get; set; }
         public string NhaXuatBan { get; set; }
@@ -19,5 +18,6 @@ namespace QLTVNhom3.DTO
         public string TenTheLoai { get; set; }
         public string TenViTri { get; set; }
         public List<TacGiaDTO> DanhSachTacGia { get; set; }
+        public string AnhBia { get; set; }
     }
 }

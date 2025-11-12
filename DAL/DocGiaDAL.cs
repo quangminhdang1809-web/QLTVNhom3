@@ -283,18 +283,58 @@ namespace QLTVNhom3.DAL
                 return null;
             }
         }
-        public DocGiaDTO GetThongTinDocGia (string idAccount)
+        public DataTable LayLichSuMuonTra(int maDocGia)
+        {
+            string query = @"
+                SELECT
+                    pm.MaPhieuMS,
+                    ct.MaSach,
+                    ds.TenDauSach,
+                    pm.NgayMuon,
+                    tt.TenTinhTrang AS TrangThai
+                FROM PHIEUMUON pm
+                JOIN CTPHIEUMUON ct ON pm.MaPhieuMS = ct.MaPhieuMS
+                JOIN SACH s ON ct.MaSach = s.MaSach
+                JOIN DAUSACH ds ON s.MaDauSach = ds.MaDauSach
+                JOIN TINHTRANG tt ON ct.MaTinhTrang = tt.MaTinhTrang
+                WHERE pm.MaDocGia = @MaDocGia
+                ORDER BY pm.NgayMuon DESC";
+
+            SqlParameter[] parameters = {
+                new SqlParameter("@MaDocGia", maDocGia)
+            };
+
+            return db.ExecuteQuery(query, parameters);
+        }
+        public bool KiemTraPhieuMuonTonTai(int maDocGia)
+        {
+            string query = "SELECT COUNT(*) FROM PHIEUMUON WHERE MaDocGia = @MaDocGia";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@MaDocGia", maDocGia)
+    };
+
+            // Thực thi và lấy kết quả
+            object result = db.ExecuteScalar(query, parameters);
+
+            // Chuyển kết quả sang số nguyên
+            int count = Convert.ToInt32(result);
+
+            // Nếu count > 0, nghĩa là đã có phiếu mượn
+            return (count > 0);
+        }
+        public DocGiaDTO GetThongTinDocGia(string idAccount)
         {
             try
             {
                 string query = @"SELECT a.IDAccount, a.PasswordAccount,a.TypeOfAccount,dg.MaDocGia,dg.HoTen,dg.SoDienThoai,dg.Email,dg.DiaChi,dg.NgayLapThe,dg.NgayHetHan,ld.TenLoaiDG from ACCOUNT a
-                join DOCGIA dg ON a.IDAccount = dg.IDAccount 
-                join LOAIDOCGIA ld ON dg.MaLoaiDG = ld.MaLoaiDG 
-                where a.IDAccount = @IDAccount";
+        join DOCGIA dg ON a.IDAccount = dg.IDAccount 
+        join LOAIDOCGIA ld ON dg.MaLoaiDG = ld.MaLoaiDG 
+        where a.IDAccount = @IDAccount";
 
                 SqlParameter[] parameters = {
-                    new SqlParameter("@IDAccount", idAccount)
-                };
+            new SqlParameter("@IDAccount", idAccount)
+        };
                 DataTable dt = db.ExecuteQuery(query, parameters);
 
                 if (dt.Rows.Count > 0)
@@ -315,48 +355,12 @@ namespace QLTVNhom3.DAL
                         TenLoaiDG = row["TenLoaiDG"].ToString()
                     };
                 }
-                return null; 
+                return null;
             }
 
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new Exception($"Lỗi khi lấy thông tin độc giả: {ex.Message}");
-            } 
-        }
-        public bool DoiMatKhau(string idAccount, string matKhauMoi)
-        {
-            try
-            {
-                string query = @"UPDATE ACCOUNT SET PasswordAccount = @Password WHERE IDAccount = @IDAccount";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@Password", matKhauMoi),
-                    new SqlParameter("@IDAccount", idAccount)
-                };
-
-                int result = db.ExecuteNonQuery(query, parameters);
-                return result > 0;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Lỗi khi đổi mật khẩu: {ex.Message}");
-            }
-        }
-        public int GetMaLoaiDGFromTenLoai(string tenLoai)
-        {
-            try
-            {
-                string query = "SELECT MaLoaiDG FROM LOAIDOCGIA WHERE TenLoaiDG = @TenLoaiDG";
-                SqlParameter[] parameters = {
-                    new SqlParameter("@TenLoaiDG", tenLoai)
-                };
-
-                object result = db.ExecuteScalar(query, parameters);
-                return result != null ? Convert.ToInt32(result) : 1; // Mặc định return 1 nếu không tìm thấy
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi khi lấy mã loại độc giả: {ex.Message}");
-                return 1;
             }
         }
     }

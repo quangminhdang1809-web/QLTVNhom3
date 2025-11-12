@@ -1,4 +1,5 @@
-﻿using QLTVNhom3.DAL;
+﻿using QLTVNhom3.BLL;
+using QLTVNhom3.DAL;
 using QLTVNhom3.DTO;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace QLTVNhom3
         private DocGiaDTO docGiaHienTai;
         private DocGiaDTO docGiaBackup;
         private bool dangTimKiem = false;
+        private DocGiaBLL docGiaBLL = new DocGiaBLL();
+
         public ucDocgiathuthu()
         {
             InitializeComponent();
@@ -33,23 +36,24 @@ namespace QLTVNhom3
             LoadComboBoxes();
             LoadComboBoxLoc();
             SetEditMode(false);
+
+            // Cấu hình lưới Lịch sử
+            dgvLichsumuontra.AutoGenerateColumns = false;
         }
         private void SetEditMode(bool isEdit)
         {
-            // Bật/tắt chỉnh sửa các control
             txtTendocgia.ReadOnly = !isEdit;
             txtEmail.ReadOnly = !isEdit;
             txtDiachi.ReadOnly = !isEdit;
             txtSdt.ReadOnly = !isEdit;
             dtpNgaysinh.Enabled = isEdit;
             cbbLoaidocgia.Enabled = isEdit;
-            txtIDAccount.ReadOnly = isEdit;
+            txtIDAccount.ReadOnly = true; // IDAccount không bao giờ được sửa
 
-            // Bật/tắt các nút
-            btnSua.Enabled = !isEdit;        // Chỉ bật khi KHÔNG ở chế độ sửa
-            btnLuu.Enabled = isEdit;         // Chỉ bật khi ở chế độ sửa
-            btnUndo.Enabled = isEdit;        // Chỉ bật khi ở chế độ sửa
-            btnXoa.Enabled = !isEdit;        // Chỉ bật khi KHÔNG ở chế độ sửa
+            btnSua.Enabled = !isEdit;
+            btnLuu.Enabled = isEdit;
+            btnUndo.Enabled = isEdit;
+            btnXoa.Enabled = !isEdit;
         }
         private void BackupCurrentData()
         {
@@ -81,7 +85,7 @@ namespace QLTVNhom3
                 docGiaHienTai.IDAccount = docGiaBackup.IDAccount;
                 docGiaHienTai.MaLoaiDG = docGiaBackup.MaLoaiDG;
 
-                HienThiChiTietDG(); // Refresh hiển thị
+                HienThiChiTietDG();
             }
         }
         private void LoadComboBoxLoc()
@@ -89,7 +93,7 @@ namespace QLTVNhom3
             try
             {
                 cbbLocDocGia.Items.Clear();
-                cbbLocDocGia.Items.Add("-- Tất cả loại --"); // Item mặc định
+                cbbLocDocGia.Items.Add("-- Tất cả loại --");
 
                 DataTable dtLoai = docGiaDAL.GetLoaiDocGia();
                 foreach (DataRow row in dtLoai.Rows)
@@ -105,40 +109,55 @@ namespace QLTVNhom3
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnFirst_Click(object sender, EventArgs e)
         {
-            grdDocgia.ClearSelection();
-            grdDocgia.CurrentCell = grdDocgia[0, 0];
+            if (grdDocgia.Rows.Count > 0)
+            {
+                grdDocgia.ClearSelection();
+                grdDocgia.Rows[0].Selected = true;
+                grdDocgia.CurrentCell = grdDocgia.Rows[0].Cells[0];
+            }
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            int i = grdDocgia.CurrentRow.Index;
-            if (i > 0)// Nếu chưa phải dòng đầu thì nhảy đến dòng trước đó
+            if (grdDocgia.Rows.Count == 0 || grdDocgia.SelectedRows.Count == 0) return;
+            int i = grdDocgia.SelectedRows[0].Index;
+            if (i > 0)
             {
-                grdDocgia.CurrentCell = grdDocgia[0, i - 1];
+                grdDocgia.ClearSelection();
+                grdDocgia.Rows[i - 1].Selected = true;
+                grdDocgia.CurrentCell = grdDocgia.Rows[i - 1].Cells[0];
             }
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
-            int i = grdDocgia.CurrentRow.Index;
-            if (i < grdDocgia.RowCount - 1)// Nếu chưa phải dòng cuối thì nhảy đến dòng tiếp theo
+            if (grdDocgia.Rows.Count == 0 || grdDocgia.SelectedRows.Count == 0) return;
+            int i = grdDocgia.SelectedRows[0].Index;
+            if (i < grdDocgia.RowCount - 1)
             {
-                grdDocgia.CurrentCell = grdDocgia[0, i + 1];
+                grdDocgia.ClearSelection();
+                grdDocgia.Rows[i + 1].Selected = true;
+                grdDocgia.CurrentCell = grdDocgia.Rows[i + 1].Cells[0];
             }
         }
         private void btnLast_Click(object sender, EventArgs e)
         {
-            int i = grdDocgia.RowCount - 1;
-            grdDocgia.CurrentCell = grdDocgia[0, i];//Dòng  cuối cùng
+            if (grdDocgia.Rows.Count > 0)
+            {
+                int i = grdDocgia.RowCount - 1;
+                grdDocgia.ClearSelection();
+                grdDocgia.Rows[i].Selected = true;
+                grdDocgia.CurrentCell = grdDocgia.Rows[i].Cells[0];
+            }
         }
         private void LoadDanhSachDocGia()
         {
             try
             {
-                dangTimKiem = true; // Bật cờ đang tìm kiếm để tránh lọc không cần thiết
+                dangTimKiem = true;
                 danhSachDocGia = docGiaDAL.GetDanhSachDocGia();
-                danhSachDocGiaGoc = new List<DocGiaDTO>(danhSachDocGia); // Lưu bản gốc
+                danhSachDocGiaGoc = new List<DocGiaDTO>(danhSachDocGia);
                 grdDocgia.AutoGenerateColumns = false;
                 grdDocgia.DataSource = null;
                 grdDocgia.DataSource = danhSachDocGia;
@@ -146,14 +165,13 @@ namespace QLTVNhom3
                 grdDocgia.Refresh();
                 if (cbbLocDocGia.Items.Count > 0)
                 {
-                    cbbLocDocGia.SelectedIndex = 0; // Reset combobox lọc
+                    cbbLocDocGia.SelectedIndex = 0;
                 }
                 if (danhSachDocGia.Count > 0)
                 {
                     grdDocgia.ClearSelection();
                     grdDocgia.Rows[0].Selected = true;
                     grdDocgia.CurrentCell = grdDocgia.Rows[0].Cells[0];
-                    HienThiChiTietDG();
                 }
                 else
                 {
@@ -166,23 +184,19 @@ namespace QLTVNhom3
             }
             finally
             {
-                dangTimKiem = false; // Đảm bảo tắt cờ tìm kiếm trong mọi trường hợp
+                dangTimKiem = false;
+                // Tải chi tiết và lịch sử cho dòng đầu tiên
+                grdDocgia_SelectionChanged(null, null);
             }
         }
         private void LoadComboBoxes()
         {
             try
             {
-                // Load loại độc giả
                 DataTable dtLoai = docGiaDAL.GetLoaiDocGia();
                 cbbLoaidocgia.DataSource = dtLoai;
                 cbbLoaidocgia.DisplayMember = "TenLoaiDG";
                 cbbLoaidocgia.ValueMember = "MaLoaiDG";
-                //DataTable dtAccounts = docGiaDAL.GetAllAccounts();
-                //if (dtAccounts.Rows.Count > 0)
-                //{
-                  //  txtIDAccount.Text = dtAccounts.Rows[0]["IDAccount"].ToString();
-                //}
             }
             catch (Exception ex)
             {
@@ -194,7 +208,6 @@ namespace QLTVNhom3
         {
             try
             {
-                // KIỂM TRA CÁCH LẤY DÒNG ĐƯỢC CHỌN
                 DataGridViewRow selectedRow = null;
 
                 if (grdDocgia.SelectedRows.Count > 0)
@@ -222,7 +235,6 @@ namespace QLTVNhom3
                 dtpNgayhethan.Value = docGiaHienTai.NgayHetHan;
                 txtIDAccount.Text = docGiaHienTai.IDAccount ?? "";
 
-                // Chọn combobox
                 if (cbbLoaidocgia.Items.Count > 0)
                 {
                     try
@@ -257,8 +269,7 @@ namespace QLTVNhom3
         {
             try
             {
-                dangTimKiem = true; // Bật cờ đang tìm kiếm
-
+                dangTimKiem = true;
                 string tuKhoa = txtTimkiem.Text.Trim();
 
                 if (string.IsNullOrEmpty(tuKhoa))
@@ -270,7 +281,6 @@ namespace QLTVNhom3
                     List<DocGiaDTO> list = docGiaDAL.TimKiemDocGia(tuKhoa);
                     grdDocgia.DataSource = list;
                 }
-                // SỬA: thêm kiểm tra
                 if (cbbLocDocGia.Items.Count > 0)
                 {
                     cbbLocDocGia.SelectedIndex = 0;
@@ -278,7 +288,6 @@ namespace QLTVNhom3
                 if (grdDocgia.Rows.Count > 0)
                 {
                     grdDocgia.Rows[0].Selected = true;
-                    HienThiChiTietDG();
                 }
                 else
                 {
@@ -291,18 +300,40 @@ namespace QLTVNhom3
             }
             finally
             {
-                dangTimKiem = false; // Đảm bảo tắt cờ tìm kiếm trong mọi trường hợp
+                dangTimKiem = false;
+                grdDocgia_SelectionChanged(null, null); // Cập nhật chi tiết + lịch sử
             }
         }
 
-        private void grdDocgia_CellClick(object sender, DataGridViewCellEventArgs e)
+        // --- HÀM SELECTIONCHANGED DUY NHẤT ---
+        private void grdDocgia_SelectionChanged(object sender, EventArgs e)
         {
-                if (e.RowIndex >= 0)
+            // Không làm gì nếu đang sửa hoặc đang tải dữ liệu
+            if (btnLuu.Enabled || dangTimKiem) return;
+
+            if (grdDocgia.SelectedRows.Count > 0)
+            {
+                try
                 {
-                    grdDocgia.Rows[e.RowIndex].Selected = true; // đảm bảo chọn đúng dòng
-                    docGiaHienTai = (DocGiaDTO)grdDocgia.Rows[e.RowIndex].DataBoundItem;
-                    HienThiChiTietDG(); // cập nhật thông tin bên phải
+                    int maDocGia = Convert.ToInt32(grdDocgia.SelectedRows[0].Cells["colMaDocGia"].Value);
+
+                    // 1. Tải chi tiết
+                    HienThiChiTietDG();
+
+                    // 2. Tải lịch sử mượn trả
+                    LoadLichSuMuonTra(maDocGia);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi lấy mã độc giả: " + ex.Message);
+                    dgvLichsumuontra.DataSource = null;
+                }
+            }
+            else
+            {
+                XoaThongTinChiTiet();
+                dgvLichsumuontra.DataSource = null;
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -312,7 +343,6 @@ namespace QLTVNhom3
                 MessageBox.Show("Vui lòng chọn độc giả để sửa!", "Thông báo");
                 return;
             }
-            // Backup dữ liệu trước khi sửa
             BackupCurrentData();
             SetEditMode(true);
         }
@@ -321,13 +351,12 @@ namespace QLTVNhom3
             if (docGiaHienTai == null) return;
             try
             {
-                // Validate
-                if (string.IsNullOrEmpty(docGiaHienTai.IDAccount))
+                if (string.IsNullOrEmpty(txtTendocgia.Text))
                 {
-                    MessageBox.Show("Vui lòng nhập IDAccount");
+                    MessageBox.Show("Vui lòng nhập Tên độc giả");
                     return;
                 }
-                // Cập nhật thông tin từ controls
+
                 docGiaHienTai.HoTen = txtTendocgia.Text.Trim();
                 docGiaHienTai.NgaySinh = dtpNgaysinh.Value;
                 docGiaHienTai.Email = txtEmail.Text.Trim();
@@ -336,14 +365,13 @@ namespace QLTVNhom3
                 docGiaHienTai.IDAccount = txtIDAccount.Text.Trim();
                 docGiaHienTai.MaLoaiDG = Convert.ToInt32(cbbLoaidocgia.SelectedValue);
 
-                // Lưu vào database
                 int result = docGiaDAL.CapNhatDocGia(docGiaHienTai);
 
                 if (result > 0)
                 {
                     MessageBox.Show("Cập nhật độc giả thành công!");
                     SetEditMode(false);
-                    LoadDanhSachDocGia(); // Refresh danh sách
+                    LoadDanhSachDocGia();
                 }
                 else
                 {
@@ -361,12 +389,40 @@ namespace QLTVNhom3
             SetEditMode(false);
         }
 
+        // [THAY THẾ HÀM NÀY TRONG ucDocgiathuthu.cs]
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (docGiaHienTai == null) return;
 
+            // BƯỚC 1: KIỂM TRA RÀNG BUỘC TRƯỚC
+            try
+            {
+                bool daMuonSach = docGiaBLL.KiemTraPhieuMuonTonTai(docGiaHienTai.MaDocGia);
+
+                if (daMuonSach)
+                {
+                    // BƯỚC 2: THÔNG BÁO CHO THỦ THƯ (NẾU BỊ CẤM XÓA)
+                    MessageBox.Show(
+                        $"Không thể xóa độc giả '{docGiaHienTai.HoTen}'.\n\n" +
+                        "Nguyên nhân: Độc giả này đã có lịch sử mượn trả sách trong hệ thống.",
+                        "Không thể xóa",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning); // Hiển thị icon Cảnh báo
+                    return; // Dừng lại, không làm gì cả
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi kiểm tra xóa: " + ex.Message);
+                return;
+            }
+
+            // BƯỚC 3: XÓA (NẾU KHÔNG VƯỚNG)
+            // Đoạn code này chỉ chạy nếu KiemTraPhieuMuonTonTai == false
             DialogResult result = MessageBox.Show(
-                $"Bạn có chắc muốn xóa độc giả '{docGiaHienTai.HoTen}'?",
+                $"Độc giả '{docGiaHienTai.HoTen}' chưa có lịch sử mượn trả.\n" +
+                "Bạn có chắc muốn xóa vĩnh viễn độc giả này?",
                 "Xác nhận xóa",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
@@ -375,7 +431,13 @@ namespace QLTVNhom3
             {
                 try
                 {
-                    int ketQua = docGiaDAL.XoaDocGia(docGiaHienTai.MaDocGia);
+                    // Chỗ này bạn có 2 lựa chọn:
+                    // 1. Xóa cứng (Vì họ chưa mượn gì):
+                    // int ketQua = docGiaDAL.XoaCungDocGia(docGiaHienTai.MaDocGia); // Bạn cần viết hàm này
+
+                    // 2. Xóa mềm (An toàn hơn):
+                    int ketQua = docGiaDAL.XoaDocGia(docGiaHienTai.MaDocGia); // Dùng hàm Xóa Mềm (UPDATE TrangThai = 0)
+
                     if (ketQua > 0)
                     {
                         MessageBox.Show("Xóa độc giả thành công!");
@@ -403,7 +465,6 @@ namespace QLTVNhom3
                             grdDocgia.ClearSelection();
                             grdDocgia.Rows[lastIndex].Selected = true;
                             grdDocgia.CurrentCell = grdDocgia.Rows[lastIndex].Cells[0];
-                            HienThiChiTietDG();
                         }
                         MessageBox.Show($"Đã thêm độc giả thành công! Số lượng: {danhSachDocGia.Count}",
                          "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -414,16 +475,16 @@ namespace QLTVNhom3
 
         private void cbbLocDocGia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dangTimKiem) return; // Nếu đang trong chế độ tìm kiếm thì không lọc
+            if (dangTimKiem) return;
 
             LocTheoLoaiDocGia();
         }
-        // Phương thức lọc theo loại độc giả
+
         private void LocTheoLoaiDocGia()
         {
             try
             {
-                if (dangTimKiem || danhSachDocGiaGoc == null || danhSachDocGiaGoc.Count == 0)
+                if (danhSachDocGiaGoc == null || danhSachDocGiaGoc.Count == 0)
                 {
                     return;
                 }
@@ -431,15 +492,11 @@ namespace QLTVNhom3
 
                 if (loaiDuocChon == "-- Tất cả loại --" || string.IsNullOrEmpty(loaiDuocChon))
                 {
-                    // Hiển thị tất cả
                     grdDocgia.DataSource = danhSachDocGiaGoc;
                 }
                 else
                 {
-                    // Cần lấy MaLoaiDG từ tên loại
                     int maLoaiDuocChon = LayMaLoaiTheoTen(loaiDuocChon);
-
-                    // Lọc theo mã loại
                     if (maLoaiDuocChon != -1)
                     {
                         var danhSachLoc = danhSachDocGiaGoc.Where(dg =>
@@ -453,25 +510,24 @@ namespace QLTVNhom3
                     }
 
                 }
-                // Cập nhật lại hiển thị chi tiết nếu có dòng được chọn
                 if (grdDocgia.Rows.Count > 0)
                 {
                     grdDocgia.ClearSelection();
                     grdDocgia.Rows[0].Selected = true;
-                    HienThiChiTietDG();
                 }
                 else
                 {
-                    // Xóa thông tin chi tiết nếu không có kết quả
                     XoaThongTinChiTiet();
                 }
+                // Cập nhật chi tiết và lịch sử sau khi lọc
+                grdDocgia_SelectionChanged(null, null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi lọc dữ liệu: " + ex.Message);
             }
         }
-        //lấy mã loại từ tên loại
+
         private int LayMaLoaiTheoTen(string tenLoai)
         {
             try
@@ -491,7 +547,7 @@ namespace QLTVNhom3
             }
             return -1;
         }
-        // Phương thức xóa thông tin chi tiết
+
         private void XoaThongTinChiTiet()
         {
             txtMadocgia.Text = "";
@@ -502,15 +558,21 @@ namespace QLTVNhom3
             txtIDAccount.Text = "";
             docGiaHienTai = null;
             SetEditMode(false);
+            dgvLichsumuontra.DataSource = null; // Thêm dòng này
         }
-        private void grdDocgia_SelectionChanged(object sender, EventArgs e)
+
+        // --- HÀM TẢI LỊCH SỬ ---
+        private void LoadLichSuMuonTra(int maDocGia)
         {
-            if (grdDocgia.SelectedRows.Count > 0 && !btnLuu.Enabled)
+            try
             {
-                HienThiChiTietDG();
+                // Giả sử lưới lịch sử tên là dgvLichsumuontra
+                dgvLichsumuontra.DataSource = docGiaBLL.LayLichSuMuonTra(maDocGia);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải lịch sử mượn trả: " + ex.Message);
             }
         }
     }
 }
-
-

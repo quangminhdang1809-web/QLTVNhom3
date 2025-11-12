@@ -100,5 +100,37 @@ namespace QLTVNhom3.DAL
 
             return 0; // Trả về 0 nếu không tìm thấy thủ thư
         }
+        // [DÁN 2 HÀM NÀY VÀO CUỐI FILE AccountDAL.cs]
+
+        // Hàm lấy danh sách tài khoản để hiển thị lên lưới
+        public DataTable GetAccountListView()
+        {
+            // COALESCE dùng để lấy tên từ 2 bảng khác nhau
+            // (Lấy HoTen của Độc giả, nếu không có thì lấy HoTen của Thủ thư)
+            string query = @"
+        SELECT
+            a.IDAccount,
+            a.TypeOfAccount,
+            COALESCE(d.HoTen, t.HoTen, a.IDAccount) AS HoTen
+        FROM ACCOUNT a
+        LEFT JOIN DOCGIA d ON a.IDAccount = d.IDAccount
+        LEFT JOIN THUTHU t ON a.IDAccount = t.IDAccount
+        ORDER BY a.TypeOfAccount, HoTen";
+
+            return db.ExecuteQuery(query);
+        }
+
+        // Hàm reset mật khẩu (lưu mật khẩu đã được HASH)
+        public bool ResetPassword(string idAccount, string hashedPassword)
+        {
+            string query = "UPDATE ACCOUNT SET PasswordAccount = @Password WHERE IDAccount = @IDAccount";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@Password", hashedPassword),
+        new SqlParameter("@IDAccount", idAccount)
+    };
+
+            return db.ExecuteNonQuery(query, parameters) > 0;
+        }
     }
 }

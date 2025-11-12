@@ -44,7 +44,8 @@
             colTinhtrang = new DataGridViewTextBoxColumn();
             grdThongtinsachmuon = new DataGridView();
             colTensachmuon = new DataGridViewTextBoxColumn();
-            colAnhbiasachmuon = new DataGridViewImageColumn();
+            AnhBia = new DataGridViewImageColumn();
+            colAnhBiaFileName = new DataGridViewTextBoxColumn();
             colMasachmuon = new DataGridViewTextBoxColumn();
             colNamxb = new DataGridViewTextBoxColumn();
             colTacgia = new DataGridViewTextBoxColumn();
@@ -147,11 +148,13 @@
             drgTimkiemsach.Location = new Point(25, 104);
             drgTimkiemsach.Name = "drgTimkiemsach";
             drgTimkiemsach.RowHeadersWidth = 51;
+            drgTimkiemsach.RowTemplate.Height = 100;
             drgTimkiemsach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             drgTimkiemsach.Size = new Size(1123, 215);
             drgTimkiemsach.TabIndex = 9;
             drgTimkiemsach.Visible = false;
             drgTimkiemsach.CellDoubleClick += drgTimkiemsach_CellDoubleClick;
+            drgTimkiemsach.CellFormatting += drgTimkiemsach_CellFormatting;
             // 
             // TenDauSach
             // 
@@ -201,6 +204,7 @@
             // 
             // grdThongtinsachmuon
             // 
+            grdThongtinsachmuon.AllowUserToAddRows = false;
             grdThongtinsachmuon.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             grdThongtinsachmuon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdThongtinsachmuon.BackgroundColor = Color.Gainsboro;
@@ -214,15 +218,17 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grdThongtinsachmuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             grdThongtinsachmuon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdThongtinsachmuon.Columns.AddRange(new DataGridViewColumn[] { colTensachmuon, colAnhbiasachmuon, colMasachmuon, colNamxb, colTacgia, colHantra });
+            grdThongtinsachmuon.Columns.AddRange(new DataGridViewColumn[] { colTensachmuon, AnhBia, colAnhBiaFileName, colMasachmuon, colNamxb, colTacgia, colHantra });
             grdThongtinsachmuon.EnableHeadersVisualStyles = false;
             grdThongtinsachmuon.Location = new Point(25, 117);
             grdThongtinsachmuon.Name = "grdThongtinsachmuon";
             grdThongtinsachmuon.RowHeadersWidth = 51;
+            grdThongtinsachmuon.RowTemplate.Height = 100;
             grdThongtinsachmuon.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grdThongtinsachmuon.Size = new Size(1371, 299);
             grdThongtinsachmuon.TabIndex = 0;
             grdThongtinsachmuon.CellClick += grdThongtinsachmuon_CellClick;
+            grdThongtinsachmuon.CellFormatting += grdThongtinsachmuon_CellFormatting;
             // 
             // colTensachmuon
             // 
@@ -231,14 +237,22 @@
             colTensachmuon.MinimumWidth = 6;
             colTensachmuon.Name = "colTensachmuon";
             // 
-            // colAnhbiasachmuon
+            // AnhBia
             // 
-            colAnhbiasachmuon.FillWeight = 50F;
-            colAnhbiasachmuon.HeaderText = "Ảnh bìa";
-            colAnhbiasachmuon.MinimumWidth = 6;
-            colAnhbiasachmuon.Name = "colAnhbiasachmuon";
-            colAnhbiasachmuon.Resizable = DataGridViewTriState.True;
-            colAnhbiasachmuon.SortMode = DataGridViewColumnSortMode.Automatic;
+            AnhBia.DataPropertyName = "AnhBia";
+            AnhBia.FillWeight = 50F;
+            AnhBia.HeaderText = "Ảnh bìa";
+            AnhBia.MinimumWidth = 6;
+            AnhBia.Name = "AnhBia";
+            AnhBia.Resizable = DataGridViewTriState.True;
+            AnhBia.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // colAnhBiaFileName
+            // 
+            colAnhBiaFileName.HeaderText = "Ảnh bìa";
+            colAnhBiaFileName.MinimumWidth = 6;
+            colAnhBiaFileName.Name = "colAnhBiaFileName";
+            colAnhBiaFileName.Visible = false;
             // 
             // colMasachmuon
             // 
@@ -334,8 +348,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             grdSachdangmuon.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             grdSachdangmuon.RowHeadersWidth = 51;
+            grdSachdangmuon.RowTemplate.Height = 100;
             grdSachdangmuon.Size = new Size(739, 228);
             grdSachdangmuon.TabIndex = 5;
+            grdSachdangmuon.CellFormatting += grdSachdangmuon_CellFormatting;
             // 
             // colTensach
             // 
@@ -622,8 +638,6 @@
         private GroupBox groupBox1;
         private Button btnXemphieumuon;
         private Button btnXoatatca;
-        private DateTimePicker dtpNgay = new DateTimePicker();
-        private Rectangle _rectangle;
         private Button btnXoasach;
         private Label lblThongbao;
         private DataGridViewTextBoxColumn colTensach;
@@ -631,17 +645,18 @@
         private DataGridViewTextBoxColumn colMasach;
         private DataGridViewTextBoxColumn colNgaymuon;
         private DataGridViewTextBoxColumn colHantradamuon;
-        private DataGridViewTextBoxColumn colTensachmuon;
-        private DataGridViewImageColumn colAnhbiasachmuon;
-        private DataGridViewTextBoxColumn colMasachmuon;
-        private DataGridViewTextBoxColumn colNamxb;
-        private DataGridViewTextBoxColumn colTacgia;
-        private DataGridViewTextBoxColumn colHantra;
         private DataGridViewTextBoxColumn TenDauSach;
         private DataGridViewImageColumn colAnhbiatrongtimkiem;
         private DataGridViewTextBoxColumn MaSach;
         private DataGridViewTextBoxColumn TacGia;
         private DataGridViewTextBoxColumn NamXuatBan;
         private DataGridViewTextBoxColumn colTinhtrang;
+        private DataGridViewTextBoxColumn colTensachmuon;
+        private DataGridViewImageColumn AnhBia;
+        private DataGridViewTextBoxColumn colAnhBiaFileName;
+        private DataGridViewTextBoxColumn colMasachmuon;
+        private DataGridViewTextBoxColumn colNamxb;
+        private DataGridViewTextBoxColumn colTacgia;
+        private DataGridViewTextBoxColumn colHantra;
     }
 }

@@ -48,6 +48,7 @@ namespace QLTVNhom3.DAL
                 SELECT 
                     ds.TenDauSach AS TenSach,
                     s.MaSach,
+                    ds.AnhBia,
                     pm.NgayMuon,
                     ctp.HanTra,
                     -- Cột này BẮT BUỘC phải có vì code ở ucMuonsachthuthu.cs có dùng

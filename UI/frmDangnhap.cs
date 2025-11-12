@@ -1,4 +1,6 @@
-﻿using QLTVNhom3.DAL;
+﻿using QLTVNhom3.BLL;
+using QLTVNhom3.DAL;
+using QLTVNhom3.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QLTVNhom3.DTO;
 
 namespace QLTVNhom3
 {
@@ -46,29 +47,45 @@ namespace QLTVNhom3
             string pw = txtMatkhau.Text;
 
             AccountDAL dal = new AccountDAL();
+
+            // 1. Kiểm tra đăng nhập (giữ nguyên logic của bạn)
             var acc = dal.CheckLogin(id, pw);
 
             if (acc != null)
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                if (acc.TypeOfAccount == "THUTHU")
+                // --- SỬA LOGIC PHÂN LUỒNG ---
+
+                // 2. Nếu là THUTHU hoặc ADMIN, mở form chính
+                if (acc.TypeOfAccount == "THUTHU" || acc.TypeOfAccount == "ADMIN")
                 {
-                    int maThuThu = dal.LayMaThuThuTuAccount(acc.IDAccount);
-                    ThuThuDTO.MaThuThu = maThuThu;
-                    var frmmainthuthu = new frmmainthuthu(acc.IDAccount); 
+                    // Nếu là thủ thư, lưu lại MaThuThu (giống code cũ)
+                    if (acc.TypeOfAccount == "THUTHU")
+                    {
+                        int maThuThu = dal.LayMaThuThuTuAccount(acc.IDAccount);
+                        UserSession.MaThuThu = maThuThu; // Gán vào Session
+                    }
+
+                    // 3. Khởi động form chính và TRUYỀN CẢ TÀI KHOẢN (acc) sang
+                    var frmmainthuthu = new frmmainthuthu(acc); // Sửa ở đây
                     this.Hide();
                     frmmainthuthu.ShowDialog();
-                    this.Close(); 
+                    this.Close();
                 }
-                else
+                // 4. Nếu là Độc giả, vào form Độc giả
+                else if (acc.TypeOfAccount == "DOCGIA")
                 {
-                    var frmDocGia = new frmDocGia (acc.IDAccount);
+                    var frmDocGia = new frmDocGia(acc.IDAccount);
                     this.Hide();
                     frmDocGia.ShowDialog();
                     this.Close();
-                }   
-
+                }
+                else
+                {
+                    MessageBox.Show("Loại tài khoản không được hỗ trợ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                // --- KẾT THÚC SỬA ---
             }
             else
             {

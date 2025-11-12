@@ -1,13 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QLTVNhom3.DTO
 {
     public class ThuThuDTO
     {
-        public static int MaThuThu { get; set; }
+        public int MaThuThu { get; set; }
+        public string HoTen { get; set; }
+        public DateTime NgaySinh { get; set; }
+        public string Email { get; set; }
+        public string IDAccount { get; set; }
+        public string SoDienThoai { get; set; }
+
+        // Dùng cho việc Thêm mới
+        public string Password { get; set; }
     }
 }

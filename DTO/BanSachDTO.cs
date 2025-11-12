@@ -15,6 +15,7 @@ namespace QLTVNhom3.DTO
         public string TenTacGia { get; set; }
         public string TenViTri { get; set; }
         public int MaTinhTrang { get; set; }
-        public string TenTinhTrang { get; set; } // "Có sẵn" hoặc "Đang mượn"
+        public string TenTinhTrang { get; set; }
+        public string TenDauSach { get; set; } // THÊM DÒNG NÀY
     }
 }

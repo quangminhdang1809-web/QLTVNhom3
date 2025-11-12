@@ -24,7 +24,7 @@ namespace QLTVNhom3
         private void btnThongtincanhan_Click(object sender, EventArgs e)
         {
             pnlMain.Controls.Clear();
-            Thongtincanhan ttcndg = new Thongtincanhan(IDAccount);
+            Thongtincanhan ttcndg = new Thongtincanhan(this.IDAccount);
             ttcndg.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(ttcndg);
 
@@ -38,17 +38,9 @@ namespace QLTVNhom3
         private void btnTimkiemsach_Click(object sender, EventArgs e)
         {
             pnlMain.Controls.Clear();
-            Timkiemsach tks = new Timkiemsach();
+            ucSachthuthu tks = new ucSachthuthu(true);
             tks.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(tks);
-        }
-
-        private void btnLichsumuonsach_Click(object sender, EventArgs e)
-        {
-            pnlMain.Controls.Clear();
-            Lichsumuonsach lsm = new Lichsumuonsach();
-            lsm.Dock = DockStyle.Fill;
-            pnlMain.Controls.Add(lsm);
         }
 
         private void frmDocGia_Load(object sender, EventArgs e)

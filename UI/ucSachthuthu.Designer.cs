@@ -22,7 +22,7 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
+        /// <summary> a
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
@@ -40,10 +40,18 @@
             txtTimkiem = new TextBox();
             grdSach = new DataGridView();
             colMadausach = new DataGridViewTextBoxColumn();
+            AnhBia = new DataGridViewImageColumn();
             colTendausach = new DataGridViewTextBoxColumn();
             colTheLoai = new DataGridViewTextBoxColumn();
             colSoluong = new DataGridViewTextBoxColumn();
+            TrangThaiDS = new DataGridViewTextBoxColumn();
+            colAnhBiaFileName = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
+            panel1 = new Panel();
+            label2 = new Label();
+            btnThayAnh = new Button();
+            cboViTri = new ComboBox();
+            btnBanSach = new Button();
             dtpNamXB = new DateTimePicker();
             grdTacgia = new DataGridView();
             colMatacgia = new DataGridViewTextBoxColumn();
@@ -58,11 +66,11 @@
             label14 = new Label();
             label15 = new Label();
             txtTenDauSach = new TextBox();
-            txtViTri = new TextBox();
             txtMaDauSach = new TextBox();
             txtNhaXB = new TextBox();
             picAnhBia = new PictureBox();
             groupBox2 = new GroupBox();
+            btnSua = new Button();
             btnLuu = new Button();
             btnUndo = new Button();
             btnXoa = new Button();
@@ -71,9 +79,12 @@
             btnNext = new Button();
             btnLast = new Button();
             btnFirst = new Button();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            sqlCommand2 = new Microsoft.Data.SqlClient.SqlCommand();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdSach).BeginInit();
             groupBox1.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdTacgia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picAnhBia).BeginInit();
             groupBox2.SuspendLayout();
@@ -86,8 +97,8 @@
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 74.89301F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.10699F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 107F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 974F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 152F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 1121F));
             tableLayoutPanel1.Controls.Add(btnThemsach, 3, 0);
             tableLayoutPanel1.Controls.Add(btnTimkiem, 2, 0);
             tableLayoutPanel1.Controls.Add(cbxTheloaisach, 1, 0);
@@ -100,10 +111,10 @@
             tableLayoutPanel1.Margin = new Padding(5);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10.9669809F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 89.03302F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 126F));
-            tableLayoutPanel1.Size = new Size(2270, 1461);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.131451F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 93.8685455F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 141F));
+            tableLayoutPanel1.Size = new Size(2986, 2409);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // btnThemsach
@@ -112,13 +123,13 @@
             btnThemsach.FlatAppearance.BorderSize = 0;
             btnThemsach.FlatStyle = FlatStyle.Flat;
             btnThemsach.Image = (Image)resources.GetObject("btnThemsach.Image");
-            btnThemsach.Location = new Point(2115, 5);
+            btnThemsach.Location = new Point(2831, 5);
             btnThemsach.Margin = new Padding(5);
             btnThemsach.Name = "btnThemsach";
-            btnThemsach.Size = new Size(150, 136);
+            btnThemsach.Size = new Size(150, 129);
             btnThemsach.TabIndex = 103;
             btnThemsach.UseVisualStyleBackColor = true;
-            btnThemsach.Click += button1_Click;
+            btnThemsach.Click += btnThemsach_Click;
             // 
             // btnTimkiem
             // 
@@ -127,10 +138,10 @@
             btnTimkiem.FlatAppearance.BorderSize = 0;
             btnTimkiem.FlatStyle = FlatStyle.Flat;
             btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
-            btnTimkiem.Location = new Point(1210, 17);
+            btnTimkiem.Location = new Point(1741, 13);
             btnTimkiem.Margin = new Padding(5);
             btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.Size = new Size(62, 112);
+            btnTimkiem.Size = new Size(93, 112);
             btnTimkiem.TabIndex = 85;
             btnTimkiem.UseVisualStyleBackColor = true;
             btnTimkiem.Click += btnTimkiem_Click_1;
@@ -140,27 +151,29 @@
             cbxTheloaisach.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbxTheloaisach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cbxTheloaisach.FormattingEnabled = true;
-            cbxTheloaisach.Location = new Point(893, 46);
+            cbxTheloaisach.Location = new Point(1285, 43);
             cbxTheloaisach.Name = "cbxTheloaisach";
-            cbxTheloaisach.Size = new Size(292, 53);
+            cbxTheloaisach.Size = new Size(424, 53);
             cbxTheloaisach.TabIndex = 84;
+            cbxTheloaisach.SelectedIndexChanged += cbxTheloaisach_SelectedIndexChanged;
             // 
             // txtTimkiem
             // 
             txtTimkiem.Anchor = AnchorStyles.Left;
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(5, 48);
+            txtTimkiem.Location = new Point(5, 44);
             txtTimkiem.Margin = new Padding(5);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(728, 50);
+            txtTimkiem.Size = new Size(1272, 50);
             txtTimkiem.TabIndex = 82;
+            txtTimkiem.TextChanged += txtTimkiem_TextChanged;
             // 
             // grdSach
             // 
             grdSach.AllowUserToAddRows = false;
             grdSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            grdSach.BackgroundColor = Color.Gainsboro;
+            grdSach.BackgroundColor = Color.White;
             grdSach.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
@@ -170,12 +183,12 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grdSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdSach.Columns.AddRange(new DataGridViewColumn[] { colMadausach, colTendausach, colTheLoai, colSoluong });
+            grdSach.ColumnHeadersHeight = 60;
+            grdSach.Columns.AddRange(new DataGridViewColumn[] { colMadausach, AnhBia, colTendausach, colTheLoai, colSoluong, TrangThaiDS, colAnhBiaFileName });
             tableLayoutPanel1.SetColumnSpan(grdSach, 2);
             grdSach.Dock = DockStyle.Fill;
             grdSach.EnableHeadersVisualStyles = false;
-            grdSach.Location = new Point(3, 149);
+            grdSach.Location = new Point(3, 142);
             grdSach.MultiSelect = false;
             grdSach.Name = "grdSach";
             grdSach.ReadOnly = true;
@@ -187,12 +200,15 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             grdSach.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            grdSach.RowHeadersWidth = 51;
+            grdSach.RowHeadersVisible = false;
+            grdSach.RowHeadersWidth = 100;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             grdSach.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            grdSach.RowTemplate.Height = 150;
             grdSach.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdSach.Size = new Size(1182, 1182);
+            grdSach.Size = new Size(1706, 2122);
             grdSach.TabIndex = 81;
+            grdSach.CellFormatting += grdSach_CellFormatting;
             grdSach.SelectionChanged += grdSach_SelectionChanged;
             // 
             // colMadausach
@@ -202,6 +218,13 @@
             colMadausach.MinimumWidth = 6;
             colMadausach.Name = "colMadausach";
             colMadausach.ReadOnly = true;
+            // 
+            // AnhBia
+            // 
+            AnhBia.HeaderText = "Ảnh bìa";
+            AnhBia.MinimumWidth = 6;
+            AnhBia.Name = "AnhBia";
+            AnhBia.ReadOnly = true;
             // 
             // colTendausach
             // 
@@ -228,65 +251,152 @@
             colSoluong.Name = "colSoluong";
             colSoluong.ReadOnly = true;
             // 
+            // TrangThaiDS
+            // 
+            TrangThaiDS.DataPropertyName = "TrangThai";
+            TrangThaiDS.HeaderText = "Trạng thái";
+            TrangThaiDS.MinimumWidth = 6;
+            TrangThaiDS.Name = "TrangThaiDS";
+            TrangThaiDS.ReadOnly = true;
+            TrangThaiDS.Visible = false;
+            // 
+            // colAnhBiaFileName
+            // 
+            colAnhBiaFileName.DataPropertyName = "AnhBia";
+            colAnhBiaFileName.HeaderText = "Ảnh bìa";
+            colAnhBiaFileName.MinimumWidth = 6;
+            colAnhBiaFileName.Name = "colAnhBiaFileName";
+            colAnhBiaFileName.ReadOnly = true;
+            colAnhBiaFileName.Visible = false;
+            // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(dtpNamXB);
-            groupBox1.Controls.Add(grdTacgia);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(txtSoLuong);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label12);
-            groupBox1.Controls.Add(label13);
-            groupBox1.Controls.Add(label14);
-            groupBox1.Controls.Add(label15);
-            groupBox1.Controls.Add(txtTenDauSach);
-            groupBox1.Controls.Add(txtViTri);
-            groupBox1.Controls.Add(txtMaDauSach);
-            groupBox1.Controls.Add(txtNhaXB);
-            groupBox1.Controls.Add(picAnhBia);
+            groupBox1.Controls.Add(panel1);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            groupBox1.Location = new Point(1300, 151);
+            groupBox1.Location = new Point(1869, 144);
             groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5);
-            groupBox1.Size = new Size(965, 1178);
+            groupBox1.Size = new Size(1112, 2118);
             groupBox1.TabIndex = 104;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sách";
+            // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(btnThayAnh);
+            panel1.Controls.Add(cboViTri);
+            panel1.Controls.Add(btnBanSach);
+            panel1.Controls.Add(dtpNamXB);
+            panel1.Controls.Add(grdTacgia);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(txtSoLuong);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label12);
+            panel1.Controls.Add(label13);
+            panel1.Controls.Add(label14);
+            panel1.Controls.Add(label15);
+            panel1.Controls.Add(txtTenDauSach);
+            panel1.Controls.Add(txtMaDauSach);
+            panel1.Controls.Add(txtNhaXB);
+            panel1.Controls.Add(picAnhBia);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(5, 54);
+            panel1.Margin = new Padding(5);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1102, 2059);
+            panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label2.Location = new Point(129, 713);
+            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(84, 45);
+            label2.TabIndex = 259;
+            label2.Text = "NXB";
+            // 
+            // btnThayAnh
+            // 
+            btnThayAnh.BackColor = SystemColors.Highlight;
+            btnThayAnh.FlatAppearance.BorderSize = 0;
+            btnThayAnh.FlatStyle = FlatStyle.Flat;
+            btnThayAnh.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnThayAnh.ForeColor = Color.White;
+            btnThayAnh.Location = new Point(345, 359);
+            btnThayAnh.Margin = new Padding(5);
+            btnThayAnh.Name = "btnThayAnh";
+            btnThayAnh.Size = new Size(426, 66);
+            btnThayAnh.TabIndex = 258;
+            btnThayAnh.Text = "Thay Ảnh";
+            btnThayAnh.UseVisualStyleBackColor = false;
+            btnThayAnh.Click += btnThayAnh_Click;
+            // 
+            // cboViTri
+            // 
+            cboViTri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cboViTri.FormattingEnabled = true;
+            cboViTri.Location = new Point(380, 790);
+            cboViTri.Margin = new Padding(5);
+            cboViTri.Name = "cboViTri";
+            cboViTri.Size = new Size(556, 53);
+            cboViTri.TabIndex = 257;
+            // 
+            // btnBanSach
+            // 
+            btnBanSach.BackColor = SystemColors.Highlight;
+            btnBanSach.FlatAppearance.BorderSize = 0;
+            btnBanSach.FlatStyle = FlatStyle.Flat;
+            btnBanSach.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnBanSach.ForeColor = Color.White;
+            btnBanSach.Location = new Point(686, 1159);
+            btnBanSach.Margin = new Padding(5);
+            btnBanSach.Name = "btnBanSach";
+            btnBanSach.Size = new Size(253, 61);
+            btnBanSach.TabIndex = 256;
+            btnBanSach.Text = "Bản sách";
+            btnBanSach.UseVisualStyleBackColor = false;
+            btnBanSach.Click += btnBanSach_Click;
             // 
             // dtpNamXB
             // 
             dtpNamXB.CustomFormat = "yyyy";
             dtpNamXB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             dtpNamXB.Format = DateTimePickerFormat.Custom;
-            dtpNamXB.Location = new Point(325, 589);
+            dtpNamXB.Location = new Point(380, 628);
             dtpNamXB.Margin = new Padding(5);
             dtpNamXB.Name = "dtpNamXB";
             dtpNamXB.ShowUpDown = true;
             dtpNamXB.Size = new Size(556, 50);
-            dtpNamXB.TabIndex = 176;
+            dtpNamXB.TabIndex = 255;
             // 
             // grdTacgia
             // 
             grdTacgia.AllowUserToAddRows = false;
             grdTacgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grdTacgia.BackgroundColor = SystemColors.ControlLightLight;
+            grdTacgia.ColumnHeadersHeight = 60;
+            grdTacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdTacgia.Columns.AddRange(new DataGridViewColumn[] { colMatacgia, colHotentacgia, colNamsinh, colQuoctich });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            grdTacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            grdTacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdTacgia.Columns.AddRange(new DataGridViewColumn[] { colMatacgia, colHotentacgia, colNamsinh, colQuoctich });
-            grdTacgia.Location = new Point(70, 921);
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            grdTacgia.DefaultCellStyle = dataGridViewCellStyle4;
+            grdTacgia.Location = new Point(129, 975);
             grdTacgia.Margin = new Padding(5);
             grdTacgia.Name = "grdTacgia";
             grdTacgia.RowHeadersWidth = 51;
-            grdTacgia.Size = new Size(812, 227);
-            grdTacgia.TabIndex = 175;
+            grdTacgia.Size = new Size(813, 150);
+            grdTacgia.TabIndex = 254;
             // 
             // colMatacgia
             // 
@@ -320,172 +430,180 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(70, 843);
+            label1.Location = new Point(126, 883);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
             label1.Size = new Size(151, 45);
-            label1.TabIndex = 174;
+            label1.TabIndex = 253;
             label1.Text = "Số lượng";
             // 
             // txtSoLuong
             // 
             txtSoLuong.BorderStyle = BorderStyle.FixedSingle;
             txtSoLuong.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtSoLuong.Location = new Point(325, 843);
+            txtSoLuong.Location = new Point(380, 883);
             txtSoLuong.Margin = new Padding(5);
             txtSoLuong.Name = "txtSoLuong";
             txtSoLuong.Size = new Size(557, 50);
-            txtSoLuong.TabIndex = 173;
+            txtSoLuong.TabIndex = 252;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label5.Location = new Point(70, 419);
+            label5.Location = new Point(126, 459);
             label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
             label5.Size = new Size(205, 45);
-            label5.TabIndex = 172;
+            label5.TabIndex = 251;
             label5.Text = "Mã đầu sách";
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label12.Location = new Point(70, 758);
+            label12.Location = new Point(126, 798);
             label12.Margin = new Padding(5, 0, 5, 0);
             label12.Name = "label12";
             label12.Size = new Size(90, 45);
-            label12.TabIndex = 171;
+            label12.TabIndex = 250;
             label12.Text = "Vị trí";
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label13.Location = new Point(70, 674);
+            label13.Location = new Point(129, 975);
             label13.Margin = new Padding(5, 0, 5, 0);
             label13.Name = "label13";
             label13.Size = new Size(84, 45);
-            label13.TabIndex = 170;
+            label13.TabIndex = 249;
             label13.Text = "NXB";
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label14.Location = new Point(70, 589);
+            label14.Location = new Point(126, 628);
             label14.Margin = new Padding(5, 0, 5, 0);
             label14.Name = "label14";
             label14.Size = new Size(138, 45);
-            label14.TabIndex = 169;
+            label14.TabIndex = 248;
             label14.Text = "Năm XB";
             // 
             // label15
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label15.Location = new Point(70, 504);
+            label15.Location = new Point(126, 543);
             label15.Margin = new Padding(5, 0, 5, 0);
             label15.Name = "label15";
             label15.Size = new Size(209, 45);
-            label15.TabIndex = 168;
+            label15.TabIndex = 247;
             label15.Text = "Tên đầu sách";
             // 
             // txtTenDauSach
             // 
             txtTenDauSach.BorderStyle = BorderStyle.FixedSingle;
             txtTenDauSach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTenDauSach.Location = new Point(325, 504);
+            txtTenDauSach.Location = new Point(380, 543);
             txtTenDauSach.Margin = new Padding(5);
             txtTenDauSach.Name = "txtTenDauSach";
             txtTenDauSach.Size = new Size(557, 50);
-            txtTenDauSach.TabIndex = 165;
-            // 
-            // txtViTri
-            // 
-            txtViTri.BorderStyle = BorderStyle.FixedSingle;
-            txtViTri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtViTri.Location = new Point(325, 758);
-            txtViTri.Margin = new Padding(5);
-            txtViTri.Name = "txtViTri";
-            txtViTri.Size = new Size(557, 50);
-            txtViTri.TabIndex = 166;
+            txtTenDauSach.TabIndex = 246;
             // 
             // txtMaDauSach
             // 
             txtMaDauSach.BorderStyle = BorderStyle.FixedSingle;
             txtMaDauSach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMaDauSach.Location = new Point(325, 419);
+            txtMaDauSach.Location = new Point(380, 459);
             txtMaDauSach.Margin = new Padding(5);
             txtMaDauSach.Name = "txtMaDauSach";
             txtMaDauSach.Size = new Size(557, 50);
-            txtMaDauSach.TabIndex = 163;
+            txtMaDauSach.TabIndex = 244;
             // 
             // txtNhaXB
             // 
             txtNhaXB.BorderStyle = BorderStyle.FixedSingle;
             txtNhaXB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtNhaXB.Location = new Point(325, 674);
+            txtNhaXB.Location = new Point(380, 713);
             txtNhaXB.Margin = new Padding(5);
             txtNhaXB.Name = "txtNhaXB";
             txtNhaXB.Size = new Size(557, 50);
-            txtNhaXB.TabIndex = 164;
+            txtNhaXB.TabIndex = 245;
             // 
             // picAnhBia
             // 
-            picAnhBia.Location = new Point(383, 59);
+            picAnhBia.BackColor = Color.Transparent;
+            picAnhBia.Location = new Point(380, 0);
             picAnhBia.Margin = new Padding(5);
             picAnhBia.Name = "picAnhBia";
-            picAnhBia.Size = new Size(277, 297);
-            picAnhBia.TabIndex = 0;
+            picAnhBia.Size = new Size(343, 336);
+            picAnhBia.SizeMode = PictureBoxSizeMode.CenterImage;
+            picAnhBia.TabIndex = 243;
             picAnhBia.TabStop = false;
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnSua);
             groupBox2.Controls.Add(btnLuu);
             groupBox2.Controls.Add(btnUndo);
             groupBox2.Controls.Add(btnXoa);
             groupBox2.Dock = DockStyle.Right;
             groupBox2.FlatStyle = FlatStyle.Popup;
-            groupBox2.Location = new Point(1867, 1339);
+            groupBox2.Location = new Point(2397, 2272);
             groupBox2.Margin = new Padding(5);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(5);
-            groupBox2.Size = new Size(398, 117);
+            groupBox2.Size = new Size(584, 132);
             groupBox2.TabIndex = 105;
             groupBox2.TabStop = false;
+            // 
+            // btnSua
+            // 
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Image = (Image)resources.GetObject("btnSua.Image");
+            btnSua.Location = new Point(98, 35);
+            btnSua.Margin = new Padding(5);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(102, 69);
+            btnSua.TabIndex = 177;
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
             // 
             // btnLuu
             // 
             btnLuu.FlatAppearance.BorderSize = 0;
             btnLuu.FlatStyle = FlatStyle.Flat;
             btnLuu.Image = (Image)resources.GetObject("btnLuu.Image");
-            btnLuu.Location = new Point(280, 42);
+            btnLuu.Location = new Point(464, 40);
             btnLuu.Margin = new Padding(5);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(72, 64);
             btnLuu.TabIndex = 168;
             btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnUndo
             // 
             btnUndo.FlatAppearance.BorderSize = 0;
             btnUndo.FlatStyle = FlatStyle.Flat;
             btnUndo.Image = (Image)resources.GetObject("btnUndo.Image");
-            btnUndo.Location = new Point(56, 42);
+            btnUndo.Location = new Point(240, 40);
             btnUndo.Margin = new Padding(5);
             btnUndo.Name = "btnUndo";
             btnUndo.Size = new Size(72, 64);
             btnUndo.TabIndex = 167;
             btnUndo.UseVisualStyleBackColor = true;
+            btnUndo.Click += btnUndo_Click;
             // 
             // btnXoa
             // 
             btnXoa.FlatAppearance.BorderSize = 0;
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Image = (Image)resources.GetObject("btnXoa.Image");
-            btnXoa.Location = new Point(168, 42);
+            btnXoa.Location = new Point(352, 40);
             btnXoa.Margin = new Padding(5);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(72, 64);
@@ -501,11 +619,11 @@
             groupBox3.Controls.Add(btnLast);
             groupBox3.Controls.Add(btnFirst);
             groupBox3.Dock = DockStyle.Right;
-            groupBox3.Location = new Point(697, 1339);
+            groupBox3.Location = new Point(1221, 2272);
             groupBox3.Margin = new Padding(5);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(5);
-            groupBox3.Size = new Size(486, 117);
+            groupBox3.Size = new Size(486, 132);
             groupBox3.TabIndex = 106;
             groupBox3.TabStop = false;
             // 
@@ -520,6 +638,7 @@
             btnPrevious.Size = new Size(91, 64);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
+            btnPrevious.Click += btnPrevious_Click;
             // 
             // btnNext
             // 
@@ -532,6 +651,7 @@
             btnNext.Size = new Size(72, 64);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
             // 
             // btnLast
             // 
@@ -544,6 +664,7 @@
             btnLast.Size = new Size(85, 74);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
+            btnLast.Click += btnLast_Click;
             // 
             // btnFirst
             // 
@@ -556,22 +677,35 @@
             btnFirst.Size = new Size(72, 64);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
+            btnFirst.Click += btnFirst_Click;
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
+            // 
+            // sqlCommand2
+            // 
+            sqlCommand2.CommandTimeout = 30;
+            sqlCommand2.EnableOptimizedParameterBinding = false;
             // 
             // ucSachthuthu
             // 
             AutoScaleDimensions = new SizeF(192F, 192F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            AutoScroll = true;
             AutoSize = true;
             BackColor = Color.White;
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(5);
             Name = "ucSachthuthu";
-            Size = new Size(2600, 1600);
+            Size = new Size(3200, 2560);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)grdSach).EndInit();
             groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)grdTacgia).EndInit();
             ((System.ComponentModel.ISupportInitialize)picAnhBia).EndInit();
             groupBox2.ResumeLayout(false);
@@ -588,19 +722,6 @@
         private Button btnTimkiem;
         private Button btnThemsach;
         private GroupBox groupBox1;
-        private PictureBox picAnhBia;
-        private Label label5;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private TextBox txtTenDauSach;
-        private TextBox txtMaDauSach;
-        private TextBox txtNhaXB;
-        private Label label1;
-        private TextBox txtSoLuong;
-        private Label label12;
-        private TextBox txtViTri;
-        private DataGridView grdTacgia;
         private GroupBox groupBox2;
         private Button btnLuu;
         private Button btnUndo;
@@ -610,14 +731,37 @@
         private Button btnNext;
         private Button btnLast;
         private Button btnFirst;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private Button btnSua;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand2;
+        private Panel panel1;
+        private Label label2;
+        private Button btnThayAnh;
+        private ComboBox cboViTri;
+        private Button btnBanSach;
         private DateTimePicker dtpNamXB;
-        private DataGridViewTextBoxColumn colMadausach;
-        private DataGridViewTextBoxColumn colTendausach;
-        private DataGridViewTextBoxColumn colTheLoai;
-        private DataGridViewTextBoxColumn colSoluong;
+        private DataGridView grdTacgia;
         private DataGridViewTextBoxColumn colMatacgia;
         private DataGridViewTextBoxColumn colHotentacgia;
         private DataGridViewTextBoxColumn colNamsinh;
         private DataGridViewTextBoxColumn colQuoctich;
+        private Label label1;
+        private TextBox txtSoLuong;
+        private Label label5;
+        private Label label12;
+        private Label label13;
+        private Label label14;
+        private Label label15;
+        private TextBox txtTenDauSach;
+        private TextBox txtMaDauSach;
+        private TextBox txtNhaXB;
+        private PictureBox picAnhBia;
+        private DataGridViewTextBoxColumn colMadausach;
+        private DataGridViewImageColumn AnhBia;
+        private DataGridViewTextBoxColumn colTendausach;
+        private DataGridViewTextBoxColumn colTheLoai;
+        private DataGridViewTextBoxColumn colSoluong;
+        private DataGridViewTextBoxColumn TrangThaiDS;
+        private DataGridViewTextBoxColumn colAnhBiaFileName;
     }
 }
