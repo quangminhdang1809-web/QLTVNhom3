@@ -8,7 +8,7 @@ namespace QLTVNhom3.DTO
 {
     public class DocGiaDTO
     {
-        public int MaDocGia { get; set; }   
+        public int MaDocGia { get; set; }
         public string HoTen { get; set; }
         public DateTime NgaySinh { get; set; }
         public DateTime NgayLapThe { get; set; }
@@ -19,5 +19,9 @@ namespace QLTVNhom3.DTO
         public string SoDienThoai { get; set; }
         public int MaLoaiDG { get; set; }
         public string TenLoaiDG { get; set; }
+        public string PasswordAccount { get; set; }
+        public string TypeOfAccount { get; set; }
     }
 }
+
+

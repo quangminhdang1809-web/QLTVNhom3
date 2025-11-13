@@ -76,7 +76,7 @@ namespace QLTVNhom3.DAL
             ds.TenDauSach, 
             ds.NamXuatBan, 
             s.MaTinhTrang,
-            ds.AnhBia"; 
+            ds.AnhBia";
 
             SqlParameter[] parameters = {
         new SqlParameter("@Keyword", "%" + keyword + "%")
@@ -149,8 +149,39 @@ namespace QLTVNhom3.DAL
     };
             return db.ExecuteNonQuery(query, parameters);
         }
+        // 🔹 Lấy sách đã mượn của độc giả
+        // 🔹 Lấy sách đã mượn của độc giả - ĐÚNG VỚI DATABASE
+        public DataTable GetSachDaMuonCuaDocGia(int maDocGia)
+        {
+            string query = @"
+        SELECT 
+            pm.MaPhieuMS AS 'Phiếu mượn',
+            pm.NgayMuon AS 'Ngày mượn',
+            cpm.HanTra AS 'Hạn trả',
+            pts.NgayTra AS 'Ngày trả',
+            ds.TenDauSach AS 'Tên sách',
+            ISNULL(pts.TongTienPhat, 0) AS 'Tiền phạt',
+            CASE 
+                WHEN pts.NgayTra IS NOT NULL THEN N'Đã trả'
+                WHEN GETDATE() > cpm.HanTra THEN N'Quá hạn' 
+                ELSE N'Đang mượn'
+            END AS 'Trạng thái'
+        FROM PHIEUMUON pm
+        JOIN CTPHIEUMUON cpm ON pm.MaPhieuMS = cpm.MaPhieuMS
+        JOIN SACH s ON cpm.MaSach = s.MaSach
+        JOIN DAUSACH ds ON s.MaDauSach = ds.MaDauSach
+        LEFT JOIN PHIEUTRASACH pts ON pm.MaPhieuMS = pts.MaPhieuMS AND cpm.MaSach = pts.MaSach
+        WHERE pm.MaDocGia = @MaDocGia
+        ORDER BY pm.NgayMuon DESC";
 
+            SqlParameter[] parameters = {
+        new SqlParameter("@MaDocGia", maDocGia)
+    };
 
+            return db.ExecuteQuery(query, parameters);
+        }
 
     }
 }
+
+
