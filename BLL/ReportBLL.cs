@@ -14,17 +14,6 @@ namespace QLTVNhom3.BLL
             reportDAL = new ReportDAL();
         }
 
-        // 1. Sách đang mượn
-        public List<ReportDTO.CurrentBorrowedBookDTO> GetCurrentBorrowedBooks()
-        {
-            return reportDAL.GetCurrentBorrowedBooks();
-        }
-
-        public ReportDTO.CurrentBorrowedSummaryDTO GetCurrentBorrowedSummary()
-        {
-            return reportDAL.GetCurrentBorrowedSummary();
-        }
-
         // 2. Sách quá hạn
         public List<ReportDTO.OverdueBookDTO> GetOverdueBooks()
         {
@@ -53,27 +42,18 @@ namespace QLTVNhom3.BLL
 
             return reportDAL.GetFineReportSummary(startDate, endDate);
         }
-
-        // 4. Sách yêu thích
-        public List<ReportDTO.FavoriteBookDTO> GetFavoriteBooks(DateTime startDate, DateTime endDate)
-        {
-            if (startDate > endDate)
-                throw new ArgumentException("Ngày bắt đầu không được lớn hơn ngày kết thúc");
-
-            return reportDAL.GetFavoriteBooks(startDate, endDate);
-        }
-
-        public ReportDTO.FavoriteBookSummaryDTO GetFavoriteBookSummary(DateTime startDate, DateTime endDate)
-        {
-            if (startDate > endDate)
-                throw new ArgumentException("Ngày bắt đầu không được lớn hơn ngày kết thúc");
-
-            return reportDAL.GetFavoriteBookSummary(startDate, endDate);
-        }
         public List<ReportDTO.BookInventoryDTO> GetBookInventoryStatus()
         {
             // Giả sử ReportDAL của bạn tên là reportDAL
             return reportDAL.GetBookInventoryStatus();
+        }
+        public List<ReportDTO.SimpleFineReportDTO> GetSimpleFineReports(DateTime startDate, DateTime endDate)
+        {
+            // Validate ngày tháng
+            if (startDate > endDate)
+                throw new ArgumentException("Ngày bắt đầu không được lớn hơn ngày kết thúc");
+
+            return reportDAL.GetSimpleFineReports(startDate, endDate);
         }
     }
 }

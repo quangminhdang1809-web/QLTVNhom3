@@ -58,13 +58,12 @@ namespace QLTVNhom3.DTO
             public int STT { get; set; }
             public int MaPhieuTra { get; set; }
             public DateTime NgayTra { get; set; }
-            public string TenDocGia { get; set; }
-            public string LyDoPhat { get; set; }
-            public int SoNgayQuaHan { get; set; }
-            public decimal TienPhatQuaHan { get; set; }
-            public decimal TienPhatLoiSach { get; set; }
+            public DateTime NgayPhat
+            {
+                get { return NgayTra; }
+                set { NgayTra = value; }
+            }
             public decimal TongTienPhat { get; set; }
-            public string TrangThaiThu { get; set; }
         }
 
         public class FineReportSummaryDTO
@@ -104,6 +103,13 @@ namespace QLTVNhom3.DTO
             public int TongSoLuong { get; set; } // Tổng số sách
             public int DangMuon { get; set; }    // Số sách đang mượn
             public int ConLai { get; set; }      // Số sách còn lại (sẵn sàng cho mượn)
+        }
+        public class SimpleFineReportDTO
+        {
+            public int STT { get; set; }
+            public DateTime NgayPhat { get; set; }
+            public int SoLuongPhieu { get; set; }
+            public decimal TongTienPhat { get; set; }
         }
     }
 }

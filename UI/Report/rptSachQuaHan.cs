@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace QLTVNhom3.UI.Report
 {
-    public partial class rptSachChuaTra : DevExpress.XtraReports.UI.XtraReport
+    public partial class rptSachQuaHan : DevExpress.XtraReports.UI.XtraReport
     {
-        public rptSachChuaTra()
+        public rptSachQuaHan()
         {
             InitializeComponent();
         }

@@ -1,34 +1,30 @@
-﻿using QLTVNhom3.BLL; // Đổi tên BLL
+﻿using QLTVNhom3.BLL;
 using QLTVNhom3.DTO;
+using QLTVNhom3.UI.Report;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
 
 namespace QLTVNhom3
 {
-    // ▼▼▼ SỬA LỖI: PHẢI KẾ THỪA TỪ USERCONTROL ▼▼▼
     public partial class ucBaoCao : UserControl
     {
-        private ReportBLL reportBLL = new ReportBLL(); // Đổi tên BLL
-
+        private ReportBLL reportBLL = new ReportBLL();
         private readonly Dictionary<string, string> dsBaoCao;
 
         public ucBaoCao()
         {
-            InitializeComponent(); // Dòng này BẮT BUỘC
+            InitializeComponent();
 
             dsBaoCao = new Dictionary<string, string>
             {
-                { "Sách đang mượn (Trong hạn)", "SachDangMuon" },
                 { "Sách quá hạn", "SachQuaHan" },
                 { "Báo cáo tiền phạt", "TienPhat" },
-                { "Sách được mượn nhiều nhất", "SachYeuThich" },
-                { "Thống kê tình trạng sách", "TinhTrangSach" }
+                { "Báo cáo tình trạng sách theo nhan đề", "TinhTrangSach" }
             };
 
-            // Gán sự kiện
             this.Load += ucBaoCao_Load;
             this.btnThongKe.Click += btnThongKe_Click;
             this.cbxChonMauBaoCao.SelectedIndexChanged += cbxChonMauBaoCao_SelectedIndexChanged;
@@ -43,6 +39,10 @@ namespace QLTVNhom3
             grdThongKe.ReadOnly = true;
             grdThongKe.AllowUserToAddRows = false;
             grdThongKe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Chọn mục đầu tiên
+            if (cbxChonMauBaoCao.Items.Count > 0)
+                cbxChonMauBaoCao.SelectedIndex = 0;
         }
 
         private void cbxChonMauBaoCao_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace QLTVNhom3
             if (cbxChonMauBaoCao.SelectedValue == null) return;
             string loaiBaoCao = cbxChonMauBaoCao.SelectedValue.ToString();
 
-            if (loaiBaoCao == "TienPhat" || loaiBaoCao == "SachYeuThich")
+            if (loaiBaoCao == "TienPhat")
             {
                 dtpTuNgay.Enabled = true;
                 dtpDenNgay.Enabled = true;
@@ -60,119 +60,341 @@ namespace QLTVNhom3
                 dtpTuNgay.Enabled = false;
                 dtpDenNgay.Enabled = false;
             }
+
+            // Xóa dữ liệu cũ khi chọn báo cáo mới
+            grdThongKe.DataSource = null;
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            if (cbxChonMauBaoCao.SelectedValue == null) return;
+            if (cbxChonMauBaoCao.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn loại báo cáo!", "Thông báo");
+                return;
+            }
+
             string loaiBaoCao = cbxChonMauBaoCao.SelectedValue.ToString();
-            object dataSource = null;
 
             try
             {
-                switch (loaiBaoCao)
-                {
-                    case "SachDangMuon":
-                        dataSource = reportBLL.GetCurrentBorrowedBooks();
-                        break;
-                    case "SachQuaHan":
-                        dataSource = reportBLL.GetOverdueBooks();
-                        break;
-                    case "TienPhat":
-                        dataSource = reportBLL.GetFineReports(dtpTuNgay.Value, dtpDenNgay.Value);
-                        break;
-                    case "SachYeuThich":
-                        dataSource = reportBLL.GetFavoriteBooks(dtpTuNgay.Value, dtpDenNgay.Value);
-                        break;
-                    case "TinhTrangSach": 
-                        dataSource = reportBLL.GetBookInventoryStatus(); // Gọi BLL method mới
-                        break;
-                }
+                Cursor = Cursors.WaitCursor;
+                btnThongKe.Enabled = false;
 
-                grdThongKe.DataSource = dataSource;
+                object data = GetReportData(loaiBaoCao);
 
-                // Tùy chỉnh định dạng
-                if (loaiBaoCao == "TienPhat")
+                if (data != null)
                 {
-                    if (grdThongKe.Columns.Contains("TienPhatQuaHan"))
-                        grdThongKe.Columns["TienPhatQuaHan"].DefaultCellStyle.Format = "N0";
-                    if (grdThongKe.Columns.Contains("TienPhatLoiSach"))
-                        grdThongKe.Columns["TienPhatLoiSach"].DefaultCellStyle.Format = "N0";
-                    if (grdThongKe.Columns.Contains("TongTienPhat"))
-                        grdThongKe.Columns["TongTienPhat"].DefaultCellStyle.Format = "N0";
+                    grdThongKe.DataSource = data;
+                    grdThongKe.Visible = true;
+
+                    MessageBox.Show($"Đã tìm thấy {GetRowCount(data)} bản ghi", "Thông báo");
                 }
-                if (loaiBaoCao == "SachQuaHan")
+                else
                 {
-                    if (grdThongKe.Columns.Contains("TienPhatDuKien"))
-                        grdThongKe.Columns["TienPhatDuKien"].DefaultCellStyle.Format = "N0";
+                    grdThongKe.DataSource = null;
+                    grdThongKe.Visible = false;
+                    MessageBox.Show("Không có dữ liệu cho báo cáo này!", "Thông báo");
                 }
-                grdThongKe.Visible = true;
-                SetVietnameseColumnHeaders(loaiBaoCao);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi thống kê: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi thống kê: " + ex.Message, "Lỗi");
+                grdThongKe.DataSource = null;
                 grdThongKe.Visible = false;
             }
-            
+            finally
+            {
+                Cursor = Cursors.Default;
+                btnThongKe.Enabled = true;
+            }
         }
-        private void SetVietnameseColumnHeaders(string loaiBaoCao)
+
+        // PHƯƠNG THỨC ĐẾM SỐ DÒNG
+        private int GetRowCount(object data)
         {
-            // Đảm bảo grid có cột trước khi set
-            if (grdThongKe.Columns.Count == 0) return;
+            if (data is DataTable dt) return dt.Rows.Count;
+            if (data is System.Collections.IList list) return list.Count;
+            return 0;
+        }
+
+        private object GetReportData(string loaiBaoCao)
+        {
+            return loaiBaoCao switch
+            {
+                "SachQuaHan" => reportBLL.GetOverdueBooks(),
+                "TienPhat" => reportBLL.GetSimpleFineReports(dtpTuNgay.Value, dtpDenNgay.Value), // DÙNG SIMPLE
+                "TinhTrangSach" => reportBLL.GetBookInventoryStatus(),
+                _ => throw new ArgumentException("Loại báo cáo không hợp lệ")
+            };
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (cbxChonMauBaoCao.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn loại báo cáo!", "Thông báo");
+                return;
+            }
+
+            string reportType = cbxChonMauBaoCao.SelectedValue.ToString();
 
             try
             {
-                switch (loaiBaoCao)
+                Cursor = Cursors.WaitCursor;
+                btnIn.Enabled = false;
+
+                // LẤY DỮ LIỆU TRỰC TIẾP TỪ BLL
+                object reportData = GetReportData(reportType);
+
+                if (reportData == null)
                 {
-                    case "TinhTrangSach":
-                        grdThongKe.Columns["STT"].HeaderText = "STT";
-                        grdThongKe.Columns["MaDauSach"].HeaderText = "Mã Đầu Sách";
-                        grdThongKe.Columns["TenSach"].HeaderText = "Tên Sách";
-                        grdThongKe.Columns["TongSoLuong"].HeaderText = "Tổng Sách";
-                        grdThongKe.Columns["CoSan"].HeaderText = "Có sẵn";
-                        grdThongKe.Columns["DangMuon"].HeaderText = "Đang Mượn";
-                        break;
+                    MessageBox.Show("Không có dữ liệu để in!", "Thông báo");
+                    return;
+                }
 
+                // CHUYỂN SANG DATATABLE VÀ TÙY CHỈNH
+                DataTable dt = ConvertAndCustomizeDataTable(reportData, reportType);
+
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu để in!", "Thông báo");
+                    return;
+                }
+
+                // DEBUG: Hiển thị thông tin DataTable
+                DebugDataTable(dt, reportType);
+
+                // CHỌN REPORT VÀ HIỂN THỊ
+                switch (reportType)
+                {
                     case "SachQuaHan":
-                        grdThongKe.Columns["STT"].HeaderText = "STT";
-                        grdThongKe.Columns["MaPhieuMS"].HeaderText = "Mã Phiếu";
-                        grdThongKe.Columns["MaSach"].HeaderText = "Mã Sách";
-                        grdThongKe.Columns["TenSach"].HeaderText = "Tên Sách";
-                        grdThongKe.Columns["TenDocGia"].HeaderText = "Tên Độc Giả";
-                        grdThongKe.Columns["NgayMuon"].HeaderText = "Ngày Mượn";
-                        grdThongKe.Columns["HanTra"].HeaderText = "Hạn Trả";
-                        grdThongKe.Columns["SoNgayQuaHan"].HeaderText = "Số Ngày Quá Hạn";
-                        grdThongKe.Columns["TienPhatDuKien"].HeaderText = "Phạt Dự Kiến";
+                        ShowReportWithData<rptSachQuaHan>(dt, "DANH SÁCH MƯỢN QUÁ HẠN CHƯA TRẢ");
                         break;
-
                     case "TienPhat":
-                        grdThongKe.Columns["STT"].HeaderText = "STT";
-                        grdThongKe.Columns["MaPhieuTra"].HeaderText = "Mã Phiếu Trả";
-                        grdThongKe.Columns["NgayTra"].HeaderText = "Ngày Trả";
-                        grdThongKe.Columns["TenDocGia"].HeaderText = "Tên Độc Giả";
-                        grdThongKe.Columns["LyDoPhat"].HeaderText = "Lý Do Phạt";
-                        grdThongKe.Columns["SoNgayQuaHan"].HeaderText = "Ngày Quá Hạn";
-                        grdThongKe.Columns["TienPhatQuaHan"].HeaderText = "Phạt Quá Hạn";
-                        grdThongKe.Columns["TienPhatLoiSach"].HeaderText = "Phạt Hỏng Sách";
-                        grdThongKe.Columns["TongTienPhat"].HeaderText = "Tổng Phạt";
-                        grdThongKe.Columns["TrangThaiThu"].HeaderText = "Trạng Thái";
+                        ShowReportWithData<rptTienPhatvaSoLuongPP>(dt, "BÁO CÁO TIỀN PHẠT");
                         break;
-
-                    case "SachYeuThich":
-                        grdThongKe.Columns["STT"].HeaderText = "STT";
-                        grdThongKe.Columns["MaDauSach"].HeaderText = "Mã Đầu Sách";
-                        grdThongKe.Columns["TenSach"].HeaderText = "Tên Sách";
-                        grdThongKe.Columns["SoLuotMuon"].HeaderText = "Số Lượt Mượn";
+                    case "TinhTrangSach":
+                        ShowReportWithData<rptSachTheoTieuDe>(dt, "BÁO CÁO TÌNH TRẠNG SÁCH THEO NHAN ĐỀ");
+                        break;
+                    default:
+                        MessageBox.Show("Loại báo cáo này chưa được hỗ trợ in!", "Thông báo");
                         break;
                 }
             }
             catch (Exception ex)
             {
-                // Có thể một tên cột bị sai (ví dụ: "STT" thay vì "Stt")
-                // Bỏ qua lỗi này để chương trình không bị crash
-                Console.WriteLine("Loi dat ten cot: " + ex.Message);
+                MessageBox.Show("Lỗi khi in báo cáo: " + ex.Message, "Lỗi");
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+                btnIn.Enabled = true;
             }
         }
+
+        // PHƯƠNG THỨC TÙY CHỈNH DATATABLE THEO LOẠI BÁO CÁO
+        private DataTable ConvertAndCustomizeDataTable(object data, string reportType)
+        {
+            if (data == null) return null;
+
+            try
+            {
+                DataTable dt = ConvertToDataTable(data);
+
+                if (dt == null) return null;
+
+                // TÙY CHỈNH DATATABLE CHO BÁO CÁO TIỀN PHẠT
+                if (reportType == "TienPhat")
+                {
+                    return CreateSimpleFineReportTable(dt);
+                }
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tùy chỉnh dữ liệu: " + ex.Message, "Lỗi");
+                return null;
+            }
+        }
+
+        // TẠO BÁO CÁO TIỀN PHẠT ĐƠN GIẢN
+        // TẠO BÁO CÁO TIỀN PHẠT GROUP THEO NGÀY
+        // TẠO BÁO CÁO TIỀN PHẠT ĐƠN GIẢN
+        private DataTable CreateSimpleFineReportTable(DataTable originalTable)
+        {
+            DataTable simpleTable = new DataTable();
+
+            // CÁC CỘT CHO BÁO CÁO MỚI
+            simpleTable.Columns.Add("STT", typeof(int));
+            simpleTable.Columns.Add("NgayPhat", typeof(DateTime));
+            simpleTable.Columns.Add("SoLuongPhieu", typeof(int));
+            simpleTable.Columns.Add("TongTienPhat", typeof(decimal));
+
+            // COPY DỮ LIỆU - ĐÃ GROUP SẴN TỪ SQL
+            foreach (DataRow row in originalTable.Rows)
+            {
+                DataRow newRow = simpleTable.NewRow();
+
+                newRow["STT"] = row["STT"];
+                newRow["NgayPhat"] = row["NgayPhat"];
+                newRow["SoLuongPhieu"] = row["SoLuongPhieu"];
+                newRow["TongTienPhat"] = row["TongTienPhat"];
+
+                simpleTable.Rows.Add(newRow);
+            }
+
+            return simpleTable;
+        }
+
+        // PHƯƠNG THỨC HIỂN THỊ REPORT VỚI DATA
+        // PHƯƠNG THỨC HIỂN THỊ REPORT VỚI DATA VÀ PARAMETERS
+        private void ShowReportWithData<T>(DataTable dt, string title) where T : XtraReport, new()
+        {
+            try
+            {
+                T report = new T();
+
+                // SET DATASOURCE
+                report.DataSource = dt;
+
+                // SET PARAMETERS - QUAN TRỌNG!
+                if (report.Parameters["TuNgay"] != null)
+                    report.Parameters["TuNgay"].Value = dtpTuNgay.Value;
+
+                if (report.Parameters["DenNgay"] != null)
+                    report.Parameters["DenNgay"].Value = dtpDenNgay.Value;
+
+                if (report.Parameters["ReportTitle"] != null)
+                    report.Parameters["ReportTitle"].Value = title;
+
+                if (report.Parameters["NgayIn"] != null)
+                    report.Parameters["NgayIn"].Value = DateTime.Now;
+                // THÊM DÒNG NÀY ĐỂ SET TEXT CHO LABEL NGÀY IN
+                SetReportDateText(report, "rptNgayIn"); // Hoặc tên control thực tế trong report
+
+                // Đảm bảo các parameters được truyền vào data source
+                foreach (DevExpress.XtraReports.Parameters.Parameter param in report.Parameters)
+                {
+                    param.Visible = false; // Ẩn parameters khỏi UI
+                }
+
+                // TẠO DOCUMENT
+                report.CreateDocument();
+
+                using (ReportPrintTool printTool = new ReportPrintTool(report))
+                {
+                    printTool.ShowPreviewDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tạo báo cáo: {ex.Message}", "Lỗi");
+            }
+        }
+        // PHƯƠNG THỨC SET TEXT CHO LABEL NGÀY IN
+        private void SetReportDateText(XtraReport report, string controlName)
+        {
+            try
+            {
+                // Tìm control trong report
+                var control = report.FindControl(controlName, false);
+                if (control is XRLabel label)
+                {
+                    label.Text = string.Format("NEU, ngày {0} tháng {1} năm {2}",
+                        DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Không tìm thấy control {controlName}: {ex.Message}");
+            }
+        }
+
+        // CHUYỂN ĐỔI LIST SANG DATATABLE
+        private DataTable ConvertToDataTable(object data)
+        {
+            if (data == null) return null;
+
+            try
+            {
+                // Nếu đã là DataTable thì return luôn
+                if (data is DataTable dataTable)
+                    return dataTable;
+
+                // Nếu là List<T>
+                var dataType = data.GetType();
+
+                if (dataType.IsGenericType && dataType.GetGenericTypeDefinition() == typeof(List<>))
+                {
+                    var itemType = dataType.GetGenericArguments()[0];
+                    var dt = new DataTable();
+
+                    // Lấy properties của DTO để tạo columns
+                    var properties = itemType.GetProperties();
+                    foreach (var prop in properties)
+                    {
+                        // Chỉ lấy các property đơn giản
+                        if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
+                            continue;
+
+                        Type columnType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+                        dt.Columns.Add(prop.Name, columnType);
+                    }
+
+                    // Thêm dữ liệu
+                    foreach (var item in (System.Collections.IEnumerable)data)
+                    {
+                        var row = dt.NewRow();
+                        foreach (var prop in properties)
+                        {
+                            if (prop.PropertyType.IsClass && prop.PropertyType != typeof(string))
+                                continue;
+
+                            var value = prop.GetValue(item);
+                            row[prop.Name] = value ?? DBNull.Value;
+                        }
+                        dt.Rows.Add(row);
+                    }
+
+                    return dt;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi chuyển đổi dữ liệu: " + ex.Message, "Lỗi");
+                return null;
+            }
+        }
+
+        // PHƯƠNG THỨC DEBUG
+        private void DebugDataTable(DataTable dt, string reportType)
+        {
+            Console.WriteLine($"=== DEBUG {reportType} ===");
+            Console.WriteLine($"Số dòng: {dt.Rows.Count}, Số cột: {dt.Columns.Count}");
+
+            Console.WriteLine("Các cột trong DataTable:");
+            foreach (DataColumn col in dt.Columns)
+            {
+                Console.WriteLine($"  - {col.ColumnName} ({col.DataType})");
+            }
+
+            if (dt.Rows.Count > 0)
+            {
+                Console.WriteLine("Dữ liệu mẫu:");
+                for (int i = 0; i < Math.Min(3, dt.Rows.Count); i++)
+                {
+                    Console.Write($"Dòng {i + 1}: ");
+                    foreach (DataColumn col in dt.Columns)
+                    {
+                        Console.Write($"{col.ColumnName}={dt.Rows[i][col]} | ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine("=== END DEBUG ===");
+        }
     }
-    }
+}

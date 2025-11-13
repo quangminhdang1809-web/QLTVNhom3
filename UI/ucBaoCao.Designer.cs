@@ -37,8 +37,9 @@ namespace QLTVNhom3
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             label1.Location = new Point(0, 0);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(251, 31);
+            label1.Size = new Size(409, 50);
             label1.TabIndex = 0;
             label1.Text = "THỐNG KÊ - BÁO CÁO";
             // 
@@ -46,9 +47,10 @@ namespace QLTVNhom3
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label2.Location = new Point(391, 95);
+            label2.Location = new Point(635, 152);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(183, 28);
+            label2.Size = new Size(294, 45);
             label2.TabIndex = 1;
             label2.Text = "Chọn mẫu báo cáo";
             // 
@@ -56,9 +58,10 @@ namespace QLTVNhom3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label3.Location = new Point(391, 184);
+            label3.Location = new Point(635, 294);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(85, 28);
+            label3.Size = new Size(138, 45);
             label3.TabIndex = 2;
             label3.Text = "Từ ngày";
             // 
@@ -66,9 +69,10 @@ namespace QLTVNhom3
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label4.Location = new Point(391, 273);
+            label4.Location = new Point(635, 437);
+            label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
-            label4.Size = new Size(99, 28);
+            label4.Size = new Size(159, 45);
             label4.TabIndex = 3;
             label4.Text = "Đến ngày";
             // 
@@ -76,27 +80,30 @@ namespace QLTVNhom3
             // 
             cbxChonMauBaoCao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cbxChonMauBaoCao.FormattingEnabled = true;
-            cbxChonMauBaoCao.Location = new Point(644, 95);
+            cbxChonMauBaoCao.Location = new Point(1046, 152);
+            cbxChonMauBaoCao.Margin = new Padding(5);
             cbxChonMauBaoCao.Name = "cbxChonMauBaoCao";
-            cbxChonMauBaoCao.Size = new Size(486, 36);
+            cbxChonMauBaoCao.Size = new Size(787, 53);
             cbxChonMauBaoCao.TabIndex = 4;
             // 
             // dtpTuNgay
             // 
-            dtpTuNgay.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpTuNgay.CalendarFont = new Font("Segoe UI", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 163);
             dtpTuNgay.Format = DateTimePickerFormat.Short;
-            dtpTuNgay.Location = new Point(643, 185);
+            dtpTuNgay.Location = new Point(1045, 296);
+            dtpTuNgay.Margin = new Padding(5);
             dtpTuNgay.Name = "dtpTuNgay";
-            dtpTuNgay.Size = new Size(487, 27);
+            dtpTuNgay.Size = new Size(789, 39);
             dtpTuNgay.TabIndex = 5;
             // 
             // dtpDenNgay
             // 
-            dtpDenNgay.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtpDenNgay.CalendarFont = new Font("Segoe UI", 13.875F, FontStyle.Regular, GraphicsUnit.Point, 163);
             dtpDenNgay.Format = DateTimePickerFormat.Short;
-            dtpDenNgay.Location = new Point(644, 274);
+            dtpDenNgay.Location = new Point(1046, 438);
+            dtpDenNgay.Margin = new Padding(5);
             dtpDenNgay.Name = "dtpDenNgay";
-            dtpDenNgay.Size = new Size(486, 27);
+            dtpDenNgay.Size = new Size(787, 39);
             dtpDenNgay.TabIndex = 6;
             // 
             // btnThongKe
@@ -106,9 +113,10 @@ namespace QLTVNhom3
             btnThongKe.FlatStyle = FlatStyle.Flat;
             btnThongKe.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnThongKe.ForeColor = Color.White;
-            btnThongKe.Location = new Point(809, 372);
+            btnThongKe.Location = new Point(1315, 595);
+            btnThongKe.Margin = new Padding(5);
             btnThongKe.Name = "btnThongKe";
-            btnThongKe.Size = new Size(142, 38);
+            btnThongKe.Size = new Size(231, 61);
             btnThongKe.TabIndex = 140;
             btnThongKe.Text = "Thống kê";
             btnThongKe.UseVisualStyleBackColor = false;
@@ -120,12 +128,14 @@ namespace QLTVNhom3
             btnIn.FlatStyle = FlatStyle.Flat;
             btnIn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnIn.ForeColor = Color.White;
-            btnIn.Location = new Point(988, 372);
+            btnIn.Location = new Point(1606, 595);
+            btnIn.Margin = new Padding(5);
             btnIn.Name = "btnIn";
-            btnIn.Size = new Size(142, 38);
+            btnIn.Size = new Size(231, 61);
             btnIn.TabIndex = 141;
             btnIn.Text = "In";
             btnIn.UseVisualStyleBackColor = false;
+            btnIn.Click += btnIn_Click;
             // 
             // grdThongKe
             // 
@@ -143,18 +153,19 @@ namespace QLTVNhom3
             grdThongKe.ColumnHeadersHeight = 35;
             grdThongKe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             grdThongKe.EnableHeadersVisualStyles = false;
-            grdThongKe.Location = new Point(86, 497);
+            grdThongKe.Location = new Point(140, 795);
+            grdThongKe.Margin = new Padding(5);
             grdThongKe.Name = "grdThongKe";
             grdThongKe.RowHeadersWidth = 51;
             grdThongKe.RowTemplate.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             grdThongKe.RowTemplate.Height = 35;
-            grdThongKe.Size = new Size(1431, 527);
+            grdThongKe.Size = new Size(2263, 843);
             grdThongKe.TabIndex = 142;
             grdThongKe.Visible = false;
             // 
             // ucBaoCao
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(grdThongKe);
@@ -167,8 +178,9 @@ namespace QLTVNhom3
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(5);
             Name = "ucBaoCao";
-            Size = new Size(1568, 1048);
+            Size = new Size(2548, 1677);
             ((System.ComponentModel.ISupportInitialize)grdThongKe).EndInit();
             ResumeLayout(false);
             PerformLayout();
