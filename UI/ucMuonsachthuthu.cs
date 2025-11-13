@@ -33,6 +33,7 @@ namespace QLTVNhom3
             this.grdSachdangmuon.CellFormatting += new DataGridViewCellFormattingEventHandler(grdSachdangmuon_CellFormatting);
             this.drgTimkiemsach.CellFormatting += new DataGridViewCellFormattingEventHandler(drgTimkiemsach_CellFormatting);
             this.grdThongtinsachmuon.CellFormatting += new DataGridViewCellFormattingEventHandler(grdThongtinsachmuon_CellFormatting);
+            CapNhatTrangThaiTimKiem();
         }
 
         private void ucMuonsachthuthu_Load(object sender, EventArgs e)
@@ -96,7 +97,9 @@ namespace QLTVNhom3
             {
                 MessageBox.Show("Mã độc giả không hợp lệ. Vui lòng kiểm tra lại. \nChi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetForm();
+                
             }
+            CapNhatTrangThaiTimKiem();
         }
 
 
@@ -155,28 +158,30 @@ namespace QLTVNhom3
 
         private void txtTimkiem_TextChanged(object sender, EventArgs e)
         {
-            string keyword = txtTimkiem.Text.Trim();
-            if (string.IsNullOrEmpty(keyword))
             {
-                drgTimkiemsach.Visible = false;
-                drgTimkiemsach.DataSource = null;
-            }
-            else
-            {
-                DataTable dt = phieuMuonDAL.TimKiemSach(keyword);
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    // Ẩn cột tên file (cột AnhBia từ DAL)
-                    if (drgTimkiemsach.Columns.Contains("AnhBia"))
-                        drgTimkiemsach.Columns["AnhBia"].Visible = false;
-
-                    drgTimkiemsach.DataSource = dt;
-                    drgTimkiemsach.Visible = true;
-                }
-                else
+                string keyword = txtTimkiem.Text.Trim();
+                if (string.IsNullOrEmpty(keyword))
                 {
                     drgTimkiemsach.Visible = false;
                     drgTimkiemsach.DataSource = null;
+                }
+                else
+                {
+                    DataTable dt = phieuMuonDAL.TimKiemSach(keyword);
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        // Ẩn cột tên file (cột AnhBia từ DAL)
+                        if (drgTimkiemsach.Columns.Contains("AnhBia"))
+                            drgTimkiemsach.Columns["AnhBia"].Visible = false;
+
+                        drgTimkiemsach.DataSource = dt;
+                        drgTimkiemsach.Visible = true;
+                    }
+                    else
+                    {
+                        drgTimkiemsach.Visible = false;
+                        drgTimkiemsach.DataSource = null;
+                    }
                 }
             }
         }
@@ -379,6 +384,36 @@ namespace QLTVNhom3
             {
                 string tenFileAnh = grdThongtinsachmuon.Rows[e.RowIndex].Cells["colAnhBiaFileName"].Value?.ToString();
                 LoadImageToCell(e, tenFileAnh);
+            }
+        }
+        private void CapNhatTrangThaiTimKiem()
+        {
+            if (lblThongbao.Text == "Thẻ còn hạn. Có thể mượn.")
+            {
+                // === TRƯỜNG HỢP HỢP LỆ ===
+
+                // 1. Cho phép nhập liệu
+                txtTimkiem.ReadOnly = false;
+
+                // 2. Đổi lại màu nền trắng (nếu bạn muốn)
+                txtTimkiem.BackColor = SystemColors.Window;
+
+                 txtTimkiem.Focus();
+            }
+            else
+            {
+                // === TRƯỜNG HỢP KHÔNG HỢP LỆ ===
+
+                // 1. KHÓA nhập liệu
+                txtTimkiem.ReadOnly = true;
+
+                // 2. (Nên làm) Xóa từ khóa tìm kiếm cũ và kết quả cũ
+                txtTimkiem.Text = "";
+                drgTimkiemsach.Visible = false;
+                drgTimkiemsach.DataSource = null;
+
+                // 3. (Nên làm) Đổi màu nền sang xám nhạt để báo hiệu
+                txtTimkiem.BackColor = SystemColors.ControlLight;
             }
         }
     }
