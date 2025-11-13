@@ -71,7 +71,7 @@ namespace QLTVNhom3
                     var frmmainthuthu = new frmmainthuthu(acc); // Sửa ở đây
                     this.Hide();
                     frmmainthuthu.ShowDialog();
-                    this.Close();
+                    this.Hide();
                 }
                 // 4. Nếu là Độc giả, vào form Độc giả
                 else if (acc.TypeOfAccount == "DOCGIA")
@@ -79,7 +79,7 @@ namespace QLTVNhom3
                     var frmDocGia = new frmDocGia(acc.IDAccount);
                     this.Hide();
                     frmDocGia.ShowDialog();
-                    this.Close();
+                    this.Hide();
                 }
                 else
                 {

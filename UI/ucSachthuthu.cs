@@ -24,7 +24,77 @@ namespace QLTVNhom3
         private bool dangTaiDuLieu = false;
         private bool isProcessing = false;
         private DataTable dtSachGoc;
+        private bool isDocGiaMode;
 
+        public ucSachthuthu(bool docGiaMode = false)
+        {
+            InitializeComponent();
+            isDocGiaMode = docGiaMode; // 🔹 LƯU CHẾ ĐỘ
+
+            dauSachBLL = new DauSachBLL();
+            tacGiaDAL = new TacGiaDAL();
+            danhSachTacGiaSua = new BindingList<TacGiaDTO>();
+
+            grdSach.AutoGenerateColumns = false;
+            grdTacgia.AutoGenerateColumns = false;
+            grdTacgia.DataSource = danhSachTacGiaSua;
+
+            LoadViTriComboBox();
+            LoadComboBoxLoc();
+            LoadDanhSachDauSach();
+
+            SetDocGiaMode(); // 🔹 ÁP DỤNG CHẾ ĐỘ ĐỘC GIẢ
+        }
+        // 🔹 THÊM PHƯƠNG THỨC NÀY
+        private void SetDocGiaMode()
+        {
+            if (isDocGiaMode)
+            {
+                // Ẩn các nút chức năng CRUD
+                btnThemsach.Visible = false;
+                btnSua.Visible = false;
+                btnXoa.Visible = false;
+                btnLuu.Visible = false;
+                btnUndo.Visible = false;
+                btnThayAnh.Visible = false;
+                btnBanSach.Visible = false;
+
+                // Đặt tất cả controls thành ReadOnly
+                SetAllControlsReadOnly();
+
+                // DataGridView chỉ đọc
+                grdSach.ReadOnly = true;
+                grdSach.AllowUserToAddRows = false;
+                grdSach.AllowUserToDeleteRows = false;
+
+                // Grid tác giả chỉ đọc
+                grdTacgia.ReadOnly = true;
+                grdTacgia.AllowUserToAddRows = false;
+                grdTacgia.AllowUserToDeleteRows = false;
+
+                // Ẩn các tab/panel không cần thiết nếu có
+                // tabControl1.TabPages.Remove(tabPageQuanLy);
+            }
+        }
+
+        // 🔹 PHƯƠNG THỨC ĐẶT TẤT CẢ CONTROLS THÀNH READONLY
+        private void SetAllControlsReadOnly()
+        {
+            txtMaDauSach.ReadOnly = true;
+            txtTenDauSach.ReadOnly = true;
+            txtNhaXB.ReadOnly = true;
+            txtSoLuong.ReadOnly = true;
+            dtpNamXB.Enabled = false;
+            cboViTri.Enabled = false;
+
+            // Đổi màu nền để thể hiện trạng thái chỉ đọc
+            Color readOnlyColor = Color.FromArgb(240, 240, 240);
+            txtMaDauSach.BackColor = readOnlyColor;
+            txtTenDauSach.BackColor = readOnlyColor;
+            txtNhaXB.BackColor = readOnlyColor;
+            txtSoLuong.BackColor = readOnlyColor;
+            cboViTri.BackColor = readOnlyColor;
+        }
         public ucSachthuthu()
         {
             InitializeComponent();
@@ -39,7 +109,7 @@ namespace QLTVNhom3
             LoadViTriComboBox();
             LoadComboBoxLoc();
             LoadDanhSachDauSach();
-           
+
         }
 
         // 1. HIỂN THỊ ẢNH (ĐÃ SỬA)
@@ -209,6 +279,12 @@ namespace QLTVNhom3
 
         private void SetViewMode(bool isEditing)
         {
+            // 🔹 NẾU LÀ CHẾ ĐỘ ĐỘC GIẢ, LUÔN Ở CHẾ ĐỘ XEM
+            if (isDocGiaMode)
+            {
+                isEditing = false;
+            }
+
             txtTenDauSach.ReadOnly = !isEditing;
             dtpNamXB.Enabled = isEditing;
             txtNhaXB.ReadOnly = !isEditing;
@@ -216,12 +292,18 @@ namespace QLTVNhom3
             cboViTri.Enabled = isEditing;
             txtMaDauSach.ReadOnly = true;
 
-            btnSua.Enabled = !isEditing;
-            btnLuu.Enabled = isEditing;
-            btnUndo.Enabled = isEditing; // Sửa: Undo bật khi SỬA
+            // 🔹 ẨN/HIỆN NÚT THEO CHẾ ĐỘ
+            if (!isDocGiaMode)
+            {
+                btnSua.Enabled = !isEditing;
+                btnLuu.Enabled = isEditing;
+                btnUndo.Enabled = isEditing;
+                btnXoa.Enabled = !isEditing;
+                btnThemsach.Enabled = !isEditing;
+                btnThayAnh.Enabled = isEditing;
+                btnBanSach.Enabled = !isEditing;
+            }
 
-            btnXoa.Enabled = !isEditing;
-            btnThemsach.Enabled = !isEditing;
             grdSach.Enabled = !isEditing;
 
             btnFirst.Enabled = !isEditing;
@@ -229,10 +311,7 @@ namespace QLTVNhom3
             btnNext.Enabled = !isEditing;
             btnLast.Enabled = !isEditing;
 
-            btnThayAnh.Enabled = isEditing;
-
             grdTacgia.Enabled = isEditing;
-            // (Thêm các control khác nếu có: txtTimKiemTacGia.Enabled = isEditing...)
         }
 
         private void LoadDanhSachDauSach()
@@ -240,8 +319,23 @@ namespace QLTVNhom3
             try
             {
                 dangTaiDuLieu = true;
-                dtSachGoc = dauSachBLL.LayDanhSachDauSach(); // Tải vào biến Gốc
+
+                dtSachGoc = dauSachBLL.LayDanhSachDauSach();
+
+                // 🔹 FILTER CHO ĐỘC GIẢ
+                if (isDocGiaMode)
+                {
+                    DataView dv = dtSachGoc.DefaultView;
+                    dv.RowFilter = "SoLuongTong > 0";
+                    grdSach.DataSource = dv.ToTable();
+                }
+                else
+                {
+                    grdSach.DataSource = dtSachGoc;
+                }
+
                 grdSach.DataSource = dtSachGoc;
+
                 if (grdSach.Rows.Count > 0 && grdSach.Columns.Contains("colMadausach"))
                 {
                     grdSach.ClearSelection();
@@ -584,3 +678,4 @@ namespace QLTVNhom3
         #endregion
     }
 }
+
