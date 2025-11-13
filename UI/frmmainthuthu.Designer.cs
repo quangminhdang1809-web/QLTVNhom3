@@ -487,6 +487,7 @@
             btnBaocao.Text = "        Báo cáo";
             btnBaocao.TextAlign = ContentAlignment.MiddleLeft;
             btnBaocao.UseVisualStyleBackColor = false;
+            btnBaocao.Click += btnBaocao_Click;
             // 
             // pnlBaocao
             // 
@@ -607,6 +608,7 @@
             btnDangxuat.TabIndex = 12;
             btnDangxuat.TextAlign = ContentAlignment.MiddleLeft;
             btnDangxuat.UseVisualStyleBackColor = false;
+            btnDangxuat.Click += btnDangxuat_Click;
             // 
             // panel1
             // 

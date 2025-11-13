@@ -18,6 +18,7 @@ namespace QLTVNhom3
     {
         // SỬA 1: Dùng AccountDTO để lưu trữ, không dùng string
         private AccountDTO currentUser;
+        private bool isLoggingOut = false;
 
         // SỬA 2: Hàm khởi tạo nhận AccountDTO (thay vì string)
         public frmmainthuthu(AccountDTO account)
@@ -40,14 +41,8 @@ namespace QLTVNhom3
 
         private void btnBaocao_Click(object sender, EventArgs e)
         {
-            if (pnlBaocao.Visible == true)
-            {
-                pnlBaocao.Visible = false;
-            }
-            else
-            {
-                pnlBaocao.Visible = true;
-            }
+            ucBaoCao uc = new ucBaoCao();
+            AddUserControl(uc);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -206,6 +201,41 @@ namespace QLTVNhom3
         {
             ucThuThu ucThuThu = new ucThuThu();
             AddUserControl(ucThuThu);
+        }
+
+        private void btnDangxuat_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?",
+                                      "Xác nhận",
+                                      MessageBoxButtons.YesNo,
+                                      MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                // 2. Đặt cờ là đang đăng xuất
+                isLoggingOut = true;
+
+                // 3. Tìm lại form Login đang bị ẩn
+                // (Thay "frmLogin" bằng tên thật của Form Login của bạn)
+                Form frmLogin = Application.OpenForms["frmDangnhap"];
+
+                if (frmLogin != null)
+                {
+                    // 4. Hiển thị lại form Login
+                    frmLogin.Show();
+                }
+                else
+                {
+                    // Phòng trường hợp form Login bị lỗi/đóng
+                    frmLogin = new frmDangnhap();
+                    frmLogin.Show();
+                }
+
+                // 5. Đóng form Main hiện tại
+                this.Close();
+            }
+
+
         }
     }
 }
