@@ -111,6 +111,25 @@ namespace QLTVNhom3.DAL
 
             return db.ExecuteQuery(query);
         }
+        // THÊM VÀO DashboardDAL.cs
+        public DataTable GetThongKeTinhTrangSach()
+        {
+            string query = @"
+        SELECT 
+            CASE 
+                WHEN s.MaTinhTrang = 1 THEN 'Sách có sẵn'
+                WHEN s.MaTinhTrang = 2 THEN 'Sách đang mượn' 
+                WHEN s.MaTinhTrang = 3 THEN 'Sách thanh lý'
+                WHEN s.MaTinhTrang = 4 THEN 'Sách hư hỏng'
+                ELSE 'Khác'
+            END as TinhTrang,
+            COUNT(*) as SoLuong
+        FROM SACH s
+        GROUP BY s.MaTinhTrang
+        ORDER BY COUNT(*) DESC";
+
+            return db.ExecuteQuery(query);
+        }
     }
 }
 
