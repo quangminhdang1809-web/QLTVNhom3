@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace QLTVNhom3
 {
@@ -213,6 +214,26 @@ namespace QLTVNhom3
             if (dr == DialogResult.Yes)
             {
                 Application.Restart();
+            }
+        }
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string helpUrl = currentUser.TypeOfAccount switch
+            {
+                "ADMIN" => "https://sites.google.com/view/adthuvienhelp/trang-ch%E1%BB%A7?authuser=0",
+                "THUTHU" => "https://sites.google.com/view/thuthu-help/trang-ch%E1%BB%A7"
+            };
+
+            try
+            {
+                Process.Start(new ProcessStartInfo(helpUrl) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể mở trang trợ giúp. \nLỗi: " + ex.Message,
+                                "Lỗi",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
     }

@@ -63,6 +63,7 @@
             label4 = new Label();
             btnDangxuat = new Button();
             panel1 = new Panel();
+            btnHelp = new Button();
             pnlMaincontent = new Panel();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -623,12 +624,34 @@
             panel1.BackColor = SystemColors.HotTrack;
             panel1.Controls.Add(btnThoat);
             panel1.Controls.Add(label1);
+            panel1.Controls.Add(btnHelp);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(406, 0);
             panel1.Margin = new Padding(5);
             panel1.Name = "panel1";
             panel1.Size = new Size(1616, 96);
             panel1.TabIndex = 3;
+            // 
+            // btnHelp
+            // 
+            btnHelp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            btnHelp.BackColor = SystemColors.HotTrack;
+            btnHelp.FlatAppearance.BorderSize = 0;
+            btnHelp.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            btnHelp.FlatStyle = FlatStyle.Flat;
+            btnHelp.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnHelp.ForeColor = Color.White;
+            btnHelp.Image = (Image)resources.GetObject("btnHelp.Image");
+            btnHelp.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHelp.Location = new Point(1353, 7);
+            btnHelp.Margin = new Padding(41, 5, 5, 5);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new Size(171, 85);
+            btnHelp.TabIndex = 2;
+            btnHelp.Text = "        Help";
+            btnHelp.TextAlign = ContentAlignment.MiddleLeft;
+            btnHelp.UseVisualStyleBackColor = false;
+            btnHelp.Click += btnHelp_Click;
             // 
             // pnlMaincontent
             // 
@@ -705,5 +728,6 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private Button btnHelp;
     }
 }

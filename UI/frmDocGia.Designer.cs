@@ -40,6 +40,7 @@
             btnTimkiemsach = new Button();
             btnThongtincanhan = new Button();
             pictureBox1 = new PictureBox();
+            btnHelp = new Button();
             panelLogo = new Panel();
             label1 = new Label();
             pnlMain = new Panel();
@@ -55,11 +56,11 @@
             // 
             lblExit.AutoSize = true;
             lblExit.Dock = DockStyle.Right;
-            lblExit.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblExit.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblExit.ForeColor = SystemColors.Control;
-            lblExit.Location = new Point(1302, 0);
+            lblExit.Location = new Point(1307, 0);
             lblExit.Name = "lblExit";
-            lblExit.Size = new Size(60, 72);
+            lblExit.Size = new Size(55, 65);
             lblExit.TabIndex = 1;
             lblExit.Text = "x";
             lblExit.Click += lblExit_Click;
@@ -152,7 +153,7 @@
             btnTimkiemsach.ForeColor = Color.White;
             btnTimkiemsach.Image = (Image)resources.GetObject("btnTimkiemsach.Image");
             btnTimkiemsach.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTimkiemsach.Location = new Point(49, 590);
+            btnTimkiemsach.Location = new Point(49, 588);
             btnTimkiemsach.Name = "btnTimkiemsach";
             btnTimkiemsach.Size = new Size(315, 93);
             btnTimkiemsach.TabIndex = 3;
@@ -190,11 +191,30 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // btnHelp
+            // 
+            btnHelp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            btnHelp.FlatAppearance.BorderSize = 0;
+            btnHelp.FlatStyle = FlatStyle.Flat;
+            btnHelp.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnHelp.ForeColor = Color.White;
+            btnHelp.Image = (Image)resources.GetObject("btnHelp.Image");
+            btnHelp.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHelp.Location = new Point(1105, -8);
+            btnHelp.Name = "btnHelp";
+            btnHelp.Size = new Size(163, 93);
+            btnHelp.TabIndex = 3;
+            btnHelp.Text = "      Help";
+            btnHelp.TextAlign = ContentAlignment.MiddleLeft;
+            btnHelp.UseVisualStyleBackColor = true;
+            btnHelp.Click += btnHelp_Click;
+            // 
             // panelLogo
             // 
             panelLogo.BackColor = SystemColors.HotTrack;
             panelLogo.Controls.Add(lblExit);
             panelLogo.Controls.Add(label1);
+            panelLogo.Controls.Add(btnHelp);
             panelLogo.Dock = DockStyle.Top;
             panelLogo.Location = new Point(426, 0);
             panelLogo.Name = "panelLogo";
@@ -259,6 +279,7 @@
         private Panel panel2;
         private Button btnDangxuat;
         private Label lblDangxuat;
+        private Button btnHelp;
     }
 }
 
