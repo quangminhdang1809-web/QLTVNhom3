@@ -86,8 +86,7 @@ namespace QLTVNhom3
                 {
                     grdThongKe.DataSource = data;
                     grdThongKe.Visible = true;
-
-                    MessageBox.Show($"Đã tìm thấy {GetRowCount(data)} bản ghi", "Thông báo");
+                    SetVietnameseColumnHeaders(loaiBaoCao);
                 }
                 else
                 {
@@ -160,9 +159,6 @@ namespace QLTVNhom3
                     MessageBox.Show("Không có dữ liệu để in!", "Thông báo");
                     return;
                 }
-
-                // DEBUG: Hiển thị thông tin DataTable
-                DebugDataTable(dt, reportType);
 
                 // CHỌN REPORT VÀ HIỂN THỊ
                 switch (reportType)
@@ -368,33 +364,166 @@ namespace QLTVNhom3
                 return null;
             }
         }
-
-        // PHƯƠNG THỨC DEBUG
-        private void DebugDataTable(DataTable dt, string reportType)
+        private void SetVietnameseColumnHeaders(string reportType)
         {
-            Console.WriteLine($"=== DEBUG {reportType} ===");
-            Console.WriteLine($"Số dòng: {dt.Rows.Count}, Số cột: {dt.Columns.Count}");
+            if (grdThongKe.Columns.Count == 0) return;
 
-            Console.WriteLine("Các cột trong DataTable:");
-            foreach (DataColumn col in dt.Columns)
+            try
             {
-                Console.WriteLine($"  - {col.ColumnName} ({col.DataType})");
-            }
-
-            if (dt.Rows.Count > 0)
-            {
-                Console.WriteLine("Dữ liệu mẫu:");
-                for (int i = 0; i < Math.Min(3, dt.Rows.Count); i++)
+                switch (reportType)
                 {
-                    Console.Write($"Dòng {i + 1}: ");
-                    foreach (DataColumn col in dt.Columns)
-                    {
-                        Console.Write($"{col.ColumnName}={dt.Rows[i][col]} | ");
-                    }
-                    Console.WriteLine();
+                    case "SachQuaHan":
+                        SetSachQuaHanHeaders();
+                        break;
+                    case "TienPhat":
+                        SetTienPhatHeaders();
+                        break;
+                    case "TinhTrangSach":
+                        SetTinhTrangSachHeaders();
+                        break;
+                    default:
+                        SetDefaultHeaders();
+                        break;
+                }
+
+                // Căn giữa tiêu đề các cột
+                foreach (DataGridViewColumn column in grdThongKe.Columns)
+                {
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
-            Console.WriteLine("=== END DEBUG ===");
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi đặt tên cột: {ex.Message}");
+            }
+        }
+
+        // TÊN CỘT CHO BÁO CÁO SÁCH QUÁ HẠN
+        private void SetSachQuaHanHeaders()
+        {
+            foreach (DataGridViewColumn column in grdThongKe.Columns)
+            {
+                switch (column.Name)
+                {
+                    case "MaPhieuMS":
+                        column.HeaderText = "Mã phiếu MS";
+                        break;
+                    case "MaSach":
+                        column.HeaderText = "Mã sách";
+                        break;
+                    case "TenSach":
+                        column.HeaderText = "Tên đầu sách";
+                        break;
+                    case "TenDocGia":
+                        column.HeaderText = "Tên độc giả";
+                        break;
+                    case "SoDienThoai":
+                        column.HeaderText = "Số điện thoại";
+                        break;
+                    case "NgayMuon":
+                        column.HeaderText = "Ngày mượn";
+                        break;
+                    case "HanTra":
+                        column.HeaderText = "Hạn trả";
+                        break;
+                    case "SoNgayQuaHan":
+                        column.HeaderText = "Số ngày quá hạn";
+                        break;
+                    case "TienPhatDuKien":
+                        column.HeaderText = "Tiền phạt dự kiến";
+                        break;
+                    default:
+                        column.HeaderText = column.Name.ToUpper();
+                        break;
+                }
+            }
+        }
+
+        // TÊN CỘT CHO BÁO CÁO TIỀN PHẠT
+        private void SetTienPhatHeaders()
+        {
+            foreach (DataGridViewColumn column in grdThongKe.Columns)
+            {
+                switch (column.Name)
+                {
+                    case "STT":
+                        column.HeaderText = "STT";
+                        break;
+                    case "NgayPhat":
+                        column.HeaderText = "Ngày phạt";
+                        break;
+                    case "SoLuongPhieu":
+                        column.HeaderText = "Số lượng phiếu";
+                        break;
+                    case "TongTienPhat":
+                        column.HeaderText = "Tổng tiền phạt";
+                        break;
+                    case "MaPhieuPhat":
+                        column.HeaderText = "Mã phiếu phạt";
+                        break;
+                    case "MaDocGia":
+                        column.HeaderText = "Mã độc giả";
+                        break;
+                    case "HoTen":
+                        column.HeaderText = "Họ tên";
+                        break;
+                    case "SoTienPhat":
+                        column.HeaderText = "Số tiền phạt";
+                        break;
+                    case "LyDoPhat":
+                        column.HeaderText = "Lý do phạt";
+                        break;
+                    default:
+                        column.HeaderText = column.Name.ToUpper();
+                        break;
+                }
+            }
+        }
+
+        // TÊN CỘT CHO BÁO CÁO TÌNH TRẠNG SÁCH
+        private void SetTinhTrangSachHeaders()
+        {
+            foreach (DataGridViewColumn column in grdThongKe.Columns)
+            {
+                switch (column.Name)
+                {
+                    case "MaDauSach":
+                        column.HeaderText = "Mã đầu sách";
+                        break;
+                    case "TenSach":
+                        column.HeaderText = "Tên đầu sách";
+                        break;
+                    case "TenTheLoai":
+                        column.HeaderText = "Thể loại";
+                        break;
+                    case "TongSoLuong":
+                        column.HeaderText = "Tổng số sách";
+                        break;
+                    case "ConLai":
+                        column.HeaderText = "Có sẵn";
+                        break;
+                    case "DangMuon":
+                        column.HeaderText = "Đang mượn";
+                        break;
+                    default:
+                        column.HeaderText = column.Name.ToUpper();
+                        break;
+                }
+            }
+        }
+
+        // TÊN CỘT MẶC ĐỊNH
+        private void SetDefaultHeaders()
+        {
+            foreach (DataGridViewColumn column in grdThongKe.Columns)
+            {
+                column.HeaderText = column.Name.ToUpper();
+            }
+        }
+
+        private void ucBaoCao_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

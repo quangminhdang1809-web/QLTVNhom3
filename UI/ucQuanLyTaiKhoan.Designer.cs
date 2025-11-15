@@ -54,9 +54,9 @@
             label1 = new Label();
             groupBox4 = new GroupBox();
             btnResetmatkau = new Button();
-            btnTimkiem = new Button();
             cboLoaiTaiKhoan = new ComboBox();
             txtTimkiem = new TextBox();
+            btnTimkiem = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdTaikhoan).BeginInit();
             groupBox2.SuspendLayout();
@@ -69,33 +69,38 @@
             tableLayoutPanel1.ColumnCount = 4;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78.9644F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.0355988F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 178F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 701F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 1163F));
             tableLayoutPanel1.Controls.Add(grdTaikhoan, 0, 1);
-            tableLayoutPanel1.Controls.Add(groupBox2, 0, 6);
             tableLayoutPanel1.Controls.Add(groupBox1, 3, 1);
             tableLayoutPanel1.Controls.Add(groupBox4, 3, 3);
-            tableLayoutPanel1.Controls.Add(btnTimkiem, 2, 0);
             tableLayoutPanel1.Controls.Add(cboLoaiTaiKhoan, 1, 0);
             tableLayoutPanel1.Controls.Add(txtTimkiem, 0, 0);
-            tableLayoutPanel1.Location = new Point(78, 29);
+            tableLayoutPanel1.Controls.Add(btnTimkiem, 2, 0);
+            tableLayoutPanel1.Controls.Add(groupBox2, 0, 6);
+            tableLayoutPanel1.Location = new Point(127, 46);
+            tableLayoutPanel1.Margin = new Padding(5);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 7;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 34.54546F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 65.4545441F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 197F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 118F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 153F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 123F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 98F));
-            tableLayoutPanel1.Size = new Size(1591, 1028);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 315F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 189F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 245F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 88F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 266F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(2360, 1662);
             tableLayoutPanel1.TabIndex = 2;
             // 
             // grdTaikhoan
             // 
             grdTaikhoan.AllowUserToAddRows = false;
             grdTaikhoan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            grdTaikhoan.BackgroundColor = Color.Gainsboro;
+            grdTaikhoan.BackgroundColor = Color.White;
             grdTaikhoan.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
@@ -110,7 +115,8 @@
             tableLayoutPanel1.SetColumnSpan(grdTaikhoan, 2);
             grdTaikhoan.Dock = DockStyle.Fill;
             grdTaikhoan.EnableHeadersVisualStyles = false;
-            grdTaikhoan.Location = new Point(3, 120);
+            grdTaikhoan.Location = new Point(5, 198);
+            grdTaikhoan.Margin = new Padding(5);
             grdTaikhoan.Name = "grdTaikhoan";
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.White;
@@ -120,6 +126,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             grdTaikhoan.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            grdTaikhoan.RowHeadersVisible = false;
             grdTaikhoan.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             dataGridViewCellStyle3.ForeColor = SystemColors.ActiveCaptionText;
@@ -127,7 +134,7 @@
             tableLayoutPanel1.SetRowSpan(grdTaikhoan, 5);
             grdTaikhoan.RowTemplate.Height = 50;
             grdTaikhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            grdTaikhoan.Size = new Size(705, 806);
+            grdTaikhoan.Size = new Size(1076, 1192);
             grdTaikhoan.TabIndex = 93;
             grdTaikhoan.SelectionChanged += grdTaikhoan_SelectionChanged;
             // 
@@ -163,14 +170,17 @@
             // 
             // groupBox2
             // 
-            groupBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            tableLayoutPanel1.SetColumnSpan(groupBox2, 2);
             groupBox2.Controls.Add(btnPrevious);
             groupBox2.Controls.Add(btnNext);
             groupBox2.Controls.Add(btnLast);
             groupBox2.Controls.Add(btnFirst);
-            groupBox2.Location = new Point(279, 940);
+            groupBox2.Location = new Point(626, 1400);
+            groupBox2.Margin = new Padding(5);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(280, 85);
+            groupBox2.Padding = new Padding(5);
+            groupBox2.Size = new Size(455, 136);
             groupBox2.TabIndex = 35;
             groupBox2.TabStop = false;
             // 
@@ -179,9 +189,10 @@
             btnPrevious.FlatAppearance.BorderSize = 0;
             btnPrevious.FlatStyle = FlatStyle.Flat;
             btnPrevious.Image = (Image)resources.GetObject("btnPrevious.Image");
-            btnPrevious.Location = new Point(83, 26);
+            btnPrevious.Location = new Point(135, 42);
+            btnPrevious.Margin = new Padding(5);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(57, 40);
+            btnPrevious.Size = new Size(93, 64);
             btnPrevious.TabIndex = 78;
             btnPrevious.UseVisualStyleBackColor = true;
             btnPrevious.Click += btnPrevious_Click;
@@ -191,9 +202,10 @@
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Image = (Image)resources.GetObject("btnNext.Image");
-            btnNext.Location = new Point(154, 26);
+            btnNext.Location = new Point(250, 42);
+            btnNext.Margin = new Padding(5);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(45, 40);
+            btnNext.Size = new Size(73, 64);
             btnNext.TabIndex = 77;
             btnNext.UseVisualStyleBackColor = true;
             btnNext.Click += btnNext_Click;
@@ -203,9 +215,10 @@
             btnLast.FlatAppearance.BorderSize = 0;
             btnLast.FlatStyle = FlatStyle.Flat;
             btnLast.Image = (Image)resources.GetObject("btnLast.Image");
-            btnLast.Location = new Point(213, 26);
+            btnLast.Location = new Point(346, 42);
+            btnLast.Margin = new Padding(5);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(53, 46);
+            btnLast.Size = new Size(86, 74);
             btnLast.TabIndex = 76;
             btnLast.UseVisualStyleBackColor = true;
             btnLast.Click += btnLast_Click;
@@ -215,9 +228,10 @@
             btnFirst.FlatAppearance.BorderSize = 0;
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Image = (Image)resources.GetObject("btnFirst.Image");
-            btnFirst.Location = new Point(24, 26);
+            btnFirst.Location = new Point(39, 42);
+            btnFirst.Margin = new Padding(5);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(45, 40);
+            btnFirst.Size = new Size(73, 64);
             btnFirst.TabIndex = 75;
             btnFirst.UseVisualStyleBackColor = true;
             btnFirst.Click += btnFirst_Click;
@@ -235,10 +249,12 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.ForeColor = SystemColors.Desktop;
-            groupBox1.Location = new Point(892, 120);
+            groupBox1.Location = new Point(1201, 198);
+            groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(5);
             tableLayoutPanel1.SetRowSpan(groupBox1, 2);
-            groupBox1.Size = new Size(696, 412);
+            groupBox1.Size = new Size(1154, 670);
             groupBox1.TabIndex = 92;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin tài khoản";
@@ -247,27 +263,30 @@
             // 
             txtMatkhau.BorderStyle = BorderStyle.FixedSingle;
             txtMatkhau.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtMatkhau.Location = new Point(236, 179);
+            txtMatkhau.Location = new Point(355, 332);
+            txtMatkhau.Margin = new Padding(5);
             txtMatkhau.Name = "txtMatkhau";
-            txtMatkhau.Size = new Size(326, 34);
+            txtMatkhau.Size = new Size(528, 50);
             txtMatkhau.TabIndex = 78;
             // 
             // txtLoaitaikhoan
             // 
             txtLoaitaikhoan.BorderStyle = BorderStyle.FixedSingle;
             txtLoaitaikhoan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtLoaitaikhoan.Location = new Point(236, 234);
+            txtLoaitaikhoan.Location = new Point(355, 420);
+            txtLoaitaikhoan.Margin = new Padding(5);
             txtLoaitaikhoan.Name = "txtLoaitaikhoan";
-            txtLoaitaikhoan.Size = new Size(326, 34);
+            txtLoaitaikhoan.Size = new Size(528, 50);
             txtLoaitaikhoan.TabIndex = 77;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label3.Location = new Point(63, 234);
+            label3.Location = new Point(73, 420);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(140, 28);
+            label3.Size = new Size(226, 45);
             label3.TabIndex = 76;
             label3.Text = "Loại tài khoản";
             // 
@@ -275,18 +294,20 @@
             // 
             txtHovaten.BorderStyle = BorderStyle.FixedSingle;
             txtHovaten.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtHovaten.Location = new Point(236, 124);
+            txtHovaten.Location = new Point(355, 244);
+            txtHovaten.Margin = new Padding(5);
             txtHovaten.Name = "txtHovaten";
-            txtHovaten.Size = new Size(326, 34);
+            txtHovaten.Size = new Size(528, 50);
             txtHovaten.TabIndex = 75;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label4.Location = new Point(63, 179);
+            label4.Location = new Point(73, 332);
+            label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
-            label4.Size = new Size(98, 28);
+            label4.Size = new Size(160, 45);
             label4.TabIndex = 65;
             label4.Text = "Mật khẩu";
             // 
@@ -294,9 +315,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label2.Location = new Point(63, 124);
+            label2.Location = new Point(73, 244);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(101, 28);
+            label2.Size = new Size(161, 45);
             label2.TabIndex = 63;
             label2.Text = "Họ và tên";
             // 
@@ -304,18 +326,20 @@
             // 
             txtIDAccount.BorderStyle = BorderStyle.FixedSingle;
             txtIDAccount.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtIDAccount.Location = new Point(236, 69);
+            txtIDAccount.Location = new Point(355, 156);
+            txtIDAccount.Margin = new Padding(5);
             txtIDAccount.Name = "txtIDAccount";
-            txtIDAccount.Size = new Size(326, 34);
+            txtIDAccount.Size = new Size(528, 50);
             txtIDAccount.TabIndex = 61;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(63, 69);
+            label1.Location = new Point(73, 156);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(106, 28);
+            label1.Size = new Size(172, 45);
             label1.TabIndex = 60;
             label1.Text = "IDAccount";
             // 
@@ -323,9 +347,11 @@
             // 
             groupBox4.Controls.Add(btnResetmatkau);
             groupBox4.Dock = DockStyle.Right;
-            groupBox4.Location = new Point(1281, 538);
+            groupBox4.Location = new Point(1762, 878);
+            groupBox4.Margin = new Padding(5);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(307, 112);
+            groupBox4.Padding = new Padding(5);
+            groupBox4.Size = new Size(593, 179);
             groupBox4.TabIndex = 95;
             groupBox4.TabStop = false;
             // 
@@ -336,34 +362,24 @@
             btnResetmatkau.FlatStyle = FlatStyle.Flat;
             btnResetmatkau.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnResetmatkau.ForeColor = Color.White;
-            btnResetmatkau.Location = new Point(59, 35);
+            btnResetmatkau.Location = new Point(96, 56);
+            btnResetmatkau.Margin = new Padding(5);
             btnResetmatkau.Name = "btnResetmatkau";
-            btnResetmatkau.Size = new Size(204, 52);
+            btnResetmatkau.Size = new Size(332, 83);
             btnResetmatkau.TabIndex = 73;
-            btnResetmatkau.Text = "Reset mật khẩu";
+            btnResetmatkau.Text = "Đặt lại mật khẩu";
             btnResetmatkau.UseVisualStyleBackColor = false;
             btnResetmatkau.Click += btnResetMatKhau_Click;
-            // 
-            // btnTimkiem
-            // 
-            btnTimkiem.Anchor = AnchorStyles.Left;
-            btnTimkiem.FlatAppearance.BorderSize = 0;
-            btnTimkiem.FlatStyle = FlatStyle.Flat;
-            btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
-            btnTimkiem.Location = new Point(714, 21);
-            btnTimkiem.Name = "btnTimkiem";
-            btnTimkiem.Size = new Size(90, 74);
-            btnTimkiem.TabIndex = 34;
-            btnTimkiem.UseVisualStyleBackColor = true;
             // 
             // cboLoaiTaiKhoan
             // 
             cboLoaiTaiKhoan.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cboLoaiTaiKhoan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cboLoaiTaiKhoan.FormattingEnabled = true;
-            cboLoaiTaiKhoan.Location = new Point(565, 40);
+            cboLoaiTaiKhoan.Location = new Point(863, 70);
+            cboLoaiTaiKhoan.Margin = new Padding(5);
             cboLoaiTaiKhoan.Name = "cboLoaiTaiKhoan";
-            cboLoaiTaiKhoan.Size = new Size(143, 36);
+            cboLoaiTaiKhoan.Size = new Size(218, 53);
             cboLoaiTaiKhoan.TabIndex = 107;
             // 
             // txtTimkiem
@@ -371,19 +387,34 @@
             txtTimkiem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            txtTimkiem.Location = new Point(3, 41);
+            txtTimkiem.Location = new Point(5, 71);
+            txtTimkiem.Margin = new Padding(5);
             txtTimkiem.Name = "txtTimkiem";
-            txtTimkiem.Size = new Size(556, 34);
+            txtTimkiem.Size = new Size(848, 50);
             txtTimkiem.TabIndex = 32;
+            // 
+            // btnTimkiem
+            // 
+            btnTimkiem.Anchor = AnchorStyles.Left;
+            btnTimkiem.FlatAppearance.BorderSize = 0;
+            btnTimkiem.FlatStyle = FlatStyle.Flat;
+            btnTimkiem.Image = (Image)resources.GetObject("btnTimkiem.Image");
+            btnTimkiem.Location = new Point(1091, 37);
+            btnTimkiem.Margin = new Padding(5);
+            btnTimkiem.Name = "btnTimkiem";
+            btnTimkiem.Size = new Size(85, 118);
+            btnTimkiem.TabIndex = 34;
+            btnTimkiem.UseVisualStyleBackColor = true;
             // 
             // ucQuanLyTaiKhoan
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(5);
             Name = "ucQuanLyTaiKhoan";
-            Size = new Size(1963, 1155);
+            Size = new Size(3190, 1848);
             Load += ucQuanLyTaiKhoan_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

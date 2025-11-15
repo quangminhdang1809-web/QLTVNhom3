@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             label9 = new Label();
@@ -55,10 +55,6 @@
             colSoNgayQuaHan = new DataGridViewTextBoxColumn();
             sqlCommand2 = new Microsoft.Data.SqlClient.SqlCommand();
             dgvSachYeuThich = new DataGridView();
-            colMaDauSach = new DataGridViewTextBoxColumn();
-            colTenSach = new DataGridViewTextBoxColumn();
-            colTheLoai = new DataGridViewTextBoxColumn();
-            colSoLanMuon = new DataGridViewTextBoxColumn();
             groupBox3 = new GroupBox();
             btnThemDocGia = new Button();
             btnThemSach = new Button();
@@ -67,6 +63,10 @@
             pnlMaincontent = new Panel();
             lblSoSachDenHan = new Label();
             dateTimeChartRangeControlClient1 = new DevExpress.XtraEditors.DateTimeChartRangeControlClient();
+            colMaDauSach = new DataGridViewTextBoxColumn();
+            colTenSach = new DataGridViewTextBoxColumn();
+            colTheLoai = new DataGridViewTextBoxColumn();
+            colSoLanMuon = new DataGridViewTextBoxColumn();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
@@ -258,24 +258,24 @@
             dgvSachQuaHan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvSachQuaHan.BackgroundColor = SystemColors.ControlLightLight;
             dgvSachQuaHan.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = Color.Firebrick;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvSachQuaHan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Firebrick;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvSachQuaHan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvSachQuaHan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSachQuaHan.Columns.AddRange(new DataGridViewColumn[] { colMaSach, colTenDauSach, colTenDocGia, colSDT, colSoNgayQuaHan });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvSachQuaHan.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvSachQuaHan.DefaultCellStyle = dataGridViewCellStyle2;
             dgvSachQuaHan.EnableHeadersVisualStyles = false;
             dgvSachQuaHan.Location = new Point(44, 1155);
             dgvSachQuaHan.Name = "dgvSachQuaHan";
@@ -338,24 +338,24 @@
             dgvSachYeuThich.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvSachYeuThich.BackgroundColor = SystemColors.ControlLightLight;
             dgvSachYeuThich.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvSachYeuThich.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvSachYeuThich.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvSachYeuThich.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSachYeuThich.Columns.AddRange(new DataGridViewColumn[] { colMaDauSach, colTenSach, colTheLoai, colSoLanMuon });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dgvSachYeuThich.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvSachYeuThich.DefaultCellStyle = dataGridViewCellStyle4;
             dgvSachYeuThich.EnableHeadersVisualStyles = false;
             dgvSachYeuThich.Location = new Point(1316, 1155);
             dgvSachYeuThich.Name = "dgvSachYeuThich";
@@ -364,38 +364,6 @@
             dgvSachYeuThich.RowHeadersWidth = 82;
             dgvSachYeuThich.Size = new Size(1055, 301);
             dgvSachYeuThich.TabIndex = 8;
-            // 
-            // colMaDauSach
-            // 
-            colMaDauSach.DataPropertyName = "MaDauSach";
-            colMaDauSach.HeaderText = "Mã sách";
-            colMaDauSach.MinimumWidth = 10;
-            colMaDauSach.Name = "colMaDauSach";
-            colMaDauSach.ReadOnly = true;
-            // 
-            // colTenSach
-            // 
-            colTenSach.DataPropertyName = "TenDauSach";
-            colTenSach.HeaderText = "Tên sách";
-            colTenSach.MinimumWidth = 10;
-            colTenSach.Name = "colTenSach";
-            colTenSach.ReadOnly = true;
-            // 
-            // colTheLoai
-            // 
-            colTheLoai.DataPropertyName = "TenTheLoai";
-            colTheLoai.HeaderText = "Thể loại";
-            colTheLoai.MinimumWidth = 10;
-            colTheLoai.Name = "colTheLoai";
-            colTheLoai.ReadOnly = true;
-            // 
-            // colSoLanMuon
-            // 
-            colSoLanMuon.DataPropertyName = "SoLanMuon";
-            colSoLanMuon.HeaderText = "Số lần mượn";
-            colSoLanMuon.MinimumWidth = 10;
-            colSoLanMuon.Name = "colSoLanMuon";
-            colSoLanMuon.ReadOnly = true;
             // 
             // groupBox3
             // 
@@ -480,6 +448,38 @@
             lblSoSachDenHan.TabIndex = 10;
             lblSoSachDenHan.Text = "3";
             // 
+            // colMaDauSach
+            // 
+            colMaDauSach.DataPropertyName = "MaDauSach";
+            colMaDauSach.HeaderText = "Mã đầu sách";
+            colMaDauSach.MinimumWidth = 10;
+            colMaDauSach.Name = "colMaDauSach";
+            colMaDauSach.ReadOnly = true;
+            // 
+            // colTenSach
+            // 
+            colTenSach.DataPropertyName = "TenDauSach";
+            colTenSach.HeaderText = "Tên sách";
+            colTenSach.MinimumWidth = 10;
+            colTenSach.Name = "colTenSach";
+            colTenSach.ReadOnly = true;
+            // 
+            // colTheLoai
+            // 
+            colTheLoai.DataPropertyName = "TenTheLoai";
+            colTheLoai.HeaderText = "Thể loại";
+            colTheLoai.MinimumWidth = 10;
+            colTheLoai.Name = "colTheLoai";
+            colTheLoai.ReadOnly = true;
+            // 
+            // colSoLanMuon
+            // 
+            colSoLanMuon.DataPropertyName = "SoLanMuon";
+            colSoLanMuon.HeaderText = "Số lần mượn";
+            colSoLanMuon.MinimumWidth = 10;
+            colSoLanMuon.Name = "colSoLanMuon";
+            colSoLanMuon.ReadOnly = true;
+            // 
             // ucDashboard
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -546,10 +546,6 @@
         private Button btnThemDocGia;
         private Button btnThemSach;
         private Panel pnlMaincontent;
-        private DataGridViewTextBoxColumn colMaDauSach;
-        private DataGridViewTextBoxColumn colTenSach;
-        private DataGridViewTextBoxColumn colTheLoai;
-        private DataGridViewTextBoxColumn colSoLanMuon;
         private Label lblSoSachDenHan;
         private DataGridViewTextBoxColumn colMaSach;
         private DataGridViewTextBoxColumn colTenDauSach;
@@ -557,6 +553,10 @@
         private DataGridViewTextBoxColumn colSDT;
         private DataGridViewTextBoxColumn colSoNgayQuaHan;
         private DevExpress.XtraEditors.DateTimeChartRangeControlClient dateTimeChartRangeControlClient1;
+        private DataGridViewTextBoxColumn colMaDauSach;
+        private DataGridViewTextBoxColumn colTenSach;
+        private DataGridViewTextBoxColumn colTheLoai;
+        private DataGridViewTextBoxColumn colSoLanMuon;
     }
 }
 

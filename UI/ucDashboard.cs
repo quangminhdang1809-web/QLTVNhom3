@@ -54,6 +54,20 @@ namespace QLTVNhom3
                 dgvSachYeuThich.DataSource = null;
                 dgvSachYeuThich.Columns.Clear();
                 dgvSachYeuThich.DataSource = danhSach;
+                if (dgvSachYeuThich.Columns.Count > 0)
+                {
+                    dgvSachYeuThich.Columns["MaDauSach"].HeaderText = "Mã đầu sách";
+                    dgvSachYeuThich.Columns["TenDauSach"].HeaderText = "Tên sách";
+                    dgvSachYeuThich.Columns["TenTheLoai"].HeaderText = "Thể loại";
+                    dgvSachYeuThich.Columns["SoLanMuon"].HeaderText = "Số lần mượn";
+                }
+
+                // Căn giữa nội dung các cột
+                foreach (DataGridViewColumn column in dgvSachYeuThich.Columns)
+                {
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
             }
             catch (Exception ex)
             {
@@ -66,11 +80,29 @@ namespace QLTVNhom3
             dgvSachQuaHan.DataSource = null;
             dgvSachQuaHan.Columns.Clear();
 
-            // Cập nhật label tổng số sách đến hạn
+            // Cập nhật label tổng số sách quá hạn
             lblSoSachDenHan.Text = danhSach.Rows.Count.ToString();
 
-            // Hiển thị DataGridView sách đến hạn
+            // Hiển thị DataGridView sách quá hạn
             dgvSachQuaHan.DataSource = danhSach;
+
+            // Đặt tên cột tiếng Việt
+            if (dgvSachQuaHan.Columns.Count > 0)
+            {
+                dgvSachQuaHan.Columns["MaSach"].HeaderText = "Mã sách";
+                dgvSachQuaHan.Columns["TenDauSach"].HeaderText = "Tên sách";
+                dgvSachQuaHan.Columns["TenDocGia"].HeaderText = "Tên độc giả";
+                dgvSachQuaHan.Columns["SoDienThoai"].HeaderText = "Số điện thoại";
+                dgvSachQuaHan.Columns["SoNgayQuaHan"].HeaderText = "Quá hạn (Ngày)";
+            }
+
+            // Căn giữa nội dung các cột
+            foreach (DataGridViewColumn column in dgvSachQuaHan.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
             dgvSachQuaHan.CellFormatting += (s, e) =>
             {
                 if (e.ColumnIndex == dgvSachQuaHan.Columns["SoNgayQuaHan"].Index && e.Value != null)
@@ -317,77 +349,69 @@ namespace QLTVNhom3
             {
                 if (chartTinhTrangSach == null) return;
 
-                // Load dữ liệu từ database
                 DashboardDAL dal = new DashboardDAL();
-                DataTable data = dal.GetThongKeTinhTrangSach(); // Bạn cần tạo method này trong DAL
+                DataTable data = dal.GetThongKeTinhTrangSach();
 
-                // Clear chart
                 chartTinhTrangSach.Series.Clear();
                 chartTinhTrangSach.Titles.Clear();
-                chartTinhTrangSach.Legend.Visibility = DefaultBoolean.True;
 
-                // Tạo series cho Pie Chart
                 Series series = new Series("Tình trạng sách", ViewType.Pie);
 
-                // Configure pie chart
-                series.LabelsVisibility = DefaultBoolean.True;
-                series.Label.TextPattern = "{A}: {VP:P0}";
+                Font vietnameseFont = new Font("Arial", 9, FontStyle.Regular);
 
-                // Add data từ database
+                series.LabelsVisibility = DefaultBoolean.False;
+                series.Label.TextPattern = "{A}: {V} ({VP:P0})";
+                series.Label.Font = vietnameseFont;
+
+                // Add data
                 foreach (DataRow row in data.Rows)
                 {
-                    string tinhTrang = row["TinhTrang"].ToString();
-                    int soLuong = Convert.ToInt32(row["SoLuong"]);
+                    string tinhTrang = row[0].ToString();  // Cột đầu tiên
+                    int soLuong = Convert.ToInt32(row[1]); // Cột thứ hai
                     series.Points.Add(new SeriesPoint(tinhTrang, soLuong));
                 }
 
-                // Nếu không có dữ liệu, thêm dữ liệu demo
-                if (series.Points.Count == 0)
+                string[] colors = { "#2E7D32", // Xanh lá đậm
+    "#1565C0", // Xanh dương đậm  
+    "#C62828", // Đỏ đậm
+    "#EF6C00", // Cam đậm
+    "#6A1B9A", // Tím đậm
+    "#00695C"};
+                for (int i = 0; i < series.Points.Count; i++)
                 {
-                    series.Points.Add(new SeriesPoint("Sách có sẵn", 60));
-                    series.Points.Add(new SeriesPoint("Sách đang mượn", 25));
-                    series.Points.Add(new SeriesPoint("Sách thanh lý", 10));
-                    series.Points.Add(new SeriesPoint("Sách hư hỏng", 5));
-                }
-
-                // Cấu hình màu sắc cho từng phần
-                if (series.Points.Count > 0)
-                {
-                    series.Points[0].Color = Color.FromArgb(255, 78, 186, 111);  // Xanh lá - Có sẵn
-                    series.Points[1].Color = Color.FromArgb(255, 108, 160, 220); // Xanh dương - Đang mượn
-                    series.Points[2].Color = Color.FromArgb(255, 225, 77, 89);  // Cam - Thanh lý
-                    if (series.Points.Count > 3)
-                        series.Points[3].Color = Color.FromArgb(255, 225, 77, 89); // Đỏ - Hư hỏng
+                    if (i < colors.Length)
+                    {
+                        series.Points[i].Color = ColorTranslator.FromHtml(colors[i]);
+                    }
                 }
 
                 chartTinhTrangSach.Series.Add(series);
 
-                // Cấu hình Pie Series View
                 PieSeriesView pieView = series.View as PieSeriesView;
                 if (pieView != null)
                 {
                     pieView.Border.Visibility = DefaultBoolean.True;
                     pieView.Border.Color = Color.White;
                     pieView.Border.Thickness = 2;
-                    pieView.Titles.Add(new SeriesTitle());
-                    pieView.Titles[0].Text = "{A}";
                 }
-
-                // Title
-                ChartTitle title = new ChartTitle();
-                title.Text = "THỐNG KÊ TÌNH TRẠNG SÁCH";
-                title.Font = new Font("Segoe UI", 12, FontStyle.Bold);
-                title.TextColor = Color.FromArgb(255, 42, 99, 195);
-                title.Alignment = StringAlignment.Center;
-                title.Dock = ChartTitleDockStyle.Top;
-                chartTinhTrangSach.Titles.Add(title);
 
                 // Legend
                 chartTinhTrangSach.Legend.Visibility = DefaultBoolean.True;
                 chartTinhTrangSach.Legend.AlignmentHorizontal = LegendAlignmentHorizontal.Right;
                 chartTinhTrangSach.Legend.AlignmentVertical = LegendAlignmentVertical.Top;
+                chartTinhTrangSach.Legend.Font = vietnameseFont;
+                // ✅ HIỂN THỊ THÔNG TIN TRONG LEGEND
+                series.LegendTextPattern = "{A}: {V} ({VP:P0})";
 
-                // Refresh
+                // ✅ TITLE ĐƠN GIẢN
+                ChartTitle title = new ChartTitle();
+                title.Text = "THỐNG KÊ TÌNH TRẠNG SÁCH";
+                title.Font = new Font("Arial", 12, FontStyle.Bold);
+                title.TextColor = Color.FromArgb(255, 42, 99, 195);
+                title.Alignment = StringAlignment.Center;
+                title.Dock = ChartTitleDockStyle.Top;
+                chartTinhTrangSach.Titles.Add(title);
+
                 chartTinhTrangSach.RefreshData();
                 chartTinhTrangSach.Refresh();
             }

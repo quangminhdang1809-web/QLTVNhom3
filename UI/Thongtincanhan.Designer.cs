@@ -69,10 +69,9 @@
             btnChangePassword.FlatStyle = FlatStyle.Flat;
             btnChangePassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnChangePassword.ForeColor = SystemColors.Control;
-            btnChangePassword.Location = new Point(199, 299);
-            btnChangePassword.Margin = new Padding(2, 2, 2, 2);
+            btnChangePassword.Location = new Point(323, 478);
             btnChangePassword.Name = "btnChangePassword";
-            btnChangePassword.Size = new Size(195, 47);
+            btnChangePassword.Size = new Size(317, 75);
             btnChangePassword.TabIndex = 7;
             btnChangePassword.Text = "Đổi mật khẩu";
             btnChangePassword.UseVisualStyleBackColor = false;
@@ -84,13 +83,11 @@
             groupBox1.Controls.Add(lblMatkhau);
             groupBox1.Controls.Add(lblTenTK);
             groupBox1.Controls.Add(txtMatkhau);
-            groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = SystemColors.HotTrack;
-            groupBox1.Location = new Point(98, 66);
-            groupBox1.Margin = new Padding(2, 2, 2, 2);
+            groupBox1.Location = new Point(159, 106);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(2, 2, 2, 2);
-            groupBox1.Size = new Size(421, 186);
+            groupBox1.Size = new Size(684, 298);
             groupBox1.TabIndex = 11;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin tài khoản";
@@ -101,11 +98,10 @@
             txtTenTK.BorderStyle = BorderStyle.FixedSingle;
             txtTenTK.Font = new Font("Segoe UI", 12F);
             txtTenTK.ForeColor = SystemColors.ActiveCaptionText;
-            txtTenTK.Location = new Point(191, 55);
-            txtTenTK.Margin = new Padding(2, 2, 2, 2);
+            txtTenTK.Location = new Point(310, 88);
             txtTenTK.Name = "txtTenTK";
             txtTenTK.ReadOnly = true;
-            txtTenTK.Size = new Size(201, 34);
+            txtTenTK.Size = new Size(325, 50);
             txtTenTK.TabIndex = 8;
             // 
             // lblMatkhau
@@ -113,10 +109,9 @@
             lblMatkhau.AutoSize = true;
             lblMatkhau.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblMatkhau.ForeColor = SystemColors.ActiveCaptionText;
-            lblMatkhau.Location = new Point(22, 109);
-            lblMatkhau.Margin = new Padding(2, 0, 2, 0);
+            lblMatkhau.Location = new Point(36, 174);
             lblMatkhau.Name = "lblMatkhau";
-            lblMatkhau.Size = new Size(102, 28);
+            lblMatkhau.Size = new Size(162, 45);
             lblMatkhau.TabIndex = 3;
             lblMatkhau.Text = "Mật khẩu";
             // 
@@ -125,10 +120,9 @@
             lblTenTK.AutoSize = true;
             lblTenTK.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblTenTK.ForeColor = SystemColors.ActiveCaptionText;
-            lblTenTK.Location = new Point(22, 58);
-            lblTenTK.Margin = new Padding(2, 0, 2, 0);
+            lblTenTK.Location = new Point(36, 93);
             lblTenTK.Name = "lblTenTK";
-            lblTenTK.Size = new Size(140, 28);
+            lblTenTK.Size = new Size(221, 45);
             lblTenTK.TabIndex = 1;
             lblTenTK.Text = "Tên tài khoản";
             // 
@@ -138,11 +132,10 @@
             txtMatkhau.BorderStyle = BorderStyle.FixedSingle;
             txtMatkhau.Font = new Font("Segoe UI", 12F);
             txtMatkhau.ForeColor = SystemColors.ActiveCaptionText;
-            txtMatkhau.Location = new Point(191, 106);
-            txtMatkhau.Margin = new Padding(2, 2, 2, 2);
+            txtMatkhau.Location = new Point(310, 170);
             txtMatkhau.Name = "txtMatkhau";
             txtMatkhau.ReadOnly = true;
-            txtMatkhau.Size = new Size(201, 34);
+            txtMatkhau.Size = new Size(325, 50);
             txtMatkhau.TabIndex = 9;
             // 
             // groupBox2
@@ -163,13 +156,11 @@
             groupBox2.Controls.Add(txtHoTen);
             groupBox2.Controls.Add(txtMaDocGia);
             groupBox2.Controls.Add(lblEmail);
-            groupBox2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox2.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.ForeColor = SystemColors.HotTrack;
-            groupBox2.Location = new Point(704, 66);
-            groupBox2.Margin = new Padding(2, 2, 2, 2);
+            groupBox2.Location = new Point(1144, 106);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(2, 2, 2, 2);
-            groupBox2.Size = new Size(688, 523);
+            groupBox2.Size = new Size(1118, 837);
             groupBox2.TabIndex = 11;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin độc giả";
@@ -179,10 +170,9 @@
             lblMaDG.AutoSize = true;
             lblMaDG.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblMaDG.ForeColor = SystemColors.ActiveCaptionText;
-            lblMaDG.Location = new Point(38, 51);
-            lblMaDG.Margin = new Padding(2, 0, 2, 0);
+            lblMaDG.Location = new Point(62, 82);
             lblMaDG.Name = "lblMaDG";
-            lblMaDG.Size = new Size(118, 28);
+            lblMaDG.Size = new Size(187, 45);
             lblMaDG.TabIndex = 2;
             lblMaDG.Text = "Mã độc giả";
             // 
@@ -191,10 +181,9 @@
             lblHethan.AutoSize = true;
             lblHethan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblHethan.ForeColor = SystemColors.ActiveCaptionText;
-            lblHethan.Location = new Point(38, 344);
-            lblHethan.Margin = new Padding(2, 0, 2, 0);
+            lblHethan.Location = new Point(62, 550);
             lblHethan.Name = "lblHethan";
-            lblHethan.Size = new Size(140, 28);
+            lblHethan.Size = new Size(220, 45);
             lblHethan.TabIndex = 3;
             lblHethan.Text = "Ngày hết hạn";
             // 
@@ -204,11 +193,10 @@
             txtLoaiDocGia.BorderStyle = BorderStyle.FixedSingle;
             txtLoaiDocGia.Font = new Font("Segoe UI", 12F);
             txtLoaiDocGia.ForeColor = SystemColors.ActiveCaptionText;
-            txtLoaiDocGia.Location = new Point(257, 402);
-            txtLoaiDocGia.Margin = new Padding(2, 2, 2, 2);
+            txtLoaiDocGia.Location = new Point(418, 643);
             txtLoaiDocGia.Name = "txtLoaiDocGia";
             txtLoaiDocGia.ReadOnly = true;
-            txtLoaiDocGia.Size = new Size(324, 34);
+            txtLoaiDocGia.Size = new Size(525, 50);
             txtLoaiDocGia.TabIndex = 10;
             txtLoaiDocGia.Text = "Sinh viên";
             // 
@@ -217,10 +205,9 @@
             lblLoaitaikhoan.AutoSize = true;
             lblLoaitaikhoan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblLoaitaikhoan.ForeColor = SystemColors.ActiveCaptionText;
-            lblLoaitaikhoan.Location = new Point(38, 403);
-            lblLoaitaikhoan.Margin = new Padding(2, 0, 2, 0);
+            lblLoaitaikhoan.Location = new Point(62, 645);
             lblLoaitaikhoan.Name = "lblLoaitaikhoan";
-            lblLoaitaikhoan.Size = new Size(146, 28);
+            lblLoaitaikhoan.Size = new Size(231, 45);
             lblLoaitaikhoan.TabIndex = 5;
             lblLoaitaikhoan.Text = "Loại tài khoản";
             // 
@@ -229,10 +216,9 @@
             lblSDT.AutoSize = true;
             lblSDT.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblSDT.ForeColor = SystemColors.ActiveCaptionText;
-            lblSDT.Location = new Point(38, 168);
-            lblSDT.Margin = new Padding(2, 0, 2, 0);
+            lblSDT.Location = new Point(62, 269);
             lblSDT.Name = "lblSDT";
-            lblSDT.Size = new Size(138, 28);
+            lblSDT.Size = new Size(218, 45);
             lblSDT.TabIndex = 6;
             lblSDT.Text = "Số điện thoại";
             // 
@@ -241,10 +227,9 @@
             lblNgaymo.AutoSize = true;
             lblNgaymo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblNgaymo.ForeColor = SystemColors.ActiveCaptionText;
-            lblNgaymo.Location = new Point(38, 286);
-            lblNgaymo.Margin = new Padding(2, 0, 2, 0);
+            lblNgaymo.Location = new Point(62, 458);
             lblNgaymo.Name = "lblNgaymo";
-            lblNgaymo.Size = new Size(136, 28);
+            lblNgaymo.Size = new Size(214, 45);
             lblNgaymo.TabIndex = 9;
             lblNgaymo.Text = "Ngày mở thẻ";
             // 
@@ -253,10 +238,9 @@
             lblHoten.AutoSize = true;
             lblHoten.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblHoten.ForeColor = SystemColors.ActiveCaptionText;
-            lblHoten.Location = new Point(38, 109);
-            lblHoten.Margin = new Padding(2, 0, 2, 0);
+            lblHoten.Location = new Point(62, 174);
             lblHoten.Name = "lblHoten";
-            lblHoten.Size = new Size(104, 28);
+            lblHoten.Size = new Size(165, 45);
             lblHoten.TabIndex = 4;
             lblHoten.Text = "Họ và tên";
             // 
@@ -265,10 +249,9 @@
             lblTrangThaiThe.AutoSize = true;
             lblTrangThaiThe.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblTrangThaiThe.ForeColor = SystemColors.ActiveCaptionText;
-            lblTrangThaiThe.Location = new Point(38, 462);
-            lblTrangThaiThe.Margin = new Padding(2, 0, 2, 0);
+            lblTrangThaiThe.Location = new Point(62, 739);
             lblTrangThaiThe.Name = "lblTrangThaiThe";
-            lblTrangThaiThe.Size = new Size(145, 28);
+            lblTrangThaiThe.Size = new Size(229, 45);
             lblTrangThaiThe.TabIndex = 5;
             lblTrangThaiThe.Text = "Trạng thái thẻ";
             // 
@@ -278,11 +261,10 @@
             txtNgayHetHan.BorderStyle = BorderStyle.FixedSingle;
             txtNgayHetHan.Font = new Font("Segoe UI", 12F);
             txtNgayHetHan.ForeColor = SystemColors.ActiveCaptionText;
-            txtNgayHetHan.Location = new Point(257, 343);
-            txtNgayHetHan.Margin = new Padding(2, 2, 2, 2);
+            txtNgayHetHan.Location = new Point(418, 549);
             txtNgayHetHan.Name = "txtNgayHetHan";
             txtNgayHetHan.ReadOnly = true;
-            txtNgayHetHan.Size = new Size(324, 34);
+            txtNgayHetHan.Size = new Size(525, 50);
             txtNgayHetHan.TabIndex = 10;
             // 
             // txtNgayMoThe
@@ -291,11 +273,10 @@
             txtNgayMoThe.BorderStyle = BorderStyle.FixedSingle;
             txtNgayMoThe.Font = new Font("Segoe UI", 12F);
             txtNgayMoThe.ForeColor = SystemColors.ActiveCaptionText;
-            txtNgayMoThe.Location = new Point(257, 284);
-            txtNgayMoThe.Margin = new Padding(2, 2, 2, 2);
+            txtNgayMoThe.Location = new Point(418, 454);
             txtNgayMoThe.Name = "txtNgayMoThe";
             txtNgayMoThe.ReadOnly = true;
-            txtNgayMoThe.Size = new Size(324, 34);
+            txtNgayMoThe.Size = new Size(525, 50);
             txtNgayMoThe.TabIndex = 10;
             // 
             // txtTrangThaiThe
@@ -304,11 +285,10 @@
             txtTrangThaiThe.BorderStyle = BorderStyle.FixedSingle;
             txtTrangThaiThe.Font = new Font("Segoe UI", 12F);
             txtTrangThaiThe.ForeColor = SystemColors.ActiveCaptionText;
-            txtTrangThaiThe.Location = new Point(257, 462);
-            txtTrangThaiThe.Margin = new Padding(2, 2, 2, 2);
+            txtTrangThaiThe.Location = new Point(418, 739);
             txtTrangThaiThe.Name = "txtTrangThaiThe";
             txtTrangThaiThe.ReadOnly = true;
-            txtTrangThaiThe.Size = new Size(324, 34);
+            txtTrangThaiThe.Size = new Size(525, 50);
             txtTrangThaiThe.TabIndex = 10;
             // 
             // txtEmail
@@ -317,11 +297,10 @@
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.Font = new Font("Segoe UI", 12F);
             txtEmail.ForeColor = SystemColors.ActiveCaptionText;
-            txtEmail.Location = new Point(257, 224);
-            txtEmail.Margin = new Padding(2, 2, 2, 2);
+            txtEmail.Location = new Point(418, 358);
             txtEmail.Name = "txtEmail";
             txtEmail.ReadOnly = true;
-            txtEmail.Size = new Size(324, 34);
+            txtEmail.Size = new Size(525, 50);
             txtEmail.TabIndex = 10;
             // 
             // txtSDT
@@ -330,11 +309,10 @@
             txtSDT.BorderStyle = BorderStyle.FixedSingle;
             txtSDT.Font = new Font("Segoe UI", 12F);
             txtSDT.ForeColor = SystemColors.ActiveCaptionText;
-            txtSDT.Location = new Point(257, 165);
-            txtSDT.Margin = new Padding(2, 2, 2, 2);
+            txtSDT.Location = new Point(418, 264);
             txtSDT.Name = "txtSDT";
             txtSDT.ReadOnly = true;
-            txtSDT.Size = new Size(324, 34);
+            txtSDT.Size = new Size(525, 50);
             txtSDT.TabIndex = 10;
             // 
             // txtHoTen
@@ -343,11 +321,10 @@
             txtHoTen.BorderStyle = BorderStyle.FixedSingle;
             txtHoTen.Font = new Font("Segoe UI", 12F);
             txtHoTen.ForeColor = SystemColors.ActiveCaptionText;
-            txtHoTen.Location = new Point(257, 106);
-            txtHoTen.Margin = new Padding(2, 2, 2, 2);
+            txtHoTen.Location = new Point(418, 170);
             txtHoTen.Name = "txtHoTen";
             txtHoTen.ReadOnly = true;
-            txtHoTen.Size = new Size(324, 34);
+            txtHoTen.Size = new Size(525, 50);
             txtHoTen.TabIndex = 10;
             // 
             // txtMaDocGia
@@ -356,11 +333,10 @@
             txtMaDocGia.BorderStyle = BorderStyle.FixedSingle;
             txtMaDocGia.Font = new Font("Segoe UI", 12F);
             txtMaDocGia.ForeColor = SystemColors.ActiveCaptionText;
-            txtMaDocGia.Location = new Point(257, 46);
-            txtMaDocGia.Margin = new Padding(2, 2, 2, 2);
+            txtMaDocGia.Location = new Point(418, 74);
             txtMaDocGia.Name = "txtMaDocGia";
             txtMaDocGia.ReadOnly = true;
-            txtMaDocGia.Size = new Size(324, 34);
+            txtMaDocGia.Size = new Size(525, 50);
             txtMaDocGia.TabIndex = 10;
             // 
             // lblEmail
@@ -368,10 +344,9 @@
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblEmail.ForeColor = SystemColors.ActiveCaptionText;
-            lblEmail.Location = new Point(38, 227);
-            lblEmail.Margin = new Padding(2, 0, 2, 0);
+            lblEmail.Location = new Point(62, 363);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(64, 28);
+            lblEmail.Size = new Size(101, 45);
             lblEmail.TabIndex = 8;
             lblEmail.Text = "Email";
             // 
@@ -390,7 +365,8 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvLichsumuon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvLichsumuon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLichsumuon.ColumnHeadersHeight = 50;
+            dgvLichsumuon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -401,22 +377,22 @@
             dgvLichsumuon.DefaultCellStyle = dataGridViewCellStyle2;
             dgvLichsumuon.EnableHeadersVisualStyles = false;
             dgvLichsumuon.GridColor = SystemColors.Control;
-            dgvLichsumuon.Location = new Point(98, 664);
-            dgvLichsumuon.Margin = new Padding(2, 2, 2, 2);
+            dgvLichsumuon.Location = new Point(159, 1062);
             dgvLichsumuon.Name = "dgvLichsumuon";
             dgvLichsumuon.ReadOnly = true;
+            dgvLichsumuon.RowHeadersVisible = false;
             dgvLichsumuon.RowHeadersWidth = 62;
-            dgvLichsumuon.Size = new Size(1294, 346);
+            dgvLichsumuon.RowTemplate.DefaultCellStyle.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dgvLichsumuon.Size = new Size(2103, 554);
             dgvLichsumuon.TabIndex = 15;
             // 
             // lblSosachmuon
             // 
             lblSosachmuon.AutoSize = true;
             lblSosachmuon.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSosachmuon.Location = new Point(98, 613);
-            lblSosachmuon.Margin = new Padding(2, 0, 2, 0);
+            lblSosachmuon.Location = new Point(159, 981);
             lblSosachmuon.Name = "lblSosachmuon";
-            lblSosachmuon.Size = new Size(209, 32);
+            lblSosachmuon.Size = new Size(319, 50);
             lblSosachmuon.TabIndex = 13;
             lblSosachmuon.Text = "Số sách đã mượn";
             lblSosachmuon.TextAlign = ContentAlignment.MiddleRight;
@@ -424,18 +400,18 @@
             // txtSosachmuon
             // 
             txtSosachmuon.BackColor = SystemColors.ControlLightLight;
-            txtSosachmuon.BorderStyle = BorderStyle.FixedSingle;
+            txtSosachmuon.BorderStyle = BorderStyle.None;
             txtSosachmuon.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtSosachmuon.Location = new Point(300, 614);
-            txtSosachmuon.Margin = new Padding(2, 2, 2, 2);
+            txtSosachmuon.ForeColor = Color.Red;
+            txtSosachmuon.Location = new Point(488, 982);
             txtSosachmuon.Name = "txtSosachmuon";
             txtSosachmuon.ReadOnly = true;
-            txtSosachmuon.Size = new Size(142, 34);
+            txtSosachmuon.Size = new Size(230, 43);
             txtSosachmuon.TabIndex = 14;
             // 
             // Thongtincanhan
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(dgvLichsumuon);
@@ -444,9 +420,9 @@
             Controls.Add(groupBox1);
             Controls.Add(groupBox2);
             Controls.Add(btnChangePassword);
-            Margin = new Padding(2, 2, 2, 2);
             Name = "Thongtincanhan";
-            Size = new Size(1496, 1083);
+            Size = new Size(2431, 1733);
+            Load += Thongtincanhan_Load_1;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

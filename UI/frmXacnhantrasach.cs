@@ -67,7 +67,7 @@ namespace QLTVNhom3
                 row.Cells["colNgaymuon"].Value = phieuTra.NgayMuon.ToString("dd/MM/yyyy");
                 row.Cells["colNgaytrasach"].Value = phieuTra.NgayTra.ToString("dd/MM/yyyy");
                 row.Cells["colTinhtrangsach"].Value = phieuTra.TinhTrangSach;
-                row.Cells["colTinhtrangphieu"].Value = phieuTra.SoNgayTraTre > 0 ? "Trả trễ" : "Đúng hạn";
+                row.Cells["colTinhTrangPhieu"].Value = phieuTra.SoNgayTraTre > 0 ? "Trả trễ" : "Đúng hạn";
                 row.Cells["colGhichu"].Value = phieuTra.SoNgayTraTre > 0 ? $"Trả trễ {phieuTra.SoNgayTraTre} ngày" : "";
             }
         }
