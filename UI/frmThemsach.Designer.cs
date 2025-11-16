@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThemsach));
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnLuu = new Button();
             pbThemanh = new PictureBox();
             btnThemanh = new Button();
@@ -51,6 +51,7 @@
             colMatacgia = new DataGridViewTextBoxColumn();
             colHotentacgia = new DataGridViewTextBoxColumn();
             colNamsinh = new DataGridViewTextBoxColumn();
+            colQuocTich = new DataGridViewTextBoxColumn();
             btnHuy = new Button();
             btnXoatg = new Button();
             label8 = new Label();
@@ -83,7 +84,7 @@
             btnLuu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnLuu.ForeColor = Color.White;
             btnLuu.Location = new Point(1494, 1211);
-            btnLuu.Margin = new Padding(5, 5, 5, 5);
+            btnLuu.Margin = new Padding(5);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(176, 61);
             btnLuu.TabIndex = 56;
@@ -95,7 +96,7 @@
             // 
             pbThemanh.BackColor = SystemColors.AppWorkspace;
             pbThemanh.Location = new Point(116, 105);
-            pbThemanh.Margin = new Padding(5, 5, 5, 5);
+            pbThemanh.Margin = new Padding(5);
             pbThemanh.Name = "pbThemanh";
             pbThemanh.Size = new Size(299, 330);
             pbThemanh.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -110,7 +111,7 @@
             btnThemanh.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnThemanh.ForeColor = SystemColors.ButtonHighlight;
             btnThemanh.Location = new Point(116, 419);
-            btnThemanh.Margin = new Padding(5, 5, 5, 5);
+            btnThemanh.Margin = new Padding(5);
             btnThemanh.Name = "btnThemanh";
             btnThemanh.Size = new Size(299, 61);
             btnThemanh.TabIndex = 69;
@@ -134,7 +135,7 @@
             txtTensach.BorderStyle = BorderStyle.FixedSingle;
             txtTensach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTensach.Location = new Point(845, 127);
-            txtTensach.Margin = new Padding(5, 5, 5, 5);
+            txtTensach.Margin = new Padding(5);
             txtTensach.Name = "txtTensach";
             txtTensach.Size = new Size(632, 50);
             txtTensach.TabIndex = 51;
@@ -144,7 +145,7 @@
             txtNxb.BorderStyle = BorderStyle.FixedSingle;
             txtNxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtNxb.Location = new Point(845, 276);
-            txtNxb.Margin = new Padding(5, 5, 5, 5);
+            txtNxb.Margin = new Padding(5);
             txtNxb.Name = "txtNxb";
             txtNxb.Size = new Size(632, 50);
             txtNxb.TabIndex = 52;
@@ -188,7 +189,7 @@
             dtpNamxb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             dtpNamxb.Format = DateTimePickerFormat.Custom;
             dtpNamxb.Location = new Point(845, 353);
-            dtpNamxb.Margin = new Padding(5, 5, 5, 5);
+            dtpNamxb.Margin = new Padding(5);
             dtpNamxb.Name = "dtpNamxb";
             dtpNamxb.ShowUpDown = true;
             dtpNamxb.Size = new Size(180, 50);
@@ -210,7 +211,7 @@
             cbbTheloai.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cbbTheloai.FormattingEnabled = true;
             cbbTheloai.Location = new Point(845, 204);
-            cbbTheloai.Margin = new Padding(5, 5, 5, 5);
+            cbbTheloai.Margin = new Padding(5);
             cbbTheloai.Name = "cbbTheloai";
             cbbTheloai.Size = new Size(631, 53);
             cbbTheloai.TabIndex = 59;
@@ -220,7 +221,7 @@
             txtSoluong.BorderStyle = BorderStyle.FixedSingle;
             txtSoluong.Font = new Font("Segoe UI", 10.8F);
             txtSoluong.Location = new Point(848, 833);
-            txtSoluong.Margin = new Padding(5, 5, 5, 5);
+            txtSoluong.Margin = new Padding(5);
             txtSoluong.Name = "txtSoluong";
             txtSoluong.Size = new Size(631, 46);
             txtSoluong.TabIndex = 60;
@@ -241,7 +242,7 @@
             txtTacgia.BorderStyle = BorderStyle.FixedSingle;
             txtTacgia.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtTacgia.Location = new Point(844, 511);
-            txtTacgia.Margin = new Padding(5, 5, 5, 5);
+            txtTacgia.Margin = new Padding(5);
             txtTacgia.Name = "txtTacgia";
             txtTacgia.Size = new Size(632, 50);
             txtTacgia.TabIndex = 63;
@@ -252,29 +253,29 @@
             grdTacgia.AllowUserToAddRows = false;
             grdTacgia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdTacgia.BackgroundColor = Color.White;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            grdTacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            grdTacgia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             grdTacgia.ColumnHeadersHeight = 46;
             grdTacgia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            grdTacgia.Columns.AddRange(new DataGridViewColumn[] { colMatacgia, colHotentacgia, colNamsinh });
+            grdTacgia.Columns.AddRange(new DataGridViewColumn[] { colMatacgia, colHotentacgia, colNamsinh, colQuocTich });
             grdTacgia.Location = new Point(848, 644);
-            grdTacgia.Margin = new Padding(5, 5, 5, 5);
+            grdTacgia.Margin = new Padding(5);
             grdTacgia.Name = "grdTacgia";
             grdTacgia.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            grdTacgia.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            grdTacgia.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grdTacgia.RowHeadersVisible = false;
             grdTacgia.RowHeadersWidth = 51;
             grdTacgia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -305,6 +306,14 @@
             colNamsinh.Name = "colNamsinh";
             colNamsinh.ReadOnly = true;
             // 
+            // colQuocTich
+            // 
+            colQuocTich.DataPropertyName = "QuocTich";
+            colQuocTich.HeaderText = "Quốc tịch";
+            colQuocTich.MinimumWidth = 10;
+            colQuocTich.Name = "colQuocTich";
+            colQuocTich.ReadOnly = true;
+            // 
             // btnHuy
             // 
             btnHuy.BackColor = Color.FromArgb(220, 53, 69);
@@ -313,7 +322,7 @@
             btnHuy.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnHuy.ForeColor = Color.White;
             btnHuy.Location = new Point(1301, 1211);
-            btnHuy.Margin = new Padding(5, 5, 5, 5);
+            btnHuy.Margin = new Padding(5);
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(176, 61);
             btnHuy.TabIndex = 141;
@@ -328,7 +337,7 @@
             btnXoatg.FlatStyle = FlatStyle.Flat;
             btnXoatg.Image = (Image)resources.GetObject("btnXoatg.Image");
             btnXoatg.Location = new Point(1404, 588);
-            btnXoatg.Margin = new Padding(5, 5, 5, 5);
+            btnXoatg.Margin = new Padding(5);
             btnXoatg.Name = "btnXoatg";
             btnXoatg.Size = new Size(76, 46);
             btnXoatg.TabIndex = 143;
@@ -351,7 +360,7 @@
             txtMadausach.BorderStyle = BorderStyle.FixedSingle;
             txtMadausach.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             txtMadausach.Location = new Point(845, 44);
-            txtMadausach.Margin = new Padding(5, 5, 5, 5);
+            txtMadausach.Margin = new Padding(5);
             txtMadausach.Name = "txtMadausach";
             txtMadausach.Size = new Size(632, 50);
             txtMadausach.TabIndex = 145;
@@ -361,9 +370,9 @@
             groupBox1.Controls.Add(grdSach);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             groupBox1.Location = new Point(46, 892);
-            groupBox1.Margin = new Padding(5, 5, 5, 5);
+            groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(5, 5, 5, 5);
+            groupBox1.Padding = new Padding(5);
             groupBox1.Size = new Size(1627, 291);
             groupBox1.TabIndex = 147;
             groupBox1.TabStop = false;
@@ -374,19 +383,19 @@
             grdSach.AllowUserToAddRows = false;
             grdSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grdSach.BackgroundColor = Color.White;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            grdSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            grdSach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             grdSach.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grdSach.Columns.AddRange(new DataGridViewColumn[] { colMasach, colTrangthai, colMaDauSach, MaTinhTrang });
             grdSach.GridColor = Color.White;
             grdSach.Location = new Point(10, 53);
-            grdSach.Margin = new Padding(5, 5, 5, 5);
+            grdSach.Margin = new Padding(5);
             grdSach.Name = "grdSach";
             grdSach.ReadOnly = true;
             grdSach.RowHeadersWidth = 51;
@@ -448,7 +457,7 @@
             btnTaoMaSach.FlatStyle = FlatStyle.Flat;
             btnTaoMaSach.Image = (Image)resources.GetObject("btnTaoMaSach.Image");
             btnTaoMaSach.Location = new Point(1516, 831);
-            btnTaoMaSach.Margin = new Padding(5, 5, 5, 5);
+            btnTaoMaSach.Margin = new Padding(5);
             btnTaoMaSach.Name = "btnTaoMaSach";
             btnTaoMaSach.Size = new Size(76, 46);
             btnTaoMaSach.TabIndex = 151;
@@ -460,7 +469,7 @@
             cbbVitri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             cbbVitri.FormattingEnabled = true;
             cbbVitri.Location = new Point(844, 427);
-            cbbVitri.Margin = new Padding(5, 5, 5, 5);
+            cbbVitri.Margin = new Padding(5);
             cbbVitri.Name = "cbbVitri";
             cbbVitri.Size = new Size(631, 53);
             cbbVitri.TabIndex = 59;
@@ -532,7 +541,7 @@
             Controls.Add(txtNxb);
             Controls.Add(txtTensach);
             Controls.Add(label1);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "frmThemsach";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmThemsach";
@@ -579,13 +588,14 @@
         private DataGridView grdTimkiemtacgia;
         private DataGridViewTextBoxColumn colma;
         private DataGridViewTextBoxColumn colten;
-        private DataGridViewTextBoxColumn colMatacgia;
-        private DataGridViewTextBoxColumn colHotentacgia;
-        private DataGridViewTextBoxColumn colNamsinh;
         private DataGridViewTextBoxColumn colMasach;
         private DataGridViewTextBoxColumn colTrangthai;
         private DataGridViewTextBoxColumn colMaDauSach;
         private DataGridViewTextBoxColumn MaTinhTrang;
         private HelpProvider helpProvider1;
+        private DataGridViewTextBoxColumn colMatacgia;
+        private DataGridViewTextBoxColumn colHotentacgia;
+        private DataGridViewTextBoxColumn colNamsinh;
+        private DataGridViewTextBoxColumn colQuocTich;
     }
 }
