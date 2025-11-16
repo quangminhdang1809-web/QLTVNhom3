@@ -43,6 +43,37 @@ namespace QLTVNhom3
             try
             {
                 int maDocGia = Convert.ToInt32(txtMadocgia.Text.Trim());
+
+                // --- YÊU CẦU MỚI: KIỂM TRA SỐ LƯỢNG SÁCH ---
+                // 1. Đếm số sách trong giỏ hàng (trên DataGridView)
+                int soSachTrongGio = 0;
+                foreach (DataGridViewRow row in dgrXacnhan.Rows)
+                {
+                    if (row.IsNewRow) continue; // Bỏ qua dòng mới (nếu có)
+                    soSachTrongGio++;
+                }
+
+                // 2. Lấy số liệu từ CSDL
+                int soSachDaMuon = phieuMuonDAL.GetSoSachDangMuon(maDocGia);
+                int soSachToiDa = phieuMuonDAL.GetSoSachToiDa(maDocGia);
+
+                // 3. Kiểm tra logic
+                if ((soSachDaMuon + soSachTrongGio) > soSachToiDa)
+                {
+                    MessageBox.Show(
+                      $"Lỗi: Độc giả đã mượn {soSachDaMuon} cuốn.\n" +
+                      $"Giới hạn tối đa của độc giả này là {soSachToiDa} cuốn.\n" +
+                      $"Không thể mượn thêm {soSachTrongGio} cuốn này.",
+                      "Vượt Quá Số Lượng Cho Phép",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Warning
+                    );
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                    return; // Dừng xử lý
+                }
+                // --- KẾT THÚC KIỂM TRA ---
+
                 DateTime ngayMuon = DateTime.Now;
                 string hinhThuc = cbxHinhthucmuon.SelectedItem?.ToString();
 

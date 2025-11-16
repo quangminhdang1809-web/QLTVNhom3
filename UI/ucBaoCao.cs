@@ -108,14 +108,6 @@ namespace QLTVNhom3
             }
         }
 
-        // PHƯƠNG THỨC ĐẾM SỐ DÒNG
-        private int GetRowCount(object data)
-        {
-            if (data is DataTable dt) return dt.Rows.Count;
-            if (data is System.Collections.IList list) return list.Count;
-            return 0;
-        }
-
         private object GetReportData(string loaiBaoCao)
         {
             return loaiBaoCao switch

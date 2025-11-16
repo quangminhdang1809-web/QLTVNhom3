@@ -286,17 +286,17 @@ namespace QLTVNhom3.DAL
         public DataTable LayLichSuMuonTra(int maDocGia)
         {
             string query = @"
-                SELECT
+                SELECT Distinct
                     pm.MaPhieuMS,
                     ct.MaSach,
                     ds.TenDauSach,
                     pm.NgayMuon,
-                    tt.TenTinhTrang AS TrangThai
+                    pt.NgayTra
                 FROM PHIEUMUON pm
                 JOIN CTPHIEUMUON ct ON pm.MaPhieuMS = ct.MaPhieuMS
                 JOIN SACH s ON ct.MaSach = s.MaSach
                 JOIN DAUSACH ds ON s.MaDauSach = ds.MaDauSach
-                JOIN TINHTRANG tt ON ct.MaTinhTrang = tt.MaTinhTrang
+                JOIN PHIEUTRASACH pt on pm.MaPhieuMS = pt.MaPhieuMS
                 WHERE pm.MaDocGia = @MaDocGia
                 ORDER BY pm.NgayMuon DESC";
 

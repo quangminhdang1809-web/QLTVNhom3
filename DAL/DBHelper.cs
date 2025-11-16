@@ -10,7 +10,7 @@ namespace QLTVNhom3.DAL
 {
     internal class DBHelper
     {
-        private string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=QLTV;Integrated Security=True; TrustServerCertificate=True";
+        private string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=QuanLThuVien;Integrated Security=True; TrustServerCertificate=True";
         public SqlConnection Getconnection() => new SqlConnection(connectionString);
         private SqlCommand CreateCommand(string query, SqlConnection sqlCon, SqlParameter[] para = null, bool isStoredProc = false)
         {

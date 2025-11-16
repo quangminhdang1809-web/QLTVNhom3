@@ -212,7 +212,7 @@ namespace QLTVNhom3.DAL
             COUNT(pt.MaPhieuTra) as SoLuongPhieu,
             SUM(pt.TongTienPhat) as TongTienPhat
         FROM PHIEUTRASACH pt
-        WHERE pt.NgayTra BETWEEN @StartDate AND @EndDate
+        WHERE pt.NgayTra BETWEEN @StartDate AND @EndDate AND pt.TongTienPhat > 0
         GROUP BY CONVERT(date, pt.NgayTra)
         ORDER BY CONVERT(date, pt.NgayTra) DESC";
 

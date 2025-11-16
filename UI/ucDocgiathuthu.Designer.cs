@@ -38,14 +38,14 @@
             btnThemdocgia = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             grdDocgia = new DataGridView();
+            colMadocgia = new DataGridViewTextBoxColumn();
+            colTenDocGia = new DataGridViewTextBoxColumn();
+            colNgaylapthe = new DataGridViewTextBoxColumn();
+            colNgayhethan = new DataGridViewTextBoxColumn();
+            colLoaidocgia = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             dgvLichsumuontra = new DataGridView();
-            colMaphieumuon = new DataGridViewTextBoxColumn();
-            colMasach = new DataGridViewTextBoxColumn();
-            colTensach = new DataGridViewTextBoxColumn();
-            colNgaymuon = new DataGridViewTextBoxColumn();
-            colTrangthai = new DataGridViewTextBoxColumn();
             label5 = new Label();
             label12 = new Label();
             label13 = new Label();
@@ -81,11 +81,11 @@
             btnLuu = new Button();
             btnXoa = new Button();
             btnUndo = new Button();
-            colMadocgia = new DataGridViewTextBoxColumn();
-            colTenDocGia = new DataGridViewTextBoxColumn();
-            colNgaylapthe = new DataGridViewTextBoxColumn();
-            colNgayhethan = new DataGridViewTextBoxColumn();
-            colLoaidocgia = new DataGridViewTextBoxColumn();
+            colMaphieumuon = new DataGridViewTextBoxColumn();
+            colMasach = new DataGridViewTextBoxColumn();
+            colTensach = new DataGridViewTextBoxColumn();
+            colNgaymuon = new DataGridViewTextBoxColumn();
+            colNgayTra = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grdDocgia).BeginInit();
             groupBox1.SuspendLayout();
@@ -215,6 +215,46 @@
             grdDocgia.TabIndex = 20;
             grdDocgia.SelectionChanged += grdDocgia_SelectionChanged;
             // 
+            // colMadocgia
+            // 
+            colMadocgia.DataPropertyName = "MaDocGia";
+            colMadocgia.FillWeight = 5F;
+            colMadocgia.HeaderText = "Mã Độc Giả";
+            colMadocgia.MinimumWidth = 6;
+            colMadocgia.Name = "colMadocgia";
+            // 
+            // colTenDocGia
+            // 
+            colTenDocGia.DataPropertyName = "HoTen";
+            colTenDocGia.FillWeight = 14F;
+            colTenDocGia.HeaderText = "Họ và tên";
+            colTenDocGia.MinimumWidth = 6;
+            colTenDocGia.Name = "colTenDocGia";
+            // 
+            // colNgaylapthe
+            // 
+            colNgaylapthe.DataPropertyName = "NgayLapThe";
+            colNgaylapthe.FillWeight = 8F;
+            colNgaylapthe.HeaderText = "Ngày lập thẻ";
+            colNgaylapthe.MinimumWidth = 6;
+            colNgaylapthe.Name = "colNgaylapthe";
+            // 
+            // colNgayhethan
+            // 
+            colNgayhethan.DataPropertyName = "NgayHetHan";
+            colNgayhethan.FillWeight = 8F;
+            colNgayhethan.HeaderText = "Ngày hết hạn";
+            colNgayhethan.MinimumWidth = 6;
+            colNgayhethan.Name = "colNgayhethan";
+            // 
+            // colLoaidocgia
+            // 
+            colLoaidocgia.DataPropertyName = "TenLoaiDG";
+            colLoaidocgia.FillWeight = 8F;
+            colLoaidocgia.HeaderText = "Loại độc giả";
+            colLoaidocgia.MinimumWidth = 6;
+            colLoaidocgia.Name = "colLoaidocgia";
+            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(groupBox2);
@@ -283,7 +323,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvLichsumuontra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvLichsumuontra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLichsumuontra.Columns.AddRange(new DataGridViewColumn[] { colMaphieumuon, colMasach, colTensach, colNgaymuon, colTrangthai });
+            dgvLichsumuontra.Columns.AddRange(new DataGridViewColumn[] { colMaphieumuon, colMasach, colTensach, colNgaymuon, colNgayTra });
             dgvLichsumuontra.GridColor = Color.White;
             dgvLichsumuontra.Location = new Point(32, 69);
             dgvLichsumuontra.Margin = new Padding(5);
@@ -295,46 +335,6 @@
             dgvLichsumuontra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLichsumuontra.Size = new Size(968, 366);
             dgvLichsumuontra.TabIndex = 68;
-            // 
-            // colMaphieumuon
-            // 
-            colMaphieumuon.DataPropertyName = "MaPhieuMS";
-            colMaphieumuon.HeaderText = "Mã Phiếu MS";
-            colMaphieumuon.MinimumWidth = 6;
-            colMaphieumuon.Name = "colMaphieumuon";
-            colMaphieumuon.ReadOnly = true;
-            // 
-            // colMasach
-            // 
-            colMasach.DataPropertyName = "MaSach";
-            colMasach.HeaderText = "Mã sách";
-            colMasach.MinimumWidth = 6;
-            colMasach.Name = "colMasach";
-            colMasach.ReadOnly = true;
-            // 
-            // colTensach
-            // 
-            colTensach.DataPropertyName = "TenDauSach";
-            colTensach.HeaderText = "Tên sách";
-            colTensach.MinimumWidth = 6;
-            colTensach.Name = "colTensach";
-            colTensach.ReadOnly = true;
-            // 
-            // colNgaymuon
-            // 
-            colNgaymuon.DataPropertyName = "NgayMuon";
-            colNgaymuon.HeaderText = "Ngày mượn";
-            colNgaymuon.MinimumWidth = 6;
-            colNgaymuon.Name = "colNgaymuon";
-            colNgaymuon.ReadOnly = true;
-            // 
-            // colTrangthai
-            // 
-            colTrangthai.DataPropertyName = "TrangThai";
-            colTrangthai.HeaderText = "Trạng thái";
-            colTrangthai.MinimumWidth = 6;
-            colTrangthai.Name = "colTrangthai";
-            colTrangthai.ReadOnly = true;
             // 
             // label5
             // 
@@ -738,45 +738,45 @@
             btnUndo.UseVisualStyleBackColor = true;
             btnUndo.Click += btnUndo_Click;
             // 
-            // colMadocgia
+            // colMaphieumuon
             // 
-            colMadocgia.DataPropertyName = "MaDocGia";
-            colMadocgia.FillWeight = 5F;
-            colMadocgia.HeaderText = "Mã Độc Giả";
-            colMadocgia.MinimumWidth = 6;
-            colMadocgia.Name = "colMadocgia";
+            colMaphieumuon.DataPropertyName = "MaPhieuMS";
+            colMaphieumuon.HeaderText = "Mã Phiếu MS";
+            colMaphieumuon.MinimumWidth = 6;
+            colMaphieumuon.Name = "colMaphieumuon";
+            colMaphieumuon.ReadOnly = true;
             // 
-            // colTenDocGia
+            // colMasach
             // 
-            colTenDocGia.DataPropertyName = "HoTen";
-            colTenDocGia.FillWeight = 14F;
-            colTenDocGia.HeaderText = "Họ và tên";
-            colTenDocGia.MinimumWidth = 6;
-            colTenDocGia.Name = "colTenDocGia";
+            colMasach.DataPropertyName = "MaSach";
+            colMasach.HeaderText = "Mã sách";
+            colMasach.MinimumWidth = 6;
+            colMasach.Name = "colMasach";
+            colMasach.ReadOnly = true;
             // 
-            // colNgaylapthe
+            // colTensach
             // 
-            colNgaylapthe.DataPropertyName = "NgayLapThe";
-            colNgaylapthe.FillWeight = 8F;
-            colNgaylapthe.HeaderText = "Ngày lập thẻ";
-            colNgaylapthe.MinimumWidth = 6;
-            colNgaylapthe.Name = "colNgaylapthe";
+            colTensach.DataPropertyName = "TenDauSach";
+            colTensach.HeaderText = "Tên sách";
+            colTensach.MinimumWidth = 6;
+            colTensach.Name = "colTensach";
+            colTensach.ReadOnly = true;
             // 
-            // colNgayhethan
+            // colNgaymuon
             // 
-            colNgayhethan.DataPropertyName = "NgayHetHan";
-            colNgayhethan.FillWeight = 8F;
-            colNgayhethan.HeaderText = "Ngày hết hạn";
-            colNgayhethan.MinimumWidth = 6;
-            colNgayhethan.Name = "colNgayhethan";
+            colNgaymuon.DataPropertyName = "NgayMuon";
+            colNgaymuon.HeaderText = "Ngày mượn";
+            colNgaymuon.MinimumWidth = 6;
+            colNgaymuon.Name = "colNgaymuon";
+            colNgaymuon.ReadOnly = true;
             // 
-            // colLoaidocgia
+            // colNgayTra
             // 
-            colLoaidocgia.DataPropertyName = "TenLoaiDG";
-            colLoaidocgia.FillWeight = 8F;
-            colLoaidocgia.HeaderText = "Loại độc giả";
-            colLoaidocgia.MinimumWidth = 6;
-            colLoaidocgia.Name = "colLoaidocgia";
+            colNgayTra.DataPropertyName = "NgayTra";
+            colNgayTra.HeaderText = "Ngày trả";
+            colNgayTra.MinimumWidth = 10;
+            colNgayTra.Name = "colNgayTra";
+            colNgayTra.ReadOnly = true;
             // 
             // ucDocgiathuthu
             // 
@@ -845,16 +845,16 @@
         private Button btnLast;
         private Button btnFirst;
         private Button btnSua;
-        private DataGridViewTextBoxColumn colMaphieumuon;
-        private DataGridViewTextBoxColumn colMasach;
-        private DataGridViewTextBoxColumn colTensach;
-        private DataGridViewTextBoxColumn colNgaymuon;
-        private DataGridViewTextBoxColumn colTrangthai;
         private GroupBox groupBox4;
         private DataGridViewTextBoxColumn colMadocgia;
         private DataGridViewTextBoxColumn colTenDocGia;
         private DataGridViewTextBoxColumn colNgaylapthe;
         private DataGridViewTextBoxColumn colNgayhethan;
         private DataGridViewTextBoxColumn colLoaidocgia;
+        private DataGridViewTextBoxColumn colMaphieumuon;
+        private DataGridViewTextBoxColumn colMasach;
+        private DataGridViewTextBoxColumn colTensach;
+        private DataGridViewTextBoxColumn colNgaymuon;
+        private DataGridViewTextBoxColumn colNgayTra;
     }
 }

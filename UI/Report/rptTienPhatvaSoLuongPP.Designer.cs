@@ -390,12 +390,12 @@
             // 
             this.xrTable3.BorderDashStyle = DevExpress.XtraPrinting.BorderDashStyle.Double;
             this.xrTable3.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(120.1967F, 0F);
+            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(201.9943F, 0F);
             this.xrTable3.Name = "xrTable3";
             this.xrTable3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2F, 2F, 0F, 0F, 100F);
             this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3});
-            this.xrTable3.SizeF = new System.Drawing.SizeF(539.575F, 25F);
+            this.xrTable3.SizeF = new System.Drawing.SizeF(457.7774F, 25F);
             this.xrTable3.StylePriority.UseBorderDashStyle = false;
             this.xrTable3.StylePriority.UseBorders = false;
             // 
@@ -417,7 +417,7 @@
             this.xrTableCell10.StylePriority.UseTextAlignment = false;
             this.xrTableCell10.Text = "Tổng";
             this.xrTableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.xrTableCell10.Weight = 2.1579557788724255D;
+            this.xrTableCell10.Weight = 1.2444121482153614D;
             // 
             // xrTableCell11
             // 
