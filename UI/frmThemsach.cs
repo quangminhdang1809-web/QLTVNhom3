@@ -30,6 +30,7 @@ namespace QLTVNhom3
             // Khởi tạo các danh sách
             danhSachTacGiaChon = new BindingList<TacGiaDTO>();
             danhSachBanSach = new BindingList<BanSachDTO>();
+            grdSach.AutoGenerateColumns = false; 
             grdTacgia.DataSource = danhSachTacGiaChon;
             grdSach.DataSource = danhSachBanSach;
 
@@ -153,6 +154,31 @@ namespace QLTVNhom3
                     MaTinhTrang = MA_TINH_TRANG_SAN_SANG,
                     TenTinhTrang = TEN_TINH_TRANG_SAN_SANG
                 });
+            }
+
+            // SỬA Ở ĐÂY: Ẩn cột TenDauSach và các cột không cần thiết
+            if (grdSach.Columns.Contains("TenDauSach"))
+                grdSach.Columns["TenDauSach"].Visible = false;
+
+            if (grdSach.Columns.Contains("MaDauSach"))
+                grdSach.Columns["MaDauSach"].Visible = false;
+
+            if (grdSach.Columns.Contains("MaTinhTrang"))
+                grdSach.Columns["MaTinhTrang"].Visible = false;
+
+            // Chỉ hiển thị 2 cột cần thiết
+            if (grdSach.Columns.Contains("MaSach"))
+            {
+                grdSach.Columns["MaSach"].Visible = true;
+                grdSach.Columns["MaSach"].HeaderText = "Mã Sách";
+                grdSach.Columns["MaSach"].Width = 150;
+            }
+
+            if (grdSach.Columns.Contains("TenTinhTrang"))
+            {
+                grdSach.Columns["TenTinhTrang"].Visible = true;
+                grdSach.Columns["TenTinhTrang"].HeaderText = "Tình Trạng";
+                grdSach.Columns["TenTinhTrang"].Width = 200;
             }
         }
         private void btnLuu_Click(object sender, EventArgs e)

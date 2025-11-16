@@ -180,7 +180,43 @@ namespace QLTVNhom3.DAL
 
             return db.ExecuteQuery(query, parameters);
         }
+        public int GetSoSachToiDa(int maDocGia)
+        {
+            string query = @"
+                SELECT ldg.SoSachToiDa 
+                FROM DOCGIA dg
+                JOIN LOAIDOCGIA ldg ON dg.MaLoaiDG = ldg.MaLoaiDG
+                WHERE dg.MaDocGia = @MaDocGia";
+            SqlParameter[] param = { new SqlParameter("@MaDocGia", maDocGia) };
+            object result = db.ExecuteScalar(query, param);
+            if (result != null && result != DBNull.Value)
+            {
+                return Convert.ToInt32(result);
+            }
+            return 0; // Mặc định không được mượn nếu lỗi
+        }
 
+        /// <summary>
+        /// Lấy số lượng sách độc giả HIỆN TẠI đang mượn (chưa trả)
+        /// </summary>
+        public int GetSoSachDangMuon(int maDocGia)
+        {
+            // Logic này đếm tất cả sách CÓ trong CTPM nhưng CHƯA CÓ trong PHIEUTRASACH
+            string query = @"
+                SELECT COUNT(ctp.MaSach)
+                FROM PHIEUMUON pm
+                JOIN CTPHIEUMUON ctp ON pm.MaPhieuMS = ctp.MaPhieuMS
+                LEFT JOIN PHIEUTRASACH pts ON ctp.MaPhieuMS = pts.MaPhieuMS AND ctp.MaSach = pts.MaSach
+                WHERE pm.MaDocGia = @MaDocGia AND pts.MaPhieuTra IS NULL"; // MaPhieuTra IS NULL = Chưa trả
+
+            SqlParameter[] param = { new SqlParameter("@MaDocGia", maDocGia) };
+            object result = db.ExecuteScalar(query, param);
+            if (result != null && result != DBNull.Value)
+            {
+                return Convert.ToInt32(result);
+            }
+            return 0;
+        }
     }
 }
 

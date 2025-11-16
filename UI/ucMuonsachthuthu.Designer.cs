@@ -488,9 +488,9 @@
             lblThongbao.Location = new Point(75, 588);
             lblThongbao.Margin = new Padding(5, 0, 5, 0);
             lblThongbao.Name = "lblThongbao";
-            lblThongbao.Size = new Size(361, 45);
+            lblThongbao.Size = new Size(373, 45);
             lblThongbao.TabIndex = 172;
-            lblThongbao.Text = "Thông báo thẻ hết hạn";
+            lblThongbao.Text = "Thông báo thời hạn thẻ";
             lblThongbao.Click += lblThongbao_Click;
             // 
             // label6

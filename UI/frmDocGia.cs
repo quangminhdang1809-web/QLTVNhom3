@@ -65,15 +65,7 @@ namespace QLTVNhom3
 
             if (dr == DialogResult.Yes)
             {
-                // 1. Đặt cờ là đang đăng xuất
-                isLoggingOut = true;
-
-                // 2. Tạo form đăng nhập mới và hiển thị
-                frmDangnhap frmLogin = new frmDangnhap();
-                frmLogin.Show();
-
-                // 3. Đóng form Main hiện tại
-                this.Close();
+                Application.Restart();
             }
         }
         private void btnHelp_Click(object sender, EventArgs e)
