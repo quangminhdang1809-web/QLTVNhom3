@@ -537,29 +537,32 @@ namespace QLTVNhom3
                 grdSach.ClearSelection();
                 grdSach.Rows[0].Selected = true;
             }
+            HienThiChiTietSach(dauSachHienTai.MaDauSach);
         }
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            if (grdSach.CurrentRow == null || grdSach.CurrentRow.Index == 0) return;
             int i = grdSach.CurrentRow.Index;
-            grdSach.ClearSelection();
-            grdSach.Rows[i - 1].Selected = true;
+            if (i > 0)// Nếu chưa phải dòng đầu thì nhảy đến dòng trước đó
+            {
+                grdSach.CurrentCell = grdSach[0, i - 1];
+            }
+            HienThiChiTietSach(dauSachHienTai.MaDauSach);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (grdSach.CurrentRow == null || grdSach.CurrentRow.Index == grdSach.RowCount - 1) return;
             int i = grdSach.CurrentRow.Index;
-            grdSach.ClearSelection();
-            grdSach.Rows[i + 1].Selected = true;
+            if (i < grdSach.RowCount - 1)// Nếu chưa phải dòng cuối thì nhảy đến dòng tiếp the
+            {
+                grdSach.CurrentCell = grdSach[0, i + 1];
+            }
+            HienThiChiTietSach(dauSachHienTai.MaDauSach);
         }
         private void btnLast_Click(object sender, EventArgs e)
         {
-            if (grdSach.Rows.Count > 0)
-            {
-                grdSach.ClearSelection();
-                grdSach.Rows[grdSach.RowCount - 1].Selected = true;
-            }
+            int i = grdSach.RowCount - 1;
+            grdSach.CurrentCell = grdSach[0, i];//Dòng  cuối cùng
+            HienThiChiTietSach(dauSachHienTai.MaDauSach);
         }
         private void grdSach_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

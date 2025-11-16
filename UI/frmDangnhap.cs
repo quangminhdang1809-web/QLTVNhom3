@@ -54,6 +54,7 @@ namespace QLTVNhom3
             if (acc != null)
             {
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide(); 
 
                 // --- SỬA LOGIC PHÂN LUỒNG ---
 
@@ -69,17 +70,15 @@ namespace QLTVNhom3
 
                     // 3. Khởi động form chính và TRUYỀN CẢ TÀI KHOẢN (acc) sang
                     var frmmainthuthu = new frmmainthuthu(acc); // Sửa ở đây
-                    this.Hide();
-                    frmmainthuthu.ShowDialog();
-                    this.Hide();
+                    frmmainthuthu.FormClosed += (s, args) => { this.Close(); };
+                    frmmainthuthu.Show();
                 }
                 // 4. Nếu là Độc giả, vào form Độc giả
                 else if (acc.TypeOfAccount == "DOCGIA")
                 {
                     var frmDocGia = new frmDocGia(acc.IDAccount);
-                    this.Hide();
-                    frmDocGia.ShowDialog();
-                    this.Hide();
+                    frmDocGia.FormClosed += (s, args) => { this.Close(); };
+                    frmDocGia.Show();
                 }
                 else
                 {
@@ -90,6 +89,23 @@ namespace QLTVNhom3
             else
             {
                 MessageBox.Show("Đăng nhập thất bại! Vui lòng kiểm tra lại tên đăng nhập và mật khẩu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        // THÊM SỰ KIỆN FORM CLOSING CHO FORM ĐĂNG NHẬP
+        private void frmDangnhap_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Chỉ đóng ứng dụng nếu thực sự muốn thoát
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?",
+                                              "Xác nhận",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true; // Hủy đóng form
             }
         }
     }

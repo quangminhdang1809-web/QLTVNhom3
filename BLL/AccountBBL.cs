@@ -17,30 +17,15 @@ namespace QLTVNhom3.BLL
 
         public string ResetPassword(string idAccount)
         {
-            string newPassword = "12345";
-            string hashedPassword = HashPassword(newPassword);
+            string newPassword = "123456";
 
-            if (accountDAL.ResetPassword(idAccount, hashedPassword))
+            if (accountDAL.ResetPassword(idAccount, newPassword))
             {
                 return newPassword;
             }
             else
             {
                 throw new Exception("Reset mật khẩu thất bại.");
-            }
-        }
-
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
             }
         }
     }

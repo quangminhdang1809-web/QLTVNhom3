@@ -132,5 +132,30 @@ namespace QLTVNhom3.DAL
 
             return db.ExecuteNonQuery(query, parameters) > 0;
         }
+        // Thêm các phương thức này vào class AccountDAL
+        public bool CheckPassword(string accountId, string password)
+        {
+            string query = "SELECT COUNT(*) FROM ACCOUNT WHERE IDAccount = @id AND PasswordAccount = @pw";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@id", accountId),
+        new SqlParameter("@pw", password)
+            };
+
+            object result = db.ExecuteScalar(query, parameters);
+            return Convert.ToInt32(result) > 0;
+        }
+
+        public bool ChangePassword(string accountId, string newPassword)
+        {
+            string query = "UPDATE ACCOUNT SET PasswordAccount = @newPassword WHERE IDAccount = @id";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@newPassword", newPassword),
+        new SqlParameter("@id", accountId)
+            };
+
+            return db.ExecuteNonQuery(query, parameters) > 0;
+        }
     }
 }

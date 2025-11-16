@@ -39,6 +39,8 @@ namespace QLTVNhom3.UI
             btnTimkiem.Click += ApplyFilter;
             txtTimkiem.TextChanged += ApplyFilter;
             cbxLoaiViPham.SelectedIndexChanged += ApplyFilter;
+
+
         }
 
         // HÀM MỚI: Tải ComboBox LỌC (cbxLoaiViPham)
@@ -314,44 +316,43 @@ namespace QLTVNhom3.UI
         {
             // ApplyFilter(sender, e); // Đã gán sự kiện Click
         }
-
-        #region Nút điều hướng
+        // === CÁC NÚT ĐIỀU HƯỚNG ===
         private void btnFirst_Click(object sender, EventArgs e)
         {
             if (grdVipham.Rows.Count > 0)
             {
                 grdVipham.ClearSelection();
-                grdVipham.Rows[0].Selected = true;
+                grdVipham.CurrentCell = grdVipham[0, 0];
             }
+            HienThiChiTiet();
         }
+
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            if (grdVipham.Rows.Count == 0 || grdVipham.SelectedRows.Count == 0) return;
-            int i = grdVipham.SelectedRows[0].Index;
+            if (grdVipham.CurrentRow == null) return;
+            int i = grdVipham.CurrentRow.Index;
             if (i > 0)
-            {
-                grdVipham.ClearSelection();
-                grdVipham.Rows[i - 1].Selected = true;
-            }
+                grdVipham.CurrentCell = grdVipham[0, i - 1];
+            HienThiChiTiet();
         }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (grdVipham.Rows.Count == 0 || grdVipham.SelectedRows.Count == 0) return;
-            int i = grdVipham.SelectedRows[0].Index;
+            if (grdVipham.CurrentRow == null) return;
+            int i = grdVipham.CurrentRow.Index;
             if (i < grdVipham.RowCount - 1)
-            {
-                grdVipham.ClearSelection();
-                grdVipham.Rows[i + 1].Selected = true;
-            }
+                grdVipham.CurrentCell = grdVipham[0, i + 1];
+            HienThiChiTiet();
         }
+
         private void btnLast_Click(object sender, EventArgs e)
         {
             if (grdVipham.Rows.Count > 0)
             {
-                grdVipham.ClearSelection();
-                grdVipham.Rows[grdVipham.RowCount - 1].Selected = true;
+                int i = grdVipham.RowCount - 1;
+                grdVipham.CurrentCell = grdVipham[0, i];
             }
+            HienThiChiTiet();
         }
-        #endregion
     }
 }

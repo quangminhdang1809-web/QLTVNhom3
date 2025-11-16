@@ -41,7 +41,7 @@ namespace QLTVNhom3
                 dtpNgaylapthe.Value = DateTime.Now;
                 dtpNgayhethan.Enabled = false;
 
-                MessageBox.Show("Hệ thống sẽ tự động tạo tài khoản (docgiaX) với mật khẩu mặc định: 12345",
+                MessageBox.Show("Hệ thống sẽ tự động tạo tài khoản (docgiaX) với mật khẩu mặc định: 123456",
                        "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

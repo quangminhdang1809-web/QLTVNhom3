@@ -97,7 +97,7 @@ namespace QLTVNhom3
             {
                 MessageBox.Show("Mã độc giả không hợp lệ. Vui lòng kiểm tra lại. \nChi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetForm();
-                
+
             }
             CapNhatTrangThaiTimKiem();
         }
@@ -398,7 +398,7 @@ namespace QLTVNhom3
                 // 2. Đổi lại màu nền trắng (nếu bạn muốn)
                 txtTimkiem.BackColor = SystemColors.Window;
 
-                 txtTimkiem.Focus();
+                txtTimkiem.Focus();
             }
             else
             {
@@ -415,6 +415,16 @@ namespace QLTVNhom3
                 // 3. (Nên làm) Đổi màu nền sang xám nhạt để báo hiệu
                 txtTimkiem.BackColor = SystemColors.ControlLight;
             }
+        }
+
+        private void lblDangmuon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblThongbao_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

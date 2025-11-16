@@ -29,6 +29,7 @@ namespace QLTVNhom3
             this.btnChangePassword.Resize += BtnChangePassword_Resize;
             this.btnChangePassword.MouseEnter += BtnChangePassword_MouseEnter;
             this.btnChangePassword.MouseLeave += BtnChangePassword_MouseLeave;
+            ConfigureDataGridView();
             LoadThongTinDocGia();
         }
         private void LoadSachDaMuon()
@@ -66,6 +67,7 @@ namespace QLTVNhom3
                         {
                             txtSosachmuon.Text = tongSoDong.ToString();
                         }
+                        dgvLichsumuon.Refresh();
                     }
                 }
             }
@@ -109,12 +111,84 @@ namespace QLTVNhom3
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            using (var frmDoiMatKhau = new frmDoiMatKhau())
+            try
             {
-                if (frmDoiMatKhau.ShowDialog() == DialogResult.OK)
+                using (var frmDoiMatKhau = new frmDoiMatKhau(currentAccountId))
                 {
-                    MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (frmDoiMatKhau.ShowDialog() == DialogResult.OK)
+                    {
+                        // Lấy thông tin từ form
+                        string oldPassword = frmDoiMatKhau.OldPassword;
+                        string newPassword = frmDoiMatKhau.NewPassword;
+                        string confirmPassword = frmDoiMatKhau.ConfirmPassword;
+
+                        // Kiểm tra dữ liệu
+                        if (string.IsNullOrWhiteSpace(oldPassword) ||
+                            string.IsNullOrWhiteSpace(newPassword) ||
+                            string.IsNullOrWhiteSpace(confirmPassword))
+                        {
+                            MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Lỗi",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        if (newPassword != confirmPassword)
+                        {
+                            MessageBox.Show("Mật khẩu xác nhận không khớp!", "Lỗi",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        if (newPassword.Length < 6)
+                        {
+                            MessageBox.Show("Mật khẩu mới phải có ít nhất 6 ký tự!", "Cảnh báo",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        if (newPassword == oldPassword)
+                        {
+                            MessageBox.Show("Mật khẩu mới phải khác mật khẩu hiện tại!", "Cảnh báo",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Thực hiện đổi mật khẩu
+                        AccountDAL accountDAL = new AccountDAL();
+
+                        // 1. Kiểm tra mật khẩu cũ
+                        bool isOldPasswordCorrect = accountDAL.CheckPassword(currentAccountId, oldPassword);
+
+                        if (!isOldPasswordCorrect)
+                        {
+                            MessageBox.Show("Mật khẩu hiện tại không đúng!", "Lỗi",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // 2. Thực hiện đổi mật khẩu
+                        bool changeResult = accountDAL.ChangePassword(currentAccountId, newPassword);
+
+                        if (changeResult)
+                        {
+                            MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // Cập nhật hiển thị mật khẩu (vẫn hiển thị dấu *)
+                            txtMatkhau.Text = "••••••••";
+                        }
+                        else
+                        {
+                            MessageBox.Show("Đổi mật khẩu thất bại! Vui lòng thử lại.", "Lỗi",
+                                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi đổi mật khẩu: {ex.Message}", "Lỗi",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void LoadThongTinDocGia()
@@ -188,6 +262,41 @@ namespace QLTVNhom3
         private void Thongtincanhan_Load(object sender, EventArgs e)
         {
             LoadThongTinDocGia();
+        }
+
+        private void Thongtincanhan_Load_1(object sender, EventArgs e)
+        {
+
+        }
+        private void ConfigureDataGridView()
+        {
+            if (dgvLichsumuon == null) return;
+
+            // Bật hiển thị đường kẻ
+            dgvLichsumuon.GridColor = Color.LightGray;
+            dgvLichsumuon.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            dgvLichsumuon.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvLichsumuon.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+
+            // Đảm bảo background color khác với grid color
+            dgvLichsumuon.BackgroundColor = Color.White;
+            dgvLichsumuon.EnableHeadersVisualStyles = false;
+
+            // Cấu hình màu sắc cho header
+            dgvLichsumuon.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvLichsumuon.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+
+            // Cấu hình màu cho các dòng
+            dgvLichsumuon.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+            dgvLichsumuon.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvLichsumuon.RowsDefaultCellStyle.ForeColor = Color.Black;
+
+            // Cấu hình selection
+            dgvLichsumuon.DefaultCellStyle.SelectionBackColor = Color.FromArgb(52, 152, 219);
+            dgvLichsumuon.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Đảm bảo hiển thị đầy đủ
+            dgvLichsumuon.BorderStyle = BorderStyle.Fixed3D;
         }
     }
 }

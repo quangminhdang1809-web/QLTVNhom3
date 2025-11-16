@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace QLTVNhom3
 {
@@ -25,38 +26,8 @@ namespace QLTVNhom3
         {
             InitializeComponent();
             this.currentUser = account; // Lưu lại thông tin tài khoản
-            this.FormClosing += new FormClosingEventHandler(frmmainthuthu_FormClosing);
         }
         // <<< THÊM HÀM MỚI NÀY VÀO CLASS >>>
-        private void frmmainthuthu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Kiểm tra xem có phải đang đăng xuất không
-            if (isLoggingOut == true)
-            {
-                // Nếu ĐÚNG (do nhấn btnDangxuat), 
-                // thì không làm gì cả, cứ để form đóng bình thường.
-                // frmDangnhap sẽ hiện ra.
-                return;
-            }
-
-            // Nếu SAI (do nhấn nút "X" hoặc btnThoat)
-            // thì hỏi người dùng có muốn THOÁT HẲN không
-            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn thoát chương trình?",
-                                              "Xác nhận",
-                                              MessageBoxButtons.YesNo,
-                                              MessageBoxIcon.Question);
-
-            if (dr == DialogResult.Yes)
-            {
-                // Thoát toàn bộ ứng dụng (tắt cả frmDangnhap đang ẩn)
-                Application.Exit();
-            }
-            else
-            {
-                // Hủy việc đóng form
-                e.Cancel = true;
-            }
-        }
         private void btnDanhmuc_Click(object sender, EventArgs e)
         {
             if (pnlDanhmuc.Visible == true)
@@ -242,30 +213,28 @@ namespace QLTVNhom3
 
             if (dr == DialogResult.Yes)
             {
-                // 2. Đặt cờ là đang đăng xuất
-                isLoggingOut = true;
-
-                // 3. Tìm lại form Login đang bị ẩn
-                // (Thay "frmLogin" bằng tên thật của Form Login của bạn)
-                Form frmLogin = Application.OpenForms["frmDangnhap"];
-
-                if (frmLogin != null)
-                {
-                    // 4. Hiển thị lại form Login
-                    frmLogin.Show();
-                }
-                else
-                {
-                    // Phòng trường hợp form Login bị lỗi/đóng
-                    frmLogin = new frmDangnhap();
-                    frmLogin.Show();
-                }
-
-                // 5. Đóng form Main hiện tại
-                this.Close();
+                Application.Restart();
             }
+        }
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string helpUrl = currentUser.TypeOfAccount switch
+            {
+                "ADMIN" => "https://sites.google.com/view/adthuvienhelp/trang-ch%E1%BB%A7?authuser=0",
+                "THUTHU" => "https://sites.google.com/view/thuthu-help/trang-ch%E1%BB%A7"
+            };
 
-
+            try
+            {
+                Process.Start(new ProcessStartInfo(helpUrl) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể mở trang trợ giúp. \nLỗi: " + ex.Message,
+                                "Lỗi",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
         }
     }
 }

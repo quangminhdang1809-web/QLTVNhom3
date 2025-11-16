@@ -249,5 +249,15 @@ namespace QLTVNhom3
             BackupCurrentData();
             SetEditMode(true);
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatacgia_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

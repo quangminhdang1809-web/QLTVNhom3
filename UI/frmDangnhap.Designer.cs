@@ -63,10 +63,10 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(groupBox2);
             panel1.Controls.Add(groupBox1);
-            panel1.Location = new Point(585, 392);
+            panel1.Location = new Point(449, 392);
             panel1.Margin = new Padding(5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(904, 890);
+            panel1.Size = new Size(1228, 1049);
             panel1.TabIndex = 0;
             // 
             // chkHienmatkhau
@@ -74,7 +74,7 @@
             chkHienmatkhau.AutoSize = true;
             chkHienmatkhau.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
             chkHienmatkhau.ForeColor = SystemColors.HotTrack;
-            chkHienmatkhau.Location = new Point(504, 554);
+            chkHienmatkhau.Location = new Point(692, 669);
             chkHienmatkhau.Margin = new Padding(5);
             chkHienmatkhau.Name = "chkHienmatkhau";
             chkHienmatkhau.Size = new Size(259, 49);
@@ -89,11 +89,11 @@
             btnDangnhap.FlatStyle = FlatStyle.Flat;
             btnDangnhap.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnDangnhap.ForeColor = Color.White;
-            btnDangnhap.Location = new Point(120, 651);
+            btnDangnhap.Location = new Point(308, 802);
             btnDangnhap.Margin = new Padding(5);
             btnDangnhap.Name = "btnDangnhap";
             btnDangnhap.Size = new Size(644, 86);
-            btnDangnhap.TabIndex = 9;
+            btnDangnhap.TabIndex = 3;
             btnDangnhap.Text = "Đăng nhập";
             btnDangnhap.UseVisualStyleBackColor = false;
             btnDangnhap.Click += btnDangnhap_Click;
@@ -104,7 +104,7 @@
             label1.BackColor = Color.White;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             label1.ForeColor = Color.FromArgb(192, 0, 0);
-            label1.Location = new Point(120, 110);
+            label1.Location = new Point(292, 163);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
             label1.Size = new Size(293, 60);
@@ -118,11 +118,11 @@
             groupBox2.Controls.Add(pictureBox3);
             groupBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.ForeColor = SystemColors.HotTrack;
-            groupBox2.Location = new Point(120, 410);
+            groupBox2.Location = new Point(292, 498);
             groupBox2.Margin = new Padding(5);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(5);
-            groupBox2.Size = new Size(644, 134);
+            groupBox2.Size = new Size(685, 134);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Mật khẩu";
@@ -137,7 +137,7 @@
             txtMatkhau.Name = "txtMatkhau";
             txtMatkhau.PasswordChar = '•';
             txtMatkhau.Size = new Size(496, 49);
-            txtMatkhau.TabIndex = 5;
+            txtMatkhau.TabIndex = 1;
             // 
             // pictureBox3
             // 
@@ -157,11 +157,11 @@
             groupBox1.Controls.Add(pictureBox2);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = SystemColors.HotTrack;
-            groupBox1.Location = new Point(120, 229);
+            groupBox1.Location = new Point(292, 317);
             groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5);
-            groupBox1.Size = new Size(644, 134);
+            groupBox1.Size = new Size(685, 134);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tên đăng nhập";
@@ -191,10 +191,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(351, 0);
+            pictureBox1.Location = new Point(343, 0);
             pictureBox1.Margin = new Padding(5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(200, 197);
+            pictureBox1.Size = new Size(231, 230);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -211,7 +211,7 @@
             btnThoat.Location = new Point(2035, 0);
             btnThoat.Margin = new Padding(5);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(65, 96);
+            btnThoat.Size = new Size(65, 83);
             btnThoat.TabIndex = 3;
             btnThoat.Text = "x";
             btnThoat.UseVisualStyleBackColor = true;
@@ -223,7 +223,7 @@
             label2.BackColor = SystemColors.Control;
             label2.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 163);
             label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(196, 221);
+            label2.Location = new Point(202, 246);
             label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
             label2.Size = new Size(567, 50);
@@ -237,7 +237,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(2100, 96);
+            panel2.Size = new Size(2100, 83);
             panel2.TabIndex = 12;
             // 
             // panel3
@@ -245,10 +245,10 @@
             panel3.Anchor = AnchorStyles.Top;
             panel3.Controls.Add(pictureBox1);
             panel3.Controls.Add(label2);
-            panel3.Location = new Point(585, 93);
+            panel3.Location = new Point(585, 80);
             panel3.Margin = new Padding(5);
             panel3.Name = "panel3";
-            panel3.Size = new Size(904, 318);
+            panel3.Size = new Size(904, 313);
             panel3.TabIndex = 0;
             // 
             // frmDangnhap

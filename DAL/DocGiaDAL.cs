@@ -94,7 +94,7 @@ namespace QLTVNhom3.DAL
                 int result = db.ExecuteNonQuery(query, parameters);
                 if (result > 0)
                 {
-                    MessageBox.Show($"Thêm độc giả thành công!\nTài khoản: {finalIdAccount}\nMật khẩu: 12345",
+                    MessageBox.Show($"Thêm độc giả thành công!\nTài khoản: {finalIdAccount}\nMật khẩu: 123456",
                           "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //DEBUG
                     Console.WriteLine($"Đã thêm độc giả thành công:{hoTen}, ID: {finalIdAccount}");
@@ -233,7 +233,7 @@ namespace QLTVNhom3.DAL
                 }
 
                 string idAccount = $"docgia{nextNumber}";
-                string password = "12345";
+                string password = "123456";
 
                 // Thêm vào bảng ACCOUNT
                 string insertQuery = @"INSERT INTO ACCOUNT (IDAccount, PasswordAccount, TypeOfAccount) 
